@@ -1,65 +1,102 @@
-import Image from "next/image";
+import Link from "next/link";
+import { DottedSurface } from "@/components/ui/dotted-surface";
+import { CompareCarousel } from "@/components/ui/compare-carousel";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main className="flex flex-col">
+      <section className="hero-section isolate relative flex flex-col items-center justify-center min-h-screen pt-24 pb-20 px-6 overflow-hidden">
+        <DottedSurface className="absolute inset-0 z-0" />
+
+        <div className="relative z-10 flex flex-col items-center">
+          <a
+            href="#download"
+            className="mb-8 flex items-center gap-2 rounded-full border border-black/10 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-1.5 text-sm shadow-sm hover:border-black/20 dark:hover:border-white/20 transition-colors"
+            style={{ color: "var(--foreground-muted)" }}
+          >
+            Vizai Render dentro do seu software preferido
+            <span style={{ opacity: 0.5 }}>›</span>
+          </a>
+
+          <h1
+            className="max-w-4xl text-center text-6xl md:text-7xl font-bold tracking-tight leading-[1.05] mb-6"
+            style={{ color: "var(--foreground)" }}
+          >
+            Renders fotorrealistas com IA direto do SketchUp
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+
+          <p
+            className="max-w-xl text-center text-lg leading-relaxed mb-10"
+            style={{ color: "var(--foreground-muted)" }}
+          >
+            Instale o plugin, configure a cena e faça um render
+            fotorrealista com IA em poucos segundos.
+          </p>
+
+          <div className="flex items-center justify-center">
+            <Link
+              href="/signup"
+              className="bg-black dark:bg-white text-white dark:text-black text-lg font-semibold px-6 py-3 rounded-full hover:bg-black/80 dark:hover:bg-white/90 transition-colors"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+              Teste agora
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Seção GIF — plugin em ação */}
+      <section className="py-24 px-6 flex flex-col items-center gap-12">
+        <div className="text-center max-w-2xl">
+          <h2
+            className="text-4xl md:text-5xl font-bold tracking-tight mb-4"
+            style={{ color: "var(--foreground)" }}
+          >
+            Veja como é simples
+          </h2>
+          <p className="text-lg" style={{ color: "var(--foreground-muted)" }}>
+            Três cliques dentro do SketchUp e o render está pronto.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="flex items-center gap-4 w-full max-w-4xl">
+          <div className="flex-shrink-0 w-10" />
+          <div className="flex-1 p-2 border rounded-3xl border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5">
+            {/* substitua o conteúdo abaixo pelo <img src="url-do-gif" /> quando estiver pronto */}
+            <div className="w-full h-[400px] md:h-[560px] rounded-2xl bg-black/10 dark:bg-white/10 flex items-center justify-center">
+              <p className="text-sm opacity-40">GIF do plugin em breve</p>
+            </div>
+          </div>
+          <div className="flex-shrink-0 w-10" />
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* Seção Antes / Depois */}
+      <section className="pb-24 px-6 flex flex-col items-center gap-12">
+        <div className="text-center max-w-2xl">
+          <h2
+            className="text-4xl md:text-5xl font-bold tracking-tight mb-4"
+            style={{ color: "var(--foreground)" }}
+          >
+            Do print ao render em segundos
+          </h2>
+          <p className="text-lg" style={{ color: "var(--foreground-muted)" }}>
+            Arraste para comparar o modelo bruto com o render gerado pela IA.
+          </p>
+        </div>
+
+        <CompareCarousel
+          pairs={[
+            {
+              before: "https://i.ibb.co/CK920X39/01.jpg",
+              after: "https://i.ibb.co/ZRT4hzw9/01-1111.jpg",
+            },
+            {
+              before: "https://i.ibb.co/21jMxgV1/01.jpg",
+              after: "https://i.ibb.co/ynrgCwS2/02.jpg",
+            },
+          ]}
+        />
+      </section>
+    </main>
   );
 }

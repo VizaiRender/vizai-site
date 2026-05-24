@@ -1,8 +1,17 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
+  --background: #fafafa;
+  --foreground: #0a0a0a;
+  --foreground-muted: rgba(10, 10, 10, 0.55);
+}
+
+.dark {
   --background: #000000;
   --foreground: #ffffff;
+  --foreground-muted: rgba(255, 255, 255, 0.55);
 }
 
 @theme inline {
@@ -14,4 +23,8 @@
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+.hero-section {
+  background-color: var(--background);
 }
