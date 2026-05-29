@@ -8,7 +8,6 @@ import { useT } from "@/lib/i18n";
 export function CtaSection() {
   const t = useT();
   const words = [
-    ...t.cta.connector.split(" ").map((w) => ({ text: w })),
     { text: "Vizai", className: "text-[#0940D2] dark:text-[#4d7fff]" },
     { text: "Render.", className: "text-[#0940D2] dark:text-[#4d7fff]" },
   ];
@@ -22,7 +21,7 @@ export function CtaSection() {
           </p>
 
           <h2 className="text-3xl font-bold lg:text-5xl text-black dark:text-white">
-            {t.cta.title}
+            {t.cta.title} {t.cta.connector}
           </h2>
 
           <TypewriterEffectSmooth

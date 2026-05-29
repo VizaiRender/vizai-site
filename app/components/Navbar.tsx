@@ -144,6 +144,18 @@ export default function Navbar({ forceDark = false }: { forceDark?: boolean }) {
     return () => sub.subscription.unsubscribe();
   }, []);
 
+  // Trava o scroll da página enquanto o menu mobile está aberto.
+  // O scroll vertical acontece no <html> (documentElement), então travamos ele.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const html = document.documentElement;
+    const original = html.style.overflow;
+    html.style.overflow = "hidden";
+    return () => {
+      html.style.overflow = original;
+    };
+  }, [menuOpen]);
+
   const d = forceDark || !mounted ? true : theme === "dark";
 
   const LangPicker = () => (
