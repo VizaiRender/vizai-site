@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useCallback, useEffect } from "react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 interface CompareProps {
@@ -89,18 +90,22 @@ export function Compare({
       onTouchMove={onTouchMove}
     >
       {/* imagem de baixo (depois) — ocupa todo o container */}
-      <img
+      <Image
         src={secondImage}
         alt="depois"
-        className={cn("absolute inset-0 w-full h-full object-cover", secondImageClassname)}
+        fill
+        sizes="(max-width: 768px) 100vw, 800px"
+        className={cn("object-cover", secondImageClassname)}
         draggable={false}
       />
 
       {/* imagem de cima (antes) — fixada no tamanho total, recortada por clip-path */}
-      <img
+      <Image
         src={firstImage}
         alt="antes"
-        className={cn("absolute inset-0 w-full h-full object-cover", firstImageClassName)}
+        fill
+        sizes="(max-width: 768px) 100vw, 800px"
+        className={cn("object-cover", firstImageClassName)}
         style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
         draggable={false}
       />

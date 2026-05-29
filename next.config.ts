@@ -1,9 +1,149 @@
 import type { NextConfig } from "next";
 
+const isDev = process.env.NODE_ENV !== "production";
+
+// Em dev, Next.js precisa de unsafe-eval pro HMR. Em prod, removemos.
+const scriptSrc = [
+  "'self'",
+  "'unsafe-inline'",
+  ...(isDev ? ["'unsafe-eval'"] : []),
+  "https://js.stripe.com",
+  "https://checkout.stripe.com",
+].join(" ");
+
+const styleSrc = [
+  "'self'",
+  "'unsafe-inline'",
+  "https://fonts.googleapis.com",
+].join(" ");
+
+const imgSrc = [
+  "'self'",
+  "data:",
+  "blob:",
+  "https://lh3.googleusercontent.com",
+  "https://i.ibb.co",
+  "https://*.supabase.co",
+  "https://downloads.vizairender.com",
+  "https://i.pravatar.cc",
+].join(" ");
+
+const connectSrc = [
+  "'self'",
+  "https://eobtrpaxupquawgniwfe.supabase.co",
+  "wss://eobtrpaxupquawgniwfe.supabase.co",
+  "https://api.vizairender.com",
+  "https://downloads.vizairender.com",
+  ...(isDev ? ["ws://localhost:*", "http://localhost:*"] : []),
+].join(" ");
+
+const frameSrc = [
+  "'self'",
+  "https://js.stripe.com",
+  "https://checkout.stripe.com",
+].join(" ");
+
+const fontSrc = ["'self'", "data:", "https://fonts.gstatic.com"].join(" ");
+
+const cspDirectives = [
+  `default-src 'self'`,
+  `script-src ${scriptSrc}`,
+  `style-src ${styleSrc}`,
+  `img-src ${imgSrc}`,
+  `font-src ${fontSrc}`,
+  `connect-src ${connectSrc}`,
+  `frame-src ${frameSrc}`,
+  `worker-src 'self' blob:`,
+  `object-src 'none'`,
+  `base-uri 'self'`,
+  `form-action 'self' https://checkout.stripe.com https://billing.stripe.com`,
+  `frame-ancestors 'none'`,
+];
+// upgrade-insecure-requests só em prod — em dev quebra HMR/assets (localhost é HTTP)
+if (!isDev) cspDirectives.push(`upgrade-insecure-requests`);
+const csp = cspDirectives.join("; ");
+
+const securityHeaders = [
+  // CSP em modo enforce — browser BLOQUEIA recursos fora da policy.
+  // Validado em modo Report-Only antes de ligar.
+  { key: "Content-Security-Policy", value: csp },
+
+  // HSTS — força HTTPS por 2 anos. Safari aplica até em localhost,
+  // então só ligamos em produção pra não quebrar dev.
+  ...(isDev
+    ? []
+    : [
+        {
+          key: "Strict-Transport-Security",
+          value: "max-age=63072000; includeSubDomains; preload",
+        },
+      ]),
+
+  // Bloqueia clickjacking
+  { key: "X-Frame-Options", value: "DENY" },
+
+  // Browser não tenta adivinhar MIME type
+  { key: "X-Content-Type-Options", value: "nosniff" },
+
+  // Ao sair do site, vaza só o domínio, não a URL completa
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+
+  // Desliga capabilities que o site não usa
+  {
+    key: "Permissions-Policy",
+    value:
+      "camera=(), microphone=(), geolocation=(), payment=(self 'https://checkout.stripe.com'), usb=(), magnetometer=(), gyroscope=(), accelerometer=()",
+  },
+
+  // Perf bonus — habilita prefetch de DNS
+  { key: "X-DNS-Prefetch-Control", value: "on" },
+];
+
+const demoHeaders = [
+  {
+    key: "Content-Security-Policy",
+    value: [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https://ajax.googleapis.com https://cdn.jsdelivr.net",
+      "style-src 'self' 'unsafe-inline'",
+      "img-src 'self' data: blob: https: http:",
+      "font-src 'self' data:",
+      "connect-src 'self' https: blob:",
+      "worker-src 'self' blob:",
+      "object-src 'none'",
+      "frame-src 'self' https://cdn.pannellum.org",
+      "frame-ancestors 'self'",
+    ].join("; "),
+  },
+  { key: "X-Frame-Options", value: "SAMEORIGIN" },
+  { key: "X-Content-Type-Options", value: "nosniff" },
+];
+
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    remotePatterns: [
+      { protocol: "https", hostname: "i.pravatar.cc" },
+      { protocol: "https", hostname: "lh3.googleusercontent.com" },
+      { protocol: "https", hostname: "i.ibb.co" },
+      { protocol: "https", hostname: "downloads.vizairender.com" },
+    ],
+  },
+  async headers() {
+    return [
+      {
+        source: "/((?!demo/).*)",
+        headers: securityHeaders,
+      },
+      {
+        source: "/demo/:path*",
+        headers: demoHeaders,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
 
-import('@opennextjs/cloudflare').then(m => m.initOpenNextCloudflareForDev());
+import("@opennextjs/cloudflare").then((m) =>
+  m.initOpenNextCloudflareForDev()
+);

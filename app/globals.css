@@ -1,17 +1,22 @@
 @import "tailwindcss";
 
+@source "../app/**/*.{ts,tsx}";
+@source "../components/**/*.{ts,tsx}";
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   --background: #fafafa;
   --foreground: #0a0a0a;
   --foreground-muted: rgba(10, 10, 10, 0.55);
+  --border: rgba(0, 0, 0, 0.15);
 }
 
 .dark {
-  --background: #000000;
+  --background: #141414;
   --foreground: #ffffff;
   --foreground-muted: rgba(255, 255, 255, 0.55);
+  --border: rgba(255, 255, 255, 0.25);
 }
 
 @theme inline {
@@ -20,11 +25,64 @@
   --font-sans: var(--font-geist-sans);
 }
 
-body {
+html, body {
   background: var(--background);
   color: var(--foreground);
+  /* Trava o scroll horizontal em qualquer idioma. `clip` (e não `hidden`)
+     não cria contêiner de rolagem, então não quebra navbar fixa nem o
+     scroll vertical; só corta o que eventualmente ultrapassar a largura. */
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+/* Tailwind v4 removeu o cursor: pointer de elementos interativos por default.
+   Restaura pra todo botão/link clicável que não esteja desabilitado. */
+button:not(:disabled),
+[role="button"]:not(:disabled),
+[type="submit"]:not(:disabled),
+[type="button"]:not(:disabled),
+a[href] {
+  cursor: pointer;
 }
 
 .hero-section {
   background-color: var(--background);
+}
+
+@keyframes blob1 {
+  0%, 100% { transform: translate(0%, 0%) scale(1); }
+  33%       { transform: translate(8%, -12%) scale(1.1); }
+  66%       { transform: translate(-5%, 8%) scale(0.95); }
+}
+@keyframes blob2 {
+  0%, 100% { transform: translate(0%, 0%) scale(1); }
+  33%       { transform: translate(-10%, 10%) scale(1.05); }
+  66%       { transform: translate(6%, -8%) scale(1.1); }
+}
+@keyframes blob3 {
+  0%, 100% { transform: translate(0%, 0%) scale(1); }
+  50%       { transform: translate(10%, 6%) scale(1.08); }
+}
+.lb1 { animation: blob1 12s ease-in-out infinite; }
+.lb2 { animation: blob2 16s ease-in-out infinite; }
+.lb3 { animation: blob3 10s ease-in-out infinite; }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes accordion-down {
+  from { height: 0; }
+  to   { height: var(--radix-accordion-content-height); }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to   { height: 0; }
+}
+
+@theme inline {
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
 }

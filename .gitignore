@@ -49,3 +49,8 @@ next-env.d.ts
 !.dev.vars.example
 
 !.env.example
+
+# Backups e cache Claude
+.claude/
+_gif-originals/
+_img-originals/
