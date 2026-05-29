@@ -102,11 +102,11 @@ export function Footer() {
         <hr className="my-3 border-black/10 dark:border-white/20" />
 
         {/* Bottom Section */}
-        <div className="flex flex-col items-center gap-5 text-center">
+        <div className="flex flex-col items-center gap-5 text-center md:items-start md:text-left">
 
           {/* Main Links */}
           <nav>
-            <ul className="flex flex-wrap justify-center gap-6">
+            <ul className="flex flex-wrap justify-center md:justify-start gap-6">
               {mainLinks.map((link, i) => (
                 <li key={i}>
                   <a
@@ -123,7 +123,7 @@ export function Footer() {
 
           {/* Legal Links */}
           <nav>
-            <ul className="flex flex-wrap justify-center gap-6">
+            <ul className="flex flex-wrap justify-center md:justify-start gap-6">
               {legalLinks.map((link, i) => (
                 <li key={i}>
                   <a
