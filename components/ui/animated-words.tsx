@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { useT } from "@/lib/i18n";
+import { useLang } from "@/app/components/LanguageProvider";
 
 export type AnimatedWordItem = {
   text: string;
@@ -16,6 +17,7 @@ interface AnimatedWordsProps {
 
 export function AnimatedWords({ words, interval = 2500 }: AnimatedWordsProps) {
   const t = useT();
+  const { lang } = useLang();
   const [index, setIndex] = useState(0);
 
   const normalizedWords: AnimatedWordItem[] = words.map((w) =>
@@ -54,7 +56,7 @@ export function AnimatedWords({ words, interval = 2500 }: AnimatedWordsProps) {
   );
 
   return (
-    <span style={{ display: "inline-grid", alignItems: "center", justifyItems: "start", verticalAlign: "bottom" }}>
+    <span className={lang === "pt" ? "justify-items-center md:justify-items-start" : "justify-items-start"} style={{ display: "inline-grid", alignItems: "center", verticalAlign: "bottom" }}>
       {/* define a largura do container sem aparecer */}
       <span
         style={{
