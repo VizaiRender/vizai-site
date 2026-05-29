@@ -1,6 +1,11 @@
 "use client";
 
 import { useT } from "@/lib/i18n";
+import { Camera, SlidersHorizontal, Zap, Sparkles } from "lucide-react";
+
+// Ícones por passo (mesma ordem do array de steps): cena/câmera, configuração,
+// velocidade, resultado pronto pra apresentar.
+const stepIcons = [Camera, SlidersHorizontal, Zap, Sparkles];
 
 export function HowItWorksSection() {
   const t = useT();
@@ -25,14 +30,14 @@ export function HowItWorksSection() {
 
         {/* Steps */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-8 pt-4">
-          {t.howItWorks.steps.map((step, i) => (
+          {t.howItWorks.steps.map((step, i) => {
+            const Icon = stepIcons[i] ?? Camera;
+            return (
             <div
               key={i}
               className="py-3 sm:py-8"
             >
-              <p className="text-xs font-medium tracking-[0.15em] text-gray-400 mb-4">
-                {String(i + 1).padStart(2, "0")}
-              </p>
+              <Icon size={26} strokeWidth={1.75} className="text-[#0940D2] dark:text-[#4d7fff] mb-4" />
               <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-3">
                 {step.title}
               </h3>
@@ -40,7 +45,8 @@ export function HowItWorksSection() {
                 {step.description}
               </p>
             </div>
-          ))}
+            );
+          })}
         </div>
 
 

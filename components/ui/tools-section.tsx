@@ -45,7 +45,7 @@ export function ToolsSection() {
         <div className="relative mb-10">
           <div className="text-center">
             <h2
-              className="text-3xl md:text-4xl font-bold tracking-tight mb-3"
+              className="text-4xl md:text-5xl font-bold tracking-tight mb-3"
               style={{ color: "var(--foreground)" }}
             >
               {t.tools.title}
