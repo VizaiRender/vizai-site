@@ -129,7 +129,7 @@ const pt = {
     label: "Comparativo",
     title: "O fluxo que você queria ter desde sempre.",
     description:
-      "O Vizai Render foi construído pra caber no seu dia de trabalho — sem interromper o fluxo, sem hardware caro, sem curva de aprendizado longa.",
+      "O Vizai Render foi construído pra caber no seu dia a dia de trabalho — sem interromper o fluxo, sem hardware caro, sem curva de aprendizado longa.",
     withVizai: "Com Vizai",
     traditional: "Fluxo Tradicional",
     insideOf: "Dentro do",
@@ -148,6 +148,20 @@ const pt = {
     subtitle:
       "Chega de tirar print e levar pra plataformas externas, faça tudo em um só lugar com o Vizai Render.",
     comingSoon: "Em breve",
+    osCompat: "Disponível para:",
+  },
+  aiModels: {
+    title: "Movido pelos modelos de IA mais avançados",
+    subtitle:
+      "Vizai Render integra os melhores modelos de inteligência artificial do mundo para arquitetura — cada um especializado numa etapa do seu render.",
+    roles: [
+      "Inteligência & prompts",
+      "Geração de imagem",
+      "Geração de imagem",
+      "Geração de vídeo",
+      "Geração 3D",
+      "Tour 360°",
+    ],
   },
   testimonials: {
     title: "O que profissionais estão dizendo",
@@ -166,7 +180,7 @@ const pt = {
     items: [
       { q: "O que é o Vizai Render?", a: "É um plugin para Sketchup, ArchiCAD e Revit que gera renders fotorrealistas com Inteligência Artificial diretamente dentro do software — sem exportar, sem abrir outra ferramenta." },
       { q: "Preciso saber usar IA ou ter experiência com renderização?", a: "Não. Você configura a cena no seu programa preferido normalmente, escolhe o estilo de render e clica em um botão. O Vizai cuida do resto." },
-      { q: "Como funcionam os créditos?", a: "Cada operação consome créditos: render 2K custa 4 créditos, upscale 4K e inpaint custam 3 créditos, imagem 360° custa 5 créditos. Operações avançadas como criação de blocos 3D custam 50 créditos, e geração de vídeo entre 45 e 85 créditos dependendo da duração. Você recebe 8 créditos grátis ao criar a conta. Planos mensais renovam automaticamente todo mês." },
+      { q: "Como funcionam os créditos?", a: "Cada operação consome créditos: render 2K custa 4 créditos, upscale 4K e inpaint custam 3 créditos, imagem 360° custa 5 créditos e IA Criativa custa 3 créditos. Operações avançadas como criação de blocos 3D custam 28 créditos, e geração de vídeo entre 22 e 83 créditos dependendo da duração. Você recebe 8 créditos grátis ao criar a conta. Planos mensais renovam automaticamente todo mês e créditos avulsos não expiram." },
       { q: "Posso cancelar minha assinatura quando quiser?", a: "Sim, sem fidelidade e sem burocracia. Você cancela direto pelo plugin com um clique. O plano continua ativo até o fim do período já pago." },
       { q: "As imagens geradas são minhas?", a: "Sim. Você é o dono de tudo que gerar com o Vizai Render — pode usar em apresentações, portfólios, propostas comerciais ou onde quiser." },
       { q: "Meus projetos ficam armazenados nos servidores?", a: "Não. O Vizai processa a imagem da cena para gerar o render, mas não armazena nem retém os seus projetos. Os arquivos do Sketchup permanecem apenas na sua máquina." },
@@ -177,7 +191,7 @@ const pt = {
     ],
   },
   cta: {
-    eyebrow: "Do modelo ao render profissional, em segundos",
+    eyebrow: "Do modelo ao render profissional em segundos",
     title: "Dê vida aos seus projetos",
     connector: "com o",
     primary: "Criar conta grátis",
@@ -474,7 +488,7 @@ const en: Dict = {
     label: "Comparison",
     title: "The workflow you always wished you had.",
     description:
-      "Vizai Render was built to fit into your workday — without breaking your flow, without expensive hardware, without a long learning curve.",
+      "Vizai Render was built to fit into your day-to-day work — without breaking your flow, without expensive hardware, without a long learning curve.",
     withVizai: "With Vizai",
     traditional: "Traditional Workflow",
     insideOf: "Inside",
@@ -493,6 +507,20 @@ const en: Dict = {
     subtitle:
       "No more taking screenshots and moving to external platforms — do it all in one place with Vizai Render.",
     comingSoon: "Coming soon",
+    osCompat: "Available for:",
+  },
+  aiModels: {
+    title: "Powered by the most advanced AI models",
+    subtitle:
+      "Vizai Render integrates the world's best AI models for architecture — each specialized in a stage of your render.",
+    roles: [
+      "Intelligence & prompts",
+      "Image generation",
+      "Image generation",
+      "Video generation",
+      "3D generation",
+      "360° tour",
+    ],
   },
   testimonials: {
     title: "What professionals are saying",
@@ -511,7 +539,7 @@ const en: Dict = {
     items: [
       { q: "What is Vizai Render?", a: "It's a plugin for Sketchup, ArchiCAD and Revit that generates photorealistic renders with Artificial Intelligence right inside the software — no exporting, no opening another tool." },
       { q: "Do I need to know how to use AI or have rendering experience?", a: "No. You set up the scene in your favorite software as usual, choose the render style and click a button. Vizai takes care of the rest." },
-      { q: "How do credits work?", a: "Each operation consumes credits: a 2K render costs 4 credits, 4K upscale and inpaint cost 3 credits, a 360° image costs 5 credits. Advanced operations like creating 3D blocks cost 50 credits, and video generation between 45 and 85 credits depending on the duration. You get 8 free credits when you create your account. Monthly plans renew automatically every month." },
+      { q: "How do credits work?", a: "Each operation consumes credits: a 2K render costs 4 credits, 4K upscale and inpaint cost 3 credits, a 360° image costs 5 credits and Creative AI costs 3 credits. Advanced operations like creating 3D blocks cost 28 credits, and video generation between 22 and 83 credits depending on the duration. You get 8 free credits when you create your account. Monthly plans renew automatically every month and one-off credits do not expire." },
       { q: "Can I cancel my subscription whenever I want?", a: "Yes, no commitment and no red tape. You cancel right from the plugin with one click. The plan stays active until the end of the period you've already paid for." },
       { q: "Are the generated images mine?", a: "Yes. You own everything you generate with Vizai Render — you can use it in presentations, portfolios, commercial proposals or wherever you like." },
       { q: "Are my projects stored on the servers?", a: "No. Vizai processes the scene image to generate the render, but it does not store or retain your projects. Your Sketchup files stay only on your machine." },
@@ -522,7 +550,7 @@ const en: Dict = {
     ],
   },
   cta: {
-    eyebrow: "From model to professional render, in seconds",
+    eyebrow: "From model to professional render in seconds",
     title: "Bring your projects to life",
     connector: "with",
     primary: "Create free account",
@@ -817,7 +845,7 @@ const es: Dict = {
     label: "Comparativa",
     title: "El flujo que siempre quisiste tener.",
     description:
-      "Vizai Render fue construido para encajar en tu día de trabajo — sin interrumpir el flujo, sin hardware caro, sin curva de aprendizaje larga.",
+      "Vizai Render fue construido para encajar en tu día a día de trabajo — sin interrumpir el flujo, sin hardware caro, sin curva de aprendizaje larga.",
     withVizai: "Con Vizai",
     traditional: "Flujo Tradicional",
     insideOf: "Dentro de",
@@ -836,6 +864,20 @@ const es: Dict = {
     subtitle:
       "Basta de tomar capturas y llevarlas a plataformas externas, hazlo todo en un solo lugar con Vizai Render.",
     comingSoon: "Próximamente",
+    osCompat: "Disponible para:",
+  },
+  aiModels: {
+    title: "Impulsado por los modelos de IA más avanzados",
+    subtitle:
+      "Vizai Render integra los mejores modelos de inteligencia artificial del mundo para arquitectura — cada uno especializado en una etapa de tu render.",
+    roles: [
+      "Inteligencia & prompts",
+      "Generación de imagen",
+      "Generación de imagen",
+      "Generación de video",
+      "Generación 3D",
+      "Tour 360°",
+    ],
   },
   testimonials: {
     title: "Lo que dicen los profesionales",
@@ -854,7 +896,7 @@ const es: Dict = {
     items: [
       { q: "¿Qué es Vizai Render?", a: "Es un plugin para Sketchup, ArchiCAD y Revit que genera renders fotorrealistas con Inteligencia Artificial directamente dentro del software — sin exportar, sin abrir otra herramienta." },
       { q: "¿Necesito saber usar IA o tener experiencia en renderizado?", a: "No. Configuras la escena en tu programa favorito como siempre, eliges el estilo de render y haces clic en un botón. Vizai se encarga del resto." },
-      { q: "¿Cómo funcionan los créditos?", a: "Cada operación consume créditos: un render 2K cuesta 4 créditos, el upscale 4K e inpaint cuestan 3 créditos, una imagen 360° cuesta 5 créditos. Operaciones avanzadas como la creación de bloques 3D cuestan 50 créditos, y la generación de video entre 45 y 85 créditos según la duración. Recibes 8 créditos gratis al crear la cuenta. Los planes mensuales se renuevan automáticamente cada mes." },
+      { q: "¿Cómo funcionan los créditos?", a: "Cada operación consume créditos: un render 2K cuesta 4 créditos, el upscale 4K e inpaint cuestan 3 créditos, una imagen 360° cuesta 5 créditos y la IA Creativa cuesta 3 créditos. Operaciones avanzadas como la creación de bloques 3D cuestan 28 créditos, y la generación de video entre 22 y 83 créditos según la duración. Recibes 8 créditos gratis al crear la cuenta. Los planes mensuales se renuevan automáticamente cada mes y los créditos individuales no caducan." },
       { q: "¿Puedo cancelar mi suscripción cuando quiera?", a: "Sí, sin permanencia y sin trámites. Cancelas directo desde el plugin con un clic. El plan sigue activo hasta el final del período ya pagado." },
       { q: "¿Las imágenes generadas son mías?", a: "Sí. Eres el dueño de todo lo que generes con Vizai Render — puedes usarlo en presentaciones, portafolios, propuestas comerciales o donde quieras." },
       { q: "¿Mis proyectos quedan almacenados en los servidores?", a: "No. Vizai procesa la imagen de la escena para generar el render, pero no almacena ni retiene tus proyectos. Los archivos de Sketchup permanecen solo en tu máquina." },
@@ -865,7 +907,7 @@ const es: Dict = {
     ],
   },
   cta: {
-    eyebrow: "Del modelo al render profesional, en segundos",
+    eyebrow: "Del modelo al render profesional en segundos",
     title: "Da vida a tus proyectos",
     connector: "con",
     primary: "Crear cuenta gratis",

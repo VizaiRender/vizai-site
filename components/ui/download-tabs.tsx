@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Tabs } from "@ark-ui/react/tabs";
-import { Download, ShieldCheck, Monitor, Package, Sparkles, Clock } from "lucide-react";
+import { Download, Monitor, Package, Sparkles, Clock } from "lucide-react";
 import Link from "next/link";
 import type { DownloadManifest } from "@/lib/download-manifest";
 import { formatSize } from "@/lib/download-manifest";
@@ -174,41 +174,6 @@ function SketchupContent({ manifest }: { manifest: DownloadManifest | null }) {
           </div>
         </div>
       </section>
-
-      {/* Integridade SHA-256 */}
-      {manifest && manifest.sha256 ? (
-        <section className="w-full">
-          <div
-            className="rounded-2xl border p-6 max-w-3xl mx-auto bg-white dark:bg-[#111111] shadow-sm"
-            style={{ borderColor: "rgba(127,127,127,0.18)" }}
-          >
-            <div className="flex items-start gap-4">
-              <ShieldCheck
-                size={22}
-                className="shrink-0 mt-0.5"
-                style={{ color: "#0940D2" }}
-              />
-              <div className="min-w-0">
-                <h4 className="font-semibold mb-1" style={{ color: "var(--foreground)" }}>
-                  {t.download.tabs.integrityTitle}
-                </h4>
-                <p className="text-sm leading-relaxed mb-3" style={{ color: "var(--foreground-muted)" }}>
-                  {t.download.tabs.integrityBody}
-                </p>
-                <code
-                  className="block text-xs font-mono p-3 rounded-lg break-all"
-                  style={{
-                    backgroundColor: "rgba(127,127,127,0.08)",
-                    color: "var(--foreground)",
-                  }}
-                >
-                  {manifest.sha256}
-                </code>
-              </div>
-            </div>
-          </div>
-        </section>
-      ) : null}
     </div>
   );
 }

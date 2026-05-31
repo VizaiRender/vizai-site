@@ -12,8 +12,51 @@ import { useT } from "@/lib/i18n";
 import { createClient } from "@/lib/supabase/client";
 import type { User } from "@supabase/supabase-js";
 
-const flags: Record<Lang, string> = { pt: "🇧🇷", en: "🇺🇸", es: "🇪🇸" };
 const langOrder: Lang[] = ["pt", "en", "es"];
+
+// Bandeiras estilo emoji (Twemoji) desenhadas como SVG INLINE no DOM. Emoji de
+// bandeira não renderiza no Windows; e <img> de SVG falhava de pintar em alguns
+// contêineres (ex.: o menu suspenso de idioma). SVG inline renderiza em
+// qualquer contexto — é o que o plugin já usa.
+function Flag({ lang, className = "w-6 h-6" }: { lang: Lang; className?: string }) {
+  const cls = `inline-block shrink-0 ${className}`;
+  if (lang === "pt") {
+    return (
+      <svg viewBox="0 0 36 36" className={cls} aria-hidden>
+        <path fill="#009B3A" d="M36 27c0 2.209-1.791 4-4 4H4c-2.209 0-4-1.791-4-4V9c0-2.209 1.791-4 4-4h28c2.209 0 4 1.791 4 4v18z" />
+        <path fill="#FEDF01" d="M32.728 18L18 29.124 3.272 18 18 6.875z" />
+        <circle fill="#002776" cx="17.976" cy="17.924" r="6.458" />
+        <path fill="#CBE9D4" d="M12.277 14.887c-.332.621-.558 1.303-.672 2.023 3.995-.29 9.417 1.891 11.744 4.595.402-.604.7-1.28.883-2.004-2.872-2.808-7.917-4.63-11.955-4.614z" />
+        <path fill="#88C9F9" d="M12 18.233h1v1h-1zm1 2h1v1h-1z" />
+        <path fill="#55ACEE" d="M15 18.233h1v1h-1zm2 1h1v1h-1zm4 2h1v1h-1zm-3 1h1v1h-1zm3-6h1v1h-1z" />
+        <path fill="#3B88C3" d="M19 20.233h1v1h-1z" />
+      </svg>
+    );
+  }
+  if (lang === "en") {
+    return (
+      <svg viewBox="0 0 36 36" className={cls} aria-hidden>
+        <path fill="#B22334" d="M35.445 7C34.752 5.809 33.477 5 32 5H18v2h17.445zM0 25h36v2H0zm18-8h18v2H18zm0-4h18v2H18zM0 21h36v2H0zm4 10h28c1.477 0 2.752-.809 3.445-2H.555c.693 1.191 1.968 2 3.445 2zM18 9h18v2H18z" />
+        <path fill="#EEE" d="M.068 27.679c.017.093.036.186.059.277.026.101.058.198.092.296.089.259.197.509.333.743L.555 29h34.89l.002-.004c.135-.233.243-.483.332-.741.034-.099.067-.198.093-.301.023-.09.042-.182.059-.275.041-.22.069-.446.069-.679H0c0 .233.028.458.068.679zM0 23h36v2H0zm0-4v2h36v-2H18zm18-4h18v2H18zm0-4h18v2H18zM0 9c0-.233.03-.457.068-.679C.028 8.542 0 8.767 0 9zm.555-2l-.003.005L.555 7zM.128 8.044c.025-.102.06-.199.092-.297-.034.098-.066.196-.092.297zM18 9h18c0-.233-.028-.459-.069-.68-.017-.092-.035-.184-.059-.274-.027-.103-.059-.203-.094-.302-.089-.258-.197-.507-.332-.74.001-.001 0-.003-.001-.004H18v2z" />
+        <path fill="#3C3B6E" d="M18 5H4C1.791 5 0 6.791 0 9v10h18V5z" />
+        <path fill="#FFF" d="M2.001 7.726l.618.449-.236.725L3 8.452l.618.448-.236-.725L4 7.726h-.764L3 7l-.235.726zm2 2l.618.449-.236.725.617-.448.618.448-.236-.725L6 9.726h-.764L5 9l-.235.726zm4 0l.618.449-.236.725.617-.448.618.448-.236-.725.618-.449h-.764L9 9l-.235.726zm4 0l.618.449-.236.725.617-.448.618.448-.236-.725.618-.449h-.764L13 9l-.235.726zm-8 4l.618.449-.236.725.617-.448.618.448-.236-.725.618-.449h-.764L5 13l-.235.726zm4 0l.618.449-.236.725.617-.448.618.448-.236-.725.618-.449h-.764L9 13l-.235.726zm4 0l.618.449-.236.725.617-.448.618.448-.236-.725.618-.449h-.764L13 13l-.235.726zm-6-6l.618.449-.236.725L7 8.452l.618.448-.236-.725L8 7.726h-.764L7 7l-.235.726zm4 0l.618.449-.236.725.617-.448.618.448-.236-.725.618-.449h-.764L11 7l-.235.726zm4 0l.618.449-.236.725.617-.448.618.448-.236-.725.618-.449h-.764L15 7l-.235.726zm-12 4l.618.449-.236.725.617-.448.618.448-.236-.725.618-.449h-.764L3 11l-.235.726zM6.383 12.9L7 12.452l.618.448-.236-.725.618-.449h-.764L7 11l-.235.726h-.764l.618.449zm3.618-1.174l.618.449-.236.725.617-.448.618.448-.236-.725.618-.449h-.764L11 11l-.235.726zm4 0l.618.449-.236.725.617-.448.618.448-.236-.725.618-.449h-.764L15 11l-.235.726zm-12 4l.618.449-.236.725.617-.448.618.448-.236-.725.618-.449h-.764L3 15l-.235.726zM6.383 16.9L7 16.452l.618.448-.236-.725.618-.449h-.764L7 15l-.235.726h-.764l.618.449zm3.618-1.174l.618.449-.236.725.617-.448.618.448-.236-.725.618-.449h-.764L11 15l-.235.726zm4 0l.618.449-.236.725.617-.448.618.448-.236-.725.618-.449h-.764L15 15l-.235.726z" />
+      </svg>
+    );
+  }
+  return (
+    <svg viewBox="0 0 36 36" className={cls} aria-hidden>
+      <path fill="#C60A1D" d="M36 27c0 2.209-1.791 4-4 4H4c-2.209 0-4-1.791-4-4V9c0-2.209 1.791-4 4-4h28c2.209 0 4 1.791 4 4v18z" />
+      <path fill="#FFC400" d="M0 12h36v12H0z" />
+      <path fill="#EA596E" d="M9 17v3c0 1.657 1.343 3 3 3s3-1.343 3-3v-3H9z" />
+      <path fill="#F4A2B2" d="M12 16h3v3h-3z" />
+      <path fill="#DD2E44" d="M9 16h3v3H9z" />
+      <ellipse fill="#EA596E" cx="12" cy="14.5" rx="3" ry="1.5" />
+      <ellipse fill="#FFAC33" cx="12" cy="13.75" rx="3" ry=".75" />
+      <path fill="#99AAB5" d="M7 16h1v7H7zm9 0h1v7h-1z" />
+      <path fill="#66757F" d="M6 22h3v1H6zm9 0h3v1h-3zm-8-7h1v1H7zm9 0h1v1h-1z" />
+    </svg>
+  );
+}
 
 function getInitials(user: User): string {
   const name = (user.user_metadata?.full_name as string | undefined) || user.email || "";
@@ -173,7 +216,7 @@ export default function Navbar({ forceDark = false }: { forceDark?: boolean }) {
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="inline-block leading-none"
           >
-            {flags[lang]}
+            <Flag lang={lang} />
           </motion.span>
         </AnimatePresence>
       </button>
@@ -185,10 +228,10 @@ export default function Navbar({ forceDark = false }: { forceDark?: boolean }) {
               <button
                 key={l}
                 onClick={() => setLang(l)}
-                className={`px-2 py-1.5 rounded-lg transition-colors text-base leading-none ${d ? "hover:bg-white/10" : "hover:bg-black/5"}`}
+                className={`px-2 py-1.5 rounded-lg transition-colors leading-none ${d ? "hover:bg-white/10" : "hover:bg-black/5"}`}
                 aria-label={l}
               >
-                {flags[l]}
+                <Flag lang={l} />
               </button>
             ))}
         </div>
@@ -306,10 +349,10 @@ export default function Navbar({ forceDark = false }: { forceDark?: boolean }) {
                       const idx = langOrder.indexOf(lang);
                       setLang(langOrder[(idx + 1) % langOrder.length]);
                     }}
-                    className={`text-base leading-none w-8 h-8 flex items-center justify-center rounded-full transition-colors ${d ? "hover:bg-white/10" : "hover:bg-black/5"}`}
+                    className={`leading-none w-8 h-8 flex items-center justify-center rounded-full transition-colors ${d ? "hover:bg-white/10" : "hover:bg-black/5"}`}
                     aria-label={t.nav.changeLanguage}
                   >
-                    {flags[lang]}
+                    <Flag lang={lang} />
                   </button>
                 )}
                 {mounted && menuOpen && (
@@ -424,7 +467,7 @@ export default function Navbar({ forceDark = false }: { forceDark?: boolean }) {
                     <button
                       key={l}
                       onClick={() => setLang(l)}
-                      className={`w-11 h-11 rounded-full flex items-center justify-center text-xl leading-none transition-colors ${
+                      className={`w-11 h-11 rounded-full flex items-center justify-center leading-none transition-colors ${
                         lang === l
                           ? d
                             ? "bg-white/15"
@@ -435,7 +478,7 @@ export default function Navbar({ forceDark = false }: { forceDark?: boolean }) {
                       }`}
                       aria-label={l}
                     >
-                      {flags[l]}
+                      <Flag lang={l} className="w-7 h-7" />
                     </button>
                   ))}
                 </div>

@@ -121,6 +121,11 @@ const demoHeaders = [
 
 const nextConfig: NextConfig = {
   images: {
+    // AVIF primeiro (≈30% menor que WebP); WebP como fallback automático.
+    formats: ["image/avif", "image/webp"],
+    // Imagens otimizadas passam a ser cacheadas por 1 ano (padrão do Next é
+    // só 60s → o navegador/edge re-baixava à toa = "efficient cache lifetimes").
+    minimumCacheTTL: 31536000,
     remotePatterns: [
       { protocol: "https", hostname: "i.pravatar.cc" },
       { protocol: "https", hostname: "lh3.googleusercontent.com" },
@@ -133,6 +138,17 @@ const nextConfig: NextConfig = {
       {
         source: "/((?!demo/).*)",
         headers: securityHeaders,
+      },
+      {
+        // Imagens otimizadas: cache longo no navegador/edge. As URLs já são
+        // versionadas (?v=1) e o next/image varia por Accept, então é seguro.
+        source: "/_next/image",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
       },
       {
         source: "/demo/:path*",

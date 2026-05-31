@@ -8,6 +8,7 @@ import { CompareGrid } from "@/components/ui/compare-grid";
 import { AnimatedWords } from "@/components/ui/animated-words";
 import { PricingSection } from "@/components/ui/pricing-section";
 import { SoftwareMarquee } from "@/components/ui/software-marquee";
+import { AiModelsSection } from "@/components/ui/ai-models-section";
 import InteractiveImageBentoGallery, { ImageItem } from "@/components/ui/interactive-image-bento-gallery";
 import GradientBordersButton from "@/components/ui/gradient-borders-button";
 import { Footer } from "@/components/ui/footer";
@@ -280,6 +281,8 @@ export default function Home() {
       </section>
 
       <SoftwareMarquee />
+
+      <AiModelsSection />
 
       <ComparisonSection />
 

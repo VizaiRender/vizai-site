@@ -10,6 +10,11 @@
   --foreground: #0a0a0a;
   --foreground-muted: rgba(10, 10, 10, 0.55);
   --border: rgba(0, 0, 0, 0.15);
+  /* "Vidro fosco" compartilhado (cards de IA + botões de SO) */
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(0, 0, 0, 0.07);
+  --glass-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  --glass-opacity: 0.92;
 }
 
 .dark {
@@ -17,6 +22,10 @@
   --foreground: #ffffff;
   --foreground-muted: rgba(255, 255, 255, 0.55);
   --border: rgba(255, 255, 255, 0.25);
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+  --glass-opacity: 0.85;
 }
 
 @theme inline {

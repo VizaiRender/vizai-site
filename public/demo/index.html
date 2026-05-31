@@ -719,8 +719,17 @@
     }
 
     .lang-flag {
-      font-size: 14.9px;
-      line-height: 1
+      width: 18px;
+      height: 18px;
+      display: inline-block;
+      line-height: 0;
+      flex: 0 0 auto
+    }
+
+    .lang-flag svg {
+      display: block;
+      width: 100%;
+      height: 100%
     }
 
     .lang-nm {
@@ -4875,10 +4884,10 @@
       </div>
       <div class="ep-body">
         <div style="display:flex;gap:6px;overflow-x:auto;margin-bottom:10px;scrollbar-width:none">
-          <div class="ep-gitem active" data-proj="interiores" onclick="loadEditDemoImage('interiores.jpg',this)" style="flex-shrink:0;cursor:pointer;border-radius:7px;border:1.5px solid #2e4257;overflow:hidden;width:56px;transition:border-color .15s"><img src="interiores.jpg" style="width:56px;height:38px;object-fit:cover;display:block"><div style="font-size:8.5px;color:#8fa8be;text-align:center;padding:2px 3px;background:#253347">Interiores</div></div>
-          <div class="ep-gitem" data-proj="fachada" onclick="loadEditDemoImage('render.jpg',this)" style="flex-shrink:0;cursor:pointer;border-radius:7px;border:1.5px solid #2e4257;overflow:hidden;width:56px;transition:border-color .15s"><img src="render.jpg" style="width:56px;height:38px;object-fit:cover;display:block"><div style="font-size:8.5px;color:#8fa8be;text-align:center;padding:2px 3px;background:#253347">Fachada</div></div>
-          <div class="ep-gitem" data-proj="natureza" onclick="loadEditDemoImage('natureza.jpg',this)" style="flex-shrink:0;cursor:pointer;border-radius:7px;border:1.5px solid #2e4257;overflow:hidden;width:56px;transition:border-color .15s"><img src="natureza.jpg" style="width:56px;height:38px;object-fit:cover;display:block"><div style="font-size:8.5px;color:#8fa8be;text-align:center;padding:2px 3px;background:#253347">Natureza</div></div>
-          <div class="ep-gitem" data-proj="comercial" onclick="loadEditDemoImage('comercial.jpg',this)" style="flex-shrink:0;cursor:pointer;border-radius:7px;border:1.5px solid #2e4257;overflow:hidden;width:56px;transition:border-color .15s"><img src="comercial.jpg" style="width:56px;height:38px;object-fit:cover;display:block"><div style="font-size:8.5px;color:#8fa8be;text-align:center;padding:2px 3px;background:#253347">Comercial</div></div>
+          <div class="ep-gitem active" data-proj="interiores" onclick="loadEditDemoImage('interiores.webp',this)" style="flex-shrink:0;cursor:pointer;border-radius:7px;border:1.5px solid #2e4257;overflow:hidden;width:56px;transition:border-color .15s"><img src="interiores.webp" style="width:56px;height:38px;object-fit:cover;display:block"><div style="font-size:8.5px;color:#8fa8be;text-align:center;padding:2px 3px;background:#253347">Interiores</div></div>
+          <div class="ep-gitem" data-proj="fachada" onclick="loadEditDemoImage('render.webp',this)" style="flex-shrink:0;cursor:pointer;border-radius:7px;border:1.5px solid #2e4257;overflow:hidden;width:56px;transition:border-color .15s"><img src="render.webp" style="width:56px;height:38px;object-fit:cover;display:block"><div style="font-size:8.5px;color:#8fa8be;text-align:center;padding:2px 3px;background:#253347">Fachada</div></div>
+          <div class="ep-gitem" data-proj="natureza" onclick="loadEditDemoImage('natureza.webp',this)" style="flex-shrink:0;cursor:pointer;border-radius:7px;border:1.5px solid #2e4257;overflow:hidden;width:56px;transition:border-color .15s"><img src="natureza.webp" style="width:56px;height:38px;object-fit:cover;display:block"><div style="font-size:8.5px;color:#8fa8be;text-align:center;padding:2px 3px;background:#253347">Natureza</div></div>
+          <div class="ep-gitem" data-proj="comercial" onclick="loadEditDemoImage('comercial.webp',this)" style="flex-shrink:0;cursor:pointer;border-radius:7px;border:1.5px solid #2e4257;overflow:hidden;width:56px;transition:border-color .15s"><img src="comercial.webp" style="width:56px;height:38px;object-fit:cover;display:block"><div style="font-size:8.5px;color:#8fa8be;text-align:center;padding:2px 3px;background:#253347">Comercial</div></div>
         </div>
         <style>.ep-gitem.active{border-color:#1a6fff!important}.ep-gitem.active div{color:#60a5fa!important}</style>
         <div class="ep-canvas-wrap" id="epcanvaswrap"><img id="ep-bg-img" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0;display:none"><canvas id="editCanvas" style="position:relative;z-index:1"></canvas></div>
@@ -6704,14 +6713,14 @@
                 <div class="uf-lang">
                   <div class="uf-lt" data-i18n="up.lang">Idioma</div>
                   <div class="lang-opt active" data-lang="pt-BR" onclick="pickLang(this)"><span
-                      class="lang-flag">🇧🇷</span><span class="lang-nm">Português</span>
+                      class="lang-flag"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path fill="#009B3A" d="M36 27c0 2.209-1.791 4-4 4H4c-2.209 0-4-1.791-4-4V9c0-2.209 1.791-4 4-4h28c2.209 0 4 1.791 4 4v18z"/><path fill="#FEDF01" d="M32.728 18L18 29.124 3.272 18 18 6.875z"/><circle fill="#002776" cx="17.976" cy="17.924" r="6.458"/><path fill="#CBE9D4" d="M12.277 14.887c-.332.621-.558 1.303-.672 2.023 3.995-.29 9.417 1.891 11.744 4.595.402-.604.7-1.28.883-2.004-2.872-2.808-7.917-4.63-11.955-4.614z"/><path fill="#88C9F9" d="M12 18.233h1v1h-1zm1 2h1v1h-1z"/><path fill="#55ACEE" d="M15 18.233h1v1h-1zm2 1h1v1h-1zm4 2h1v1h-1zm-3 1h1v1h-1zm3-6h1v1h-1z"/><path fill="#3B88C3" d="M19 20.233h1v1h-1z"/></svg></span><span class="lang-nm">Português</span>
                     <div class="ldot on"></div>
                   </div>
-                  <div class="lang-opt" data-lang="en" onclick="pickLang(this)"><span class="lang-flag">🇺🇸</span><span
+                  <div class="lang-opt" data-lang="en" onclick="pickLang(this)"><span class="lang-flag"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path fill="#B22334" d="M35.445 7C34.752 5.809 33.477 5 32 5H18v2h17.445zM0 25h36v2H0zm18-8h18v2H18zm0-4h18v2H18zM0 21h36v2H0zm4 10h28c1.477 0 2.752-.809 3.445-2H.555c.693 1.191 1.968 2 3.445 2zM18 9h18v2H18z"/><path fill="#EEE" d="M.068 27.679c.017.093.036.186.059.277.026.101.058.198.092.296.089.259.197.509.333.743L.555 29h34.89l.002-.004c.135-.233.243-.483.332-.741.034-.099.067-.198.093-.301.023-.09.042-.182.059-.275.041-.22.069-.446.069-.679H0c0 .233.028.458.068.679zM0 23h36v2H0zm0-4v2h36v-2H18zm18-4h18v2H18zm0-4h18v2H18zM0 9c0-.233.03-.457.068-.679C.028 8.542 0 8.767 0 9zm.555-2l-.003.005L.555 7zM.128 8.044c.025-.102.06-.199.092-.297-.034.098-.066.196-.092.297zM18 9h18c0-.233-.028-.459-.069-.68-.017-.092-.035-.184-.059-.274-.027-.103-.059-.203-.094-.302-.089-.258-.197-.507-.332-.74.001-.001 0-.003-.001-.004H18v2z"/><path fill="#3C3B6E" d="M18 5H4C1.791 5 0 6.791 0 9v10h18V5z"/><path fill="#FFF" d="M2.001 7.726l.618.449-.236.725L3 8.452l.618.448-.236-.725L4 7.726h-.764L3 7l-.235.726zm2 2l.618.449-.236.725.617-.448.618.448-.236-.725L6 9.726h-.764L5 9l-.235.726zm4 0l.618.449-.236.725.617-.448.618.448-.236-.725.618-.449h-.764L9 9l-.235.726zm4 0l.618.449-.236.725.617-.448.618.448-.236-.725.618-.449h-.764L13 9l-.235.726zm-8 4l.618.449-.236.725.617-.448.618.448-.236-.725.618-.449h-.764L5 13l-.235.726zm4 0l.618.449-.236.725.617-.448.618.448-.236-.725.618-.449h-.764L9 13l-.235.726zm4 0l.618.449-.236.725.617-.448.618.448-.236-.725.618-.449h-.764L13 13l-.235.726zm-6-6l.618.449-.236.725L7 8.452l.618.448-.236-.725L8 7.726h-.764L7 7l-.235.726zm4 0l.618.449-.236.725.617-.448.618.448-.236-.725.618-.449h-.764L11 7l-.235.726zm4 0l.618.449-.236.725.617-.448.618.448-.236-.725.618-.449h-.764L15 7l-.235.726zm-12 4l.618.449-.236.725.617-.448.618.448-.236-.725.618-.449h-.764L3 11l-.235.726zM6.383 12.9L7 12.452l.618.448-.236-.725.618-.449h-.764L7 11l-.235.726h-.764l.618.449zm3.618-1.174l.618.449-.236.725.617-.448.618.448-.236-.725.618-.449h-.764L11 11l-.235.726zm4 0l.618.449-.236.725.617-.448.618.448-.236-.725.618-.449h-.764L15 11l-.235.726zm-12 4l.618.449-.236.725.617-.448.618.448-.236-.725.618-.449h-.764L3 15l-.235.726zM6.383 16.9L7 16.452l.618.448-.236-.725.618-.449h-.764L7 15l-.235.726h-.764l.618.449zm3.618-1.174l.618.449-.236.725.617-.448.618.448-.236-.725.618-.449h-.764L11 15l-.235.726zm4 0l.618.449-.236.725.617-.448.618.448-.236-.725.618-.449h-.764L15 15l-.235.726z"/></svg></span><span
                       class="lang-nm">English</span>
                     <div class="ldot"></div>
                   </div>
-                  <div class="lang-opt" data-lang="es" onclick="pickLang(this)"><span class="lang-flag">🇪🇸</span><span
+                  <div class="lang-opt" data-lang="es" onclick="pickLang(this)"><span class="lang-flag"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path fill="#C60A1D" d="M36 27c0 2.209-1.791 4-4 4H4c-2.209 0-4-1.791-4-4V9c0-2.209 1.791-4 4-4h28c2.209 0 4 1.791 4 4v18z"/><path fill="#FFC400" d="M0 12h36v12H0z"/><path fill="#EA596E" d="M9 17v3c0 1.657 1.343 3 3 3s3-1.343 3-3v-3H9z"/><path fill="#F4A2B2" d="M12 16h3v3h-3z"/><path fill="#DD2E44" d="M9 16h3v3H9z"/><ellipse fill="#EA596E" cx="12" cy="14.5" rx="3" ry="1.5"/><ellipse fill="#FFAC33" cx="12" cy="13.75" rx="3" ry=".75"/><path fill="#99AAB5" d="M7 16h1v7H7zm9 0h1v7h-1z"/><path fill="#66757F" d="M6 22h3v1H6zm9 0h3v1h-3zm-8-7h1v1H7zm9 0h1v1h-1z"/></svg></span><span
                       class="lang-nm">Español</span>
                     <div class="ldot"></div>
                   </div>
@@ -7294,28 +7303,28 @@
           <div class="st-section-title" data-i18n="diag.style_section" style="margin-bottom: 10px;">ESTILO DO DIAGRAMA</div>
           <div class="diag-type-grid">
             <div class="diag-type-card active" id="diagcard-tecnico" onclick="diagPickCard('tecnico', this)">
-              <img class="diag-card-img" src="assets/diag/tecnico.png" alt="Isométrico Técnico" loading="lazy">
+              <img class="diag-card-img" src="assets/diag/tecnico.webp" alt="Isométrico Técnico" loading="lazy">
               <div class="diag-card-info">
                 <div class="diag-card-title" data-i18n="diag.style.tecnico">Isométrico Técnico</div>
                 <div class="diag-card-desc" data-i18n="diag.style.tecnico_desc">Linhas P&B com entorno urbano detalhado</div>
               </div>
             </div>
             <div class="diag-type-card" id="diagcard-destaque" onclick="diagPickCard('destaque', this)">
-              <img class="diag-card-img" src="assets/diag/destaque.png" alt="Com Destaque" loading="lazy">
+              <img class="diag-card-img" src="assets/diag/destaque.webp" alt="Com Destaque" loading="lazy">
               <div class="diag-card-info">
                 <div class="diag-card-title" data-i18n="diag.style.destaque">Diagrama com Destaque</div>
                 <div class="diag-card-desc" data-i18n="diag.style.destaque_desc">Projeto em cor, entorno em cinza</div>
               </div>
             </div>
             <div class="diag-type-card" id="diagcard-colorido" onclick="diagPickCard('colorido', this)">
-              <img class="diag-card-img" src="assets/diag/colorido.png" alt="Colorido com Contexto" loading="lazy">
+              <img class="diag-card-img" src="assets/diag/colorido.webp" alt="Colorido com Contexto" loading="lazy">
               <div class="diag-card-info">
                 <div class="diag-card-title" data-i18n="diag.style.colorido">Colorido com Contexto</div>
                 <div class="diag-card-desc" data-i18n="diag.style.colorido_desc">Ilustração aquarelada com entorno</div>
               </div>
             </div>
             <div class="diag-type-card" id="diagcard-maquete" onclick="diagPickCard('maquete', this)">
-              <img class="diag-card-img" src="assets/diag/maquete.png" alt="Maquete Física" loading="lazy">
+              <img class="diag-card-img" src="assets/diag/maquete.webp" alt="Maquete Física" loading="lazy">
               <div class="diag-card-info">
                 <div class="diag-card-title" data-i18n="diag.style.maquete">Maquete Física</div>
                 <div class="diag-card-desc" data-i18n="diag.style.maquete_desc">Estilo maquete em madeira balsa</div>
@@ -7329,7 +7338,7 @@
           <div class="st-section-title" data-i18n="diag.style_section" style="margin-bottom: 10px;">ESTILO DO DIAGRAMA</div>
           <div class="diag-type-grid">
             <div class="diag-type-card active" id="diagcard-int-axo" onclick="diagPickCard('int_axo', this)">
-              <img class="diag-card-img" src="assets/diag/int_axo.png" alt="Axonométrico" loading="lazy">
+              <img class="diag-card-img" src="assets/diag/int_axo.webp" alt="Axonométrico" loading="lazy">
               <div class="diag-card-info">
                 <div class="diag-card-title" data-i18n="diag.style.int_axo">Axonométrico</div>
                 <div class="diag-card-desc" data-i18n="diag.style.int_axo_desc">Corte isométrico do ambiente</div>
@@ -8512,9 +8521,9 @@
       reader.readAsDataURL(file);
     }
     function openEdit() {
-      const _demoImgs = { interiores:'interiores.jpg', fachada:'render.jpg', natureza:'natureza.jpg', comercial:'comercial.jpg' };
+      const _demoImgs = { interiores:'interiores.webp', fachada:'render.webp', natureza:'natureza.webp', comercial:'comercial.webp' };
       const _pt = (window.currentRenderPayload && window.currentRenderPayload.project_type) || 'fachada';
-      const _url = window.lastGeneratedImage || _demoImgs[_pt] || 'render.jpg';
+      const _url = window.lastGeneratedImage || _demoImgs[_pt] || 'render.webp';
       if (window.sketchup) {
         const rimg = document.getElementById('rimg');
         const imgW = (rimg && rimg.naturalWidth) ? rimg.naturalWidth : 1920;
@@ -8807,9 +8816,9 @@
       } else {
         window.capturePreviewUrl = null;
         setTimeout(() => {
-          fetch('sketchup.png').then(r => r.blob()).then(b => {
+          fetch('sketchup.webp').then(r => r.blob()).then(b => {
             const fr = new FileReader();
-            fr.onload = e => window.onViewportCaptured('sketchup.png', e.target.result);
+            fr.onload = e => window.onViewportCaptured('sketchup.webp', e.target.result);
             fr.readAsDataURL(b);
           });
         }, 1500);
@@ -8923,9 +8932,9 @@
         if (window.sketchup) {
           window.sketchup.renderImage(JSON.stringify(payload));
         } else {
-          const _demoImgs = { 'interiores': 'interiores.jpg', 'fachada': 'render.jpg', 'natureza': 'natureza.jpg', 'comercial': 'comercial.jpg', 'edificio': 'edificio.jpg' };
+          const _demoImgs = { 'interiores': 'interiores.webp', 'fachada': 'render.webp', 'natureza': 'natureza.webp', 'comercial': 'comercial.webp', 'edificio': 'edificio.webp' };
           const _projType = (window.currentRenderPayload && window.currentRenderPayload.project_type) || 'fachada';
-          const _demoImg = _demoImgs[_projType] || 'render.jpg';
+          const _demoImg = _demoImgs[_projType] || 'render.webp';
           setTimeout(() => window.onRenderComplete({ success: true, image_url: _demoImg }), 3000);
         }
       });
@@ -11455,7 +11464,7 @@ const DL_SVG = '<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0
           }, 2500);
           // Pré-carrega imagem antes de inicializar Pannellum (garante dimensões certas)
           var preImg = new Image();
-          preImg.src = '360/pano-result.jpg';
+          preImg.src = '360/pano-result.webp';
           setTimeout(function() {
             clearInterval(phraseIv);
             if (anim) anim.classList.remove('show');
@@ -11499,7 +11508,7 @@ const DL_SVG = '<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0
         var fachadaCard = document.querySelector('#projgrid .proj-card[data-value="fachada"]');
         if (fachadaCard && typeof pickProj === 'function') pickProj(fachadaCard);
 
-        if (typeof setFrame === 'function') setFrame('ini', 'capa-video.jpg', 'Demo');
+        if (typeof setFrame === 'function') setFrame('ini', 'capa-video.webp', 'Demo');
 
         window.gerarBloco = function() {
           var anim = document.getElementById('blocanim');
@@ -11555,7 +11564,7 @@ const DL_SVG = '<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0
         if (mainBtn && typeof t === 'function') mainBtn.innerHTML = t('btn.3d_gen') + ' (28 ' + t('cost.credits') + ')';
 
         // Pré-carrega as 4 imagens de cena na aba 360
-        var demoPanoUrls = ['360/pano1.jpg','360/pano2.jpg','360/pano3.jpg','360/pano4.jpg'];
+        var demoPanoUrls = ['360/pano1.webp','360/pano2.webp','360/pano3.webp','360/pano4.webp'];
         if (typeof panoImages !== 'undefined') {
           panoImages = demoPanoUrls.slice();
           if (typeof updatePanoUI === 'function') updatePanoUI();

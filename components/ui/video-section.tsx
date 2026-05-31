@@ -38,11 +38,11 @@ export function VideoSection() {
         </div>
 
         <div className="p-2 border rounded-3xl border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5">
-          <div className="relative w-full rounded-2xl overflow-hidden bg-black">
+          <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-black">
             <video
               ref={videoRef}
               key={lang}
-              className="w-full block"
+              className="absolute inset-0 w-full h-full object-cover"
               playsInline
               preload="none"
               controls={playing}
@@ -60,8 +60,12 @@ export function VideoSection() {
                 <img
                   src={`/videos/thumb-${lang}.jpg`}
                   alt=""
+                  width={1280}
+                  height={720}
+                  loading="lazy"
+                  decoding="async"
                   className="absolute inset-0 w-full h-full object-cover"
-                  style={{ filter: "blur(6px)", transform: "scale(1.05)" }}
+                  style={{ filter: "blur(2px)", transform: "scale(1.02)" }}
                   aria-hidden
                 />
                 {/* Overlay escuro leve pra contrastar o botão */}

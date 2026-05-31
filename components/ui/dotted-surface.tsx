@@ -26,7 +26,10 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
     camera.position.set(0, 355, 1220);
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    renderer.setPixelRatio(window.devicePixelRatio);
+    // Limita a densidade de pixels a 2x: em telas 3x (celulares) renderiza
+    // ~metade dos pixels, sem diferença visível num fundo de pontos. Grande
+    // economia de GPU/CPU no celular fraco.
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setClearColor(scene.fog.color, 0);
     container.appendChild(renderer.domElement);
@@ -51,9 +54,11 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 
     let count = 0;
     let animId = 0;
+    let running = false;
+    let onScreen = true;
 
-    const animate = () => {
-      animId = requestAnimationFrame(animate);
+    const renderFrame = () => {
+      animId = requestAnimationFrame(renderFrame);
       const posAttr = geometry.attributes.position;
       const pos = posAttr.array as Float32Array;
       let i = 0;
@@ -68,6 +73,31 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
       count += 0.1;
     };
 
+    // Só anima quando o hero está visível E a aba está em foco — para de gastar
+    // CPU assim que o usuário rola pra baixo ou troca de aba. Retoma sozinho.
+    const start = () => {
+      if (!running) {
+        running = true;
+        renderFrame();
+      }
+    };
+    const stop = () => {
+      if (running) {
+        running = false;
+        cancelAnimationFrame(animId);
+      }
+    };
+    const update = () => (onScreen && !document.hidden ? start() : stop());
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        onScreen = entry.isIntersecting;
+        update();
+      },
+      { threshold: 0 }
+    );
+    io.observe(container);
+
     const handleResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
@@ -75,11 +105,14 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
     };
 
     window.addEventListener("resize", handleResize);
-    animate();
+    document.addEventListener("visibilitychange", update);
+    update();
 
     return () => {
-      cancelAnimationFrame(animId);
+      stop();
+      io.disconnect();
       window.removeEventListener("resize", handleResize);
+      document.removeEventListener("visibilitychange", update);
       geometry.dispose();
       material.dispose();
       renderer.dispose();

@@ -72,7 +72,10 @@ export function AnimatedWords({ words, interval = 2500 }: AnimatedWordsProps) {
         {longestItem.comingSoon && <Badge />}
       </span>
 
-      <AnimatePresence mode="wait">
+      {/* initial={false}: a 1ª palavra é pintada já visível (sem fade-from-blur),
+          então o maior texto do hero não fica em opacity:0 esperando o JS —
+          conserta o LCP. A animação de troca segue normal nas palavras seguintes. */}
+      <AnimatePresence mode="wait" initial={false}>
         <motion.span
           key={currentWord.text}
           initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
