@@ -129,6 +129,29 @@ function buildCheckoutUrl(
   }
 }
 
+// Converte preço exibido ("R$ 2.004", "$ 11,90") em número.
+// Convenção do site: ponto = milhar, vírgula = decimal.
+function parsePriceToNumber(s: string): number {
+  const n = Number(s.replace(/[^\d.,]/g, "").replace(/\./g, "").replace(",", "."));
+  return Number.isFinite(n) ? n : 0;
+}
+
+// Dispara begin_checkout (InitiateCheckout) no dataLayer ao clicar num plano.
+// Espelha o padrão do `purchase`: a deduplicação Pixel x CAPI é feita pelo
+// {{event_id}} gerado no próprio GTM, então aqui só mandamos value/currency/plan.
+function pushBeginCheckout(args: { value: number; currency: Currency; plan: string; billing: Billing | "onetime" }) {
+  if (!args.value) return;
+  const w = window as Window & { dataLayer?: Record<string, unknown>[] };
+  w.dataLayer = w.dataLayer || [];
+  w.dataLayer.push({
+    event: "begin_checkout",
+    value: args.value,
+    currency: args.currency,
+    plan: args.plan,
+    billing: args.billing,
+  });
+}
+
 export function PricingSection() {
   const { lang } = useLang();
   const t = useT();
@@ -288,6 +311,17 @@ export function PricingSection() {
                 {checkoutUrl ? (
                   <a
                     href={checkoutUrl}
+                    onClick={() =>
+                      pushBeginCheckout({
+                        value: parsePriceToNumber(isAnual ? annualTotalPrice : price),
+                        currency,
+                        plan:
+                          tab === "assinatura"
+                            ? `${plan.id}_${isAnual ? "annual" : "monthly"}`
+                            : packLookupKeys[plan.id],
+                        billing: tab === "assinatura" ? billing : "onetime",
+                      })
+                    }
                     style={{
                       display: "block", textAlign: "center", padding: "12px 0", borderRadius: 9999,
                       marginBottom: 28, fontWeight: 600, fontSize: "0.875rem", textDecoration: "none",

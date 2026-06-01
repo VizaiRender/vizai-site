@@ -23,7 +23,7 @@ const pt = {
     heroBadge: "Vizai Render dentro do seu software preferido",
     heroTitle: "Render fotorrealista com IA direto do",
     heroSubtitle:
-      "Instale o plugin, configure a cena e faça um render fotorrealista com IA em poucos segundos diretamente da sua viewport.",
+      "Instale o Vizai Render, configure a cena e faça um render fotorrealista com IA em poucos segundos diretamente da sua viewport.",
     heroCta: "Teste agora",
     heroFree: "Grátis ·",
     heroCredits: "8 créditos para testar",
@@ -382,7 +382,7 @@ const en: Dict = {
     heroBadge: "Vizai Render inside your favorite software",
     heroTitle: "Photorealistic AI rendering straight from",
     heroSubtitle:
-      "Install the plugin, set up your scene and create a photorealistic AI render in seconds, right from your viewport.",
+      "Install Vizai Render, set up your scene and create a photorealistic AI render in seconds, right from your viewport.",
     heroCta: "Try it now",
     heroFree: "Free ·",
     heroCredits: "8 credits to try",
@@ -739,7 +739,7 @@ const es: Dict = {
     heroBadge: "Vizai Render dentro de tu software favorito",
     heroTitle: "Render fotorrealista con IA directo desde",
     heroSubtitle:
-      "Instala el plugin, configura la escena y crea un render fotorrealista con IA en segundos, directamente desde tu viewport.",
+      "Instala Vizai Render, configura la escena y crea un render fotorrealista con IA en segundos, directamente desde tu viewport.",
     heroCta: "Pruébalo ahora",
     heroFree: "Gratis ·",
     heroCredits: "8 créditos para probar",

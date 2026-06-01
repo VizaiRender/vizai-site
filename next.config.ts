@@ -9,6 +9,8 @@ const scriptSrc = [
   ...(isDev ? ["'unsafe-eval'"] : []),
   "https://js.stripe.com",
   "https://checkout.stripe.com",
+  "https://www.googletagmanager.com",
+  "https://connect.facebook.net",
 ].join(" ");
 
 const styleSrc = [
@@ -26,6 +28,9 @@ const imgSrc = [
   "https://*.supabase.co",
   "https://downloads.vizairender.com",
   "https://i.pravatar.cc",
+  "https://www.googletagmanager.com",
+  "https://www.google-analytics.com",
+  "https://www.facebook.com",
 ].join(" ");
 
 const connectSrc = [
@@ -34,6 +39,12 @@ const connectSrc = [
   "wss://eobtrpaxupquawgniwfe.supabase.co",
   "https://api.vizairender.com",
   "https://downloads.vizairender.com",
+  "https://sst.vizairender.com",
+  "https://www.google-analytics.com",
+  "https://analytics.google.com",
+  "https://region1.google-analytics.com",
+  "https://www.facebook.com",
+  "https://connect.facebook.net",
   ...(isDev ? ["ws://localhost:*", "http://localhost:*"] : []),
 ].join(" ");
 
@@ -41,6 +52,7 @@ const frameSrc = [
   "'self'",
   "https://js.stripe.com",
   "https://checkout.stripe.com",
+  "https://www.googletagmanager.com",
 ].join(" ");
 
 const fontSrc = ["'self'", "data:", "https://fonts.gstatic.com"].join(" ");
