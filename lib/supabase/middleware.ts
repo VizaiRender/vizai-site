@@ -61,10 +61,10 @@ export async function updateSession(request: NextRequest) {
   }
 
   if (isAuthPage(pathname) && user) {
-    const url = request.nextUrl.clone();
     const nextParam = sanitizeNext(request.nextUrl.searchParams.get("next"));
-    url.pathname = nextParam;
-    url.search = "";
+    // nextParam pode conter query string (ex: /checkout?plan=...&currency=brl);
+    // resolver como URL relativa ao request preserva caminho E query.
+    const url = new URL(nextParam, request.url);
     return NextResponse.redirect(url);
   }
 
