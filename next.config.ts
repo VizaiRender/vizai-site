@@ -10,6 +10,7 @@ const scriptSrc = [
   "https://js.stripe.com",
   "https://checkout.stripe.com",
   "https://www.googletagmanager.com",
+  "https://sst.vizairender.com",
   "https://connect.facebook.net",
 ].join(" ");
 
@@ -29,6 +30,7 @@ const imgSrc = [
   "https://downloads.vizairender.com",
   "https://i.pravatar.cc",
   "https://www.googletagmanager.com",
+  "https://sst.vizairender.com",
   "https://www.google-analytics.com",
   "https://www.facebook.com",
 ].join(" ");
@@ -53,6 +55,7 @@ const frameSrc = [
   "https://js.stripe.com",
   "https://checkout.stripe.com",
   "https://www.googletagmanager.com",
+  "https://sst.vizairender.com",
 ].join(" ");
 
 const fontSrc = ["'self'", "data:", "https://fonts.gstatic.com"].join(" ");
