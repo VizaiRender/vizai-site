@@ -180,7 +180,7 @@ const pt = {
     items: [
       { q: "O que é o Vizai Render?", a: "É um plugin para Sketchup, ArchiCAD e Revit que gera renders fotorrealistas com Inteligência Artificial diretamente dentro do software — sem exportar, sem abrir outra ferramenta." },
       { q: "Preciso saber usar IA ou ter experiência com renderização?", a: "Não. Você configura a cena no seu programa preferido normalmente, escolhe o estilo de render e clica em um botão. O Vizai cuida do resto." },
-      { q: "Como funcionam os créditos?", a: "Cada operação consome créditos: render 2K custa 4 créditos, upscale 4K e inpaint custam 3 créditos, imagem 360° custa 5 créditos e IA Criativa custa 3 créditos. Operações avançadas como criação de blocos 3D custam 28 créditos, e geração de vídeo entre 22 e 83 créditos dependendo da duração. Você recebe 8 créditos grátis ao criar a conta. Planos mensais renovam automaticamente todo mês e créditos avulsos não expiram." },
+      { q: "Como funcionam os créditos?", a: "Cada operação consome créditos: render 2K e edição com IA (inpaint) custam 4 créditos, upscale 4K custa 5 créditos, imagem 360° custa 5 créditos e IA Criativa custa 3 créditos. Operações avançadas como criação de blocos 3D custam 28 créditos, e geração de vídeo entre 22 e 83 créditos dependendo da duração. Você recebe 8 créditos grátis ao criar a conta. Planos mensais renovam automaticamente todo mês e créditos avulsos não expiram." },
       { q: "Posso cancelar minha assinatura quando quiser?", a: "Sim, sem fidelidade e sem burocracia. Você cancela direto pelo plugin com um clique. O plano continua ativo até o fim do período já pago." },
       { q: "As imagens geradas são minhas?", a: "Sim. Você é o dono de tudo que gerar com o Vizai Render — pode usar em apresentações, portfólios, propostas comerciais ou onde quiser." },
       { q: "Meus projetos ficam armazenados nos servidores?", a: "Não. O Vizai processa a imagem da cena para gerar o render, mas não armazena nem retém os seus projetos. Os arquivos do Sketchup permanecem apenas na sua máquina." },
@@ -213,7 +213,7 @@ const pt = {
     tabPacks: "Pacote de Créditos",
     monthly: "Mensal",
     annual: "Anual",
-    discount: "15% OFF",
+    discount: "8% OFF",
     cancelAnytime: "Cancele quando quiser",
     creditsRenew: "Créditos renovam mensalmente",
     neverExpire: "Neste pacote, seus créditos nunca expiram",
@@ -222,9 +222,9 @@ const pt = {
     billedAnnually: "cobrado anualmente",
     plans: [
       { name: "Grátis", desc: "Para experimentar o plugin", credits: "8 créditos", cta: "Começar grátis", features: ["8 créditos pra explorar", "Acesso ao plugin", "Render básico"] },
-      { name: "Starter", desc: "Para quem está começando", credits: "300 créditos/mês", cta: "Assinar Starter", features: ["300 créditos por mês", "Todos os estilos de render", "Refinamento de imagem", "Histórico de renders", "Geração de vídeos", "Panorâmica 360", "Gerador de blocos por imagem", "Apenas 1 PC simultâneo"] },
-      { name: "PRO", desc: "O mais popular", credits: "750 créditos/mês", cta: "Assinar PRO", features: ["Tudo do Starter, mais", "750 créditos por mês", "Inpainting avançado", "Aba Render", "Acesso a aba IA Criativa", "Até 2 PCs simultâneos", "Acesso antecipado a novidades", "Suporte VIP"] },
-      { name: "Business", desc: "Focado em escritórios", credits: "2.000 créditos/mês", cta: "Assinar Business", features: ["Tudo do PRO, mais", "2.000 créditos por mês", "Múltiplos PCs", "Suporte dedicado", "Tempo de resposta garantido"] },
+      { name: "Starter", desc: "Para quem está começando", credits: "300 créditos/mês", creditsAnnual: "3.000 créditos/ano", cta: "Assinar Starter", features: ["Todos os estilos de render", "Refinamento de imagem", "Histórico de renders", "Geração de vídeos", "Panorâmica 360", "Gerador de blocos por imagem", "Apenas 1 PC simultâneo"] },
+      { name: "PRO", desc: "O mais popular", credits: "750 créditos/mês", creditsAnnual: "7.500 créditos/ano", cta: "Assinar PRO", features: ["Tudo do Starter, mais", "Inpainting avançado", "Aba Render", "Acesso a aba IA Criativa", "Até 2 PCs simultâneos", "Acesso antecipado a novidades", "Suporte VIP"] },
+      { name: "Business", desc: "Focado em escritórios", credits: "2.000 créditos/mês", creditsAnnual: "20.000 créditos/ano", cta: "Assinar Business", features: ["Tudo do PRO, mais", "Múltiplos PCs", "Suporte dedicado", "Tempo de resposta garantido"] },
     ],
     packs: [
       { name: "Mini", desc: "Para uma demanda pontual", credits: "50 créditos", cta: "Comprar Mini", features: ["50 créditos sem expiração", "Todos os estilos de render", "Refinamento de imagem"] },
@@ -345,6 +345,7 @@ const pt = {
     youSubscribed: "Você assinou o",
     planPrefix: "Plano",
     creditsPerMonth: "{n} créditos/mês",
+    creditsPerYear: "{n} créditos/ano",
     nextSteps: "Próximos passos",
     steps: [
       "Baixe o plugin Vizai Render para SketchUp",
@@ -539,7 +540,7 @@ const en: Dict = {
     items: [
       { q: "What is Vizai Render?", a: "It's a plugin for Sketchup, ArchiCAD and Revit that generates photorealistic renders with Artificial Intelligence right inside the software — no exporting, no opening another tool." },
       { q: "Do I need to know how to use AI or have rendering experience?", a: "No. You set up the scene in your favorite software as usual, choose the render style and click a button. Vizai takes care of the rest." },
-      { q: "How do credits work?", a: "Each operation consumes credits: a 2K render costs 4 credits, 4K upscale and inpaint cost 3 credits, a 360° image costs 5 credits and Creative AI costs 3 credits. Advanced operations like creating 3D blocks cost 28 credits, and video generation between 22 and 83 credits depending on the duration. You get 8 free credits when you create your account. Monthly plans renew automatically every month and one-off credits do not expire." },
+      { q: "How do credits work?", a: "Each operation consumes credits: a 2K render and AI edits (inpaint) cost 4 credits, 4K upscale costs 5 credits, a 360° image costs 5 credits and Creative AI costs 3 credits. Advanced operations like creating 3D blocks cost 28 credits, and video generation between 22 and 83 credits depending on the duration. You get 8 free credits when you create your account. Monthly plans renew automatically every month and one-off credits do not expire." },
       { q: "Can I cancel my subscription whenever I want?", a: "Yes, no commitment and no red tape. You cancel right from the plugin with one click. The plan stays active until the end of the period you've already paid for." },
       { q: "Are the generated images mine?", a: "Yes. You own everything you generate with Vizai Render — you can use it in presentations, portfolios, commercial proposals or wherever you like." },
       { q: "Are my projects stored on the servers?", a: "No. Vizai processes the scene image to generate the render, but it does not store or retain your projects. Your Sketchup files stay only on your machine." },
@@ -572,7 +573,7 @@ const en: Dict = {
     tabPacks: "Credit Pack",
     monthly: "Monthly",
     annual: "Annual",
-    discount: "15% OFF",
+    discount: "8% OFF",
     cancelAnytime: "Cancel anytime",
     creditsRenew: "Credits renew monthly",
     neverExpire: "In this pack, your credits never expire",
@@ -581,9 +582,9 @@ const en: Dict = {
     billedAnnually: "billed annually",
     plans: [
       { name: "Free", desc: "To try out the plugin", credits: "8 credits", cta: "Start for free", features: ["8 credits to explore", "Plugin access", "Basic render"] },
-      { name: "Starter", desc: "For those just starting out", credits: "300 credits/month", cta: "Subscribe to Starter", features: ["300 credits per month", "All render styles", "Image refinement", "Render history", "Video generation", "360 panorama", "Block generator from image", "Only 1 simultaneous PC"] },
-      { name: "PRO", desc: "The most popular", credits: "750 credits/month", cta: "Subscribe to PRO", features: ["Everything in Starter, plus", "750 credits per month", "Advanced inpainting", "Render tab", "Access to Creative AI tab", "Up to 2 simultaneous PCs", "Early access to new features", "VIP support"] },
-      { name: "Business", desc: "Focused on studios", credits: "2,000 credits/month", cta: "Subscribe to Business", features: ["Everything in PRO, plus", "2,000 credits per month", "Multiple PCs", "Dedicated support", "Guaranteed response time"] },
+      { name: "Starter", desc: "For those just starting out", credits: "300 credits/month", creditsAnnual: "3,000 credits/yr", cta: "Subscribe to Starter", features: ["All render styles", "Image refinement", "Render history", "Video generation", "360 panorama", "Block generator from image", "Only 1 simultaneous PC"] },
+      { name: "PRO", desc: "The most popular", credits: "750 credits/month", creditsAnnual: "7,500 credits/yr", cta: "Subscribe to PRO", features: ["Everything in Starter, plus", "Advanced inpainting", "Render tab", "Access to Creative AI tab", "Up to 2 simultaneous PCs", "Early access to new features", "VIP support"] },
+      { name: "Business", desc: "Focused on studios", credits: "2,000 credits/month", creditsAnnual: "20,000 credits/yr", cta: "Subscribe to Business", features: ["Everything in PRO, plus", "Multiple PCs", "Dedicated support", "Guaranteed response time"] },
     ],
     packs: [
       { name: "Mini", desc: "For a one-off need", credits: "50 credits", cta: "Buy Mini", features: ["50 credits with no expiration", "All render styles", "Image refinement"] },
@@ -704,6 +705,7 @@ const en: Dict = {
     youSubscribed: "You subscribed to the",
     planPrefix: "Plan",
     creditsPerMonth: "{n} credits/mo",
+    creditsPerYear: "{n} credits/yr",
     nextSteps: "Next steps",
     steps: [
       "Download the Vizai Render plugin for SketchUp",
@@ -896,7 +898,7 @@ const es: Dict = {
     items: [
       { q: "¿Qué es Vizai Render?", a: "Es un plugin para Sketchup, ArchiCAD y Revit que genera renders fotorrealistas con Inteligencia Artificial directamente dentro del software — sin exportar, sin abrir otra herramienta." },
       { q: "¿Necesito saber usar IA o tener experiencia en renderizado?", a: "No. Configuras la escena en tu programa favorito como siempre, eliges el estilo de render y haces clic en un botón. Vizai se encarga del resto." },
-      { q: "¿Cómo funcionan los créditos?", a: "Cada operación consume créditos: un render 2K cuesta 4 créditos, el upscale 4K e inpaint cuestan 3 créditos, una imagen 360° cuesta 5 créditos y la IA Creativa cuesta 3 créditos. Operaciones avanzadas como la creación de bloques 3D cuestan 28 créditos, y la generación de video entre 22 y 83 créditos según la duración. Recibes 8 créditos gratis al crear la cuenta. Los planes mensuales se renuevan automáticamente cada mes y los créditos individuales no caducan." },
+      { q: "¿Cómo funcionan los créditos?", a: "Cada operación consume créditos: un render 2K y las ediciones con IA (inpaint) cuestan 4 créditos, el upscale 4K cuesta 5 créditos, una imagen 360° cuesta 5 créditos y la IA Creativa cuesta 3 créditos. Operaciones avanzadas como la creación de bloques 3D cuestan 28 créditos, y la generación de video entre 22 y 83 créditos según la duración. Recibes 8 créditos gratis al crear la cuenta. Los planes mensuales se renuevan automáticamente cada mes y los créditos individuales no caducan." },
       { q: "¿Puedo cancelar mi suscripción cuando quiera?", a: "Sí, sin permanencia y sin trámites. Cancelas directo desde el plugin con un clic. El plan sigue activo hasta el final del período ya pagado." },
       { q: "¿Las imágenes generadas son mías?", a: "Sí. Eres el dueño de todo lo que generes con Vizai Render — puedes usarlo en presentaciones, portafolios, propuestas comerciales o donde quieras." },
       { q: "¿Mis proyectos quedan almacenados en los servidores?", a: "No. Vizai procesa la imagen de la escena para generar el render, pero no almacena ni retiene tus proyectos. Los archivos de Sketchup permanecen solo en tu máquina." },
@@ -929,7 +931,7 @@ const es: Dict = {
     tabPacks: "Paquete de Créditos",
     monthly: "Mensual",
     annual: "Anual",
-    discount: "15% OFF",
+    discount: "8% OFF",
     cancelAnytime: "Cancela cuando quieras",
     creditsRenew: "Los créditos se renuevan mensualmente",
     neverExpire: "En este paquete, tus créditos nunca expiran",
@@ -938,9 +940,9 @@ const es: Dict = {
     billedAnnually: "cobrado anualmente",
     plans: [
       { name: "Gratis", desc: "Para probar el plugin", credits: "8 créditos", cta: "Empezar gratis", features: ["8 créditos para explorar", "Acceso al plugin", "Render básico"] },
-      { name: "Starter", desc: "Para quien recién empieza", credits: "300 créditos/mes", cta: "Suscribir Starter", features: ["300 créditos por mes", "Todos los estilos de render", "Refinamiento de imagen", "Historial de renders", "Generación de videos", "Panorámica 360", "Generador de bloques por imagen", "Solo 1 PC simultánea"] },
-      { name: "PRO", desc: "El más popular", credits: "750 créditos/mes", cta: "Suscribir PRO", features: ["Todo lo de Starter, más", "750 créditos por mes", "Inpainting avanzado", "Pestaña Render", "Acceso a pestaña IA Creativa", "Hasta 2 PCs simultáneas", "Acceso anticipado a novedades", "Soporte VIP"] },
-      { name: "Business", desc: "Enfocado en estudios", credits: "2.000 créditos/mes", cta: "Suscribir Business", features: ["Todo lo de PRO, más", "2.000 créditos por mes", "Múltiples PCs", "Soporte dedicado", "Tiempo de respuesta garantizado"] },
+      { name: "Starter", desc: "Para quien recién empieza", credits: "300 créditos/mes", creditsAnnual: "3.000 créditos/año", cta: "Suscribir Starter", features: ["Todos los estilos de render", "Refinamiento de imagen", "Historial de renders", "Generación de videos", "Panorámica 360", "Generador de bloques por imagen", "Solo 1 PC simultánea"] },
+      { name: "PRO", desc: "El más popular", credits: "750 créditos/mes", creditsAnnual: "7.500 créditos/año", cta: "Suscribir PRO", features: ["Todo lo de Starter, más", "Inpainting avanzado", "Pestaña Render", "Acceso a pestaña IA Creativa", "Hasta 2 PCs simultáneas", "Acceso anticipado a novedades", "Soporte VIP"] },
+      { name: "Business", desc: "Enfocado en estudios", credits: "2.000 créditos/mes", creditsAnnual: "20.000 créditos/año", cta: "Suscribir Business", features: ["Todo lo de PRO, más", "Múltiples PCs", "Soporte dedicado", "Tiempo de respuesta garantizado"] },
     ],
     packs: [
       { name: "Mini", desc: "Para una necesidad puntual", credits: "50 créditos", cta: "Comprar Mini", features: ["50 créditos sin expiración", "Todos los estilos de render", "Refinamiento de imagen"] },
@@ -1061,6 +1063,7 @@ const es: Dict = {
     youSubscribed: "Te suscribiste al",
     planPrefix: "Plan",
     creditsPerMonth: "{n} créditos/mes",
+    creditsPerYear: "{n} créditos/año",
     nextSteps: "Próximos pasos",
     steps: [
       "Descarga el plugin Vizai Render para SketchUp",

@@ -5,19 +5,20 @@ import { Download } from "lucide-react";
 import { useT } from "@/lib/i18n";
 
 const PLAN_CREDITS_N: Record<string, string> = {
-  starter_monthly: "100",
-  starter_annual: "100",
-  pro_monthly: "300",
-  pro_annual: "300",
-  business_monthly: "1.000",
-  business_annual: "1.000",
+  starter_monthly: "300",
+  starter_annual: "3.000",
+  pro_monthly: "750",
+  pro_annual: "7.500",
+  business_monthly: "2.000",
+  business_annual: "20.000",
 };
 
 export function SucessoContent({ plan }: { plan: string | null | undefined }) {
   const t = useT();
   const planName = t.planLabels[plan as keyof typeof t.planLabels] ?? t.planLabels.unknown;
   const creditsN = plan ? PLAN_CREDITS_N[plan] : null;
-  const credits = creditsN ? t.sucesso.creditsPerMonth.replace("{n}", creditsN) : null;
+  const isAnnual = !!plan && plan.endsWith("_annual");
+  const credits = creditsN ? (isAnnual ? t.sucesso.creditsPerYear : t.sucesso.creditsPerMonth).replace("{n}", creditsN) : null;
 
   return (
     <div

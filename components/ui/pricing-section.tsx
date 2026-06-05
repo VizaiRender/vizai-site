@@ -26,24 +26,24 @@ const planData = [
   {
     id: "starter",
     monthly: { BRL: "R$ 97", USD: "$ 29", EUR: "€ 29" },
-    annual: { BRL: "R$ 82", USD: "$ 25", EUR: "€ 25" },
-    annualTotal: { BRL: "R$ 984", USD: "$ 295", EUR: "€ 295" },
+    annual: { BRL: "R$ 89", USD: "$ 25", EUR: "€ 25" },
+    annualTotal: { BRL: "R$ 1.068", USD: "$ 295", EUR: "€ 295" },
     highlighted: false,
     href: "/signup",
   },
   {
     id: "pro",
     monthly: { BRL: "R$ 197", USD: "$ 59", EUR: "€ 59" },
-    annual: { BRL: "R$ 167", USD: "$ 50", EUR: "€ 50" },
-    annualTotal: { BRL: "R$ 2.004", USD: "$ 601", EUR: "€ 601" },
+    annual: { BRL: "R$ 179", USD: "$ 50", EUR: "€ 50" },
+    annualTotal: { BRL: "R$ 2.148", USD: "$ 601", EUR: "€ 601" },
     highlighted: true,
     href: "/signup",
   },
   {
     id: "business",
-    monthly: { BRL: "R$ 447", USD: "$ 129", EUR: "€ 129" },
-    annual: { BRL: "R$ 380", USD: "$ 110", EUR: "€ 110" },
-    annualTotal: { BRL: "R$ 4.560", USD: "$ 1.319", EUR: "€ 1.319" },
+    monthly: { BRL: "R$ 519", USD: "$ 129", EUR: "€ 129" },
+    annual: { BRL: "R$ 479", USD: "$ 110", EUR: "€ 110" },
+    annualTotal: { BRL: "R$ 5.748", USD: "$ 1.319", EUR: "€ 1.319" },
     highlighted: false,
     href: "/signup",
   },
@@ -301,7 +301,7 @@ export function PricingSection() {
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="#0940D2" style={{ flexShrink: 0 }}>
                     <path d="M13 2L4.09 12.96A1 1 0 005 14.5h6.5L10 22l9.91-10.96A1 1 0 0019 10H12.5L13 2z" />
                   </svg>
-                  {plan.credits}
+                  {isAnual && "creditsAnnual" in plan ? (plan as any).creditsAnnual : plan.credits}
                 </div>
 
                 <div style={{ fontSize: "0.875rem", color: hl ? "rgba(255,255,255,0.5)" : "var(--foreground-muted)", marginBottom: 28, minHeight: 40 }}>
