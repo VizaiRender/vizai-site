@@ -136,8 +136,10 @@ const demoHeaders = [
 
 const nextConfig: NextConfig = {
   images: {
-    // AVIF primeiro (≈30% menor que WebP); WebP como fallback automático.
-    formats: ["image/avif", "image/webp"],
+    // Otimizador desligado: o endpoint /_next/image quebra no Worker da
+    // Cloudflare (erro 1101 ao codificar AVIF). Com unoptimized, o next/image
+    // serve os arquivos originais direto (já versionados e com peso ok).
+    unoptimized: true,
     // Imagens otimizadas passam a ser cacheadas por 1 ano (padrão do Next é
     // só 60s → o navegador/edge re-baixava à toa = "efficient cache lifetimes").
     minimumCacheTTL: 31536000,
