@@ -3255,6 +3255,35 @@
       width: 100%
     }
 
+    /* Aba vertical "TOOLS" colada na borda esquerda — representação visual
+       da aba de Ferramentas locais que existe no plugin. */
+    .tools-tab {
+      position: fixed;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 26px 1px;
+      background: rgba(34,197,94,.92);
+      border-radius: 0 8px 8px 0;
+      box-shadow: 2px 1px 6px rgba(0,0,0,.3);
+      cursor: pointer;
+      user-select: none;
+      transition: background .15s;
+    }
+    .tools-tab:hover { background: rgba(74,222,128,1); }
+    .tools-tab .lbl {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #ffffff;
+    }
+
     .ep-tools {
       display: flex;
       align-items: center;
@@ -5263,6 +5292,11 @@
             <circle cx="12" cy="12" r="10" />
             <polyline points="12 6 12 12 16 14" />
           </svg><span data-i18n="tab.hist">Histórico</span></div>
+      </div>
+
+      <!-- Aba "TOOLS" (visual): representa as Ferramentas locais do plugin -->
+      <div class="tools-tab" title="Ferramentas locais — Otimizar arquivo e Pisos seamless (disponível no plugin)">
+        <span class="lbl">TOOLS</span>
       </div>
 
       <div class="scroll-area">
