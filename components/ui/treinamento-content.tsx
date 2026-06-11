@@ -93,6 +93,7 @@ export function TreinamentoContent() {
 
   const featured = ARTICLES[0];
   const rest = ARTICLES.slice(1);
+  const startRest = rest.filter((a) => a.category === "start");
 
   return (
     <>
@@ -113,7 +114,8 @@ export function TreinamentoContent() {
         </p>
       </div>
 
-      {/* Destaque: comece por aqui */}
+      {/* Comece aqui: destaque + demais artigos de início no mesmo bloco,
+          evitando dois cabeçalhos quase iguais ("Comece por aqui" / "Comece aqui"). */}
       <div className="mb-14">
         <h2
           className="text-sm font-semibold uppercase tracking-widest mb-4"
@@ -122,10 +124,18 @@ export function TreinamentoContent() {
           {ui.featuredLabel}
         </h2>
         <ArticleCard meta={featured} featured />
+        {startRest.length > 0 && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-5">
+            {startRest.map((meta) => (
+              <ArticleCard key={meta.slug} meta={meta} />
+            ))}
+          </div>
+        )}
       </div>
 
-      {/* Seções por categoria */}
+      {/* Seções por categoria (a categoria "start" já foi exibida acima) */}
       {CATEGORY_ORDER.map((cat) => {
+        if (cat === "start") return null;
         const items = rest.filter((a) => a.category === cat);
         if (items.length === 0) return null;
         return (
