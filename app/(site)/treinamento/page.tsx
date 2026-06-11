@@ -4,7 +4,7 @@ import { TreinamentoContent } from "@/components/ui/treinamento-content";
 export const metadata = {
   title: "Treinamento | Vizai Render",
   description:
-    "Treinamento oficial do Vizai Render em breve. Cadastre-se para ser avisado assim que estiver disponível.",
+    "Guias completos de todas as ferramentas do Vizai Render: render com IA, edição, vídeo, panorama 360°, blocos 3D, IA criativa e ferramentas gratuitas — passo a passo com imagens reais.",
 };
 
 export default function TreinamentoPage() {

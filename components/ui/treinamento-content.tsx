@@ -1,45 +1,175 @@
 "use client";
 
 import Link from "next/link";
-import { Clock } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, Clock } from "lucide-react";
 import GradientBordersButton from "@/components/ui/gradient-borders-button";
-import { useT } from "@/lib/i18n";
+import { useLang } from "@/app/components/LanguageProvider";
+import {
+  ARTICLES,
+  CATEGORY_ORDER,
+  getArticleContent,
+  getTreinoUi,
+  resolveSrc,
+  type ArticleMeta,
+} from "@/lib/treinamento";
 
-export function TreinamentoContent() {
-  const t = useT();
+function ArticleCard({ meta, featured }: { meta: ArticleMeta; featured?: boolean }) {
+  const { lang } = useLang();
+  const ui = getTreinoUi(lang);
+  const content = getArticleContent(meta.slug, lang);
+  if (!content) return null;
+
   return (
-    <>
-      <div className="flex flex-col items-center text-center mb-12">
-        <GradientBordersButton className="mb-6">
-          {t.treinamento.badge}
-        </GradientBordersButton>
+    <Link
+      href={`/treinamento/${meta.slug}`}
+      className={`group flex flex-col rounded-2xl overflow-hidden transition-transform duration-300 hover:-translate-y-1 ${
+        featured ? "md:flex-row" : ""
+      }`}
+      style={{
+        border: "1px solid var(--border)",
+        backgroundColor: "rgba(128,128,128,0.04)",
+      }}
+    >
+      <div
+        className={`relative overflow-hidden ${
+          featured ? "md:w-1/2 aspect-video md:aspect-auto md:min-h-[300px]" : "aspect-video"
+        }`}
+      >
+        <Image
+          src={resolveSrc(meta.cover, lang)}
+          alt={content.title}
+          fill
+          sizes={featured ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 100vw, 33vw"}
+          className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+        />
       </div>
 
-      <div className="flex flex-col items-center text-center py-12">
-        <div
-          className="w-16 h-16 rounded-full flex items-center justify-center mb-6"
-          style={{ backgroundColor: "rgba(9, 64, 210, 0.1)" }}
-        >
-          <Clock size={28} style={{ color: "#0940D2" }} />
+      <div className={`flex flex-col flex-1 p-5 ${featured ? "md:p-8 md:justify-center" : ""}`}>
+        <div className="flex items-center gap-3 mb-3">
+          <span
+            className="text-[11px] font-semibold px-2.5 py-1 rounded-full"
+            style={{ color: "#0940D2", backgroundColor: "rgba(9,64,210,0.10)" }}
+          >
+            {ui.categories[meta.category]}
+          </span>
+          <span
+            className="inline-flex items-center gap-1 text-[11px]"
+            style={{ color: "var(--foreground-muted)" }}
+          >
+            <Clock size={11} />
+            {meta.minutes} {ui.minRead}
+          </span>
         </div>
-        <h1
-          className="text-4xl md:text-5xl font-bold tracking-tight mb-4"
+
+        <h3
+          className={`font-bold tracking-tight mb-2 ${featured ? "text-xl md:text-2xl" : "text-base"}`}
           style={{ color: "var(--foreground)" }}
         >
-          {t.treinamento.title}
-        </h1>
+          {content.title}
+        </h3>
         <p
-          className="text-base md:text-lg max-w-md mb-8 leading-relaxed"
+          className={`leading-relaxed mb-4 ${featured ? "text-sm md:text-base" : "text-sm"}`}
           style={{ color: "var(--foreground-muted)" }}
         >
-          {t.treinamento.subtitle}
+          {content.excerpt}
         </p>
-        <Link
-          href="/signup"
-          className="inline-flex items-center gap-2 bg-[#0940D2] hover:bg-[#0730b0] text-white text-sm font-semibold px-6 py-3 rounded-full transition-colors"
+
+        <span
+          className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold transition-colors"
+          style={{ color: "#0940D2" }}
         >
-          {t.treinamento.cta}
-        </Link>
+          {ui.readMore}
+          <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
+        </span>
+      </div>
+    </Link>
+  );
+}
+
+export function TreinamentoContent() {
+  const { lang } = useLang();
+  const ui = getTreinoUi(lang);
+
+  const featured = ARTICLES[0];
+  const rest = ARTICLES.slice(1);
+
+  return (
+    <>
+      {/* Hero */}
+      <div className="flex flex-col items-center text-center mb-14">
+        <GradientBordersButton className="mb-6">{ui.badge}</GradientBordersButton>
+        <h1
+          className="text-4xl md:text-5xl font-bold tracking-tight mb-4 max-w-3xl"
+          style={{ color: "var(--foreground)" }}
+        >
+          {ui.title}
+        </h1>
+        <p
+          className="text-base md:text-lg max-w-2xl leading-relaxed"
+          style={{ color: "var(--foreground-muted)" }}
+        >
+          {ui.subtitle}
+        </p>
+      </div>
+
+      {/* Destaque: comece por aqui */}
+      <div className="mb-14">
+        <h2
+          className="text-sm font-semibold uppercase tracking-widest mb-4"
+          style={{ color: "var(--foreground-muted)" }}
+        >
+          {ui.featuredLabel}
+        </h2>
+        <ArticleCard meta={featured} featured />
+      </div>
+
+      {/* Seções por categoria */}
+      {CATEGORY_ORDER.map((cat) => {
+        const items = rest.filter((a) => a.category === cat);
+        if (items.length === 0) return null;
+        return (
+          <section key={cat} className="mb-14">
+            <h2
+              className="text-2xl md:text-3xl font-bold tracking-tight mb-6"
+              style={{ color: "var(--foreground)" }}
+            >
+              {ui.categories[cat]}
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {items.map((meta) => (
+                <ArticleCard key={meta.slug} meta={meta} />
+              ))}
+            </div>
+          </section>
+        );
+      })}
+
+      {/* CTA final */}
+      <div
+        className="rounded-2xl p-8 md:p-12 text-center"
+        style={{ backgroundColor: "#0940D2" }}
+      >
+        <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-3 text-white">
+          {ui.ctaTitle}
+        </h2>
+        <p className="text-sm md:text-base mb-7 text-white/75 max-w-xl mx-auto">
+          {ui.ctaSubtitle}
+        </p>
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <Link
+            href="/download"
+            className="inline-flex items-center gap-2 bg-white text-[#0940D2] hover:bg-white/90 text-sm font-semibold px-6 py-3 rounded-full transition-colors"
+          >
+            {ui.ctaDownload}
+          </Link>
+          <Link
+            href="/signup"
+            className="inline-flex items-center gap-2 text-white text-sm font-semibold px-6 py-3 rounded-full transition-colors border border-white/30 hover:bg-white/10"
+          >
+            {ui.ctaSignup}
+          </Link>
+        </div>
       </div>
     </>
   );

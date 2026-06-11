@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import { usePathname } from "next/navigation";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export function PageTransition({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -11,9 +11,14 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
   // saía em opacity:0 e segurava a pintura de TODO o conteúdo (inclusive o H1 =
   // elemento LCP) até o JS hidratar — era a causa do "render delay" de ~18s no
   // mobile. O fade segue normal nas navegações seguintes entre páginas.
+  // A ref só pode virar false DEPOIS da montagem (não durante o render): mutar
+  // durante o render fazia o 2º render do StrictMode divergir do HTML do servidor
+  // (hydration mismatch no style do motion.div).
   const isFirst = useRef(true);
   const firstLoad = isFirst.current;
-  isFirst.current = false;
+  useEffect(() => {
+    isFirst.current = false;
+  }, []);
 
   return (
     <motion.div
