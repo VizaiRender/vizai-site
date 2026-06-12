@@ -777,35 +777,32 @@ export const ptArticles: Record<string, ArticleContent> = {
         alt: "Panorama 360 gerado pelo Vizai Render",
         caption: "O panorama equiretangular gerado — pronto para o visualizador interativo.",
       },
-      { type: "h2", text: "Dois caminhos para gerar" },
+      { type: "h2", text: "Como gerar" },
       {
         type: "img",
         src: "/treinamento/ui/pano-{lang}.webp",
         alt: "Aba 360 do Vizai Render",
-        caption: "A aba 360: captura automática ou upload de renders.",
+        caption: "A aba 360: carregue 4 renders do mesmo ponto central.",
         ui: true,
       },
       {
-        type: "ul",
-        items: [
-          "**Capturar do SketchUp** — com a câmera posicionada no centro do ambiente, o plugin captura **6 vistas automaticamente** (frente, direita, costas, esquerda, teto e chão) e a IA costura tudo em um 360 do modelo.",
-          "**Upload de 4 renders** — para um 360 fotorrealista: renderize 4 vistas do mesmo ponto central (frente, direita, costas, esquerda, em 16:9 ou 1:1), carregue nas posições correspondentes e gere.",
-        ],
+        type: "p",
+        text: "Renderize **4 vistas a partir do mesmo ponto central** — frente, direita, costas e esquerda, em 16:9 ou 1:1 — e carregue cada uma na posição correspondente. A IA costura as quatro em um panorama esférico contínuo do ambiente.",
       },
       {
         type: "steps",
         items: [
           {
             title: "Posicione a câmera no centro do ambiente",
-            text: "Altura de olho (~1,60m) e o mesmo ponto para todas as vistas.",
+            text: "Altura de olho (~1,60m) e o mesmo ponto para as 4 vistas.",
           },
           {
-            title: "Capture ou carregue as vistas",
-            text: "Pelo botão de captura automática, ou subindo seus renders prontos.",
+            title: "Renderize e carregue as 4 vistas",
+            text: "Frente, direita, costas e esquerda (16:9 ou 1:1), cada uma na posição correspondente.",
           },
           {
             title: "Gere o 360",
-            text: "5 créditos. A IA costura as vistas em um panorama esférico contínuo.",
+            text: "5 créditos. A IA costura as 4 vistas em um panorama esférico contínuo.",
           },
           {
             title: "Compartilhe",

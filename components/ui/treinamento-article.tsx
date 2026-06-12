@@ -460,16 +460,16 @@ export function TreinamentoArticle({ slug }: { slug: string }) {
           {ui.ctaTitle}
         </h2>
         <p className="text-sm mb-6 text-white/75 max-w-xl mx-auto">{ui.ctaSubtitle}</p>
-        <div className="flex flex-wrap items-center justify-center gap-3">
+        <div className="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center gap-3">
           <Link
             href="/download"
-            className="inline-flex items-center gap-2 bg-white text-[#0940D2] hover:bg-white/90 text-sm font-semibold px-6 py-3 rounded-full transition-colors"
+            className="inline-flex items-center justify-center gap-2 bg-white text-[#0940D2] hover:bg-white/90 text-sm font-semibold px-6 py-3 rounded-full transition-colors w-full sm:w-auto"
           >
             {ui.ctaDownload}
           </Link>
           <Link
             href="/signup"
-            className="inline-flex items-center gap-2 text-white text-sm font-semibold px-6 py-3 rounded-full transition-colors border border-white/30 hover:bg-white/10"
+            className="inline-flex items-center justify-center gap-2 text-white text-sm font-semibold px-6 py-3 rounded-full transition-colors border border-white/30 hover:bg-white/10 w-full sm:w-auto"
           >
             {ui.ctaSignup}
           </Link>

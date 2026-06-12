@@ -777,35 +777,32 @@ export const esArticles: Record<string, ArticleContent> = {
         alt: "Panorama 360 generado por Vizai Render",
         caption: "El panorama equirectangular generado — listo para el visor interactivo.",
       },
-      { type: "h2", text: "Dos caminos para generarlo" },
+      { type: "h2", text: "Cómo generarlo" },
       {
         type: "img",
         src: "/treinamento/ui/pano-{lang}.webp",
         alt: "Pestaña 360 de Vizai Render",
-        caption: "La pestaña 360: captura automática o subida de renders.",
+        caption: "La pestaña 360: sube 4 renders desde el mismo punto central.",
         ui: true,
       },
       {
-        type: "ul",
-        items: [
-          "**Capturar desde SketchUp** — con la cámara en el centro del ambiente, el plugin captura **6 vistas automáticamente** (frente, derecha, atrás, izquierda, techo y suelo) y la IA las cose en un 360 del modelo.",
-          "**Subir 4 renders** — para un 360 fotorrealista: renderiza 4 vistas desde el mismo punto central (frente, derecha, atrás, izquierda, en 16:9 o 1:1), cárgalas en las posiciones correspondientes y genera.",
-        ],
+        type: "p",
+        text: "Renderiza **4 vistas desde el mismo punto central** — frente, derecha, atrás e izquierda, en 16:9 o 1:1 — y carga cada una en su posición correspondiente. La IA cose las cuatro en un panorama esférico continuo del ambiente.",
       },
       {
         type: "steps",
         items: [
           {
             title: "Pon la cámara en el centro del ambiente",
-            text: "Altura de ojos (~1,60m) y el mismo punto para todas las vistas.",
+            text: "Altura de ojos (~1,60m) y el mismo punto para las 4 vistas.",
           },
           {
-            title: "Captura o sube las vistas",
-            text: "Con el botón de captura automática, o subiendo tus renders listos.",
+            title: "Renderiza y sube las 4 vistas",
+            text: "Frente, derecha, atrás e izquierda (16:9 o 1:1), cada una en su posición correspondiente.",
           },
           {
             title: "Genera el 360",
-            text: "5 créditos. La IA cose las vistas en un panorama esférico continuo.",
+            text: "5 créditos. La IA cose las 4 vistas en un panorama esférico continuo.",
           },
           {
             title: "Comparte",
