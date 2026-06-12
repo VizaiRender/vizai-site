@@ -9,6 +9,28 @@ export const metadata = {
   robots: { index: false, follow: false },
 };
 
+const API_BASE =
+  process.env.NEXT_PUBLIC_VIZAI_API_URL || "https://api.vizairender.com";
+
+// Busca hashes SHA-256 de email/telefone do comprador (advanced matching do
+// Meta). O servidor só devolve hashes — o dado em claro nunca chega ao browser.
+// Falha silenciosa: em/ph são opcionais no evento Purchase.
+async function fetchContactHashes(
+  sid?: string
+): Promise<{ em?: string; ph?: string }> {
+  if (!sid) return {};
+  try {
+    const r = await fetch(
+      `${API_BASE}/api/checkout-contact?sid=${encodeURIComponent(sid)}`,
+      { signal: AbortSignal.timeout(4000), cache: "no-store" }
+    );
+    if (!r.ok) return {};
+    return await r.json();
+  } catch {
+    return {};
+  }
+}
+
 // Página de obrigado PÚBLICA e leve — sem login, sem busca de dados, sem fundo
 // animado (WebGL). O plano vem pela URL (o servidor já sabe no checkout), então
 // mostramos nome do plano + créditos sem precisar autenticar. O pagamento e os
@@ -20,6 +42,7 @@ export default async function ObrigadoPage({
   searchParams: Promise<{ sid?: string; val?: string; cur?: string; plan?: string }>;
 }) {
   const { sid, val, cur, plan } = await searchParams;
+  const { em, ph } = await fetchContactHashes(sid);
 
   return (
     <div
@@ -37,7 +60,7 @@ export default async function ObrigadoPage({
     >
       <Navbar forceDark />
       <Confetti />
-      <PurchaseTracker value={val} currency={cur} transactionId={sid} />
+      <PurchaseTracker value={val} currency={cur} transactionId={sid} em={em} ph={ph} />
 
       <SucessoContent plan={plan} />
     </div>

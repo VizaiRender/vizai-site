@@ -6,12 +6,16 @@ type Props = {
   value?: string;
   currency?: string;
   transactionId?: string;
+  // Hashes SHA-256 do email/telefone do comprador (já vêm hasheados do
+  // servidor) — advanced matching do Meta no Pixel (browser) e CAPI (server).
+  em?: string;
+  ph?: string;
 };
 
 // Dispara o evento `purchase` no dataLayer (GTM) uma única vez por transação.
 // O event_id = transactionId garante deduplicação entre Pixel (browser) e
 // CAPI (servidor). A trava em sessionStorage evita re-disparo no refresh/voltar.
-export function PurchaseTracker({ value, currency, transactionId }: Props) {
+export function PurchaseTracker({ value, currency, transactionId, em, ph }: Props) {
   useEffect(() => {
     if (!transactionId || !value || !currency) return;
 
@@ -30,8 +34,10 @@ export function PurchaseTracker({ value, currency, transactionId }: Props) {
       value: Number(value),
       currency: currency.toUpperCase(),
       transaction_id: transactionId,
+      ...(em ? { em } : {}),
+      ...(ph ? { ph } : {}),
     });
-  }, [value, currency, transactionId]);
+  }, [value, currency, transactionId, em, ph]);
 
   return null;
 }
