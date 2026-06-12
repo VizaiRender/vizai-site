@@ -29,13 +29,11 @@ const CookieBanner = () => {
 
   const handleAccept = () => {
     localStorage.setItem("cookie-consent", "true");
-    window.dispatchEvent(new CustomEvent("vizai-consent", { detail: true }));
     closeWithExit();
   };
 
   const handleDecline = () => {
     localStorage.setItem("cookie-consent", "false");
-    window.dispatchEvent(new CustomEvent("vizai-consent", { detail: false }));
     closeWithExit();
   };
 

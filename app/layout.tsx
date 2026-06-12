@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { PageTransition } from "./components/PageTransition";
 import { LanguageProvider } from "./components/LanguageProvider";
 import { CookieBanner } from "./components/CookieBanner";
-import { TrackingScripts } from "./components/TrackingScripts";
 
 const geist = Geist({
   variable: "--font-geist-sans",
@@ -122,7 +122,21 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)]" suppressHydrationWarning>
-        <TrackingScripts />
+        <noscript>
+          <iframe
+            src="https://sst.vizairender.com/ns.html?id=GTM-N6TPTF3T"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+        <Script
+          id="gtm"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src="https://sst.vizairender.com/2qokirulflj.js?"+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','e1woubx=AwhbKyE%2FRCVcODY4M0E9TRxRVEJEVA0FVxoPFhQbGw4ECAMeWxEGBg%3D%3D');`,
+          }}
+        />
         <ThemeProvider>
           <LanguageProvider>
             <PageTransition>
