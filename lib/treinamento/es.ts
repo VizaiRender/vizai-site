@@ -152,14 +152,14 @@ export const esArticles: Record<string, ArticleContent> = {
       { type: "h2", text: "Siguiendo el consumo" },
       {
         type: "img",
-        src: "/treinamento/ui/hist-{lang}.webp",
-        alt: "Pestaña Historial de Vizai Render",
-        caption: "La pestaña Historial muestra todo lo generado y los créditos usados.",
+        src: "/treinamento/ui/assinatura-{lang}.webp",
+        alt: "Panel Suscripción de Vizai Render",
+        caption: "El panel Suscripción muestra todos tus créditos disponibles en un solo lugar.",
         ui: true,
       },
       {
         type: "p",
-        text: "La pestaña **Historial** lista cada render, video y bloque generado en el proyecto, con filtros por tipo y el total de créditos usados. La barra de saldo en la parte superior muestra cuánto queda — y, si tienes un plan, en cuántos días se renueva.",
+        text: "Para seguir tu consumo, haz clic en tu perfil en la esquina superior derecha y abre **Suscripción**. Allí ves todos tus créditos disponibles en un solo lugar: el saldo de tu plan mensual (con cuántos días faltan para renovar) y los créditos sueltos, que no caducan. Las barras muestran de un vistazo cuánto queda de cada uno.",
       },
     ],
   },
@@ -402,6 +402,11 @@ export const esArticles: Record<string, ArticleContent> = {
         type: "p",
         text: "Los espejos son un problema clásico: SketchUp muestra una cara gris, y la IA, sin referencia, inventa un reflejo cualquiera. La herramienta **Reflejo de Espejo** (en la pestaña Escenas) proyecta en la cara del espejo lo que **realmente reflejaría** — y entonces renderizas, con el espejo coherente con el ambiente.",
       },
+      {
+        type: "video",
+        src: "/treinamento/ui/reflexo-espelho.mp4",
+        caption: "Reflejo de Espejo aplicado directo en la pestaña Escenas, sin costo de créditos.",
+      },
       { type: "h2", text: "Cómo usarla" },
       {
         type: "steps",
@@ -502,10 +507,10 @@ export const esArticles: Record<string, ArticleContent> = {
         text: "La **Planta Renderizada** convierte un dibujo técnico — la vista superior de tu modelo o una planta que ya tienes en imagen — en una planta renderizada con pisos, muebles, vegetación y sombras, al estilo de las presentaciones de lanzamientos inmobiliarios.",
       },
       {
-        type: "img",
-        src: "/tools/tool-08.jpg",
-        alt: "Planta renderizada generada por Vizai Render",
-        caption: "Resultado: planta técnica convertida en presentación.",
+        type: "compare",
+        aspect: "4 / 5",
+        before: { src: "/tools/tool-08-before.webp", label: "Planta técnica" },
+        after: { src: "/tools/tool-08.jpg", label: "Planta humanizada" },
       },
       { type: "h2", text: "Capturando la planta desde la viewport" },
       {

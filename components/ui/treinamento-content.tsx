@@ -36,13 +36,26 @@ function ArticleCard({ meta, featured }: { meta: ArticleMeta; featured?: boolean
           featured ? "md:w-1/2 aspect-video md:aspect-auto md:min-h-[300px]" : "aspect-video"
         }`}
       >
-        <Image
-          src={resolveSrc(meta.cover, lang)}
-          alt={content.title}
-          fill
-          sizes={featured ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 100vw, 33vw"}
-          className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
-        />
+        {featured ? (
+          <video
+            src="/tutorial-sketchup.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            aria-label={content.title}
+            className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+          />
+        ) : (
+          <Image
+            src={resolveSrc(meta.cover, lang)}
+            alt={content.title}
+            fill
+            sizes="(max-width: 768px) 100vw, 33vw"
+            className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+          />
+        )}
       </div>
 
       <div className={`flex flex-col flex-1 p-5 ${featured ? "md:p-8 md:justify-center" : ""}`}>
@@ -125,7 +138,7 @@ export function TreinamentoContent() {
         </h2>
         <ArticleCard meta={featured} featured />
         {startRest.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
             {startRest.map((meta) => (
               <ArticleCard key={meta.slug} meta={meta} />
             ))}

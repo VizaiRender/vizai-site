@@ -20,6 +20,7 @@ export type TreinoBlock =
       type: "compare";
       before: { src: string; label: string };
       after: { src: string; label: string };
+      aspect?: string;
     }
   | { type: "table"; head: string[]; rows: string[][] };
 

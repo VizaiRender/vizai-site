@@ -273,8 +273,8 @@ function Block({ block, lang }: { block: TreinoBlock; lang: Lang }) {
           {[block.before, block.after].map((side, i) => (
             <figure key={i}>
               <div
-                className="relative rounded-2xl overflow-hidden aspect-[4/3]"
-                style={{ border: "1px solid var(--border)" }}
+                className="relative rounded-2xl overflow-hidden"
+                style={{ border: "1px solid var(--border)", aspectRatio: block.aspect ?? "4 / 3" }}
               >
                 <Image
                   src={side.src}
@@ -463,13 +463,13 @@ export function TreinamentoArticle({ slug }: { slug: string }) {
         <div className="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center gap-3">
           <Link
             href="/signup"
-            className="inline-flex items-center justify-center gap-2 bg-white text-[#0940D2] hover:bg-white/90 text-sm font-semibold px-6 py-3 rounded-full transition-colors w-full sm:w-auto"
+            className="inline-flex items-center justify-center gap-2 bg-white text-[#0940D2] hover:bg-white/90 text-sm font-semibold px-6 py-3 rounded-full transition-colors w-full sm:w-auto sm:min-w-[190px]"
           >
             {ui.ctaSignup}
           </Link>
           <Link
             href="/download"
-            className="inline-flex items-center justify-center gap-2 text-white text-sm font-semibold px-6 py-3 rounded-full transition-colors border border-white/30 hover:bg-white/10 w-full sm:w-auto"
+            className="inline-flex items-center justify-center gap-2 text-white text-sm font-semibold px-6 py-3 rounded-full transition-colors border border-white/30 hover:bg-white/10 w-full sm:w-auto sm:min-w-[190px]"
           >
             {ui.ctaDownload}
           </Link>
