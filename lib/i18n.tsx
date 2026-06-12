@@ -23,7 +23,7 @@ const pt = {
     heroBadge: "Vizai Render dentro do seu software preferido",
     heroTitle: "Render fotorrealista com IA direto do",
     heroSubtitle:
-      "Instale o Vizai Render, configure a cena e faça um render fotorrealista com IA em poucos segundos diretamente da sua viewport.",
+      "Sem GPU cara, sem exportar pra outro software, sem esperar horas. Instale o plugin e transforme sua viewport em imagem profissional em segundos.",
     heroCta: "Teste agora",
     heroFree: "Grátis ·",
     heroCredits: "8 créditos para testar",
@@ -57,11 +57,11 @@ const pt = {
       { title: "Varanda Gourmet", desc: "Texturas de madeira e reflexos." },
       { title: "Hall de Entrada", desc: "Iluminação dramática." },
       { title: "Quarto Infantil", desc: "Cores vivas e formas suaves." },
-      { title: "Slot 11", desc: "Aguardando imagem." },
-      { title: "Slot 12", desc: "Aguardando imagem." },
-      { title: "Render IA", desc: "Gerado pelo Vizai." },
-      { title: "Render IA", desc: "Gerado pelo Vizai." },
-      { title: "Render IA", desc: "Gerado pelo Vizai." },
+      { title: "Detalhe de Fachada", desc: "Varandas curvas, vidro e vegetação." },
+      { title: "Torre Residencial", desc: "Inserção urbana realista." },
+      { title: "Quarto Lúdico", desc: "Personagens e luz natural realistas." },
+      { title: "Suíte com Vista", desc: "Cortinas, tecidos e luz suave." },
+      { title: "Detalhes de Marcenaria", desc: "Texturas e objetos nítidos." },
     ],
   },
   why: {
@@ -101,6 +101,24 @@ const pt = {
       { name: "Decorar Ambientes", description: "Adicione móveis e decoração a ambientes vazios com IA generativa." },
       { name: "Planta Humanizada", description: "Transforme plantas técnicas em apresentações visuais e atraentes para o cliente." },
       { name: "Diagrama", description: "Gere diagramas conceituais e fluxos visuais a partir do seu projeto." },
+    ],
+  },
+  localTools: {
+    badge: "Grátis — sem créditos",
+    title: "Janela Tools: Ferramentas locais, de graça",
+    subtitle:
+      "Duas ferramentas que rodam 100% no seu computador, sem gastar créditos: a faxina completa do arquivo e paginação de piso profissional.",
+    items: [
+      {
+        name: "Otimizar Arquivo",
+        description:
+          "Deixe seu .skp leve em poucos cliques: purge inteligente, união de materiais duplicados, redução de texturas exageradas e relatório de quais componentes mais pesam no modelo. O tamanho do arquivo aparece antes e depois.",
+      },
+      {
+        name: "Pisos Seamless",
+        description:
+          "Aquela foto de porcelanato do site do fornecedor vira um piso paginado: rejunte configurável, dimensão real da peça, variações de textura e aplicação direta nas faces do modelo.",
+      },
     ],
   },
   howItWorks: {
@@ -178,15 +196,15 @@ const pt = {
   faq: {
     title: "Perguntas frequentes",
     items: [
-      { q: "O que é o Vizai Render?", a: "É um plugin para Sketchup, ArchiCAD e Revit que gera renders fotorrealistas com Inteligência Artificial diretamente dentro do software — sem exportar, sem abrir outra ferramenta." },
+      { q: "O que é o Vizai Render?", a: "É um plugin para SketchUp, ArchiCAD e Revit que gera renders fotorrealistas com Inteligência Artificial diretamente dentro do software — sem exportar, sem abrir outra ferramenta." },
       { q: "Preciso saber usar IA ou ter experiência com renderização?", a: "Não. Você configura a cena no seu programa preferido normalmente, escolhe o estilo de render e clica em um botão. O Vizai cuida do resto." },
       { q: "Como funcionam os créditos?", a: "Cada operação consome créditos: render 2K e edição com IA (inpaint) custam 4 créditos, upscale 4K custa 5 créditos, imagem 360° custa 5 créditos e IA Criativa custa 3 créditos. Operações avançadas como criação de blocos 3D custam 28 créditos, e geração de vídeo entre 22 e 83 créditos dependendo da duração. Você recebe 8 créditos grátis ao criar a conta. Planos mensais renovam automaticamente todo mês e créditos avulsos não expiram." },
       { q: "Posso cancelar minha assinatura quando quiser?", a: "Sim, sem fidelidade e sem burocracia. Você cancela direto pelo plugin com um clique. O plano continua ativo até o fim do período já pago." },
       { q: "As imagens geradas são minhas?", a: "Sim. Você é o dono de tudo que gerar com o Vizai Render — pode usar em apresentações, portfólios, propostas comerciais ou onde quiser." },
-      { q: "Meus projetos ficam armazenados nos servidores?", a: "Não. O Vizai processa a imagem da cena para gerar o render, mas não armazena nem retém os seus projetos. Os arquivos do Sketchup permanecem apenas na sua máquina." },
+      { q: "Meus projetos ficam armazenados nos servidores?", a: "Não. O Vizai processa a imagem da cena para gerar o render, mas não armazena nem retém os seus projetos. Os arquivos do SketchUp permanecem apenas na sua máquina." },
       { q: "Precisa de internet para funcionar?", a: "Sim. O processamento de IA é feito na nuvem, então é necessário estar conectado à internet durante o uso. A geração do render leva entre 20 e 60 segundos dependendo da conexão e da cena." },
       { q: "Preciso de um computador potente para usar o Vizai?", a: "Não. Diferente de renderizadores tradicionais como V-Ray ou Lumion, o Vizai não usa a GPU nem a CPU do seu computador para processar. Todo o trabalho pesado acontece na nuvem. Você pode gerar um render fotorrealista em um notebook básico — o que importa é só a conexão com a internet." },
-      { q: "O que acontece quando meus créditos acabam?", a: "O plugin avisa antes de zerar. Você pode comprar um pacote avulso de créditos ou fazer upgrade do plano — tudo sem sair do Sketchup." },
+      { q: "O que acontece quando meus créditos acabam?", a: "O plugin avisa antes de zerar. Você pode comprar um pacote avulso de créditos ou fazer upgrade do plano — tudo sem sair do SketchUp." },
       { q: "Quanto tempo leva para gerar um render?", a: "Entre 20 e 60 segundos, dependendo da complexidade da cena e do estilo escolhido." },
     ],
   },
@@ -200,6 +218,7 @@ const pt = {
   footer: {
     plans: "Planos",
     download: "Baixar plugin",
+    training: "Treinamento",
     gallery: "Galeria",
     privacy: "Privacidade",
     terms: "Termos de Serviço",
@@ -383,7 +402,7 @@ const en: Dict = {
     heroBadge: "Vizai Render inside your favorite software",
     heroTitle: "Photorealistic AI rendering straight from",
     heroSubtitle:
-      "Install Vizai Render, set up your scene and create a photorealistic AI render in seconds, right from your viewport.",
+      "No expensive GPU, no exporting to another software, no hours of waiting. Install the plugin and turn your viewport into a professional image in seconds.",
     heroCta: "Try it now",
     heroFree: "Free ·",
     heroCredits: "8 credits to try",
@@ -417,11 +436,11 @@ const en: Dict = {
       { title: "Gourmet Balcony", desc: "Wood textures and reflections." },
       { title: "Entrance Hall", desc: "Dramatic lighting." },
       { title: "Kids' Bedroom", desc: "Vivid colors and soft shapes." },
-      { title: "Slot 11", desc: "Awaiting image." },
-      { title: "Slot 12", desc: "Awaiting image." },
-      { title: "AI Render", desc: "Generated by Vizai." },
-      { title: "AI Render", desc: "Generated by Vizai." },
-      { title: "AI Render", desc: "Generated by Vizai." },
+      { title: "Facade Detail", desc: "Curved balconies, glass and greenery." },
+      { title: "Residential Tower", desc: "Realistic urban context." },
+      { title: "Playful Kids' Room", desc: "Realistic people and natural light." },
+      { title: "Suite with a View", desc: "Curtains, fabrics and soft light." },
+      { title: "Joinery Details", desc: "Sharp textures and objects." },
     ],
   },
   why: {
@@ -461,6 +480,24 @@ const en: Dict = {
       { name: "Furnish Spaces", description: "Add furniture and decor to empty rooms with generative AI." },
       { name: "Humanized Floor Plan", description: "Turn technical floor plans into appealing visual presentations for your client." },
       { name: "Diagram", description: "Generate conceptual diagrams and visual flows from your project." },
+    ],
+  },
+  localTools: {
+    badge: "Free — no credits",
+    title: "Tools window: Local features, for free",
+    subtitle:
+      "Two tools that run 100% on your computer, without spending credits: a full file cleanup and professional floor tiling.",
+    items: [
+      {
+        name: "Optimize File",
+        description:
+          "Make your .skp light in a few clicks: smart purge, merging of duplicate materials, downsizing of oversized textures and a report of which components weigh the most in your model. File size shows before and after.",
+      },
+      {
+        name: "Seamless Floors",
+        description:
+          "That porcelain tile photo from your supplier's website becomes a tiled floor: configurable grout, real tile dimensions, texture variations and direct application onto the model's faces.",
+      },
     ],
   },
   howItWorks: {
@@ -538,15 +575,15 @@ const en: Dict = {
   faq: {
     title: "Frequently asked questions",
     items: [
-      { q: "What is Vizai Render?", a: "It's a plugin for Sketchup, ArchiCAD and Revit that generates photorealistic renders with Artificial Intelligence right inside the software — no exporting, no opening another tool." },
+      { q: "What is Vizai Render?", a: "It's a plugin for SketchUp, ArchiCAD and Revit that generates photorealistic renders with Artificial Intelligence right inside the software — no exporting, no opening another tool." },
       { q: "Do I need to know how to use AI or have rendering experience?", a: "No. You set up the scene in your favorite software as usual, choose the render style and click a button. Vizai takes care of the rest." },
       { q: "How do credits work?", a: "Each operation consumes credits: a 2K render and AI edits (inpaint) cost 4 credits, 4K upscale costs 5 credits, a 360° image costs 5 credits and Creative AI costs 3 credits. Advanced operations like creating 3D blocks cost 28 credits, and video generation between 22 and 83 credits depending on the duration. You get 8 free credits when you create your account. Monthly plans renew automatically every month and one-off credits do not expire." },
       { q: "Can I cancel my subscription whenever I want?", a: "Yes, no commitment and no red tape. You cancel right from the plugin with one click. The plan stays active until the end of the period you've already paid for." },
       { q: "Are the generated images mine?", a: "Yes. You own everything you generate with Vizai Render — you can use it in presentations, portfolios, commercial proposals or wherever you like." },
-      { q: "Are my projects stored on the servers?", a: "No. Vizai processes the scene image to generate the render, but it does not store or retain your projects. Your Sketchup files stay only on your machine." },
+      { q: "Are my projects stored on the servers?", a: "No. Vizai processes the scene image to generate the render, but it does not store or retain your projects. Your SketchUp files stay only on your machine." },
       { q: "Do I need internet to use it?", a: "Yes. The AI processing happens in the cloud, so you need to be connected to the internet while using it. Generating a render takes between 20 and 60 seconds depending on your connection and the scene." },
       { q: "Do I need a powerful computer to use Vizai?", a: "No. Unlike traditional renderers like V-Ray or Lumion, Vizai doesn't use your computer's GPU or CPU to process. All the heavy lifting happens in the cloud. You can generate a photorealistic render on a basic laptop — all that matters is your internet connection." },
-      { q: "What happens when my credits run out?", a: "The plugin warns you before they hit zero. You can buy a one-off credit pack or upgrade your plan — all without leaving Sketchup." },
+      { q: "What happens when my credits run out?", a: "The plugin warns you before they hit zero. You can buy a one-off credit pack or upgrade your plan — all without leaving SketchUp." },
       { q: "How long does it take to generate a render?", a: "Between 20 and 60 seconds, depending on the complexity of the scene and the style chosen." },
     ],
   },
@@ -560,6 +597,7 @@ const en: Dict = {
   footer: {
     plans: "Plans",
     download: "Download plugin",
+    training: "Training",
     gallery: "Gallery",
     privacy: "Privacy",
     terms: "Terms of Service",
@@ -741,7 +779,7 @@ const es: Dict = {
     heroBadge: "Vizai Render dentro de tu software favorito",
     heroTitle: "Render fotorrealista con IA directo desde",
     heroSubtitle:
-      "Instala Vizai Render, configura la escena y crea un render fotorrealista con IA en segundos, directamente desde tu viewport.",
+      "Sin GPU cara, sin exportar a otro software, sin esperar horas. Instala el plugin y convierte tu viewport en una imagen profesional en segundos.",
     heroCta: "Pruébalo ahora",
     heroFree: "Gratis ·",
     heroCredits: "8 créditos para probar",
@@ -775,11 +813,11 @@ const es: Dict = {
       { title: "Terraza Gourmet", desc: "Texturas de madera y reflejos." },
       { title: "Hall de Entrada", desc: "Iluminación dramática." },
       { title: "Dormitorio Infantil", desc: "Colores vivos y formas suaves." },
-      { title: "Slot 11", desc: "Esperando imagen." },
-      { title: "Slot 12", desc: "Esperando imagen." },
-      { title: "Render IA", desc: "Generado por Vizai." },
-      { title: "Render IA", desc: "Generado por Vizai." },
-      { title: "Render IA", desc: "Generado por Vizai." },
+      { title: "Detalle de Fachada", desc: "Balcones curvos, vidrio y vegetación." },
+      { title: "Torre Residencial", desc: "Inserción urbana realista." },
+      { title: "Habitación Lúdica", desc: "Personajes y luz natural realistas." },
+      { title: "Suite con Vista", desc: "Cortinas, telas y luz suave." },
+      { title: "Detalles de Carpintería", desc: "Texturas y objetos nítidos." },
     ],
   },
   why: {
@@ -819,6 +857,24 @@ const es: Dict = {
       { name: "Decorar Ambientes", description: "Agrega muebles y decoración a ambientes vacíos con IA generativa." },
       { name: "Plano Humanizado", description: "Transforma planos técnicos en presentaciones visuales y atractivas para el cliente." },
       { name: "Diagrama", description: "Genera diagramas conceptuales y flujos visuales a partir de tu proyecto." },
+    ],
+  },
+  localTools: {
+    badge: "Gratis — sin créditos",
+    title: "Ventana Tools: Herramientas locales, gratis",
+    subtitle:
+      "Dos herramientas que corren 100% en tu computadora, sin gastar créditos: la limpieza completa del archivo y paginación de piso profesional.",
+    items: [
+      {
+        name: "Optimizar Archivo",
+        description:
+          "Deja tu .skp liviano en pocos clics: purge inteligente, unión de materiales duplicados, reducción de texturas exageradas y reporte de qué componentes pesan más en el modelo. El tamaño del archivo aparece antes y después.",
+      },
+      {
+        name: "Pisos Seamless",
+        description:
+          "Esa foto de porcelanato del sitio del proveedor se convierte en un piso paginado: junta configurable, dimensión real de la pieza, variaciones de textura y aplicación directa en las caras del modelo.",
+      },
     ],
   },
   howItWorks: {
@@ -896,15 +952,15 @@ const es: Dict = {
   faq: {
     title: "Preguntas frecuentes",
     items: [
-      { q: "¿Qué es Vizai Render?", a: "Es un plugin para Sketchup, ArchiCAD y Revit que genera renders fotorrealistas con Inteligencia Artificial directamente dentro del software — sin exportar, sin abrir otra herramienta." },
+      { q: "¿Qué es Vizai Render?", a: "Es un plugin para SketchUp, ArchiCAD y Revit que genera renders fotorrealistas con Inteligencia Artificial directamente dentro del software — sin exportar, sin abrir otra herramienta." },
       { q: "¿Necesito saber usar IA o tener experiencia en renderizado?", a: "No. Configuras la escena en tu programa favorito como siempre, eliges el estilo de render y haces clic en un botón. Vizai se encarga del resto." },
       { q: "¿Cómo funcionan los créditos?", a: "Cada operación consume créditos: un render 2K y las ediciones con IA (inpaint) cuestan 4 créditos, el upscale 4K cuesta 5 créditos, una imagen 360° cuesta 5 créditos y la IA Creativa cuesta 3 créditos. Operaciones avanzadas como la creación de bloques 3D cuestan 28 créditos, y la generación de video entre 22 y 83 créditos según la duración. Recibes 8 créditos gratis al crear la cuenta. Los planes mensuales se renuevan automáticamente cada mes y los créditos individuales no caducan." },
       { q: "¿Puedo cancelar mi suscripción cuando quiera?", a: "Sí, sin permanencia y sin trámites. Cancelas directo desde el plugin con un clic. El plan sigue activo hasta el final del período ya pagado." },
       { q: "¿Las imágenes generadas son mías?", a: "Sí. Eres el dueño de todo lo que generes con Vizai Render — puedes usarlo en presentaciones, portafolios, propuestas comerciales o donde quieras." },
-      { q: "¿Mis proyectos quedan almacenados en los servidores?", a: "No. Vizai procesa la imagen de la escena para generar el render, pero no almacena ni retiene tus proyectos. Los archivos de Sketchup permanecen solo en tu máquina." },
+      { q: "¿Mis proyectos quedan almacenados en los servidores?", a: "No. Vizai procesa la imagen de la escena para generar el render, pero no almacena ni retiene tus proyectos. Los archivos de SketchUp permanecen solo en tu máquina." },
       { q: "¿Necesita internet para funcionar?", a: "Sí. El procesamiento de IA se hace en la nube, así que es necesario estar conectado a internet durante el uso. Generar un render lleva entre 20 y 60 segundos según la conexión y la escena." },
       { q: "¿Necesito una computadora potente para usar Vizai?", a: "No. A diferencia de renderizadores tradicionales como V-Ray o Lumion, Vizai no usa la GPU ni la CPU de tu computadora para procesar. Todo el trabajo pesado ocurre en la nube. Puedes generar un render fotorrealista en una laptop básica — lo único que importa es la conexión a internet." },
-      { q: "¿Qué pasa cuando se acaban mis créditos?", a: "El plugin avisa antes de que lleguen a cero. Puedes comprar un paquete suelto de créditos o mejorar tu plan — todo sin salir de Sketchup." },
+      { q: "¿Qué pasa cuando se acaban mis créditos?", a: "El plugin avisa antes de que lleguen a cero. Puedes comprar un paquete suelto de créditos o mejorar tu plan — todo sin salir de SketchUp." },
       { q: "¿Cuánto tarda en generar un render?", a: "Entre 20 y 60 segundos, según la complejidad de la escena y el estilo elegido." },
     ],
   },
@@ -918,6 +974,7 @@ const es: Dict = {
   footer: {
     plans: "Planes",
     download: "Descargar plugin",
+    training: "Entrenamiento",
     gallery: "Galería",
     privacy: "Privacidad",
     terms: "Términos de Servicio",

@@ -55,6 +55,7 @@ export function Footer() {
   const mainLinks = [
     { href: "#pricing", label: t.footer.plans },
     { href: "/download", label: t.footer.download },
+    { href: "/treinamento", label: t.footer.training },
     { href: "#gallery", label: t.footer.gallery },
   ];
 

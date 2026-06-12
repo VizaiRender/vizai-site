@@ -5,7 +5,9 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/api/', '/auth/', '/login/', '/signup/', '/sucesso/', '/checkout/'],
+      // /obrigado fica de fora de propósito: ela usa noindex na meta tag,
+      // e o Google precisa conseguir rastrear a página pra ler a tag.
+      disallow: ['/api/', '/auth/', '/login/', '/signup/', '/sucesso/', '/checkout/', '/app/'],
     },
     sitemap: 'https://vizairender.com/sitemap.xml',
   }

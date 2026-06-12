@@ -4,9 +4,16 @@ import { DownloadHero } from "@/components/ui/download-hero";
 import { getDownloadManifest } from "@/lib/download-manifest";
 
 export const metadata = {
-  title: "Baixar plugin | Vizai Render",
+  title: "Baixar plugin",
   description:
     "Baixe o plugin Vizai Render para SketchUp. Instalação em menos de 1 minuto.",
+  alternates: { canonical: "/download" },
+  openGraph: {
+    title: "Baixar plugin | Vizai Render",
+    description:
+      "Baixe o plugin Vizai Render para SketchUp. Instalação em menos de 1 minuto.",
+    url: "/download",
+  },
 };
 
 export default async function DownloadPage() {

@@ -14,6 +14,7 @@ import GradientBordersButton from "@/components/ui/gradient-borders-button";
 import { Footer } from "@/components/ui/footer";
 import { FaqSection } from "@/components/ui/faq-section";
 import { ToolsSection } from "@/components/ui/tools-section";
+import { LocalToolsSection } from "@/components/ui/local-tools-section";
 import { PluginDemo } from "@/components/ui/plugin-demo";
 import { VideoSection } from "@/components/ui/video-section";
 import AnimatedTextCycle from "@/components/ui/animated-text-cycle";
@@ -161,7 +162,7 @@ export default function Home() {
             {t.home.heroTitle}{" "}
             <AnimatedWords
               words={[
-                { text: "Sketchup" },
+                { text: "SketchUp" },
                 { text: "Archicad", comingSoon: true },
                 { text: "Revit", comingSoon: true },
               ]}
@@ -233,6 +234,9 @@ export default function Home() {
       <WhySection />
 
       <ToolsSection />
+
+      {/* Janela Tools — ferramentas locais grátis */}
+      <LocalToolsSection />
 
       <HowItWorksSection />
 

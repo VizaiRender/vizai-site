@@ -2,8 +2,9 @@ import { Footer } from "@/components/ui/footer";
 import { LegalContent } from "@/components/ui/legal-content";
 
 export const metadata = {
-  title: "Termos de Serviço | Vizai Render",
+  title: "Termos de Serviço",
   description: "Termos de Serviço do Vizai Render.",
+  alternates: { canonical: "/terms" },
 };
 
 export default function TermsPage() {

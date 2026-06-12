@@ -14,10 +14,17 @@ export async function generateMetadata({
 }) {
   const { slug } = await params;
   const content = getArticleContent(slug, "pt");
-  if (!content) return { title: "Treinamento | Vizai Render" };
+  if (!content) return { title: "Treinamento" };
   return {
-    title: `${content.title} | Treinamento Vizai Render`,
+    title: content.title,
     description: content.excerpt,
+    alternates: { canonical: `/treinamento/${slug}` },
+    openGraph: {
+      title: `${content.title} | Vizai Render`,
+      description: content.excerpt,
+      url: `/treinamento/${slug}`,
+      type: "article",
+    },
   };
 }
 

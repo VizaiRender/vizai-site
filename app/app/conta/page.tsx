@@ -4,7 +4,7 @@ import { AccountContent } from "@/components/ui/account-content";
 import { fetchSubscription } from "@/lib/vizai-api";
 
 export const metadata = {
-  title: "Minha conta | Vizai Render",
+  title: "Minha conta",
 };
 
 export default async function AccountPage({

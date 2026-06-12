@@ -135,6 +135,14 @@ const demoHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      // URL "adivinhável" que gente digita ou recebe por anúncio/WhatsApp
+      { source: "/planos", destination: "/#pricing", permanent: true },
+      { source: "/plans", destination: "/#pricing", permanent: true },
+      { source: "/precios", destination: "/#pricing", permanent: true },
+    ];
+  },
   images: {
     // Otimizador desligado: o endpoint /_next/image quebra no Worker da
     // Cloudflare (erro 1101 ao codificar AVIF). Com unoptimized, o next/image

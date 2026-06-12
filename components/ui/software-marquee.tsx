@@ -6,7 +6,7 @@ import { Marquee } from "./marquee";
 import { useT } from "@/lib/i18n";
 
 const softwares = [
-  { name: "Sketchup", src: "/logo-sketchup.svg", comingSoon: false },
+  { name: "SketchUp", src: "/logo-sketchup.svg", comingSoon: false },
   { name: "ArchiCAD", src: "/logo-archicad.png", comingSoon: true },
   { name: "Revit",    src: "/logo-revit.svg", comingSoon: true },
 ];

@@ -2,8 +2,9 @@ import { Footer } from "@/components/ui/footer";
 import { LegalContent } from "@/components/ui/legal-content";
 
 export const metadata = {
-  title: "Política de Privacidade | Vizai Render",
+  title: "Política de Privacidade",
   description: "Política de Privacidade do Vizai Render.",
+  alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPage() {

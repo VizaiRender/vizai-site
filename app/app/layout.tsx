@@ -3,7 +3,8 @@ import { createClient } from "@/lib/supabase/server";
 import Navbar from "@/app/components/Navbar";
 
 export const metadata = {
-  title: "Dashboard | Vizai Render",
+  title: "Dashboard",
+  robots: { index: false, follow: false },
 };
 
 export default async function AppLayout({

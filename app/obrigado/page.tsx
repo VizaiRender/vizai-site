@@ -3,6 +3,12 @@ import Navbar from "@/app/components/Navbar";
 import { SucessoContent } from "@/components/ui/sucesso-content";
 import { PurchaseTracker } from "@/components/ui/purchase-tracker";
 
+// Confirmação de compra: não deve aparecer no Google
+export const metadata = {
+  title: "Compra confirmada",
+  robots: { index: false, follow: false },
+};
+
 // Página de obrigado PÚBLICA e leve — sem login, sem busca de dados, sem fundo
 // animado (WebGL). O plano vem pela URL (o servidor já sabe no checkout), então
 // mostramos nome do plano + créditos sem precisar autenticar. O pagamento e os
