@@ -412,26 +412,26 @@ export const ptArticles: Record<string, ArticleContent> = {
         type: "steps",
         items: [
           {
-            title: "Posicione a câmera",
-            text: "Deixe a viewport exatamente no ângulo que você vai renderizar. O reflexo é calculado a partir desse ponto de vista.",
+            title: "Salve a cena",
+            text: "Deixe a viewport na vista que você vai renderizar e salve como uma cena. O reflexo fica amarrado a essa cena.",
           },
           {
-            title: "Selecione a face do espelho",
-            text: "No SketchUp, clique na face que representa o vidro do espelho. Funciona inclusive com espelhos compostos por várias faces coplanares contínuas.",
+            title: "Clique no botão e na face do espelho",
+            text: "Clique em **Gerar Reflexo na Cena** e depois na face que representa o vidro do espelho — ela acende em azul. Não precisa entrar no grupo, e funciona com espelhos de várias faces coplanares.",
           },
           {
-            title: "Escolha a direção do reflexo",
-            text: "Reflexo do Fundo (o que está atrás de você), Esquerda ou Direita — conforme o que o espelho deveria mostrar naquele ângulo.",
+            title: "Repita em quantos espelhos quiser",
+            text: "Você pode gerar o reflexo em vários espelhos na mesma cena. Tecle **ESC** para sair da ferramenta quando terminar.",
           },
         ],
       },
       {
         type: "p",
-        text: "O plugin fotografa o ambiente na direção escolhida, espelha a imagem e aplica na face — em segundos, **sem custo de créditos**, pois tudo acontece localmente no seu SketchUp.",
+        text: "O plugin reflete a câmera da cena pelo plano do espelho, captura o ambiente que ele realmente refletiria e projeta na face — em segundos, **sem custo de créditos**, pois tudo acontece localmente no seu SketchUp.",
       },
       {
         type: "warn",
-        text: "O reflexo é calculado para o ângulo atual da câmera. Se você mover a câmera depois, refaça o reflexo antes de renderizar.",
+        text: "O reflexo fica **salvo na cena** e some ao trocar de cena — gere um para cada cena. Se você mudar a vista da cena depois, refaça o reflexo antes de renderizar.",
       },
       {
         type: "tip",

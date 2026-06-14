@@ -412,26 +412,26 @@ export const esArticles: Record<string, ArticleContent> = {
         type: "steps",
         items: [
           {
-            title: "Posiciona la cámara",
-            text: "Deja la viewport exactamente en el ángulo que vas a renderizar. El reflejo se calcula desde ese punto de vista.",
+            title: "Guarda la escena",
+            text: "Deja la viewport en la vista que vas a renderizar y guárdala como una escena. El reflejo queda vinculado a esa escena.",
           },
           {
-            title: "Selecciona la cara del espejo",
-            text: "En SketchUp, haz clic en la cara que representa el vidrio del espejo. Funciona incluso con espejos compuestos por varias caras coplanares continuas.",
+            title: "Haz clic en el botón y en la cara del espejo",
+            text: "Haz clic en **Generar Reflejo en la Escena** y luego en la cara que representa el vidrio del espejo — se ilumina en azul. No necesitas entrar al grupo, y funciona con espejos de varias caras coplanares.",
           },
           {
-            title: "Elige la dirección del reflejo",
-            text: "Reflejo del Fondo (lo que está detrás de ti), Izquierda o Derecha — según lo que el espejo debería mostrar en ese ángulo.",
+            title: "Repite en todos los espejos que quieras",
+            text: "Puedes generar el reflejo en varios espejos en la misma escena. Pulsa **ESC** para salir de la herramienta cuando termines.",
           },
         ],
       },
       {
         type: "p",
-        text: "El plugin fotografía el ambiente en la dirección elegida, refleja la imagen y la aplica en la cara — en segundos, **sin costo de créditos**, porque todo sucede localmente en tu SketchUp.",
+        text: "El plugin refleja la cámara de la escena por el plano del espejo, captura lo que el espejo realmente reflejaría y lo proyecta en la cara — en segundos, **sin costo de créditos**, porque todo sucede localmente en tu SketchUp.",
       },
       {
         type: "warn",
-        text: "El reflejo se calcula para el ángulo actual de la cámara. Si mueves la cámara después, rehaz el reflejo antes de renderizar.",
+        text: "El reflejo queda **guardado en la escena** y desaparece al cambiar de escena — genera uno por escena. Si cambias la vista de la escena después, rehaz el reflejo antes de renderizar.",
       },
       {
         type: "tip",

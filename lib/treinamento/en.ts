@@ -412,26 +412,26 @@ export const enArticles: Record<string, ArticleContent> = {
         type: "steps",
         items: [
           {
-            title: "Position the camera",
-            text: "Set the viewport to the exact angle you'll render. The reflection is computed from that point of view.",
+            title: "Save the scene",
+            text: "Set the viewport to the view you'll render and save it as a scene. The reflection is tied to that scene.",
           },
           {
-            title: "Select the mirror face",
-            text: "In SketchUp, click the face that represents the mirror glass. It even works with mirrors made of several continuous coplanar faces.",
+            title: "Click the button and the mirror face",
+            text: "Click **Generate Reflection in Scene** and then the face that represents the mirror glass — it lights up blue. No need to enter the group, and it works with mirrors made of several coplanar faces.",
           },
           {
-            title: "Choose the reflection direction",
-            text: "Back reflection (what's behind you), Left or Right — whatever the mirror should show at that angle.",
+            title: "Repeat on as many mirrors as you want",
+            text: "You can generate the reflection on several mirrors in the same scene. Press **ESC** to leave the tool when you're done.",
           },
         ],
       },
       {
         type: "p",
-        text: "The plugin photographs the room in the chosen direction, mirrors the image and applies it to the face — in seconds, **at no credit cost**, since everything happens locally in your SketchUp.",
+        text: "The plugin reflects the scene camera across the mirror plane, captures what the mirror would really reflect and projects it onto the face — in seconds, **at no credit cost**, since everything happens locally in your SketchUp.",
       },
       {
         type: "warn",
-        text: "The reflection is computed for the current camera angle. If you move the camera afterwards, redo the reflection before rendering.",
+        text: "The reflection is **saved in the scene** and disappears when you switch scenes — generate one per scene. If you change the scene's view later, redo the reflection before rendering.",
       },
       {
         type: "tip",

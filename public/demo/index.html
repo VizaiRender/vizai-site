@@ -5541,33 +5541,15 @@
               <div class="acc-b">
                 <div class="acc-p">
                   <div style="display:flex; flex-direction:column; gap:8px;">
-                    <button id="mirror-btn-back" onclick="captureMirrorReflection('back')"
+                    <button id="mirror-btn" onclick="captureMirrorReflection()"
                       style="width:100%; padding:12px; background:#1a6fff; color:#fff; border:none; border-radius:8px; cursor:pointer; font-weight:700; display:flex; align-items:center; justify-content:center; gap:8px; font-family:'Century Gothic',sans-serif; font-size:12px; transition:all 0.2s;">
                       <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round">
                         <rect x="6" y="2" width="12" height="20" rx="6"></rect>
                         <line x1="9.5" y1="6" x2="9.5" y2="11"></line>
                       </svg>
-                      <span data-i18n="mirror.btn_back">Reflexo do Fundo</span>
+                      <span data-i18n="mirror.btn">Gerar Reflexo na Cena</span>
                     </button>
-                    <div style="display:flex; gap:8px;">
-                      <button id="mirror-btn-left" onclick="captureMirrorReflection('left')"
-                        style="flex:1; padding:12px 8px; background:#1a6fff; color:#fff; border:none; border-radius:8px; cursor:pointer; font-weight:700; display:flex; align-items:center; justify-content:center; gap:6px; font-family:'Century Gothic',sans-serif; font-size:12px; transition:all 0.2s;">
-                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"
-                          stroke-linecap="round" stroke-linejoin="round">
-                          <polyline points="15 18 9 12 15 6"></polyline>
-                        </svg>
-                        <span data-i18n="mirror.btn_left">Esquerda</span>
-                      </button>
-                      <button id="mirror-btn-right" onclick="captureMirrorReflection('right')"
-                        style="flex:1; padding:12px 8px; background:#1a6fff; color:#fff; border:none; border-radius:8px; cursor:pointer; font-weight:700; display:flex; align-items:center; justify-content:center; gap:6px; font-family:'Century Gothic',sans-serif; font-size:12px; transition:all 0.2s;">
-                        <span data-i18n="mirror.btn_right">Direita</span>
-                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"
-                          stroke-linecap="round" stroke-linejoin="round">
-                          <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                      </button>
-                    </div>
                     <div
                       style="background:rgba(255,180,0,0.1); border:1px solid rgba(255,180,0,0.3); border-radius:8px; padding:10px; display:flex; align-items:flex-start; gap:8px;">
                       <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#f59e0b" stroke-width="2"
@@ -5575,8 +5557,8 @@
                         <path d="M9 11l3 3L22 4"></path>
                         <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
                       </svg>
-                      <div data-i18n="mirror.hint" style="font-size:10px; color:#e8edf2; line-height:1.4;">
-                        <strong>Como usar:</strong> posicione a câmera, selecione a <b>face do espelho</b> e escolha o que aparece no reflexo: <b>Fundo</b> (atrás de você), <b>Esquerda</b> ou <b>Direita</b>.<br><i>Refaça se mudar a câmera.</i>
+                      <div data-i18n="mirror.hint" style="font-size:10px; color:#e8edf2; line-height:1.65;">
+                        <strong>Como usar</strong><br>1) <b>Salve a cena</b> com a vista desejada<br>2) Clique no botão acima<br>3) Clique na <b>face do espelho</b> (acende em azul)<br><br>💡 O reflexo fica salvo na cena e <b>some ao trocar de cena</b> — é só gerar de novo. <i>ESC para sair.</i>
                       </div>
                     </div>
                   </div>
@@ -7978,32 +7960,32 @@
     };
 
     /* ---- Reflexo de Espelho (demo: simula sucesso, sem SketchUp) ---- */
-    const MIRROR_BTNS = { back: 'mirror.btn_back', left: 'mirror.btn_left', right: 'mirror.btn_right' };
-    let mirrorActiveBtn = null;
-    function captureMirrorReflection(mode) {
-      const all = Object.keys(MIRROR_BTNS).map(k => document.getElementById('mirror-btn-' + k));
-      mirrorActiveBtn = document.getElementById('mirror-btn-' + (MIRROR_BTNS[mode] ? mode : 'back'));
-      all.forEach(b => { b.disabled = true; b.style.opacity = '0.6'; });
-      mirrorActiveBtn.querySelector('span').textContent = t('mirror.working');
+    let mirrorResetTimer = null;
+    function setMirrorBtn(label, bg) {
+      const b = document.getElementById('mirror-btn');
+      if (!b) return;
+      b.querySelector('span').textContent = label;
+      b.style.background = bg || '#1a6fff';
+    }
+    function captureMirrorReflection() {
+      if (mirrorResetTimer) { clearTimeout(mirrorResetTimer); mirrorResetTimer = null; }
+      setMirrorBtn(t('mirror.active'), '#0f5ae0');
       setTimeout(() => window.onMirrorResult('ok'), 900);
     }
 
     window.onMirrorResult = function (status) {
-      const map = { ok: 'mirror.ok', no_face: 'mirror.no_face', error: 'mirror.err' };
-      if (mirrorActiveBtn) {
-        mirrorActiveBtn.querySelector('span').textContent = t(map[status] || 'mirror.err');
-        mirrorActiveBtn.style.background = (status === 'ok') ? '#16a34a' : (status === 'no_face' ? '#b45309' : '#dc2626');
-      }
-      setTimeout(() => {
-        Object.keys(MIRROR_BTNS).forEach(k => {
-          const b = document.getElementById('mirror-btn-' + k);
-          b.querySelector('span').textContent = t(MIRROR_BTNS[k]);
-          b.style.background = '#1a6fff';
-          b.style.opacity = '1';
-          b.disabled = false;
-        });
-        mirrorActiveBtn = null;
-      }, 2200);
+      const map = {
+        ok: ['mirror.ok', '#16a34a'],
+        no_scene: ['mirror.no_scene', '#b45309'],
+        no_face: ['mirror.no_face', '#b45309'],
+        error: ['mirror.err', '#dc2626']
+      };
+      const e = map[status] || map.error;
+      setMirrorBtn(t(e[0]), e[1]);
+      if (mirrorResetTimer) clearTimeout(mirrorResetTimer);
+      mirrorResetTimer = setTimeout(() => {
+        setMirrorBtn(t('mirror.btn'), '#1a6fff');
+      }, status === 'ok' ? 1800 : 2600);
     };
 
     function tab(id) {
@@ -9938,7 +9920,7 @@ const DL_SVG = '<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0
         'thirds.title': 'Regra dos terços', 'thirds.sub': 'Linhas guia para composição',
         'twopt.title': '2 Pontos de fuga', 'twopt.sub': 'Perspectiva arquitetônica',
         'scene.save_title': 'Salvar cena', 'scene.label': 'Nomeie a cena atual antes de salvar', 'scene.placeholder': 'Nome da cena', 'scene.save': 'Salvar',
-        'mirror.section': 'Reflexo de Espelho', 'mirror.btn_back': 'Reflexo do Fundo', 'mirror.btn_left': 'Esquerda', 'mirror.btn_right': 'Direita', 'mirror.hint': '<strong>Como usar:</strong> posicione a câmera, selecione a <b>face do espelho</b> e escolha o que aparece no reflexo: <b>Fundo</b> (atrás de você), <b>Esquerda</b> ou <b>Direita</b>.<br><i>Refaça se mudar a câmera.</i>', 'mirror.working': 'Gerando…', 'mirror.ok': 'Pronto!', 'mirror.no_face': 'Selecione a face', 'mirror.err': 'Erro',
+        'mirror.section': 'Reflexo de Espelho', 'mirror.btn': 'Gerar Reflexo na Cena', 'mirror.active': 'Clique na face do espelho (ESC sai)', 'mirror.hint': '<strong>Como usar</strong><br>1) <b>Salve a cena</b> com a vista desejada<br>2) Clique no botão acima<br>3) Clique na <b>face do espelho</b> (acende em azul)<br><br>💡 O reflexo fica salvo na cena e <b>some ao trocar de cena</b> — é só gerar de novo. <i>ESC para sair.</i>', 'mirror.ok': 'Reflexo criado!', 'mirror.no_scene': 'Salve uma cena primeiro', 'mirror.no_face': 'Clique numa face', 'mirror.err': 'Erro',
         'shadow.title': 'Iluminação da cena', 'shadow.hint': 'Ajuste Claro e Escuro juntos para clarear a cena e revelar mais detalhes no render.', 'shadow.light': 'Claro', 'shadow.dark': 'Escuro', 'shadow.use_sun': 'Usar sol para sombreamento', 'shadow.use_sun_sub': 'Melhora visibilidade da cena no render', 'shadow.recommend_hint': 'Configuração recomendada:', 'shadow.recommend_ext': 'Externa', 'shadow.recommend_int': 'Interior',
         'studio.proj_type': '1. Tipo de projeto', 'studio.quality': '2. Qualidade', 'studio.lighting': '3. Estilo de clima', 'studio.lights': '4. Luzes', 'studio.details': '5. Detalhes da cena',
         'proj.interior': 'Interiores', 'proj.interior_sub': 'Residencial', 'proj.facade': 'Fachada Externa', 'proj.facade_sub': 'Residencial', 'proj.nature': 'Meio à Natureza', 'proj.nature_sub': 'Integração', 'proj.commercial': 'Comercial', 'proj.commercial_sub': 'Loja / Escritório / Edifício', 'proj.building': 'Edifício', 'proj.building_sub': 'Residencial / Comercial',
@@ -10105,7 +10087,7 @@ const DL_SVG = '<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0
         'thirds.title': 'Rule of Thirds', 'thirds.sub': 'Composition guide lines',
         'twopt.title': '2-Point Perspective', 'twopt.sub': 'Architectural perspective',
         'scene.save_title': 'Save scene', 'scene.label': 'Name the current scene before saving', 'scene.placeholder': 'Scene name', 'scene.save': 'Save',
-        'mirror.section': 'Mirror Reflection', 'mirror.btn_back': 'Reflection — Behind', 'mirror.btn_left': 'Left', 'mirror.btn_right': 'Right', 'mirror.hint': '<strong>How to use:</strong> position the camera, select the <b>mirror face</b> and choose what shows in the reflection: <b>Behind</b> you, <b>Left</b> or <b>Right</b>.<br><i>Redo it if you move the camera.</i>', 'mirror.working': 'Working…', 'mirror.ok': 'Done!', 'mirror.no_face': 'Select the face', 'mirror.err': 'Error',
+        'mirror.section': 'Mirror Reflection', 'mirror.btn': 'Generate Reflection in Scene', 'mirror.active': 'Click the mirror face (ESC to exit)', 'mirror.hint': '<strong>How to use</strong><br>1) <b>Save the scene</b> with the view you want<br>2) Click the button above<br>3) Click the <b>mirror face</b> (lights up blue)<br><br>💡 The reflection is saved in the scene and <b>disappears when you switch scenes</b> — just generate it again. <i>ESC to exit.</i>', 'mirror.ok': 'Reflection created!', 'mirror.no_scene': 'Save a scene first', 'mirror.no_face': 'Click a face', 'mirror.err': 'Error',
         'shadow.title': 'Scene Lighting', 'shadow.hint': 'Adjust Light and Dark together to brighten the scene and reveal more details in the render.', 'shadow.light': 'Light', 'shadow.dark': 'Dark', 'shadow.use_sun': 'Use sun for shadows', 'shadow.use_sun_sub': 'Improves scene visibility in render', 'shadow.recommend_hint': 'Recommended setting:', 'shadow.recommend_ext': 'Exterior', 'shadow.recommend_int': 'Interior',
         'studio.proj_type': '1. Project Type', 'studio.quality': '2. Quality', 'studio.lighting': '3. Weather Style', 'studio.lights': '4. Lights', 'studio.details': '5. Scene Details',
         'proj.interior': 'Interiors', 'proj.interior_sub': 'Residential', 'proj.facade': 'External Facade', 'proj.facade_sub': 'Residential', 'proj.nature': 'In Nature', 'proj.nature_sub': 'Integration', 'proj.commercial': 'Commercial', 'proj.commercial_sub': 'Store / Office / Building', 'proj.building': 'Building', 'proj.building_sub': 'Residential / Commercial',
@@ -10272,7 +10254,7 @@ const DL_SVG = '<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0
         'thirds.title': 'Regla de tercios', 'thirds.sub': 'Guías de composición',
         'twopt.title': '2 Puntos de fuga', 'twopt.sub': 'Perspectiva arquitectónica',
         'scene.save_title': 'Guardar escena', 'scene.label': 'Nombra la escena actual antes de guardar', 'scene.placeholder': 'Nombre de escena', 'scene.save': 'Guardar',
-        'mirror.section': 'Reflejo del Espejo', 'mirror.btn_back': 'Reflejo del Fondo', 'mirror.btn_left': 'Izquierda', 'mirror.btn_right': 'Derecha', 'mirror.hint': '<strong>Cómo usar:</strong> coloca la cámara, selecciona la <b>cara del espejo</b> y elige qué aparece en el reflejo: <b>Fondo</b> (detrás de ti), <b>Izquierda</b> o <b>Derecha</b>.<br><i>Repite si mueves la cámara.</i>', 'mirror.working': 'Generando…', 'mirror.ok': '¡Listo!', 'mirror.no_face': 'Selecciona la cara', 'mirror.err': 'Error',
+        'mirror.section': 'Reflejo del Espejo', 'mirror.btn': 'Generar Reflejo en la Escena', 'mirror.active': 'Haz clic en la cara del espejo (ESC sale)', 'mirror.hint': '<strong>Cómo usar</strong><br>1) <b>Guarda la escena</b> con la vista deseada<br>2) Haz clic en el botón de arriba<br>3) Haz clic en la <b>cara del espejo</b> (se ilumina en azul)<br><br>💡 El reflejo se guarda en la escena y <b>desaparece al cambiar de escena</b> — solo genéralo de nuevo. <i>ESC para salir.</i>', 'mirror.ok': '¡Reflejo creado!', 'mirror.no_scene': 'Guarda una escena primero', 'mirror.no_face': 'Haz clic en una cara', 'mirror.err': 'Error',
         'shadow.title': 'Iluminación de la escena', 'shadow.hint': 'Ajusta Claro y Oscuro juntos para iluminar la escena y revelar más detalles en el render.', 'shadow.light': 'Claro', 'shadow.dark': 'Oscuro', 'shadow.use_sun': 'Usar sol para sombras', 'shadow.use_sun_sub': 'Mejora la visibilidad de la escena en el render', 'shadow.recommend_hint': 'Configuración recomendada:', 'shadow.recommend_ext': 'Exterior', 'shadow.recommend_int': 'Interior',
         'studio.proj_type': '1. Tipo de proyecto', 'studio.quality': '2. Calidad', 'studio.lighting': '3. Estilo de clima', 'studio.lights': '4. Luces', 'studio.details': '5. Detalles de la escena',
         'proj.interior': 'Interiores', 'proj.interior_sub': 'Residencial', 'proj.facade': 'Fachada Externa', 'proj.facade_sub': 'Residencial', 'proj.nature': 'En la Naturaleza', 'proj.nature_sub': 'Integración', 'proj.commercial': 'Comercial', 'proj.commercial_sub': 'Tienda / Oficina / Edificio', 'proj.building': 'Edificio', 'proj.building_sub': 'Residencial / Comercial',
