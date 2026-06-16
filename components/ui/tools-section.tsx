@@ -18,6 +18,7 @@ const tools: Tool[] = [
   { id: 1, mediaSrc: "/tools/tool-01.jpg" },
   { id: 2, mediaSrc: "/tools/tool-02.jpg" },
   { id: 10, mediaSrc: "/tools/tool-edit.mp4" },
+  { id: 11, mediaSrc: "/tools/tool-mirror.mp4" },
   { id: 3, mediaSrc: "/tools/tool-03.mp4" },
   { id: 4, mediaSrc: "/tools/tool-04.mp4" },
   { id: 5, mediaSrc: "/tools/tool-05.webp" },
