@@ -249,8 +249,8 @@ const pt = {
     packs: [
       { name: "Mini", desc: "Para uma demanda pontual", credits: "50 créditos", cta: "Comprar Mini", features: ["50 créditos sem expiração", "Todos os estilos de render", "Refinamento de imagem"] },
       { name: "Básico", desc: "Bom custo-benefício", credits: "200 créditos", cta: "Comprar Básico", features: ["200 créditos sem expiração", "Todos os estilos de render", "Refinamento + Inpainting", "Histórico de renders"] },
-      { name: "PRO", desc: "Para projetos maiores", credits: "750 créditos", cta: "Comprar PRO", features: ["750 créditos sem expiração", "Todos os estilos de render", "Refinamento + Inpainting", "IA Criativa (Diagrama)", "Histórico completo"] },
-      { name: "Empresa", desc: "Para grandes demandas", credits: "1.850 créditos", cta: "Comprar Empresa", features: ["1.850 créditos sem expiração", "Todos os estilos de render", "Refinamento + Inpainting", "IA Criativa (Diagrama)", "Histórico completo", "Suporte prioritário"] },
+      { name: "PRO", desc: "Para projetos maiores", credits: "700 créditos", cta: "Comprar PRO", features: ["700 créditos sem expiração", "Todos os estilos de render", "Refinamento + Inpainting", "IA Criativa (Diagrama)", "Histórico completo"] },
+      { name: "Empresa", desc: "Para grandes demandas", credits: "1.750 créditos", cta: "Comprar Empresa", features: ["1.750 créditos sem expiração", "Todos os estilos de render", "Refinamento + Inpainting", "IA Criativa (Diagrama)", "Histórico completo", "Suporte prioritário"] },
     ],
   },
   auth: {
@@ -629,8 +629,8 @@ const en: Dict = {
     packs: [
       { name: "Mini", desc: "For a one-off need", credits: "50 credits", cta: "Buy Mini", features: ["50 credits with no expiration", "All render styles", "Image refinement"] },
       { name: "Basic", desc: "Great value", credits: "200 credits", cta: "Buy Basic", features: ["200 credits with no expiration", "All render styles", "Refinement + Inpainting", "Render history"] },
-      { name: "PRO", desc: "For bigger projects", credits: "750 credits", cta: "Buy PRO", features: ["750 credits with no expiration", "All render styles", "Refinement + Inpainting", "Creative AI (Diagram)", "Full history"] },
-      { name: "Enterprise", desc: "For large demands", credits: "1,850 credits", cta: "Buy Enterprise", features: ["1,850 credits with no expiration", "All render styles", "Refinement + Inpainting", "Creative AI (Diagram)", "Full history", "Priority support"] },
+      { name: "PRO", desc: "For bigger projects", credits: "700 credits", cta: "Buy PRO", features: ["700 credits with no expiration", "All render styles", "Refinement + Inpainting", "Creative AI (Diagram)", "Full history"] },
+      { name: "Enterprise", desc: "For large demands", credits: "1,750 credits", cta: "Buy Enterprise", features: ["1,750 credits with no expiration", "All render styles", "Refinement + Inpainting", "Creative AI (Diagram)", "Full history", "Priority support"] },
     ],
   },
   auth: {
@@ -1007,8 +1007,8 @@ const es: Dict = {
     packs: [
       { name: "Mini", desc: "Para una necesidad puntual", credits: "50 créditos", cta: "Comprar Mini", features: ["50 créditos sin expiración", "Todos los estilos de render", "Refinamiento de imagen"] },
       { name: "Básico", desc: "Buena relación precio-valor", credits: "200 créditos", cta: "Comprar Básico", features: ["200 créditos sin expiración", "Todos los estilos de render", "Refinamiento + Inpainting", "Historial de renders"] },
-      { name: "PRO", desc: "Para proyectos más grandes", credits: "750 créditos", cta: "Comprar PRO", features: ["750 créditos sin expiración", "Todos los estilos de render", "Refinamiento + Inpainting", "IA Creativa (Diagrama)", "Historial completo"] },
-      { name: "Empresa", desc: "Para grandes demandas", credits: "1.850 créditos", cta: "Comprar Empresa", features: ["1.850 créditos sin expiración", "Todos los estilos de render", "Refinamiento + Inpainting", "IA Creativa (Diagrama)", "Historial completo", "Soporte prioritario"] },
+      { name: "PRO", desc: "Para proyectos más grandes", credits: "700 créditos", cta: "Comprar PRO", features: ["700 créditos sin expiración", "Todos los estilos de render", "Refinamiento + Inpainting", "IA Creativa (Diagrama)", "Historial completo"] },
+      { name: "Empresa", desc: "Para grandes demandas", credits: "1.750 créditos", cta: "Comprar Empresa", features: ["1.750 créditos sin expiración", "Todos los estilos de render", "Refinamiento + Inpainting", "IA Creativa (Diagrama)", "Historial completo", "Soporte prioritario"] },
     ],
   },
   auth: {
