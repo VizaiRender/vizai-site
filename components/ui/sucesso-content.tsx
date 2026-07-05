@@ -5,12 +5,12 @@ import { Download } from "lucide-react";
 import { useT } from "@/lib/i18n";
 
 const PLAN_CREDITS_N: Record<string, string> = {
-  starter_monthly: "300",
-  starter_annual: "3.000",
-  pro_monthly: "750",
-  pro_annual: "7.500",
-  business_monthly: "2.000",
-  business_annual: "20.000",
+  starter_monthly: "250",
+  starter_annual: "2.500",
+  pro_monthly: "650",
+  pro_annual: "6.500",
+  business_monthly: "1.750",
+  business_annual: "17.500",
 };
 
 export function SucessoContent({ plan }: { plan: string | null | undefined }) {

@@ -141,7 +141,7 @@ export const esArticles: Record<string, ArticleContent> = {
       {
         type: "ul",
         items: [
-          "**Planes mensuales** — Starter (300 créditos/mes), Pro (750 créditos/mes) y Business (2.000 créditos/mes). Los créditos se renuevan cada mes y puedes cancelar cuando quieras.",
+          "**Planes mensuales** — Starter (250 créditos/mes), Pro (650 créditos/mes) y Business (1.750 créditos/mes). Los créditos se renuevan cada mes y puedes cancelar cuando quieras.",
           "**Paquetes únicos** — de 50 a 1.850 créditos en compra única. **No expiran** y se consumen después de los créditos mensuales.",
         ],
       },
