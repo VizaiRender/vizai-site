@@ -243,7 +243,7 @@ const pt = {
     plans: [
       { name: "Grátis", desc: "Para experimentar o plugin", credits: "8 créditos", cta: "Começar grátis", features: ["8 créditos pra explorar", "Acesso ao plugin", "Render básico"] },
       { name: "Starter", desc: "Para quem está começando", credits: "250 créditos/mês", creditsAnnual: "2.500 créditos/ano", cta: "Assinar Starter", features: ["Todos os estilos de render", "Refinamento de imagem", "Histórico de renders", "Geração de vídeos", "Panorâmica 360", "Gerador de blocos por imagem", "Apenas 1 PC simultâneo"] },
-      { name: "PRO", desc: "O mais popular", credits: "650 créditos/mês", creditsAnnual: "6.500 créditos/ano", cta: "Assinar PRO", features: ["Tudo do Starter, mais", "Inpainting avançado", "Aba Render", "Acesso a aba IA Criativa", "Até 2 PCs simultâneos", "Acesso antecipado a novidades", "Suporte VIP"] },
+      { name: "PRO", desc: "O mais popular", credits: "600 créditos/mês", creditsAnnual: "6.000 créditos/ano", cta: "Assinar PRO", features: ["Tudo do Starter, mais", "Inpainting avançado", "Aba Render", "Acesso a aba IA Criativa", "Até 2 PCs simultâneos", "Acesso antecipado a novidades", "Suporte VIP"] },
       { name: "Business", desc: "Focado em escritórios", credits: "1.750 créditos/mês", creditsAnnual: "17.500 créditos/ano", cta: "Assinar Business", features: ["Tudo do PRO, mais", "Múltiplos PCs", "Suporte dedicado", "Tempo de resposta garantido"] },
     ],
     packs: [
@@ -623,7 +623,7 @@ const en: Dict = {
     plans: [
       { name: "Free", desc: "To try out the plugin", credits: "8 credits", cta: "Start for free", features: ["8 credits to explore", "Plugin access", "Basic render"] },
       { name: "Starter", desc: "For those just starting out", credits: "250 credits/month", creditsAnnual: "2,500 credits/yr", cta: "Subscribe to Starter", features: ["All render styles", "Image refinement", "Render history", "Video generation", "360 panorama", "Block generator from image", "Only 1 simultaneous PC"] },
-      { name: "PRO", desc: "The most popular", credits: "650 credits/month", creditsAnnual: "6,500 credits/yr", cta: "Subscribe to PRO", features: ["Everything in Starter, plus", "Advanced inpainting", "Render tab", "Access to Creative AI tab", "Up to 2 simultaneous PCs", "Early access to new features", "VIP support"] },
+      { name: "PRO", desc: "The most popular", credits: "600 credits/month", creditsAnnual: "6,000 credits/yr", cta: "Subscribe to PRO", features: ["Everything in Starter, plus", "Advanced inpainting", "Render tab", "Access to Creative AI tab", "Up to 2 simultaneous PCs", "Early access to new features", "VIP support"] },
       { name: "Business", desc: "Focused on studios", credits: "1,750 credits/month", creditsAnnual: "17,500 credits/yr", cta: "Subscribe to Business", features: ["Everything in PRO, plus", "Multiple PCs", "Dedicated support", "Guaranteed response time"] },
     ],
     packs: [
@@ -1001,7 +1001,7 @@ const es: Dict = {
     plans: [
       { name: "Gratis", desc: "Para probar el plugin", credits: "8 créditos", cta: "Empezar gratis", features: ["8 créditos para explorar", "Acceso al plugin", "Render básico"] },
       { name: "Starter", desc: "Para quien recién empieza", credits: "250 créditos/mes", creditsAnnual: "2.500 créditos/año", cta: "Suscribir Starter", features: ["Todos los estilos de render", "Refinamiento de imagen", "Historial de renders", "Generación de videos", "Panorámica 360", "Generador de bloques por imagen", "Solo 1 PC simultánea"] },
-      { name: "PRO", desc: "El más popular", credits: "650 créditos/mes", creditsAnnual: "6.500 créditos/año", cta: "Suscribir PRO", features: ["Todo lo de Starter, más", "Inpainting avanzado", "Pestaña Render", "Acceso a pestaña IA Creativa", "Hasta 2 PCs simultáneas", "Acceso anticipado a novedades", "Soporte VIP"] },
+      { name: "PRO", desc: "El más popular", credits: "600 créditos/mes", creditsAnnual: "6.000 créditos/año", cta: "Suscribir PRO", features: ["Todo lo de Starter, más", "Inpainting avanzado", "Pestaña Render", "Acceso a pestaña IA Creativa", "Hasta 2 PCs simultáneas", "Acceso anticipado a novedades", "Soporte VIP"] },
       { name: "Business", desc: "Enfocado en estudios", credits: "1.750 créditos/mes", creditsAnnual: "17.500 créditos/año", cta: "Suscribir Business", features: ["Todo lo de PRO, más", "Múltiples PCs", "Soporte dedicado", "Tiempo de respuesta garantizado"] },
     ],
     packs: [
