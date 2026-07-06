@@ -141,7 +141,7 @@ export const enArticles: Record<string, ArticleContent> = {
       {
         type: "ul",
         items: [
-          "**Monthly plans** — Starter (250 credits/month), Pro (600 credits/month) and Business (1,750 credits/month). Credits renew every month and you can cancel anytime.",
+          "**Monthly plans** — Starter (250 credits/month), Pro (600 credits/month) and Business (1,600 credits/month). Credits renew every month and you can cancel anytime.",
           "**One-time packs** — from 50 to 1,750 credits in a single purchase. They **never expire** and are consumed after your monthly credits.",
         ],
       },

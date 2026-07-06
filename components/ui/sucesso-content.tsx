@@ -9,8 +9,8 @@ const PLAN_CREDITS_N: Record<string, string> = {
   starter_annual: "2.500",
   pro_monthly: "600",
   pro_annual: "6.000",
-  business_monthly: "1.750",
-  business_annual: "17.500",
+  business_monthly: "1.600",
+  business_annual: "16.000",
 };
 
 export function SucessoContent({ plan }: { plan: string | null | undefined }) {
