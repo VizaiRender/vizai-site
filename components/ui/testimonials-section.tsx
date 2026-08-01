@@ -9,7 +9,7 @@ const avatars = [
   "https://i.pravatar.cc/150?img=52",
   "https://i.pravatar.cc/150?img=44",
   "https://i.pravatar.cc/150?img=68",
-  "https://i.pravatar.cc/150?img=56",
+  "https://i.pravatar.cc/150?img=16",
 ];
 
 export function TestimonialsSection() {
