@@ -2260,6 +2260,128 @@
       height: 14px;
     }
 
+    /* ---- Luz Fake (fita de LED / spot) ---- */
+    .fl-lbl {
+      font-size: 10.3px;
+      color: #8fa8be;
+      font-weight: 700;
+      margin: 0 4px 6px;
+    }
+
+    .fl-color {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .fl-swatch {
+      width: 36px;
+      height: 30px;
+      border-radius: 7px;
+      border: 0.5px solid #2e4257;
+      flex-shrink: 0;
+      box-shadow: 0 0 12px rgba(255, 200, 120, .3);
+    }
+
+    .fl-hex {
+      flex: 1;
+      background: #1e2d3d;
+      border: 0.5px solid #2e4257;
+      border-radius: 7px;
+      color: #e8edf2;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 8px 10px;
+      font-family: 'Century Gothic', sans-serif;
+      outline: none;
+    }
+
+    .fl-hex:focus {
+      border-color: #1a6fff;
+    }
+
+    .fl-swatch {
+      cursor: pointer;
+    }
+
+    .fl-pick {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      z-index: 60;
+      background: #16202c;
+      border: 0.5px solid #2e4257;
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, .55);
+    }
+
+    .fl-sv {
+      position: relative;
+      height: 110px;
+      border-radius: 7px;
+      cursor: crosshair;
+      margin-bottom: 9px;
+    }
+
+    .fl-hue {
+      position: relative;
+      height: 14px;
+      border-radius: 7px;
+      cursor: pointer;
+      background: linear-gradient(to right, #f00 0%, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, #f00 100%);
+    }
+
+    .fl-knob {
+      position: absolute;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      box-shadow: 0 0 4px rgba(0, 0, 0, .7);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .fl-quick {
+      display: flex;
+      gap: 5px;
+      margin-top: 9px;
+    }
+
+    .fl-quick div {
+      flex: 1;
+      height: 18px;
+      border-radius: 5px;
+      border: 0.5px solid #2e4257;
+      cursor: pointer;
+    }
+
+    .fl-quick div:hover {
+      border-color: #1a6fff;
+    }
+
+    .fl-clear {
+      width: 100%;
+      padding: 8px;
+      background: transparent;
+      color: #8fa8be;
+      border: 0.5px solid #46607a;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 10.5px;
+      font-family: 'Century Gothic', sans-serif;
+      transition: all .2s ease;
+    }
+
+    .fl-clear:hover {
+      color: #e8edf2;
+      border-color: #5c7794;
+    }
+
     .proj-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -5567,6 +5689,141 @@
             </div>
             <!-- ============================================= -->
 
+            <!-- =============================================
+           LUZ FAKE — fita de LED e spot (geometria + degradê)
+           ============================================= -->
+            <div class="acc open">
+              <div class="acc-h" onclick="toggleAcc(this.parentElement)"><span class="acc-t"
+                  data-i18n="fl.section">Luz Fake</span><svg class="acc-c" viewBox="0 0 24 24">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg></div>
+              <div class="acc-b">
+                <div class="acc-p">
+
+                  <div class="mode-switch" style="margin-bottom:12px">
+                    <div class="mode-btn active" id="fl-mode-led" onclick="flSetMode('led')">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="2" y1="7" x2="22" y2="7"></line>
+                        <line x1="5" y1="11" x2="5" y2="15"></line>
+                        <line x1="12" y1="11" x2="12" y2="17"></line>
+                        <line x1="19" y1="11" x2="19" y2="15"></line>
+                      </svg>
+                      <span data-i18n="fl.mode_led">Fita de LED</span>
+                    </div>
+                    <div class="mode-btn" id="fl-mode-spot" onclick="flSetMode('spot')">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <ellipse cx="12" cy="5" rx="4" ry="1.6"></ellipse>
+                        <line x1="8" y1="5" x2="3" y2="20"></line>
+                        <line x1="16" y1="5" x2="21" y2="20"></line>
+                      </svg>
+                      <span data-i18n="fl.mode_spot">Spot</span>
+                    </div>
+                  </div>
+
+                  <div id="fl-target-wrap">
+                    <div class="fl-lbl" data-i18n="fl.target">Tipo de objeto</div>
+                    <div class="mode-switch" style="margin-bottom:12px">
+                      <div class="mode-btn active" id="fl-target-edge" onclick="flSetTarget('edge')">
+                        <span data-i18n="fl.target_shelf">Marcenaria</span>
+                      </div>
+                      <div class="mode-btn" id="fl-target-face" onclick="flSetTarget('face')">
+                        <span data-i18n="fl.target_mirror">Espelho</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    style="background:rgba(255,180,0,0.1); border:1px solid rgba(255,180,0,0.3); border-radius:8px; padding:10px; display:flex; align-items:flex-start; gap:8px; margin-bottom:12px;">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#f59e0b" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;">
+                      <path d="M9 11l3 3L22 4"></path>
+                      <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                    </svg>
+                    <div id="fl-tip" data-i18n="fl.tip_led" style="font-size:10px; color:#e8edf2; line-height:1.65;">
+                      Configure a luz, clique em Gerar e depois clique na linha onde a fita vai correr. Segure Shift pra somar várias linhas.</div>
+                  </div>
+
+                  <div class="fl-lbl" data-i18n="fl.color">Cor da luz</div>
+                  <div class="fl-color" style="position:relative">
+                    <div class="fl-swatch" id="fl-swatch" style="background:#ffe76e" onclick="flTogglePicker()">
+                    </div>
+                    <input class="fl-hex" id="fl-hex" type="text" spellcheck="false" maxlength="7"
+                      value="#ffe76e" oninput="flHexInput(this.value, false)"
+                      onchange="flHexInput(this.value, true)">
+
+                    <div class="fl-pick" id="fl-pick" style="display:none">
+                      <div class="fl-sv" id="fl-sv">
+                        <div class="fl-knob" id="fl-sv-knob"></div>
+                      </div>
+                      <div class="fl-hue" id="fl-hue">
+                        <div class="fl-knob" id="fl-hue-knob" style="top:50%"></div>
+                      </div>
+                      <div class="fl-quick" id="fl-quick"></div>
+                    </div>
+                  </div>
+
+                  <div id="fl-dir-wrap">
+                    <div class="fl-lbl" data-i18n="fl.dir">Direção do facho</div>
+                    <div class="mode-switch" style="margin-bottom:12px">
+                      <div class="mode-btn active" id="fl-dir-down" onclick="flSetDir('down')">
+                        <span data-i18n="fl.dir_down">Baixo</span>
+                      </div>
+                      <div class="mode-btn" id="fl-dir-up" onclick="flSetDir('up')">
+                        <span data-i18n="fl.dir_up">Cima</span>
+                      </div>
+                      <div class="mode-btn" id="fl-dir-both" onclick="flSetDir('both')">
+                        <span data-i18n="fl.dir_both">Duplo</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="aj-row">
+                    <span class="aj-lbl" data-i18n="fl.reach">Alcance</span>
+                    <div class="aj-slider-wrap">
+                      <input type="range" class="aj-slider" id="fl-reach" min="0" max="100" value="10"
+                        oninput="flOnSlider('reach', this.value)" onchange="flCommit()">
+                    </div>
+                    <span class="aj-val" id="val-fl-reach">10</span>
+                  </div>
+                  <div class="aj-row">
+                    <span class="aj-lbl" data-i18n="fl.intensity">Intensidade</span>
+                    <div class="aj-slider-wrap">
+                      <input type="range" class="aj-slider" id="fl-intensity" min="0" max="100" value="70"
+                        oninput="flOnSlider('intensity', this.value)" onchange="flCommit()">
+                    </div>
+                    <span class="aj-val" id="val-fl-intensity">70</span>
+                  </div>
+                  <div class="aj-row" id="fl-spread-row">
+                    <span class="aj-lbl" data-i18n="fl.spread">Abertura</span>
+                    <div class="aj-slider-wrap">
+                      <input type="range" class="aj-slider" id="fl-spread" min="0" max="100" value="30"
+                        oninput="flOnSlider('spread', this.value)" onchange="flCommit()">
+                    </div>
+                    <span class="aj-val" id="val-fl-spread">30</span>
+                  </div>
+
+                  <div style="display:flex; flex-direction:column; gap:8px; margin-top:30px;">
+                    <button id="fl-btn" onclick="flGenerate()"
+                      style="width:100%; padding:12px; background:#1a6fff; color:#fff; border:none; border-radius:8px; cursor:pointer; font-weight:700; display:flex; align-items:center; justify-content:center; gap:8px; font-family:'Century Gothic',sans-serif; font-size:12px; transition:all 0.2s;">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 18h6"></path>
+                        <path d="M10 22h4"></path>
+                        <path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"></path>
+                      </svg>
+                      <span id="fl-btn-txt" data-i18n="fl.btn_led">Gerar Fita de LED</span>
+                    </button>
+
+                    <button class="fl-clear" onclick="flClear()" data-i18n="fl.clear">Apagar todas as luzes</button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <!-- ============================================= -->
+
             <div class="acc open">
               <div class="acc-h" onclick="toggleAcc(this.parentElement)"><span class="acc-t"
                   data-i18n="scene.save_title">Salvar cena</span><svg class="acc-c" viewBox="0 0 24 24">
@@ -7927,6 +8184,339 @@
       }
     }
 
+    /* ---- Luz Fake (fita de LED / spot) ----
+       Cada modo guarda os próprios valores: alcance/abertura de fita e de spot
+       não têm nada a ver um com o outro. Com uma luz selecionada no SketchUp os
+       controles passam a mexer nela (ao soltar o slider). */
+    let flMode = 'led';
+    let flResetTimer = null;
+    const flParams = {
+      led: { color: 'ffe76e', reach: 10, intensity: 70, spread: 30, direction: 'down' },
+      spot: { color: 'ffe76e', reach: 10, intensity: 70, spread: 40, direction: 'down' }
+    };
+
+    function flHexToRgb(hex) {
+      const h = String(hex || '').replace('#', '');
+      return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)];
+    }
+
+    function flRgbToHex(r, g, b) {
+      return [r, g, b].map(function (v) {
+        v = Math.max(0, Math.min(255, parseInt(v, 10) || 0));
+        return v.toString(16).padStart(2, '0');
+      }).join('');
+    }
+
+    let flShape = 'linear';
+    let flTarget = 'edge'; // onde o clique da fita pega: linha ou face
+
+    function flCur() { return flParams[flMode]; }
+
+    // Contorno fechado em parede vira facho radial: os botões de direção passam
+    // a significar pra fora / pra dentro, e a abertura deixa de valer (num anel
+    // o leque sobreporia as peças).
+    function flApplyShape(shape) {
+      flShape = (shape === 'radial') ? 'radial' : 'linear';
+      const rad = flShape === 'radial';
+      const keys = {
+        down: rad ? 'fl.dir_out' : 'fl.dir_down',
+        up: rad ? 'fl.dir_in' : 'fl.dir_up',
+        both: 'fl.dir_both'
+      };
+      ['down', 'up', 'both'].forEach(function (d) {
+        const el = document.getElementById('fl-dir-' + d);
+        if (!el) return;
+        const sp = el.querySelector('span');
+        if (!sp) return;
+        sp.setAttribute('data-i18n', keys[d]);
+        sp.textContent = t(keys[d]);
+      });
+      const row = document.getElementById('fl-spread-row');
+      if (row) {
+        row.style.opacity = rad ? '0.4' : '';
+        document.getElementById('fl-spread').disabled = rad;
+      }
+    }
+
+    function flPayload() {
+      return JSON.stringify(Object.assign({ mode: flMode, target: flTarget }, flCur()));
+    }
+
+    // Marcenaria = só linha; Espelho = só face. Deixar o SketchUp escolher
+    // sozinho fazia a face roubar o clique da linha na marcenaria.
+    function flSetTarget(tg) {
+      flTarget = (tg === 'face') ? 'face' : 'edge';
+      document.getElementById('fl-target-edge').classList.toggle('active', flTarget === 'edge');
+      document.getElementById('fl-target-face').classList.toggle('active', flTarget === 'face');
+      flUpdateTip();
+    }
+
+    function flUpdateTip() {
+      const key = (flMode === 'spot') ? 'fl.tip_spot'
+        : (flTarget === 'face' ? 'fl.tip_face' : 'fl.tip_led');
+      const tip = document.getElementById('fl-tip');
+      tip.setAttribute('data-i18n', key);
+      tip.innerHTML = t(key);
+    }
+
+    function flSetMode(m) {
+      flMode = m;
+      document.getElementById('fl-mode-led').classList.toggle('active', m === 'led');
+      document.getElementById('fl-mode-spot').classList.toggle('active', m === 'spot');
+      document.getElementById('fl-dir-wrap').style.display = (m === 'spot') ? 'none' : '';
+      const txt = document.getElementById('fl-btn-txt');
+      txt.setAttribute('data-i18n', m === 'spot' ? 'fl.btn_spot' : 'fl.btn_led');
+      txt.textContent = t(m === 'spot' ? 'fl.btn_spot' : 'fl.btn_led');
+      if (m === 'spot') flApplyShape('linear');
+      document.getElementById('fl-target-wrap').style.display = (m === 'spot') ? 'none' : '';
+      flUpdateTip();
+      flSyncControls();
+    }
+
+    // Reflete o estado do modo atual nos chips, botões e sliders.
+    function flSyncControls() {
+      const p = flCur();
+      document.getElementById('fl-swatch').style.background = '#' + p.color;
+      document.getElementById('fl-hex').value = '#' + p.color;
+      ['down', 'up', 'both'].forEach(d => {
+        const el = document.getElementById('fl-dir-' + d);
+        if (el) el.classList.toggle('active', p.direction === d);
+      });
+      ['reach', 'intensity', 'spread'].forEach(k => {
+        document.getElementById('fl-' + k).value = p[k];
+        document.getElementById('val-fl-' + k).textContent = p[k];
+      });
+    }
+
+    // ---- Seletor de cor (quadro saturação/brilho + barra de matiz) ----
+    // Feito na mão porque <input type="color"> depende de um diálogo nativo
+    // que o CEF do SketchUp não abre.
+    const FL_QUICK = ['ffe76e', 'ff9f46', 'ffa757', 'ffb16e', 'ffcea6', 'fffefa',
+                      '3ba7ff', '7c5cff', 'ff4f7b', '4bd67d'];
+    let flHue = 30, flSat = 1, flVal = 1;
+
+    function flHsvToHex(h, sv, v) {
+      const c = v * sv;
+      const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
+      const m = v - c;
+      let r = 0, g = 0, b = 0;
+      if (h < 60) { r = c; g = x; }
+      else if (h < 120) { r = x; g = c; }
+      else if (h < 180) { g = c; b = x; }
+      else if (h < 240) { g = x; b = c; }
+      else if (h < 300) { r = x; b = c; }
+      else { r = c; b = x; }
+      return flRgbToHex(Math.round((r + m) * 255), Math.round((g + m) * 255), Math.round((b + m) * 255));
+    }
+
+    function flHexToHsv(hex) {
+      const rgb = flHexToRgb(hex).map(v => v / 255);
+      const mx = Math.max.apply(null, rgb), mn = Math.min.apply(null, rgb), d = mx - mn;
+      let h = 0;
+      if (d > 0) {
+        if (mx === rgb[0]) h = 60 * (((rgb[1] - rgb[2]) / d) % 6);
+        else if (mx === rgb[1]) h = 60 * ((rgb[2] - rgb[0]) / d + 2);
+        else h = 60 * ((rgb[0] - rgb[1]) / d + 4);
+      }
+      if (h < 0) h += 360;
+      return [h, mx === 0 ? 0 : d / mx, mx];
+    }
+
+    function flTogglePicker() {
+      const box = document.getElementById('fl-pick');
+      const open = box.style.display === 'none';
+      box.style.display = open ? '' : 'none';
+      if (open) {
+        const hsv = flHexToHsv(flCur().color);
+        flHue = hsv[0]; flSat = hsv[1]; flVal = hsv[2];
+        flPaintPicker();
+      }
+    }
+
+    function flPaintPicker() {
+      const hueHex = flHsvToHex(flHue, 1, 1);
+      const sv = document.getElementById('fl-sv');
+      sv.style.background =
+        'linear-gradient(to top, #000, rgba(0,0,0,0)), linear-gradient(to right, #fff, #' + hueHex + ')';
+      // Posição em porcentagem: não depende de medir o elemento.
+      const k = document.getElementById('fl-sv-knob');
+      k.style.left = (flSat * 100) + '%';
+      k.style.top = ((1 - flVal) * 100) + '%';
+      document.getElementById('fl-hue-knob').style.left = (flHue / 360 * 100) + '%';
+    }
+
+    // Aplica a cor atual do seletor na luz (commit só ao soltar o mouse).
+    function flApplyPicked(commit) {
+      const hex = flHsvToHex(flHue, flSat, flVal);
+      flCur().color = hex;
+      document.getElementById('fl-swatch').style.background = '#' + hex;
+      document.getElementById('fl-hex').value = '#' + hex;
+      flPaintPicker();
+      if (commit) flCommit();
+    }
+
+    function flDragArea(el, onMove) {
+      let dragging = false;
+      const pos = function (ev) {
+        const r = el.getBoundingClientRect();
+        const x = Math.min(Math.max((ev.clientX - r.left) / r.width, 0), 1);
+        const y = Math.min(Math.max((ev.clientY - r.top) / r.height, 0), 1);
+        onMove(x, y);
+      };
+      el.addEventListener('mousedown', function (ev) {
+        dragging = true; pos(ev); flApplyPicked(false); ev.preventDefault();
+      });
+      document.addEventListener('mousemove', function (ev) {
+        if (!dragging) return;
+        pos(ev); flApplyPicked(false);
+      });
+      document.addEventListener('mouseup', function () {
+        if (!dragging) return;
+        dragging = false; flApplyPicked(true);
+      });
+    }
+
+    function flInitPicker() {
+      flDragArea(document.getElementById('fl-sv'), function (x, y) { flSat = x; flVal = 1 - y; });
+      flDragArea(document.getElementById('fl-hue'), function (x) { flHue = x * 360; });
+
+      const q = document.getElementById('fl-quick');
+      FL_QUICK.forEach(function (hex) {
+        const d = document.createElement('div');
+        d.style.background = '#' + hex;
+        d.title = '#' + hex;
+        d.onclick = function () { flHexInput(hex, true); flTogglePicker(); };
+        q.appendChild(d);
+      });
+
+      // Clique fora fecha o seletor.
+      document.addEventListener('mousedown', function (ev) {
+        const box = document.getElementById('fl-pick');
+        if (!box || box.style.display === 'none') return;
+        if (box.contains(ev.target) || ev.target.id === 'fl-swatch') return;
+        box.style.display = 'none';
+      });
+    }
+
+    function flHexInput(val, commit) {
+      const h = String(val || '').trim().replace('#', '').toLowerCase();
+      if (!/^[0-9a-f]{6}$/.test(h)) return; // digitando ainda: espera completar
+      flCur().color = h;
+      const hsv = flHexToHsv(h);
+      flHue = hsv[0]; flSat = hsv[1]; flVal = hsv[2];
+      document.getElementById('fl-swatch').style.background = '#' + h;
+      document.getElementById('fl-hex').value = '#' + h;
+      if (document.getElementById('fl-pick').style.display !== 'none') flPaintPicker();
+      if (commit) flCommit();
+    }
+
+    function flSetDir(d) {
+      flCur().direction = d;
+      ['down', 'up', 'both'].forEach(x => {
+        document.getElementById('fl-dir-' + x).classList.toggle('active', x === d);
+      });
+      flCommit();
+    }
+
+    // oninput só move o número; quem manda pro SketchUp é o onchange (soltar).
+    function flOnSlider(key, val) {
+      flCur()[key] = parseInt(val, 10);
+      document.getElementById('val-fl-' + key).textContent = val;
+    }
+
+    // O alvo é decidido no Ruby: a luz selecionada ou, sem seleção, a última
+    // criada. Sem nenhuma luz no modelo ele responde no_selection e ignoramos.
+    function flCommit() {
+      if (window.sketchup && window.sketchup.fakeLightUpdate) {
+        window.sketchup.fakeLightUpdate(flPayload());
+      }
+    }
+
+    function setFlBtn(label, color) {
+      const b = document.getElementById('fl-btn');
+      if (!b) return;
+      document.getElementById('fl-btn-txt').textContent = label;
+      b.style.background = color;
+    }
+
+    // DEMO: não há SketchUp do outro lado, então o fluxo é simulado — mostra o
+    // aviso de "clique na linha" e conclui, igual ao botão do espelho aqui.
+    function flGenerate() {
+      if (flResetTimer) { clearTimeout(flResetTimer); flResetTimer = null; }
+      setFlBtn(t(flActiveKey()), '#0f5ae0');
+      setTimeout(() => window.onFakeLightResult('ok'), 900);
+    }
+
+    function flClear() {
+      window.onFakeLightResult('cleared');
+    }
+
+    function flActiveKey() {
+      if (flMode === 'spot') return 'fl.active_spot';
+      return flTarget === 'face' ? 'fl.active_face' : 'fl.active_led';
+    }
+
+    function flIdleLabel() {
+      setFlBtn(t(flMode === 'spot' ? 'fl.btn_spot' : 'fl.btn_led'), '#1a6fff');
+    }
+
+    window.onFakeLightResult = function (status) {
+      const map = {
+        ok: ['fl.ok', '#16a34a'],
+        cleared: ['fl.cleared', '#16a34a'],
+        none: ['fl.none', '#b45309'],
+        added: ['fl.added', '#0f5ae0'],
+        no_pick: ['fl.no_pick', '#b45309'],
+        no_selection: ['fl.no_sel', '#b45309'],
+        error: ['fl.err', '#dc2626'],
+        tool: [flActiveKey(), '#0f5ae0']
+      };
+      const e = map[status] || map.error;
+      setFlBtn(t(e[0]), e[1]);
+      if (status === 'tool') return; // ferramenta ativa: mantém o aviso na tela
+      if (flResetTimer) clearTimeout(flResetTimer);
+      // Somando com Shift a ferramenta segue ativa: volta pro aviso de "clique",
+      // não pro rótulo normal do botão.
+      const back = (status === 'added')
+        ? function () { setFlBtn(t(flActiveKey()), '#0f5ae0'); flResetTimer = null; }
+        : function () { flIdleLabel(); flResetTimer = null; };
+      flResetTimer = setTimeout(back, status === 'ok' ? 1600 : 1400);
+    };
+
+    window.onFakeLightUpdated = function (status) {
+      if (status === 'error') setFlBtn(t('fl.err'), '#dc2626');
+    };
+
+    window.onFakeLightToolEnd = function () {
+      // Se o aviso de "Luz criada!" está no ar, deixa ele terminar — o próprio
+      // temporizador devolve o rótulo normal ao botão.
+      if (flResetTimer) return;
+      flIdleLabel();
+    };
+
+    // Chamado pelo observador de seleção do SketchUp: traz os valores da luz
+    // clicada pros controles, pra você continuar de onde ela está.
+    window.onFakeLightSelected = function (p) {
+      if (!p) return;
+      const mode = (p.mode === 'spot') ? 'spot' : 'led';
+      const tgt = flParams[mode];
+      if (p.color) tgt.color = String(p.color).replace('#', '').toLowerCase();
+      ['reach', 'intensity', 'spread'].forEach(k => {
+        const v = parseInt(p[k], 10);
+        if (!isNaN(v)) tgt[k] = v;
+      });
+      if (p.direction) tgt.direction = p.direction;
+      flApplyShape(mode === 'led' ? p.shape : 'linear');
+      if (mode !== flMode) { flSetMode(mode); } else { flSyncControls(); }
+    };
+
+    // Instala o observador de seleção assim que a UI sobe.
+    setTimeout(function () {
+      if (window.sketchup && window.sketchup.fakeLightSelected) window.sketchup.fakeLightSelected();
+    }, 1500);
+
+    flInitPicker();
+
     /* ---- Resetar Cena ---- */
     function resetCenas() {
       // Limpar proporção da tela (margens pretas)
@@ -9921,6 +10511,17 @@ const DL_SVG = '<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0
         'twopt.title': '2 Pontos de fuga', 'twopt.sub': 'Perspectiva arquitetônica',
         'scene.save_title': 'Salvar cena', 'scene.label': 'Nomeie a cena atual antes de salvar', 'scene.placeholder': 'Nome da cena', 'scene.save': 'Salvar',
         'mirror.section': 'Reflexo de Espelho', 'mirror.btn': 'Gerar Reflexo na Cena', 'mirror.active': 'Clique na face do espelho (ESC sai)', 'mirror.hint': '<strong>Como usar</strong><br>1) <b>Salve a cena</b> com a vista desejada<br>2) Clique no botão acima<br>3) Clique na <b>face do espelho</b> (acende em azul)<br><br>💡 O reflexo fica salvo na cena e <b>some ao trocar de cena</b> — é só gerar de novo. <i>ESC para sair.</i>', 'mirror.ok': 'Reflexo criado!', 'mirror.no_scene': 'Salve uma cena primeiro', 'mirror.no_face': 'Clique numa face', 'mirror.err': 'Erro',
+        'fl.section': 'Luz Fake', 'fl.mode_led': 'Fita de LED', 'fl.mode_spot': 'Spot', 'fl.color': 'Cor da luz', 
+        'fl.target': 'Tipo de objeto', 'fl.target_shelf': 'Marcenaria', 'fl.target_mirror': 'Espelho',
+        'fl.tip_face': 'Configure a luz, clique em Gerar e depois clique na face do espelho. A fita acompanha toda a borda dele e o brilho sai pra fora, contornando o formato.',
+        'fl.active_face': 'Clique na face do espelho (ESC sai)',
+        'fl.dir': 'Direção do facho', 'fl.dir_down': 'Baixo', 'fl.dir_up': 'Cima', 'fl.dir_both': 'Duplo', 'fl.dir_out': 'Fora', 'fl.dir_in': 'Dentro',
+        'fl.reach': 'Alcance', 'fl.intensity': 'Intensidade', 'fl.spread': 'Abertura',
+        'fl.btn_led': 'Gerar Fita de LED', 'fl.btn_spot': 'Gerar Spot', 'fl.clear': 'Apagar todas as luzes',
+        'fl.active_led': 'Clique na linha (ESC sai)', 'fl.active_spot': 'Clique na face da luminária (ESC sai)',
+        'fl.tip_led': 'Configure a luz, clique em Gerar e depois clique na linha onde a fita vai correr. Segure Shift pra somar várias linhas.',
+        'fl.tip_spot': 'Configure a luz, clique em Gerar e depois clique na face da luminária no seu projeto.',
+        'fl.added': 'Trecho somado — clique sem Shift pra gerar', 'fl.ok': 'Luz criada!', 'fl.no_pick': 'Clique numa linha ou face', 'fl.no_sel': 'Selecione uma luz', 'fl.cleared': 'Luzes apagadas', 'fl.none': 'Nenhuma luz no modelo', 'fl.err': 'Erro',
         'shadow.title': 'Iluminação da cena', 'shadow.hint': 'Ajuste Claro e Escuro juntos para clarear a cena e revelar mais detalhes no render.', 'shadow.light': 'Claro', 'shadow.dark': 'Escuro', 'shadow.use_sun': 'Usar sol para sombreamento', 'shadow.use_sun_sub': 'Melhora visibilidade da cena no render', 'shadow.recommend_hint': 'Configuração recomendada:', 'shadow.recommend_ext': 'Externa', 'shadow.recommend_int': 'Interior',
         'studio.proj_type': '1. Tipo de projeto', 'studio.quality': '2. Qualidade', 'studio.lighting': '3. Estilo de clima', 'studio.lights': '4. Luzes', 'studio.details': '5. Detalhes da cena',
         'proj.interior': 'Interiores', 'proj.interior_sub': 'Residencial', 'proj.facade': 'Fachada Externa', 'proj.facade_sub': 'Residencial', 'proj.nature': 'Meio à Natureza', 'proj.nature_sub': 'Integração', 'proj.commercial': 'Comercial', 'proj.commercial_sub': 'Loja / Escritório / Edifício', 'proj.building': 'Edifício', 'proj.building_sub': 'Residencial / Comercial',
@@ -10088,6 +10689,17 @@ const DL_SVG = '<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0
         'twopt.title': '2-Point Perspective', 'twopt.sub': 'Architectural perspective',
         'scene.save_title': 'Save scene', 'scene.label': 'Name the current scene before saving', 'scene.placeholder': 'Scene name', 'scene.save': 'Save',
         'mirror.section': 'Mirror Reflection', 'mirror.btn': 'Generate Reflection in Scene', 'mirror.active': 'Click the mirror face (ESC to exit)', 'mirror.hint': '<strong>How to use</strong><br>1) <b>Save the scene</b> with the view you want<br>2) Click the button above<br>3) Click the <b>mirror face</b> (lights up blue)<br><br>💡 The reflection is saved in the scene and <b>disappears when you switch scenes</b> — just generate it again. <i>ESC to exit.</i>', 'mirror.ok': 'Reflection created!', 'mirror.no_scene': 'Save a scene first', 'mirror.no_face': 'Click a face', 'mirror.err': 'Error',
+        'fl.section': 'Fake Light', 'fl.mode_led': 'LED Strip', 'fl.mode_spot': 'Spot', 'fl.color': 'Light color', 
+        'fl.target': 'Object type', 'fl.target_shelf': 'Millwork', 'fl.target_mirror': 'Mirror',
+        'fl.tip_face': 'Set up the light, click Create, then click the mirror face. The strip follows its entire edge and the glow spreads outward, following the shape.',
+        'fl.active_face': 'Click the mirror face (ESC to exit)',
+        'fl.dir': 'Beam direction', 'fl.dir_down': 'Down', 'fl.dir_up': 'Up', 'fl.dir_both': 'Both', 'fl.dir_out': 'Outward', 'fl.dir_in': 'Inward',
+        'fl.reach': 'Reach', 'fl.intensity': 'Intensity', 'fl.spread': 'Spread',
+        'fl.btn_led': 'Create LED Strip', 'fl.btn_spot': 'Create Spot', 'fl.clear': 'Delete all lights',
+        'fl.active_led': 'Click the line (ESC to exit)', 'fl.active_spot': 'Click the fixture face (ESC to exit)',
+        'fl.tip_led': 'Set up the light, click Create, then click the line the strip will run along. Hold Shift to add more lines.',
+        'fl.tip_spot': 'Set up the light, click Create, then click the fixture face in your project.',
+        'fl.added': 'Segment added — click without Shift to create', 'fl.ok': 'Light created!', 'fl.no_pick': 'Click a line or face', 'fl.no_sel': 'Select a light', 'fl.cleared': 'Lights deleted', 'fl.none': 'No lights in the model', 'fl.err': 'Error',
         'shadow.title': 'Scene Lighting', 'shadow.hint': 'Adjust Light and Dark together to brighten the scene and reveal more details in the render.', 'shadow.light': 'Light', 'shadow.dark': 'Dark', 'shadow.use_sun': 'Use sun for shadows', 'shadow.use_sun_sub': 'Improves scene visibility in render', 'shadow.recommend_hint': 'Recommended setting:', 'shadow.recommend_ext': 'Exterior', 'shadow.recommend_int': 'Interior',
         'studio.proj_type': '1. Project Type', 'studio.quality': '2. Quality', 'studio.lighting': '3. Weather Style', 'studio.lights': '4. Lights', 'studio.details': '5. Scene Details',
         'proj.interior': 'Interiors', 'proj.interior_sub': 'Residential', 'proj.facade': 'External Facade', 'proj.facade_sub': 'Residential', 'proj.nature': 'In Nature', 'proj.nature_sub': 'Integration', 'proj.commercial': 'Commercial', 'proj.commercial_sub': 'Store / Office / Building', 'proj.building': 'Building', 'proj.building_sub': 'Residential / Commercial',
@@ -10255,6 +10867,17 @@ const DL_SVG = '<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0
         'twopt.title': '2 Puntos de fuga', 'twopt.sub': 'Perspectiva arquitectónica',
         'scene.save_title': 'Guardar escena', 'scene.label': 'Nombra la escena actual antes de guardar', 'scene.placeholder': 'Nombre de escena', 'scene.save': 'Guardar',
         'mirror.section': 'Reflejo del Espejo', 'mirror.btn': 'Generar Reflejo en la Escena', 'mirror.active': 'Haz clic en la cara del espejo (ESC sale)', 'mirror.hint': '<strong>Cómo usar</strong><br>1) <b>Guarda la escena</b> con la vista deseada<br>2) Haz clic en el botón de arriba<br>3) Haz clic en la <b>cara del espejo</b> (se ilumina en azul)<br><br>💡 El reflejo se guarda en la escena y <b>desaparece al cambiar de escena</b> — solo genéralo de nuevo. <i>ESC para salir.</i>', 'mirror.ok': '¡Reflejo creado!', 'mirror.no_scene': 'Guarda una escena primero', 'mirror.no_face': 'Haz clic en una cara', 'mirror.err': 'Error',
+        'fl.section': 'Luz Falsa', 'fl.mode_led': 'Tira de LED', 'fl.mode_spot': 'Spot', 'fl.color': 'Color de la luz', 
+        'fl.target': 'Tipo de objeto', 'fl.target_shelf': 'Carpintería', 'fl.target_mirror': 'Espejo',
+        'fl.tip_face': 'Configura la luz, haz clic en Generar y luego en la cara del espejo. La tira sigue todo su borde y el brillo sale hacia afuera, siguiendo la forma.',
+        'fl.active_face': 'Haz clic en la cara del espejo (ESC sale)',
+        'fl.dir': 'Dirección del haz', 'fl.dir_down': 'Abajo', 'fl.dir_up': 'Arriba', 'fl.dir_both': 'Doble', 'fl.dir_out': 'Fuera', 'fl.dir_in': 'Dentro',
+        'fl.reach': 'Alcance', 'fl.intensity': 'Intensidad', 'fl.spread': 'Apertura',
+        'fl.btn_led': 'Generar Tira de LED', 'fl.btn_spot': 'Generar Spot', 'fl.clear': 'Borrar todas las luces',
+        'fl.active_led': 'Haz clic en la línea (ESC sale)', 'fl.active_spot': 'Haz clic en la cara de la luminaria (ESC sale)',
+        'fl.tip_led': 'Configura la luz, haz clic en Generar y luego en la línea por donde correrá la tira. Mantén Shift para sumar varias líneas.',
+        'fl.tip_spot': 'Configura la luz, haz clic en Generar y luego en la cara de la luminaria de tu proyecto.',
+        'fl.added': 'Tramo añadido — haz clic sin Shift para generar', 'fl.ok': '¡Luz creada!', 'fl.no_pick': 'Haz clic en una línea o cara', 'fl.no_sel': 'Selecciona una luz', 'fl.cleared': 'Luces borradas', 'fl.none': 'No hay luces en el modelo', 'fl.err': 'Error',
         'shadow.title': 'Iluminación de la escena', 'shadow.hint': 'Ajusta Claro y Oscuro juntos para iluminar la escena y revelar más detalles en el render.', 'shadow.light': 'Claro', 'shadow.dark': 'Oscuro', 'shadow.use_sun': 'Usar sol para sombras', 'shadow.use_sun_sub': 'Mejora la visibilidad de la escena en el render', 'shadow.recommend_hint': 'Configuración recomendada:', 'shadow.recommend_ext': 'Exterior', 'shadow.recommend_int': 'Interior',
         'studio.proj_type': '1. Tipo de proyecto', 'studio.quality': '2. Calidad', 'studio.lighting': '3. Estilo de clima', 'studio.lights': '4. Luces', 'studio.details': '5. Detalles de la escena',
         'proj.interior': 'Interiores', 'proj.interior_sub': 'Residencial', 'proj.facade': 'Fachada Externa', 'proj.facade_sub': 'Residencial', 'proj.nature': 'En la Naturaleza', 'proj.nature_sub': 'Integración', 'proj.commercial': 'Comercial', 'proj.commercial_sub': 'Tienda / Oficina / Edificio', 'proj.building': 'Edificio', 'proj.building_sub': 'Residencial / Comercial',
