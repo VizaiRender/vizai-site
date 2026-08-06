@@ -30,12 +30,24 @@ export const metadata: Metadata = {
     siteName: "Vizai Render",
     title: "Vizai Render — Renders fotorrealistas com IA",
     description: "Transforme modelos 3D do SketchUp em renders fotorrealistas em segundos com inteligência artificial.",
+    // PNG estático de propósito: a geração em runtime (next/og) dava 500 no
+    // Cloudflare e o preview do link ficava sem imagem no WhatsApp/Messenger.
+    images: [
+      {
+        url: "https://vizairender.com/og.png",
+        width: 1200,
+        height: 630,
+        type: "image/png",
+        alt: "Vizai Render — Renders fotorrealistas com IA",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Vizai Render — Renders fotorrealistas com IA",
     description: "Transforme modelos 3D do SketchUp em renders fotorrealistas em segundos com inteligência artificial.",
     creator: "@vizairender",
+    images: ["https://vizairender.com/og.png"],
   },
   robots: {
     index: true,
