@@ -441,6 +441,62 @@ export const enArticles: Record<string, ArticleContent> = {
     ],
   },
 
+  "luz-fake": {
+    title: "Fake Light: LED strips and spotlights right in SketchUp",
+    excerpt:
+      "Vizai builds the light as geometry — a strip tracing mirrors and millwork, a spot with a visible beam — so the AI understands your project's lighting.",
+    blocks: [
+      {
+        type: "p",
+        text: "SketchUp doesn't show light. You model the cove, the niche, the mirror — and the scene stays flat, with no hint of what should glow in the render. **Fake Light** (in the Scenes tab, right below Mirror Reflection) solves that by drawing the light: an LED strip running along an edge, or a spot with a visible beam. It isn't real lighting — it's a clear reference so the AI knows where the light is and what color it is.",
+      },
+      {
+        type: "video",
+        src: "/treinamento/ui/luz-fake.mp4",
+        caption: "LED strip behind the mirror, in the millwork and spots on the ceiling — all local, with no credit cost.",
+      },
+      { type: "h2", text: "LED Strip or Spot" },
+      {
+        type: "ul",
+        items: [
+          "**LED Strip** — runs along a line (cove, niche, baseboard) or traces the entire edge of a mirror. Under **Object type** you pick between **Millwork** and **Mirror**.",
+          "**Spot** — the cone of light from a fixture. You click the fixture face and the beam comes out of it.",
+        ],
+      },
+      { type: "h2", text: "How to use it" },
+      {
+        type: "steps",
+        items: [
+          {
+            title: "Pick the mode and set the light",
+            text: "Choose **LED Strip** or **Spot**, the color (the default is a warm white, #ffe76e), the beam direction and the **Reach**, **Intensity** and **Spread** sliders. Each mode keeps its own values.",
+          },
+          {
+            title: "Click Create, then click where the light goes",
+            text: "For a strip on millwork, click the **line** it should run along — hold **Shift** to add several lines at once. For a strip on a mirror, click the **mirror face** and it traces the whole edge. For a spot, click the **fixture face**. **ESC** exits the tool.",
+          },
+          {
+            title: "Fine-tune without redoing it",
+            text: "With a light selected in SketchUp, the sliders start editing that light — release the slider and it rebuilds instantly. You can also move the light by hand and the next adjustment respects the new position.",
+          },
+        ],
+      },
+      {
+        type: "p",
+        text: "The strip is one continuous band: corners meet without tearing, and on an upright outline (the mirror) the glow spreads outward following the shape, while on a horizontal one (the cove) it goes down or up. Everything is generated on your computer, in seconds, **with no credits used**.",
+      },
+      {
+        type: "warn",
+        text: "It's **fake** light: it doesn't illuminate the SketchUp scene, it works as a visual reference for the render. The **Clear all lights** button removes everything the tool created in the model at once.",
+      },
+      {
+        type: "tip",
+        text: "The highest-payoff use is the strip behind a mirror — that glow tracing the edge is what makes the AI deliver the backlit mirror you had in mind. Combine it with **Mirror Reflection** in the same scene: one gives you the reflection, the other gives you the light.",
+      },
+      { type: "cost", text: "Free — processed locally, no credits" },
+    ],
+  },
+
   "decorar-ambiente": {
     title: "Stage Room: AI furniture and decor for empty spaces",
     excerpt:

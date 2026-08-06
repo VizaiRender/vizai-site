@@ -4,11 +4,19 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Marquee } from "./marquee";
 import { useT } from "@/lib/i18n";
+import { Flag, type FlagLang } from "@/components/ui/flag";
 
 const softwares = [
   { name: "SketchUp", src: "/logo-sketchup.svg", comingSoon: false },
   { name: "ArchiCAD", src: "/logo-archicad.png", comingSoon: true },
   { name: "Revit",    src: "/logo-revit.svg", comingSoon: true },
+];
+
+// Nome sempre no idioma nativo (convenção de seletor de idioma).
+const languages: { code: FlagLang; label: string }[] = [
+  { code: "pt", label: "Português" },
+  { code: "en", label: "English" },
+  { code: "es", label: "Español" },
 ];
 
 const items = [
@@ -33,6 +41,8 @@ export function SoftwareMarquee() {
     boxShadow: "var(--glass-shadow)",
     opacity: "var(--glass-opacity)",
   };
+  const langPillClass =
+    "group inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-2xl border border-[color:var(--glass-border)] transition-all duration-200 hover:-translate-y-1 hover:border-[#0940D2]";
   const osIconClass =
     "text-[color:var(--foreground)] transition-colors duration-200 group-hover:text-[#0940D2]";
 
@@ -123,6 +133,33 @@ export function SoftwareMarquee() {
             </svg>
             <span style={{ fontSize: "1.05rem", fontWeight: 500, color: "var(--foreground)" }}>macOS</span>
           </div>
+        </div>
+
+        {/* Idiomas: mesma pílula de vidro dos SOs, um degrau menor (info secundária).
+            Bandeiras = mesmo SVG inline da navbar (emoji de bandeira não renderiza no Windows). */}
+        <p style={{
+          fontSize: "0.95rem",
+          fontWeight: 600,
+          color: "var(--foreground-muted)",
+          letterSpacing: "-0.01em",
+          margin: "40px 0 18px",
+        }}>
+          {t.marquee.langCompat}
+        </p>
+        <div style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 14,
+          flexWrap: "wrap",
+          color: "var(--foreground)",
+        }}>
+          {languages.map(({ code, label }) => (
+            <div key={code} className={langPillClass} style={osPillStyle}>
+              <Flag lang={code} className="w-5 h-5" />
+              <span style={{ fontSize: "0.95rem", fontWeight: 500, color: "var(--foreground)" }}>{label}</span>
+            </div>
+          ))}
         </div>
       </div>
     </section>

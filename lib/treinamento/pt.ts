@@ -441,6 +441,62 @@ export const ptArticles: Record<string, ArticleContent> = {
     ],
   },
 
+  "luz-fake": {
+    title: "Luz Fake: fitas de LED e spots direto no SketchUp",
+    excerpt:
+      "O Vizai cria a luz como geometria — fita contornando espelhos e marcenaria, spot com facho visível — pra IA entender a iluminação do seu projeto.",
+    blocks: [
+      {
+        type: "p",
+        text: "O SketchUp não mostra luz. Você desenha a sanca, o nicho, o espelho — e a cena continua chapada, sem nenhuma pista do que deve acender no render. A **Luz Fake** (na aba Cenas, logo abaixo do Reflexo de Espelho) resolve isso desenhando a luz: uma fita de LED que corre pela borda, ou um spot com o facho visível. Não é iluminação de verdade — é uma referência clara pra IA entender onde tem luz e de que cor ela é.",
+      },
+      {
+        type: "video",
+        src: "/treinamento/ui/luz-fake.mp4",
+        caption: "Fita de LED atrás do espelho, na marcenaria e spots no teto — tudo local, sem custo de créditos.",
+      },
+      { type: "h2", text: "Fita de LED ou Spot" },
+      {
+        type: "ul",
+        items: [
+          "**Fita de LED** — corre ao longo de uma linha (sanca, nicho, rodapé) ou contorna a borda inteira de um espelho. Em **Tipo de objeto** você escolhe entre **Marcenaria** e **Espelho**.",
+          "**Spot** — o facho cônico de uma luminária. Você clica na face da luminária e o facho sai dela.",
+        ],
+      },
+      { type: "h2", text: "Como usar" },
+      {
+        type: "steps",
+        items: [
+          {
+            title: "Escolha o modo e ajuste a luz",
+            text: "Selecione **Fita de LED** ou **Spot**, a cor (o padrão é um branco quente, #ffe76e), a direção do facho e os sliders de **Alcance**, **Intensidade** e **Abertura**. Cada modo guarda os próprios valores.",
+          },
+          {
+            title: "Clique em Gerar e depois no lugar da luz",
+            text: "Para fita na marcenaria, clique na **linha** onde ela vai correr — segure **Shift** pra somar várias linhas de uma vez. Para fita em espelho, clique na **face do espelho** e ela contorna a borda inteira. Para spot, clique na **face da luminária**. **ESC** sai da ferramenta.",
+          },
+          {
+            title: "Refine sem refazer",
+            text: "Com uma luz selecionada no SketchUp, os sliders passam a editar aquela luz — solte o slider e ela se reconstrói na hora. Dá pra mover a luz na mão que o ajuste seguinte respeita a nova posição.",
+          },
+        ],
+      },
+      {
+        type: "p",
+        text: "A fita é uma faixa contínua: os cantos se encontram sem rasgo, e num contorno em pé (o espelho) o brilho sai pra fora acompanhando o formato, enquanto num contorno deitado (a sanca) ele desce ou sobe. Tudo é gerado no seu computador, em segundos, **sem consumir créditos**.",
+      },
+      {
+        type: "warn",
+        text: "É luz **fake**: ela não ilumina a cena do SketchUp, serve como referência visual pro render. O botão **Apagar todas as luzes** remove de uma vez tudo que a ferramenta criou no modelo.",
+      },
+      {
+        type: "tip",
+        text: "O uso que mais rende é a fita atrás do espelho — o desenho do brilho contornando a borda é o que faz a IA entregar aquele espelho retroiluminado de projeto. Combine com o **Reflexo de Espelho** na mesma cena: um dá o reflexo, o outro dá a luz.",
+      },
+      { type: "cost", text: "Grátis — processado localmente, sem créditos" },
+    ],
+  },
+
   "decorar-ambiente": {
     title: "Decorar Ambiente: mobília e decoração com IA em ambientes vazios",
     excerpt:

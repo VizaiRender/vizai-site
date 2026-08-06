@@ -95,6 +95,7 @@ const pt = {
       { name: "Novas Perspectivas", description: "Gere variações, novos ângulos e closeups a partir de uma imagem base do seu projeto." },
       { name: "Edição Pontual", description: "Adicione, remova ou altere elementos do seu render sem precisar refazer tudo." },
       { name: "Reflexo de Espelho", description: "Gere reflexos realistas nos espelhos do ambiente, coerentes com a cena, antes de renderizar." },
+      { name: "Luz Fake", description: "Crie fitas de LED e spots direto no modelo, inclusive fita atrás de espelhos." },
       { name: "Vídeo com IA", description: "Anime seu projeto com vídeos cinematográficos." },
       { name: "Panorama 360°", description: "Gere panoramas imersivos do ambiente para apresentações interativas ao cliente." },
       { name: "Blocos por Imagem", description: "Consiga gerar um bloco através de uma imagem de referência." },
@@ -168,6 +169,7 @@ const pt = {
       "Chega de tirar print e levar pra plataformas externas, faça tudo em um só lugar com o Vizai Render.",
     comingSoon: "Em breve",
     osCompat: "Disponível para:",
+    langCompat: "Plugin em 3 idiomas:",
   },
   aiModels: {
     title: "Movido pelos modelos de IA mais avançados",
@@ -475,6 +477,7 @@ const en: Dict = {
       { name: "New Perspectives", description: "Generate variations, new angles and close-ups from a base image of your project." },
       { name: "Spot Editing", description: "Add, remove or change elements in your render without redoing everything." },
       { name: "Mirror Reflection", description: "Generate realistic mirror reflections, consistent with the scene, before rendering." },
+      { name: "Fake Light", description: "Create LED strips and spotlights right in your model, including LED behind mirrors." },
       { name: "AI Video", description: "Animate your project with cinematic videos." },
       { name: "360° Panorama", description: "Generate immersive panoramas of the space for interactive client presentations." },
       { name: "Blocks from Image", description: "Generate a block from a reference image." },
@@ -548,6 +551,7 @@ const en: Dict = {
       "No more taking screenshots and moving to external platforms — do it all in one place with Vizai Render.",
     comingSoon: "Coming soon",
     osCompat: "Available for:",
+    langCompat: "Plugin in 3 languages:",
   },
   aiModels: {
     title: "Powered by the most advanced AI models",
@@ -853,6 +857,7 @@ const es: Dict = {
       { name: "Nuevas Perspectivas", description: "Genera variaciones, nuevos ángulos y primeros planos a partir de una imagen base de tu proyecto." },
       { name: "Edición Puntual", description: "Agrega, elimina o cambia elementos de tu render sin tener que rehacer todo." },
       { name: "Reflejo de Espejo", description: "Genera reflejos realistas en los espejos del ambiente, coherentes con la escena, antes de renderizar." },
+      { name: "Luz Falsa", description: "Crea tiras de LED y spots directo en el modelo, incluso tira detrás de espejos." },
       { name: "Video con IA", description: "Anima tu proyecto con videos cinematográficos." },
       { name: "Panorama 360°", description: "Genera panoramas inmersivos del ambiente para presentaciones interactivas al cliente." },
       { name: "Bloques por Imagen", description: "Genera un bloque a partir de una imagen de referencia." },
@@ -926,6 +931,7 @@ const es: Dict = {
       "Basta de tomar capturas y llevarlas a plataformas externas, hazlo todo en un solo lugar con Vizai Render.",
     comingSoon: "Próximamente",
     osCompat: "Disponible para:",
+    langCompat: "Plugin en 3 idiomas:",
   },
   aiModels: {
     title: "Impulsado por los modelos de IA más avanzados",

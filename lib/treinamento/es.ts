@@ -441,6 +441,62 @@ export const esArticles: Record<string, ArticleContent> = {
     ],
   },
 
+  "luz-fake": {
+    title: "Luz Falsa: tiras de LED y spots directo en SketchUp",
+    excerpt:
+      "Vizai crea la luz como geometría — tira que contornea espejos y carpintería, spot con haz visible — para que la IA entienda la iluminación de tu proyecto.",
+    blocks: [
+      {
+        type: "p",
+        text: "SketchUp no muestra luz. Dibujas la cornisa, el nicho, el espejo — y la escena sigue plana, sin ninguna pista de lo que debe encender en el render. La **Luz Falsa** (en la pestaña Escenas, justo debajo del Reflejo de Espejo) lo resuelve dibujando la luz: una tira de LED que corre por el borde, o un spot con el haz visible. No es iluminación real — es una referencia clara para que la IA sepa dónde hay luz y de qué color es.",
+      },
+      {
+        type: "video",
+        src: "/treinamento/ui/luz-fake.mp4",
+        caption: "Tira de LED detrás del espejo, en la carpintería y spots en el techo — todo local, sin costo de créditos.",
+      },
+      { type: "h2", text: "Tira de LED o Spot" },
+      {
+        type: "ul",
+        items: [
+          "**Tira de LED** — corre a lo largo de una línea (cornisa, nicho, zócalo) o contornea el borde entero de un espejo. En **Tipo de objeto** eliges entre **Carpintería** y **Espejo**.",
+          "**Spot** — el haz cónico de una luminaria. Haces clic en la cara de la luminaria y el haz sale de ella.",
+        ],
+      },
+      { type: "h2", text: "Cómo usarla" },
+      {
+        type: "steps",
+        items: [
+          {
+            title: "Elige el modo y ajusta la luz",
+            text: "Selecciona **Tira de LED** o **Spot**, el color (por defecto un blanco cálido, #ffe76e), la dirección del haz y los sliders de **Alcance**, **Intensidad** y **Apertura**. Cada modo guarda sus propios valores.",
+          },
+          {
+            title: "Haz clic en Generar y luego en el lugar de la luz",
+            text: "Para tira en carpintería, haz clic en la **línea** por donde va a correr — mantén **Shift** para sumar varias líneas de una vez. Para tira en espejo, haz clic en la **cara del espejo** y contornea todo el borde. Para spot, haz clic en la **cara de la luminaria**. **ESC** sale de la herramienta.",
+          },
+          {
+            title: "Ajusta sin rehacer",
+            text: "Con una luz seleccionada en SketchUp, los sliders pasan a editar esa luz — suelta el slider y se reconstruye al instante. También puedes mover la luz a mano y el siguiente ajuste respeta la nueva posición.",
+          },
+        ],
+      },
+      {
+        type: "p",
+        text: "La tira es una franja continua: las esquinas se encuentran sin rasgarse, y en un contorno vertical (el espejo) el brillo sale hacia afuera siguiendo la forma, mientras que en uno horizontal (la cornisa) baja o sube. Todo se genera en tu computadora, en segundos, **sin consumir créditos**.",
+      },
+      {
+        type: "warn",
+        text: "Es luz **falsa**: no ilumina la escena de SketchUp, sirve como referencia visual para el render. El botón **Apagar todas las luces** elimina de una vez todo lo que la herramienta creó en el modelo.",
+      },
+      {
+        type: "tip",
+        text: "El uso que más rinde es la tira detrás del espejo — ese brillo contorneando el borde es lo que hace que la IA entregue el espejo retroiluminado que imaginaste. Combínala con el **Reflejo de Espejo** en la misma escena: uno da el reflejo, la otra da la luz.",
+      },
+      { type: "cost", text: "Gratis — procesado localmente, sin créditos" },
+    ],
+  },
+
   "decorar-ambiente": {
     title: "Decorar Ambiente: muebles y decoración con IA en espacios vacíos",
     excerpt:

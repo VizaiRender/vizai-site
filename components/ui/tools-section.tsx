@@ -19,6 +19,7 @@ const tools: Tool[] = [
   { id: 2, mediaSrc: "/tools/tool-02.jpg" },
   { id: 10, mediaSrc: "/tools/tool-edit.mp4" },
   { id: 11, mediaSrc: "/tools/tool-mirror.mp4" },
+  { id: 12, mediaSrc: "/tools/tool-light.mp4" },
   { id: 3, mediaSrc: "/tools/tool-03.mp4" },
   { id: 4, mediaSrc: "/tools/tool-04.mp4" },
   { id: 5, mediaSrc: "/tools/tool-05.webp" },
@@ -56,8 +57,8 @@ export function ToolsSection() {
             </p>
           </div>
 
-          {/* Navigation arrows */}
-          <div className="hidden sm:flex gap-2 shrink-0 absolute right-0 bottom-0">
+          {/* Setas: só enquanto o carrossel existe (abaixo de lg vira grade) */}
+          <div className="hidden sm:flex lg:hidden gap-2 shrink-0 absolute right-0 bottom-0">
             <button
               onClick={() => scroll("left")}
               className="flex items-center justify-center w-10 h-10 rounded-full border transition-colors hover:bg-white/10"
@@ -77,10 +78,10 @@ export function ToolsSection() {
           </div>
         </div>
 
-        {/* Cards carousel */}
+        {/* Carrossel no mobile/tablet; no desktop vira grade de 4 colunas (12 cards = 3 linhas) */}
         <div
           ref={scrollRef}
-          className="flex gap-4 overflow-x-auto pb-2 snap-x snap-mandatory scroll-smooth"
+          className="flex gap-4 overflow-x-auto pb-2 snap-x snap-mandatory scroll-smooth lg:grid lg:grid-cols-4 lg:gap-6 lg:overflow-visible lg:pb-0"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {tools.map((tool, i) => {
@@ -88,7 +89,7 @@ export function ToolsSection() {
             return (
             <div
               key={tool.id}
-              className="relative flex-none w-[280px] sm:w-[320px] aspect-[3/4] rounded-2xl overflow-hidden snap-start group"
+              className="relative flex-none w-[280px] sm:w-[320px] lg:w-auto aspect-[3/4] rounded-2xl overflow-hidden snap-start group"
               style={{ backgroundColor: "rgba(255,255,255,0.05)" }}
             >
               {/* Media: imagem estática ou vídeo (.mp4) — basta preencher mediaSrc */}
@@ -112,7 +113,7 @@ export function ToolsSection() {
                       src={tool.mediaSrc}
                       alt={meta.name}
                       fill
-                      sizes="320px"
+                      sizes="(min-width: 1024px) 25vw, 320px"
                       className={`object-cover transition-all duration-500 group-hover:scale-105 ${
                         tool.hoverSrc ? "group-hover:opacity-0" : ""
                       }`}
@@ -124,7 +125,7 @@ export function ToolsSection() {
                       alt={`${meta.name} — antes`}
                       aria-hidden="true"
                       fill
-                      sizes="320px"
+                      sizes="(min-width: 1024px) 25vw, 320px"
                       className="object-cover opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:scale-105"
                     />
                   )}
