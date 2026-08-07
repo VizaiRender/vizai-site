@@ -231,6 +231,7 @@ const pt = {
   pricing: {
     title: "Planos simples e transparentes",
     subtitle: "Escolha o plano ideal para o seu ritmo de trabalho. Sem surpresas, sem letras miúdas.",
+    chooseHow: "Escolha como pagar:",
     tabSubscription: "Assinatura",
     tabPacks: "Pacote de Créditos",
     monthly: "Mensal",
@@ -613,6 +614,7 @@ const en: Dict = {
   pricing: {
     title: "Simple, transparent plans",
     subtitle: "Choose the plan that fits your pace of work. No surprises, no fine print.",
+    chooseHow: "Choose how to pay:",
     tabSubscription: "Subscription",
     tabPacks: "Credit Pack",
     monthly: "Monthly",
@@ -993,6 +995,7 @@ const es: Dict = {
   pricing: {
     title: "Planes simples y transparentes",
     subtitle: "Elige el plan ideal para tu ritmo de trabajo. Sin sorpresas, sin letra chica.",
+    chooseHow: "Elige cómo pagar:",
     tabSubscription: "Suscripción",
     tabPacks: "Paquete de Créditos",
     monthly: "Mensual",

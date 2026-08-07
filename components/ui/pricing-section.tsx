@@ -207,17 +207,34 @@ export function PricingSection() {
         {/* Controls */}
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 16, marginBottom: 56 }}>
           {/* Tab toggle */}
-          <div style={{ display: "flex", borderRadius: 9999, padding: 4, gap: 2, backgroundColor: dark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.06)", border: `1px solid ${dark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.08)"}` }}>
-            {([["assinatura", t.pricing.tabSubscription], ["avulso", t.pricing.tabPacks]] as [Tab, string][]).map(([tabId, label]) => (
-              <button key={tabId} onClick={() => setTab(tabId)} style={{
-                padding: "10px 24px", borderRadius: 9999, border: "none", cursor: "pointer",
-                fontWeight: 600, fontSize: "0.9rem", transition: "all 150ms",
-                backgroundColor: tab === tabId ? (dark ? "#fff" : "#0a0a0a") : "transparent",
-                color: tab === tabId ? (dark ? "#0a0a0a" : "#fff") : "var(--foreground-muted)",
-              }}>
-                {label}
-              </button>
-            ))}
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
+            <span style={{ fontSize: "0.8rem", fontWeight: 500, color: "var(--foreground-muted)", letterSpacing: "0.01em" }}>
+              {t.pricing.chooseHow}
+            </span>
+            <div style={{ display: "flex", borderRadius: 9999, padding: 5, gap: 6, backgroundColor: dark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.05)", border: `1px solid ${dark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.08)"}` }}>
+              {([["assinatura", t.pricing.tabSubscription], ["avulso", t.pricing.tabPacks]] as [Tab, string][]).map(([tabId, label]) => {
+                const active = tab === tabId;
+                return (
+                  <button
+                    key={tabId}
+                    onClick={() => setTab(tabId)}
+                    aria-pressed={active}
+                    onMouseEnter={e => { if (!active) e.currentTarget.style.backgroundColor = dark ? "rgba(255,255,255,0.16)" : "#f4f4f5"; }}
+                    onMouseLeave={e => { if (!active) e.currentTarget.style.backgroundColor = dark ? "rgba(255,255,255,0.1)" : "#ffffff"; }}
+                    style={{
+                      padding: "10px 24px", borderRadius: 9999, cursor: "pointer",
+                      fontWeight: 600, fontSize: "0.9rem", transition: "all 150ms",
+                      backgroundColor: active ? "#0940D2" : (dark ? "rgba(255,255,255,0.1)" : "#ffffff"),
+                      color: active ? "#fff" : "var(--foreground)",
+                      border: active ? "1px solid transparent" : `1px solid ${dark ? "rgba(255,255,255,0.22)" : "rgba(0,0,0,0.18)"}`,
+                      boxShadow: active ? "none" : (dark ? "none" : "0 1px 2px rgba(0,0,0,0.06)"),
+                    }}
+                  >
+                    {label}
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
           {/* Billing toggle — only on assinatura tab */}
