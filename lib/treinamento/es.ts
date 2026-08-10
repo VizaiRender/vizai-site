@@ -826,59 +826,58 @@ export const esArticles: Record<string, ArticleContent> = {
   "panorama-360": {
     title: "Panorama 360°: presentaciones inmersivas que el cliente explora",
     excerpt:
-      "Genera un panorama esférico del ambiente y envíalo por link o WhatsApp — el cliente gira, hace zoom y explora el espacio en el navegador, sin instalar nada.",
+      "Marca la pared y dónde te paras — SketchUp captura todo el ambiente y la IA devuelve un panorama esférico que el cliente explora por link, sin instalar nada.",
     blocks: [
       {
         type: "p",
-        text: "La pestaña **360** cose vistas de tu ambiente en un **panorama esférico interactivo**. El cliente recibe un link, lo abre en el navegador (computadora o celular) y explora el espacio girando la imagen — la experiencia más cercana a “estar dentro” del proyecto.",
+        text: "La pestaña **360** convierte tu ambiente en un **panorama esférico interactivo** directo desde el modelo — sin renderizar nada antes. Marcas dónde va la cámara y el plugin hace el resto. El cliente recibe un link, lo abre en el navegador (computadora o celular) y explora el espacio girando la imagen.",
       },
       {
         type: "img",
         src: "/demo/360/pano-result.webp",
         alt: "Panorama 360 generado por Vizai Render",
-        caption: "El panorama equirectangular generado — listo para el visor interactivo.",
+        caption: "El panorama generado — listo para el visor interactivo.",
       },
       { type: "h2", text: "Cómo generarlo" },
       {
         type: "img",
         src: "/treinamento/ui/pano-{lang}.webp",
         alt: "Pestaña 360 de Vizai Render",
-        caption: "La pestaña 360: sube 4 renders desde el mismo punto central.",
+        caption: "La pestaña 360: marca la pared y después dónde se para el observador.",
         ui: true,
       },
       {
         type: "p",
-        text: "Renderiza **4 vistas desde el mismo punto central** — frente, derecha, atrás e izquierda, en 16:9 o 1:1 — y carga cada una en su posición correspondiente. La IA cose las cuatro en un panorama esférico continuo del ambiente.",
+        text: "No necesitas renderizar nada antes. **Haz clic en la pared** que quedará en el centro del panorama y después **dónde te paras** — SketchUp captura todo el ambiente solo, en todas las direcciones, y arma la imagen esférica. La IA convierte esa captura en una foto realista.",
       },
       {
         type: "steps",
         items: [
           {
-            title: "Pon la cámara en el centro del ambiente",
-            text: "Altura de ojos (~1,60m) y el mismo punto para las 4 vistas.",
+            title: "Elige la pared del frente",
+            text: "Queda en el centro del panorama. La unión cae en la pared opuesta, así que deja la más bonita al frente.",
           },
           {
-            title: "Renderiza y sube las 4 vistas",
-            text: "Frente, derecha, atrás e izquierda (16:9 o 1:1), cada una en su posición correspondiente.",
+            title: "Marca dónde te paras",
+            text: "Haz clic en el piso, en el punto desde donde mirará el cliente. La altura del ojo viene en 1,60 m y puedes cambiarla.",
           },
           {
-            title: "Genera el 360",
-            text: "5 créditos. La IA cose las 4 vistas en un panorama esférico continuo.",
+            title: "Revisa la vista previa",
+            text: "El plugin muestra el ambiente capturado antes de gastar crédito. Si el observador quedó dentro de un mueble, rehazlo — la vista previa es gratis.",
           },
           {
-            title: "Comparte",
-            text: "Visualízalo en el plugin, descarga la imagen, copia el link o envíalo directo por WhatsApp.",
+            title: "Genera y comparte",
+            text: "5 créditos. Después: visualízalo en el plugin, descarga la imagen, copia el link o envíalo directo por WhatsApp.",
           },
         ],
       },
       {
         type: "tip",
-        text: "Para el 360 fotorrealista: renderiza las 4 vistas con el mismo clima y estilo (misma configuración en el Estudio) — la costura se vuelve invisible cuando la iluminación coincide entre vistas.",
+        text: "Elige una pared sin muebles pegados y un punto de vista con espacio alrededor. Un observador apretado en una esquina achata el ambiente; desde el medio del cuarto, el panorama respira.",
       },
       { type: "cost", text: "5 créditos por panorama · link para compartir gratis" },
     ],
   },
-
   "blocos-3d": {
     title: "Bloques 3D: convierte cualquier foto en un modelo para SketchUp",
     excerpt:
