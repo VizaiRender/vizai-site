@@ -394,18 +394,33 @@ export const enArticles: Record<string, ArticleContent> = {
   },
 
   "reflexo-espelho": {
-    title: "Mirror Reflection: realistic mirrors in interiors",
+    title: "Mirror Reflection: mirrors, glass, TV and polished floors",
     excerpt:
-      "SketchUp doesn't render reflections — Vizai solves it by generating the room's real reflection on the mirror face, for free, before you render.",
+      "SketchUp doesn't render reflections — Vizai generates the room's real reflection on the surface, for free, before you render. Works for mirrors, cabinet glass, switched-off TVs and polished floors.",
     blocks: [
       {
         type: "p",
-        text: "Mirrors are a classic problem: SketchUp shows a flat gray face, and the AI, with no reference, invents a random reflection. The **Mirror Reflection** tool (in the Scenes tab) projects onto the mirror face what it would **really reflect** — and then you render, with the mirror consistent with the room.",
+        text: "A reflective surface is a classic problem: SketchUp shows a flat face, and the AI, with no reference, invents a random reflection. The **Mirror Reflection** tool (in the Scenes tab) projects onto the face what it would **really reflect** — and then you render, with the reflection consistent with the room.",
       },
       {
         type: "video",
         src: "/treinamento/ui/reflexo-espelho.mp4",
-        caption: "Mirror Reflection applied right in the Scenes tab, with no credit cost.",
+        caption: "Reflection applied right in the Scenes tab, with no credit cost.",
+      },
+      { type: "h2", text: "Six surface types" },
+      {
+        type: "p",
+        text: "The capture is the same for all of them; what changes is the finish. Pick the type **before** clicking the face:",
+      },
+      {
+        type: "ul",
+        items: [
+          "**Mirror** — opaque, full reflection. The tool's classic behaviour.",
+          "**Floor** — polished porcelain, marble countertops, lacquered tables. A faint reflection on top: the floor material still drives the look.",
+          "**TV** — a switched-off screen. Opaque and very dark, with the room only hinted at, like a real dark panel.",
+          "**Clear** — clear glass on a shower or a door. Reflects less and lets you see through, without shifting the colour of what it reflects.",
+          "**Bronze** and **Smoked** — the tinted glass of cabinet doors. Semi-transparent: the reflection sits on top and the cabinet interior shows underneath.",
+        ],
       },
       { type: "h2", text: "How to use it" },
       {
@@ -416,26 +431,30 @@ export const enArticles: Record<string, ArticleContent> = {
             text: "Set the viewport to the view you'll render and save it as a scene. The reflection is tied to that scene.",
           },
           {
-            title: "Click the button and the mirror face",
-            text: "Click **Generate Reflection in Scene** and then the face that represents the mirror glass — it lights up blue. No need to enter the group, and it works with mirrors made of several coplanar faces.",
+            title: "Pick the type and click the face",
+            text: "Select the surface type, click **Generate Reflection in Scene** and then the face — it lights up blue. No need to enter the group. Imported TV screens and floors often come split into many pieces: the plugin joins the neighbouring pieces on its own and the whole surface lights up.",
           },
           {
-            title: "Repeat on as many mirrors as you want",
-            text: "You can generate the reflection on several mirrors in the same scene. Press **ESC** to leave the tool when you're done.",
+            title: "Surface in separate parts? Use Shift",
+            text: "Panelled mirrors or glass in sheets: hold **Shift** and click the other faces, then press **Enter**. You get one continuous reflection, with no seam between the parts.",
+          },
+          {
+            title: "Tune it without redoing it",
+            text: "Floor and TV have one slider; clear, bronze and smoked have two — **brightness** and **transparency**. Release the slider and the reflection already in the scene updates instantly, with no need to generate again. Each slider has a reset button.",
           },
         ],
       },
       {
         type: "p",
-        text: "The plugin reflects the scene camera across the mirror plane, captures what the mirror would really reflect and projects it onto the face — in seconds, **at no credit cost**, since everything happens locally in your SketchUp.",
+        text: "The plugin reflects the scene camera across the surface plane, captures what it would really reflect and projects it onto the face — in seconds, **at no credit cost**, since everything happens locally in your SketchUp.",
       },
       {
         type: "warn",
-        text: "The reflection is **saved in the scene** and disappears when you switch scenes — generate one per scene. If you change the scene's view later, redo the reflection before rendering.",
+        text: "The reflection is **saved in the scene** and disappears when you switch scenes — generate one per scene. If you change the scene's view later, redo the reflection before rendering. The **Delete all reflections** button clears everything the tool created in the model at once.",
       },
       {
         type: "tip",
-        text: "Use it in bathrooms, closets, halls and gyms — spaces where the mirror dominates the wall. The difference in the final render's realism is huge.",
+        text: "With tinted glass, the cabinet interior only shows if the door material is transparent in SketchUp. And do combine them: a mirror in the bathroom, smoked glass on the closet doors, a polished floor in the living room — the set is what makes the render look like a photograph.",
       },
       { type: "cost", text: "Free — processed locally, no credits" },
     ],

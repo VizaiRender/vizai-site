@@ -394,48 +394,67 @@ export const esArticles: Record<string, ArticleContent> = {
   },
 
   "reflexo-espelho": {
-    title: "Reflejo de Espejo: espejos realistas en interiores",
+    title: "Reflejo del Espejo: espejos, vidrios, TV y suelo pulido",
     excerpt:
-      "SketchUp no renderiza reflejos — Vizai lo resuelve generando el reflejo real del ambiente en la cara del espejo, gratis, antes del render.",
+      "SketchUp no renderiza reflejos — Vizai genera el reflejo real del ambiente en la superficie, gratis, antes del render. Sirve para espejo, vidrio de armario, TV apagada y suelo pulido.",
     blocks: [
       {
         type: "p",
-        text: "Los espejos son un problema clásico: SketchUp muestra una cara gris, y la IA, sin referencia, inventa un reflejo cualquiera. La herramienta **Reflejo de Espejo** (en la pestaña Escenas) proyecta en la cara del espejo lo que **realmente reflejaría** — y entonces renderizas, con el espejo coherente con el ambiente.",
+        text: "Una superficie que refleja es un problema clásico: SketchUp muestra una cara plana y la IA, sin referencia, se inventa un reflejo cualquiera. La herramienta **Reflejo del Espejo** (en la pestaña Escenas) proyecta en la cara lo que **realmente reflejaría** — y entonces sí renderizas, con el reflejo coherente con el ambiente.",
       },
       {
         type: "video",
         src: "/treinamento/ui/reflexo-espelho.mp4",
-        caption: "Reflejo de Espejo aplicado directo en la pestaña Escenas, sin costo de créditos.",
+        caption: "Reflejo aplicado directamente en la pestaña Escenas, sin coste de créditos.",
       },
-      { type: "h2", text: "Cómo usarla" },
+      { type: "h2", text: "Seis tipos de superficie" },
+      {
+        type: "p",
+        text: "La captura es la misma para todos; lo que cambia es el acabado. Elige el tipo **antes** de hacer clic en la cara:",
+      },
+      {
+        type: "ul",
+        items: [
+          "**Espejo** — opaco, reflejo pleno. El comportamiento clásico de la herramienta.",
+          "**Suelo** — porcelánico pulido, encimera de mármol, mesa lacada. Reflejo suave por encima: el material del suelo sigue mandando en el aspecto.",
+          "**TV** — pantalla apagada. Opaca y bien oscura, con el ambiente apenas insinuado, como una pantalla apagada de verdad.",
+          "**Vidrio** — vidrio incoloro de mampara o puerta. Refleja menos y deja ver a través, sin alterar el color de lo que refleja.",
+          "**Bronce** y **Ahumado** — los vidrios tintados de puerta de armario. Semitransparentes: el reflejo aparece encima y el interior del armario por debajo.",
+        ],
+      },
+      { type: "h2", text: "Cómo usarlo" },
       {
         type: "steps",
         items: [
           {
             title: "Guarda la escena",
-            text: "Deja la viewport en la vista que vas a renderizar y guárdala como una escena. El reflejo queda vinculado a esa escena.",
+            text: "Deja la vista que vas a renderizar y guárdala como escena. El reflejo queda atado a esa escena.",
           },
           {
-            title: "Haz clic en el botón y en la cara del espejo",
-            text: "Haz clic en **Generar Reflejo en la Escena** y luego en la cara que representa el vidrio del espejo — se ilumina en azul. No necesitas entrar al grupo, y funciona con espejos de varias caras coplanares.",
+            title: "Elige el tipo y haz clic en la cara",
+            text: "Selecciona el tipo de superficie, haz clic en **Generar Reflejo en la Escena** y luego en la cara — se ilumina en azul. No hace falta entrar en el grupo. Las pantallas de TV y los suelos importados suelen venir divididos en varios trozos: el plugin une los trozos vecinos solo y se ilumina la superficie entera.",
           },
           {
-            title: "Repite en todos los espejos que quieras",
-            text: "Puedes generar el reflejo en varios espejos en la misma escena. Pulsa **ESC** para salir de la herramienta cuando termines.",
+            title: "¿Superficie en partes separadas? Usa Shift",
+            text: "Espejo en paneles o vidrio en hojas: mantén **Shift** y haz clic en las otras caras, luego **Enter**. Sale un reflejo continuo, sin junta entre las partes.",
+          },
+          {
+            title: "Ajusta sin rehacer",
+            text: "Suelo y TV tienen un slider; vidrio, bronce y ahumado tienen dos — **brillo** y **transparencia**. Suelta el slider y el reflejo que ya está en la escena cambia al instante, sin generarlo otra vez. Cada slider tiene un botón para volver al valor por defecto.",
           },
         ],
       },
       {
         type: "p",
-        text: "El plugin refleja la cámara de la escena por el plano del espejo, captura lo que el espejo realmente reflejaría y lo proyecta en la cara — en segundos, **sin costo de créditos**, porque todo sucede localmente en tu SketchUp.",
+        text: "El plugin refleja la cámara de la escena por el plano de la superficie, captura el ambiente que realmente reflejaría y lo proyecta en la cara — en segundos, **sin coste de créditos**, porque todo ocurre localmente en tu SketchUp.",
       },
       {
         type: "warn",
-        text: "El reflejo queda **guardado en la escena** y desaparece al cambiar de escena — genera uno por escena. Si cambias la vista de la escena después, rehaz el reflejo antes de renderizar.",
+        text: "El reflejo queda **guardado en la escena** y desaparece al cambiar de escena — genera uno para cada una. Si cambias la vista de la escena después, rehaz el reflejo antes de renderizar. El botón **Borrar todos los reflejos** limpia de una vez todo lo que la herramienta creó en el modelo.",
       },
       {
         type: "tip",
-        text: "Úsalo en baños, vestidores, halls y gimnasios — ambientes donde el espejo domina la pared. La diferencia en el realismo del render final es enorme.",
+        text: "En el vidrio tintado, el interior del armario solo aparece si el material de la puerta está transparente en SketchUp. Y conviene combinarlos: espejo en el baño, ahumado en las puertas del vestidor, suelo pulido en el salón — es el conjunto lo que hace que el render parezca una fotografía.",
       },
       { type: "cost", text: "Gratis — procesado localmente, sin créditos" },
     ],

@@ -20,7 +20,7 @@ export const ARTICLES: ArticleMeta[] = [
   { slug: "preparando-a-cena", category: "render", cover: "/compare2-before.jpg", minutes: 6 },
   { slug: "primeiro-render", category: "render", cover: "/tools/tool-01.jpg", minutes: 6 },
   { slug: "editar-render", category: "render", cover: "/tools/tool-02.jpg", minutes: 8 },
-  { slug: "reflexo-espelho", category: "render", cover: "/treinamento/ui/reflexo-espelho-capa.jpg", minutes: 3 },
+  { slug: "reflexo-espelho", category: "render", cover: "/treinamento/ui/reflexo-espelho-capa.jpg", minutes: 4 },
   { slug: "luz-fake", category: "render", cover: "/treinamento/ui/luz-fake-capa.jpg", minutes: 4 },
   // IA Criativa
   { slug: "decorar-ambiente", category: "creative", cover: "/tools/tool-07.jpg", minutes: 4 },

@@ -2363,6 +2363,81 @@
       border-color: #1a6fff;
     }
 
+    /* ---- Reflexo: tipo de superfície (6 botões em 2 fileiras de 3) ---- */
+    .mir-kind {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      background: transparent;
+      border: none;
+      padding: 0;
+    }
+
+    .mir-kind .mode-btn {
+      font-size: 11px;
+      gap: 5px;
+      padding: 8px 2px;
+      white-space: nowrap;
+      background: #1e2d3d;
+      border: 0.5px solid #2e4257;
+      border-radius: 8px;
+    }
+
+    .mir-kind .mode-btn:hover {
+      border-color: #3a4f64;
+      background: #243449;
+    }
+
+    .mir-kind .mode-btn.active {
+      background: #1a6fff;
+      border-color: #1a6fff;
+      color: #fff;
+    }
+
+    .mir-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      border: 0.5px solid rgba(255, 255, 255, .45);
+    }
+
+    #mir-sliders .aj-lbl {
+      flex: 0 0 100px;
+      width: 100px;
+      white-space: nowrap;
+    }
+
+    #mir-sliders .aj-slider-wrap {
+      margin: 0 8px;
+    }
+
+    #mir-sliders .aj-row {
+      margin-bottom: 8px;
+    }
+
+    #mir-sliders .aj-row:last-child {
+      margin-bottom: 2px;
+    }
+
+    .mir-rst {
+      display: flex;
+      align-items: center;
+      margin-left: 6px;
+      color: #8fa8be;
+      cursor: pointer;
+      transition: color .15s ease;
+    }
+
+    .mir-rst:hover {
+      color: #1a6fff;
+    }
+
+    .mir-rst svg {
+      width: 13px;
+      height: 13px;
+    }
+
     .fl-clear {
       width: 100%;
       padding: 8px;
@@ -3553,6 +3628,11 @@
 
     .aj-slider {
       -webkit-appearance: none;
+      /* O wrap tem 4px e o controle 16: sem isso o traço cai abaixo do rótulo. */
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
       width: 100%;
       height: 4px;
       border-radius: 2px;
@@ -5663,6 +5743,36 @@
               <div class="acc-b">
                 <div class="acc-p">
                   <div style="display:flex; flex-direction:column; gap:8px;">
+                    <div>
+                      <div class="fl-lbl" data-i18n="mirror.kind">Tipo de superfície</div>
+                      <div class="mode-switch mir-kind">
+                        <div class="mode-btn active" id="mir-k-mirror" onclick="mirrorSetKind('mirror')">
+                          <span class="mir-dot" style="background:#cfd8e3"></span>
+                          <span data-i18n="mirror.kind_mirror">Espelho</span>
+                        </div>
+                        <div class="mode-btn" id="mir-k-floor" onclick="mirrorSetKind('floor')">
+                          <span class="mir-dot" style="background:#b6bec6"></span>
+                          <span data-i18n="mirror.kind_floor">Piso</span>
+                        </div>
+                        <div class="mode-btn" id="mir-k-tv" onclick="mirrorSetKind('tv')">
+                          <span class="mir-dot" style="background:#1c1c22"></span>
+                          <span data-i18n="mirror.kind_tv">TV</span>
+                        </div>
+                        <div class="mode-btn" id="mir-k-clear" onclick="mirrorSetKind('clear')">
+                          <span class="mir-dot" style="background:#dbeee8"></span>
+                          <span data-i18n="mirror.kind_clear">Vidro</span>
+                        </div>
+                        <div class="mode-btn" id="mir-k-bronze" onclick="mirrorSetKind('bronze')">
+                          <span class="mir-dot" style="background:#a87c4a"></span>
+                          <span data-i18n="mirror.kind_bronze">Bronze</span>
+                        </div>
+                        <div class="mode-btn" id="mir-k-smoke" onclick="mirrorSetKind('smoke')">
+                          <span class="mir-dot" style="background:#6e6e74"></span>
+                          <span data-i18n="mirror.kind_smoke">Fumê</span>
+                        </div>
+                      </div>
+                      <div id="mir-sliders" style="margin-top:12px;"></div>
+                    </div>
                     <button id="mirror-btn" onclick="captureMirrorReflection()"
                       style="width:100%; padding:12px; background:#1a6fff; color:#fff; border:none; border-radius:8px; cursor:pointer; font-weight:700; display:flex; align-items:center; justify-content:center; gap:8px; font-family:'Century Gothic',sans-serif; font-size:12px; transition:all 0.2s;">
                       <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
@@ -5672,6 +5782,7 @@
                       </svg>
                       <span data-i18n="mirror.btn">Gerar Reflexo na Cena</span>
                     </button>
+                    <button class="fl-clear" onclick="mirrorClear()" data-i18n="mirror.clear">Apagar todos os reflexos</button>
                     <div
                       style="background:rgba(255,180,0,0.1); border:1px solid rgba(255,180,0,0.3); border-radius:8px; padding:10px; display:flex; align-items:flex-start; gap:8px;">
                       <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#f59e0b" stroke-width="2"
@@ -8524,6 +8635,75 @@
 
     /* ---- Reflexo de Espelho (demo: simula sucesso, sem SketchUp) ---- */
     let mirrorResetTimer = null;
+    const MIRROR_KINDS = ['mirror', 'floor', 'tv', 'clear', 'bronze', 'smoke'];
+    let mirrorKind = 'mirror';
+
+    // Sliders por tipo, com os mesmos valores padrão do plugin.
+    const MIR_SL = {
+      mirror: [],
+      floor: [{ p: 'reflect', key: 'mirror.sl_reflect', min: 2, max: 60, def: 18 }],
+      tv: [{ p: 'tint', key: 'mirror.sl_dark', min: 40, max: 98, def: 88 }],
+      clear: [{ p: 'reflect', key: 'mirror.sl_bright', min: 5, max: 90, def: 38 },
+      { p: 'tint', key: 'mirror.sl_transp', min: 0, max: 100, def: 100 }],
+      bronze: [{ p: 'reflect', key: 'mirror.sl_bright', min: 5, max: 90, def: 52 },
+      { p: 'tint', key: 'mirror.sl_transp', min: 0, max: 100, def: 100 }],
+      smoke: [{ p: 'reflect', key: 'mirror.sl_bright', min: 5, max: 90, def: 50 },
+      { p: 'tint', key: 'mirror.sl_transp', min: 0, max: 100, def: 60 }]
+    };
+    const mirSlState = {};
+
+    function mirSlVals(kind) {
+      if (!mirSlState[kind]) {
+        const o = {};
+        (MIR_SL[kind] || []).forEach(function (s) { o[s.p] = s.def; });
+        mirSlState[kind] = o;
+      }
+      return mirSlState[kind];
+    }
+
+    function mirRenderSliders() {
+      const box = document.getElementById('mir-sliders');
+      if (!box) return;
+      const list = MIR_SL[mirrorKind] || [];
+      const v = mirSlVals(mirrorKind);
+      const rst = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" ' +
+        'stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"></polyline>' +
+        '<path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>';
+      box.innerHTML = list.map(function (s) {
+        return '<div class="aj-row"><span class="aj-lbl" data-i18n="' + s.key + '">' + t(s.key) + '</span>' +
+          '<div class="aj-slider-wrap"><input type="range" class="aj-slider" id="mir-sl-' + s.p +
+          '" min="' + s.min + '" max="' + s.max + '" value="' + v[s.p] + '" ' +
+          'oninput="mirSlInput(\'' + s.p + '\', this.value)"></div>' +
+          '<span class="aj-val" id="mir-slv-' + s.p + '">' + v[s.p] + '</span>' +
+          '<span class="mir-rst" title="' + t('mirror.sl_reset') + '" onclick="mirSlReset(\'' + s.p + '\')">' + rst + '</span></div>';
+      }).join('');
+    }
+
+    function mirSlInput(p, val) {
+      mirSlVals(mirrorKind)[p] = parseInt(val, 10);
+      const out = document.getElementById('mir-slv-' + p);
+      if (out) out.textContent = val;
+    }
+
+    function mirSlReset(p) {
+      const s = (MIR_SL[mirrorKind] || []).filter(function (x) { return x.p === p; })[0];
+      if (!s) return;
+      mirSlVals(mirrorKind)[p] = s.def;
+      const sl = document.getElementById('mir-sl-' + p);
+      if (sl) sl.value = s.def;
+      const out = document.getElementById('mir-slv-' + p);
+      if (out) out.textContent = s.def;
+    }
+
+    function mirrorSetKind(k) {
+      mirrorKind = (MIRROR_KINDS.indexOf(k) >= 0) ? k : 'mirror';
+      MIRROR_KINDS.forEach(function (x) {
+        const el = document.getElementById('mir-k-' + x);
+        if (el) el.classList.toggle('active', x === mirrorKind);
+      });
+      mirRenderSliders();
+    }
+
     function setMirrorBtn(label, bg) {
       const b = document.getElementById('mirror-btn');
       if (!b) return;
@@ -8536,9 +8716,15 @@
       setTimeout(() => window.onMirrorResult('ok'), 900);
     }
 
+    function mirrorClear() {
+      window.onMirrorResult('cleared');
+    }
+
     window.onMirrorResult = function (status) {
       const map = {
         ok: ['mirror.ok', '#16a34a'],
+        cleared: ['mirror.cleared', '#16a34a'],
+        none: ['mirror.none', '#b45309'],
         no_scene: ['mirror.no_scene', '#b45309'],
         no_face: ['mirror.no_face', '#b45309'],
         error: ['mirror.err', '#dc2626']
@@ -10489,7 +10675,10 @@ const DL_SVG = '<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0
         'thirds.title': 'Regra dos terços', 'thirds.sub': 'Linhas guia para composição',
         'twopt.title': '2 Pontos de fuga', 'twopt.sub': 'Perspectiva arquitetônica',
         'scene.save_title': 'Salvar cena', 'scene.label': 'Nomeie a cena atual antes de salvar', 'scene.placeholder': 'Nome da cena', 'scene.save': 'Salvar',
-        'mirror.section': 'Reflexo de Espelho', 'mirror.btn': 'Gerar Reflexo na Cena', 'mirror.active': 'Clique na face do espelho (ESC sai)', 'mirror.hint': '<strong>Como usar</strong><br>1) <b>Salve a cena</b> com a vista desejada<br>2) Clique no botão acima<br>3) Clique na <b>face do espelho</b> (acende em azul)<br><br>💡 O reflexo fica salvo na cena e <b>some ao trocar de cena</b> — é só gerar de novo. <i>ESC para sair.</i>', 'mirror.ok': 'Reflexo criado!', 'mirror.no_scene': 'Salve uma cena primeiro', 'mirror.no_face': 'Clique numa face', 'mirror.err': 'Erro',
+        'mirror.section': 'Reflexo de Espelho', 'mirror.btn': 'Gerar Reflexo na Cena', 'mirror.active': 'Clique na face do espelho (ESC sai)', 'mirror.hint': '<strong>Como usar</strong><br>1) <b>Salve a cena</b> com a vista desejada<br>2) Clique no botão acima<br>3) Clique na <b>face do espelho</b> (acende em azul)<br>4) Espelho em <b>várias partes</b>? Segure <b>Shift</b> e clique nas outras faces, depois <b>Enter</b> — sai um reflexo contínuo<br><br>💡 O reflexo fica salvo na cena e <b>some ao trocar de cena</b> — é só gerar de novo. <i>ESC para sair.</i>', 'mirror.ok': 'Reflexo criado!', 'mirror.no_scene': 'Salve uma cena primeiro', 'mirror.no_face': 'Clique numa face', 'mirror.err': 'Erro',
+        'mirror.kind': 'Tipo de superfície', 'mirror.kind_mirror': 'Espelho', 'mirror.kind_clear': 'Vidro', 'mirror.kind_bronze': 'Bronze', 'mirror.kind_smoke': 'Fumê', 'mirror.kind_tv': 'TV', 'mirror.kind_floor': 'Piso',
+        'mirror.sl_reflect': 'Reflexo', 'mirror.sl_bright': 'Brilho', 'mirror.sl_transp': 'Transparência', 'mirror.sl_dark': 'Escurecimento', 'mirror.sl_reset': 'Voltar ao padrão',
+        'mirror.clear': 'Apagar todos os reflexos', 'mirror.cleared': 'Reflexos apagados', 'mirror.none': 'Nenhum reflexo no modelo', 'mirror.cleared': 'Reflexos apagados', 'mirror.none': 'Nenhum reflexo no modelo',
         'fl.section': 'Luz Fake', 'fl.mode_led': 'Fita de LED', 'fl.mode_spot': 'Spot', 'fl.color': 'Cor da luz', 
         'fl.target': 'Tipo de objeto', 'fl.target_shelf': 'Marcenaria', 'fl.target_mirror': 'Espelho',
         'fl.tip_face': 'Configure a luz, clique em Gerar e depois clique na face do espelho. A fita acompanha toda a borda dele e o brilho sai pra fora, contornando o formato.',
@@ -10669,7 +10858,10 @@ const DL_SVG = '<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0
         'thirds.title': 'Rule of Thirds', 'thirds.sub': 'Composition guide lines',
         'twopt.title': '2-Point Perspective', 'twopt.sub': 'Architectural perspective',
         'scene.save_title': 'Save scene', 'scene.label': 'Name the current scene before saving', 'scene.placeholder': 'Scene name', 'scene.save': 'Save',
-        'mirror.section': 'Mirror Reflection', 'mirror.btn': 'Generate Reflection in Scene', 'mirror.active': 'Click the mirror face (ESC to exit)', 'mirror.hint': '<strong>How to use</strong><br>1) <b>Save the scene</b> with the view you want<br>2) Click the button above<br>3) Click the <b>mirror face</b> (lights up blue)<br><br>💡 The reflection is saved in the scene and <b>disappears when you switch scenes</b> — just generate it again. <i>ESC to exit.</i>', 'mirror.ok': 'Reflection created!', 'mirror.no_scene': 'Save a scene first', 'mirror.no_face': 'Click a face', 'mirror.err': 'Error',
+        'mirror.section': 'Mirror Reflection', 'mirror.btn': 'Generate Reflection in Scene', 'mirror.active': 'Click the mirror face (ESC to exit)', 'mirror.hint': '<strong>How to use</strong><br>1) <b>Save the scene</b> with the view you want<br>2) Click the button above<br>3) Click the <b>mirror face</b> (lights up blue)<br>4) Mirror split into <b>panels</b>? Hold <b>Shift</b> and click the other faces, then press <b>Enter</b> — you get one continuous reflection<br><br>💡 The reflection is saved in the scene and <b>disappears when you switch scenes</b> — just generate it again. <i>ESC to exit.</i>', 'mirror.ok': 'Reflection created!', 'mirror.no_scene': 'Save a scene first', 'mirror.no_face': 'Click a face', 'mirror.err': 'Error',
+        'mirror.kind': 'Surface type', 'mirror.kind_mirror': 'Mirror', 'mirror.kind_clear': 'Clear', 'mirror.kind_bronze': 'Bronze', 'mirror.kind_smoke': 'Smoked', 'mirror.kind_tv': 'TV', 'mirror.kind_floor': 'Floor',
+        'mirror.sl_reflect': 'Reflection', 'mirror.sl_bright': 'Brightness', 'mirror.sl_transp': 'Transparency', 'mirror.sl_dark': 'Darkness', 'mirror.sl_reset': 'Reset to default',
+        'mirror.clear': 'Delete all reflections', 'mirror.cleared': 'Reflections deleted', 'mirror.none': 'No reflections in the model', 'mirror.cleared': 'Reflections deleted', 'mirror.none': 'No reflections in the model',
         'fl.section': 'Fake Light', 'fl.mode_led': 'LED Strip', 'fl.mode_spot': 'Spot', 'fl.color': 'Light color', 
         'fl.target': 'Object type', 'fl.target_shelf': 'Millwork', 'fl.target_mirror': 'Mirror',
         'fl.tip_face': 'Set up the light, click Create, then click the mirror face. The strip follows its entire edge and the glow spreads outward, following the shape.',
@@ -10849,7 +11041,10 @@ const DL_SVG = '<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0
         'thirds.title': 'Regla de tercios', 'thirds.sub': 'Guías de composición',
         'twopt.title': '2 Puntos de fuga', 'twopt.sub': 'Perspectiva arquitectónica',
         'scene.save_title': 'Guardar escena', 'scene.label': 'Nombra la escena actual antes de guardar', 'scene.placeholder': 'Nombre de escena', 'scene.save': 'Guardar',
-        'mirror.section': 'Reflejo del Espejo', 'mirror.btn': 'Generar Reflejo en la Escena', 'mirror.active': 'Haz clic en la cara del espejo (ESC sale)', 'mirror.hint': '<strong>Cómo usar</strong><br>1) <b>Guarda la escena</b> con la vista deseada<br>2) Haz clic en el botón de arriba<br>3) Haz clic en la <b>cara del espejo</b> (se ilumina en azul)<br><br>💡 El reflejo se guarda en la escena y <b>desaparece al cambiar de escena</b> — solo genéralo de nuevo. <i>ESC para salir.</i>', 'mirror.ok': '¡Reflejo creado!', 'mirror.no_scene': 'Guarda una escena primero', 'mirror.no_face': 'Haz clic en una cara', 'mirror.err': 'Error',
+        'mirror.section': 'Reflejo del Espejo', 'mirror.btn': 'Generar Reflejo en la Escena', 'mirror.active': 'Haz clic en la cara del espejo (ESC sale)', 'mirror.hint': '<strong>Cómo usar</strong><br>1) <b>Guarda la escena</b> con la vista deseada<br>2) Haz clic en el botón de arriba<br>3) Haz clic en la <b>cara del espejo</b> (se ilumina en azul)<br>4) ¿Espejo en <b>varias partes</b>? Mantén <b>Shift</b> y haz clic en las otras caras, luego <b>Enter</b> — sale un reflejo continuo<br><br>💡 El reflejo se guarda en la escena y <b>desaparece al cambiar de escena</b> — solo genéralo de nuevo. <i>ESC para salir.</i>', 'mirror.ok': '¡Reflejo creado!', 'mirror.no_scene': 'Guarda una escena primero', 'mirror.no_face': 'Haz clic en una cara', 'mirror.err': 'Error',
+        'mirror.kind': 'Tipo de superficie', 'mirror.kind_mirror': 'Espejo', 'mirror.kind_clear': 'Vidrio', 'mirror.kind_bronze': 'Bronce', 'mirror.kind_smoke': 'Ahumado', 'mirror.kind_tv': 'TV', 'mirror.kind_floor': 'Piso',
+        'mirror.sl_reflect': 'Reflejo', 'mirror.sl_bright': 'Brillo', 'mirror.sl_transp': 'Transparencia', 'mirror.sl_dark': 'Oscurecimiento', 'mirror.sl_reset': 'Volver al valor por defecto',
+        'mirror.clear': 'Borrar todos los reflejos', 'mirror.cleared': 'Reflejos borrados', 'mirror.none': 'Sin reflejos en el modelo', 'mirror.cleared': 'Reflejos borrados', 'mirror.none': 'Sin reflejos en el modelo',
         'fl.section': 'Luz Falsa', 'fl.mode_led': 'Tira de LED', 'fl.mode_spot': 'Spot', 'fl.color': 'Color de la luz', 
         'fl.target': 'Tipo de objeto', 'fl.target_shelf': 'Carpintería', 'fl.target_mirror': 'Espejo',
         'fl.tip_face': 'Configura la luz, haz clic en Generar y luego en la cara del espejo. La tira sigue todo su borde y el brillo sale hacia afuera, siguiendo la forma.',
@@ -11064,6 +11259,7 @@ const DL_SVG = '<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0
         var key = el.getAttribute('data-i18n');
         if (tr[key] !== undefined) el.innerHTML = tr[key];
       });
+      if (typeof mirRenderSliders === 'function') mirRenderSliders();
       document.querySelectorAll('[data-i18n-ph]').forEach(function (el) {
         var key = el.getAttribute('data-i18n-ph');
         if (tr[key] !== undefined) el.placeholder = tr[key];

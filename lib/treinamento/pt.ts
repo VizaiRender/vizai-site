@@ -394,18 +394,33 @@ export const ptArticles: Record<string, ArticleContent> = {
   },
 
   "reflexo-espelho": {
-    title: "Reflexo de Espelho: espelhos realistas em interiores",
+    title: "Reflexo de Espelho: espelhos, vidros, TV e piso polido",
     excerpt:
-      "O SketchUp não renderiza reflexos — o Vizai resolve isso gerando o reflexo real do ambiente na face do espelho, de graça, antes do render.",
+      "O SketchUp não renderiza reflexos — o Vizai gera o reflexo real do ambiente na superfície, de graça, antes do render. Serve para espelho, vidro de armário, TV desligada e piso polido.",
     blocks: [
       {
         type: "p",
-        text: "Espelhos são um problema clássico: o SketchUp mostra uma face cinza, e a IA, sem referência, inventa um reflexo qualquer. A ferramenta **Reflexo de Espelho** (na aba Cenas) projeta na face do espelho o que ele **realmente refletiria** — e aí sim você renderiza, com o espelho coerente com o ambiente.",
+        text: "Superfície que reflete é um problema clássico: o SketchUp mostra uma face chapada, e a IA, sem referência, inventa um reflexo qualquer. A ferramenta **Reflexo de Espelho** (na aba Cenas) projeta na face o que ela **realmente refletiria** — e aí sim você renderiza, com o reflexo coerente com o ambiente.",
       },
       {
         type: "video",
         src: "/treinamento/ui/reflexo-espelho.mp4",
-        caption: "Reflexo de Espelho aplicado direto na aba Cenas, sem custo de créditos.",
+        caption: "Reflexo aplicado direto na aba Cenas, sem custo de créditos.",
+      },
+      { type: "h2", text: "Seis tipos de superfície" },
+      {
+        type: "p",
+        text: "A captura é a mesma para todos; o que muda é o acabamento. Escolha o tipo **antes** de clicar na face:",
+      },
+      {
+        type: "ul",
+        items: [
+          "**Espelho** — opaco, reflexo cheio. O comportamento clássico da ferramenta.",
+          "**Piso** — porcelanato polido, bancada de mármore, mesa laca. Reflexo fraco por cima: o material do piso continua mandando na aparência.",
+          "**TV** — tela desligada. Opaca e bem escura, com o ambiente aparecendo só insinuado, como numa tela apagada de verdade.",
+          "**Vidro** — vidro incolor de box ou porta. Reflete menos e deixa ver através, sem alterar a cor do que reflete.",
+          "**Bronze** e **Fumê** — os vidros coloridos de porta de armário. Semitransparentes: o reflexo aparece por cima e o interior do armário por baixo.",
+        ],
       },
       { type: "h2", text: "Como usar" },
       {
@@ -416,26 +431,30 @@ export const ptArticles: Record<string, ArticleContent> = {
             text: "Deixe a viewport na vista que você vai renderizar e salve como uma cena. O reflexo fica amarrado a essa cena.",
           },
           {
-            title: "Clique no botão e na face do espelho",
-            text: "Clique em **Gerar Reflexo na Cena** e depois na face que representa o vidro do espelho — ela acende em azul. Não precisa entrar no grupo, e funciona com espelhos de várias faces coplanares.",
+            title: "Escolha o tipo e clique na face",
+            text: "Selecione o tipo de superfície, clique em **Gerar Reflexo na Cena** e depois na face — ela acende em azul. Não precisa entrar no grupo. Tela de TV e piso importados costumam vir divididos em vários pedaços: o plugin junta os pedaços vizinhos sozinho e a superfície inteira acende.",
           },
           {
-            title: "Repita em quantos espelhos quiser",
-            text: "Você pode gerar o reflexo em vários espelhos na mesma cena. Tecle **ESC** para sair da ferramenta quando terminar.",
+            title: "Superfície em partes separadas? Use Shift",
+            text: "Espelho em painéis ou vidro em folhas: segure **Shift** e clique nas outras faces, depois **Enter**. Sai um reflexo contínuo, sem emenda entre as partes.",
+          },
+          {
+            title: "Ajuste sem refazer",
+            text: "Piso e TV têm um slider; vidro, bronze e fumê têm dois — **brilho** e **transparência**. Solte o slider e o reflexo que já está na cena muda na hora, sem gerar de novo. Cada slider tem um botão de voltar ao valor padrão.",
           },
         ],
       },
       {
         type: "p",
-        text: "O plugin reflete a câmera da cena pelo plano do espelho, captura o ambiente que ele realmente refletiria e projeta na face — em segundos, **sem custo de créditos**, pois tudo acontece localmente no seu SketchUp.",
+        text: "O plugin reflete a câmera da cena pelo plano da superfície, captura o ambiente que ela realmente refletiria e projeta na face — em segundos, **sem custo de créditos**, pois tudo acontece localmente no seu SketchUp.",
       },
       {
         type: "warn",
-        text: "O reflexo fica **salvo na cena** e some ao trocar de cena — gere um para cada cena. Se você mudar a vista da cena depois, refaça o reflexo antes de renderizar.",
+        text: "O reflexo fica **salvo na cena** e some ao trocar de cena — gere um para cada cena. Se você mudar a vista da cena depois, refaça o reflexo antes de renderizar. O botão **Apagar todos os reflexos** limpa de uma vez tudo que a ferramenta criou no modelo.",
       },
       {
         type: "tip",
-        text: "Use em banheiros, closets, halls e academias — ambientes onde o espelho domina a parede. A diferença no realismo do render final é enorme.",
+        text: "No vidro colorido, o interior do armário só aparece se o material da porta estiver transparente no SketchUp. E vale combinar: espelho no banheiro, fumê nas portas do closet, piso polido na sala — é o conjunto que faz o render parecer fotografia.",
       },
       { type: "cost", text: "Grátis — processado localmente, sem créditos" },
     ],
