@@ -122,7 +122,7 @@ export function ToolsSection() {
                   {tool.hoverSrc && (
                     <Image
                       src={tool.hoverSrc}
-                      alt={`${meta.name} — antes`}
+                      alt={`${meta.name}: antes`}
                       aria-hidden="true"
                       fill
                       sizes="(min-width: 1024px) 25vw, 320px"

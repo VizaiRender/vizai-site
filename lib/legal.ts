@@ -44,7 +44,7 @@ const privacyPt: LegalDoc = {
           items: [
             { lead: "Dados de Conta:", text: "Nome e endereço de e-mail obtidos via autenticação Google OAuth no momento do cadastro." },
             { lead: "Dados de Uso e Imagens:", text: "Capturas de tela das suas cenas 3D no SketchUp e configurações de renderização (estilo, qualidade, formato) que você envia para processamento pela nossa IA. Essas imagens são transmitidas para provedores de IA terceiros (Google Cloud e Fal.ai) exclusivamente para processar sua solicitação e não são armazenadas permanentemente após a conclusão da renderização." },
-            { lead: "Dados Técnicos:", text: "Endereço IP, versão do SketchUp e identificador de dispositivo. O identificador de dispositivo é utilizado exclusivamente para concessão única dos créditos gratuitos de boas-vindas e prevenção de abuso — não é usado para rastreamento ou publicidade." },
+            { lead: "Dados Técnicos:", text: "Endereço IP, versão do SketchUp e identificador de dispositivo. O identificador de dispositivo é utilizado exclusivamente para concessão única dos créditos gratuitos de boas-vindas e prevenção de abuso. Não é usado para rastreamento ou publicidade." },
             { lead: "Dados de Sessão Local:", text: "O plugin armazena seu token de autenticação nas preferências locais do SketchUp no seu computador, para manter você conectado entre sessões. Esse dado permanece no seu dispositivo e não é compartilhado." },
             { lead: "Dados de Pagamento:", text: "Processamos transações financeiras exclusivamente através do Stripe. Não armazenamos dados de cartão de crédito em nossos servidores." },
           ],
@@ -86,7 +86,7 @@ const privacyPt: LegalDoc = {
       blocks: [
         {
           type: "p",
-          text: "Implementamos medidas de segurança técnicas e organizacionais para proteger seus dados, incluindo comunicação exclusivamente via HTTPS, autenticação por JWT e controle de acesso por função (RLS) no banco de dados. As cenas 3D e imagens enviadas para processamento são tratadas de forma transitória — não são armazenadas permanentemente em nossos servidores após a conclusão da renderização. Dados de conta (nome, e-mail, saldo de créditos) são retidos enquanto sua conta estiver ativa. Ao solicitar a exclusão da conta, removemos seus dados pessoais em até 30 dias.",
+          text: "Implementamos medidas de segurança técnicas e organizacionais para proteger seus dados, incluindo comunicação exclusivamente via HTTPS, autenticação por JWT e controle de acesso por função (RLS) no banco de dados. As cenas 3D e imagens enviadas para processamento são tratadas de forma transitória. Não são armazenadas permanentemente em nossos servidores após a conclusão da renderização. Dados de conta (nome, e-mail, saldo de créditos) são retidos enquanto sua conta estiver ativa. Ao solicitar a exclusão da conta, removemos seus dados pessoais em até 30 dias.",
         },
       ],
     },
@@ -136,7 +136,7 @@ const privacyEn: LegalDoc = {
           items: [
             { lead: "Account Data:", text: "Name and email address obtained via Google OAuth authentication at sign-up." },
             { lead: "Usage and Image Data:", text: "Screenshots of your 3D scenes in SketchUp and rendering settings (style, quality, format) that you send for processing by our AI. These images are transmitted to third-party AI providers (Google Cloud and Fal.ai) solely to process your request and are not stored permanently after the rendering is completed." },
-            { lead: "Technical Data:", text: "IP address, SketchUp version and device identifier. The device identifier is used solely to grant the one-time welcome free credits and to prevent abuse — it is not used for tracking or advertising." },
+            { lead: "Technical Data:", text: "IP address, SketchUp version and device identifier. The device identifier is used solely to grant the one-time welcome free credits and to prevent abuse. It is not used for tracking or advertising." },
             { lead: "Local Session Data:", text: "The plugin stores your authentication token in SketchUp's local preferences on your computer, to keep you logged in between sessions. This data remains on your device and is not shared." },
             { lead: "Payment Data:", text: "We process financial transactions exclusively through Stripe. We do not store credit card data on our servers." },
           ],
@@ -178,7 +178,7 @@ const privacyEn: LegalDoc = {
       blocks: [
         {
           type: "p",
-          text: "We implement technical and organizational security measures to protect your data, including communication exclusively over HTTPS, JWT authentication and role-based access control (RLS) in the database. The 3D scenes and images sent for processing are handled transiently — they are not stored permanently on our servers after the rendering is completed. Account data (name, email, credit balance) is retained while your account is active. Upon requesting account deletion, we remove your personal data within 30 days.",
+          text: "We implement technical and organizational security measures to protect your data, including communication exclusively over HTTPS, JWT authentication and role-based access control (RLS) in the database. The 3D scenes and images sent for processing are handled transiently. They are not stored permanently on our servers after the rendering is completed. Account data (name, email, credit balance) is retained while your account is active. Upon requesting account deletion, we remove your personal data within 30 days.",
         },
       ],
     },
@@ -228,7 +228,7 @@ const privacyEs: LegalDoc = {
           items: [
             { lead: "Datos de Cuenta:", text: "Nombre y dirección de correo obtenidos mediante autenticación Google OAuth al momento del registro." },
             { lead: "Datos de Uso e Imágenes:", text: "Capturas de pantalla de tus escenas 3D en SketchUp y configuraciones de renderizado (estilo, calidad, formato) que envías para su procesamiento por nuestra IA. Esas imágenes se transmiten a proveedores de IA externos (Google Cloud y Fal.ai) exclusivamente para procesar tu solicitud y no se almacenan permanentemente tras finalizar el renderizado." },
-            { lead: "Datos Técnicos:", text: "Dirección IP, versión de SketchUp e identificador de dispositivo. El identificador de dispositivo se utiliza exclusivamente para la concesión única de los créditos gratuitos de bienvenida y la prevención de abuso — no se usa para rastreo ni publicidad." },
+            { lead: "Datos Técnicos:", text: "Dirección IP, versión de SketchUp e identificador de dispositivo. El identificador de dispositivo se utiliza exclusivamente para la concesión única de los créditos gratuitos de bienvenida y la prevención de abuso. No se usa para rastreo ni publicidad." },
             { lead: "Datos de Sesión Local:", text: "El plugin almacena tu token de autenticación en las preferencias locales de SketchUp en tu computadora, para mantenerte conectado entre sesiones. Ese dato permanece en tu dispositivo y no se comparte." },
             { lead: "Datos de Pago:", text: "Procesamos transacciones financieras exclusivamente a través de Stripe. No almacenamos datos de tarjeta de crédito en nuestros servidores." },
           ],
@@ -270,7 +270,7 @@ const privacyEs: LegalDoc = {
       blocks: [
         {
           type: "p",
-          text: "Implementamos medidas de seguridad técnicas y organizativas para proteger tus datos, incluyendo comunicación exclusivamente vía HTTPS, autenticación por JWT y control de acceso por rol (RLS) en la base de datos. Las escenas 3D e imágenes enviadas para su procesamiento se tratan de forma transitoria — no se almacenan permanentemente en nuestros servidores tras finalizar el renderizado. Los datos de cuenta (nombre, correo, saldo de créditos) se conservan mientras tu cuenta esté activa. Al solicitar la eliminación de la cuenta, eliminamos tus datos personales en un plazo de 30 días.",
+          text: "Implementamos medidas de seguridad técnicas y organizativas para proteger tus datos, incluyendo comunicación exclusivamente vía HTTPS, autenticación por JWT y control de acceso por rol (RLS) en la base de datos. Las escenas 3D e imágenes enviadas para su procesamiento se tratan de forma transitoria. No se almacenan permanentemente en nuestros servidores tras finalizar el renderizado. Los datos de cuenta (nombre, correo, saldo de créditos) se conservan mientras tu cuenta esté activa. Al solicitar la eliminación de la cuenta, eliminamos tus datos personales en un plazo de 30 días.",
         },
       ],
     },
@@ -372,7 +372,7 @@ const termsPt: LegalDoc = {
             { text: "Reservamo-nos o direito de alterar os preços a qualquer momento, sem afetar créditos já adquiridos." },
           ],
         },
-        { type: "h3", text: "Política de Reembolso — Pacotes Avulsos" },
+        { type: "h3", text: "Política de Reembolso: Pacotes Avulsos" },
         {
           type: "ul",
           items: [
@@ -381,7 +381,7 @@ const termsPt: LegalDoc = {
             { text: "Ao aprovar um reembolso, os créditos correspondentes são removidos automaticamente da conta." },
           ],
         },
-        { type: "h3", text: "Política de Cancelamento — Assinaturas" },
+        { type: "h3", text: "Política de Cancelamento: Assinaturas" },
         {
           type: "ul",
           items: [
@@ -509,7 +509,7 @@ const termsEn: LegalDoc = {
             { text: "We reserve the right to change prices at any time, without affecting credits already purchased." },
           ],
         },
-        { type: "h3", text: "Refund Policy — One-off Packs" },
+        { type: "h3", text: "Refund Policy: One-off Packs" },
         {
           type: "ul",
           items: [
@@ -518,7 +518,7 @@ const termsEn: LegalDoc = {
             { text: "Upon approving a refund, the corresponding credits are automatically removed from the account." },
           ],
         },
-        { type: "h3", text: "Cancellation Policy — Subscriptions" },
+        { type: "h3", text: "Cancellation Policy: Subscriptions" },
         {
           type: "ul",
           items: [
@@ -646,7 +646,7 @@ const termsEs: LegalDoc = {
             { text: "Nos reservamos el derecho de cambiar los precios en cualquier momento, sin afectar créditos ya adquiridos." },
           ],
         },
-        { type: "h3", text: "Política de Reembolso — Paquetes Sueltos" },
+        { type: "h3", text: "Política de Reembolso: Paquetes Sueltos" },
         {
           type: "ul",
           items: [
@@ -655,7 +655,7 @@ const termsEs: LegalDoc = {
             { text: "Al aprobar un reembolso, los créditos correspondientes se eliminan automáticamente de la cuenta." },
           ],
         },
-        { type: "h3", text: "Política de Cancelación — Suscripciones" },
+        { type: "h3", text: "Política de Cancelación: Suscripciones" },
         {
           type: "ul",
           items: [

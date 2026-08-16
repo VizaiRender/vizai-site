@@ -4,12 +4,12 @@ import { TreinamentoContent } from "@/components/ui/treinamento-content";
 export const metadata = {
   title: "Treinamento",
   description:
-    "Guias completos de todas as ferramentas do Vizai Render: render com IA, edição, vídeo, panorama 360°, blocos 3D, IA criativa e ferramentas gratuitas — passo a passo com imagens reais.",
+    "Guias completos de todas as ferramentas do Vizai Render: render com IA, edição, vídeo, panorama 360°, blocos 3D, IA criativa e ferramentas gratuitas. Passo a passo com imagens reais.",
   alternates: { canonical: "/treinamento" },
   openGraph: {
     title: "Treinamento | Vizai Render",
     description:
-      "Guias completos de todas as ferramentas do Vizai Render — passo a passo com imagens reais.",
+      "Guias completos de todas as ferramentas do Vizai Render. Passo a passo com imagens reais.",
     url: "/treinamento",
   },
 };

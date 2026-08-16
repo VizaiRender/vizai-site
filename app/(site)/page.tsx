@@ -160,13 +160,7 @@ export default function Home() {
             style={{ color: "var(--foreground)" }}
           >
             {t.home.heroTitle}{" "}
-            <AnimatedWords
-              words={[
-                { text: "SketchUp" },
-                { text: "Archicad", comingSoon: true },
-                { text: "Revit", comingSoon: true },
-              ]}
-            />
+            <AnimatedWords words={[{ text: "SketchUp" }]} />
           </h1>
 
           <p

@@ -36,9 +36,9 @@ const pt = {
     demoP1:
       "Experimente o Vizai Render de forma interativa, explore as ferramentas e descubra um fluxo de renderização rápido, intuitivo e integrado ao seu programa favorito.",
     demoP2:
-      "Tudo o que você vê ao lado é interativo — ajuste a iluminação, escolha o formato e solicite um render para ver o resultado em tempo real.",
+      "Tudo o que você vê ao lado é interativo: ajuste a iluminação, escolha o formato e solicite um render para ver o resultado em tempo real.",
     demoP2Mobile:
-      "Tudo o que você vê abaixo é interativo — ajuste a iluminação, escolha o formato e solicite um render para ver o resultado em tempo real.",
+      "Tudo o que você vê abaixo é interativo: ajuste a iluminação, escolha o formato e solicite um render para ver o resultado em tempo real.",
     compareTitle1: "Máxima fidelidade na renderização",
     compareTitle2: "do seu projeto",
     compareSubtitle:
@@ -76,7 +76,7 @@ const pt = {
       {
         title: "Treinada pra quem projeta",
         description:
-          "Entende materiais, escalas e iluminação arquitetônica. Não é IA genérica — é otimizada pra cenas reais de projeto.",
+          "Entende materiais, escalas e iluminação arquitetônica. Não é IA genérica. É otimizada pra cenas reais de projeto.",
       },
       {
         title: "No seu ritmo",
@@ -106,7 +106,7 @@ const pt = {
     ],
   },
   localTools: {
-    badge: "Grátis — sem créditos",
+    badge: "Grátis: sem créditos",
     title: "Janela Tools: Ferramentas locais, de graça",
     subtitle:
       "Duas ferramentas que rodam 100% no seu computador, sem gastar créditos: a faxina completa do arquivo e paginação de piso profissional.",
@@ -129,7 +129,7 @@ const pt = {
     description:
       "Nada de instalar software pesado, configurar luz ou esperar horas. O Vizai Render entra direto no seu fluxo.",
     steps: [
-      { title: "Cena pronta no seu programa", description: "Posicione a câmera como sempre faz. O Vizai lê a viewport ativa — nada de exportar ou abrir outro software." },
+      { title: "Cena pronta no seu programa", description: "Posicione a câmera como sempre faz. O Vizai lê a viewport ativa. Nada de exportar ou abrir outro software." },
       { title: "Configure o render", description: "Escolha o tipo de projeto, o estilo de iluminação e o ambiente. Tudo ajustável antes de renderizar." },
       { title: "45 segundos. É isso.", description: "A IA processa na nuvem e entrega a imagem direto no painel. Sem fila, sem loading eterno, sem surpresa." },
       { title: "Pronto pra apresentar", description: "Baixe, gere variações ou ajuste partes da imagem com Inpainting. Do modelo ao cliente em minutos." },
@@ -138,7 +138,7 @@ const pt = {
   stats: {
     title: "Arquitetos e designers já renderizam com o Vizai Render",
     subtitle:
-      "Direto da viewport do seu programa, sem GPU cara, sem curva de aprendizado longa — e o resultado aparece em segundos.",
+      "Direto da viewport do seu programa, sem configurar luz nem material, sem curva de aprendizado longa. O resultado aparece em segundos.",
     renders: "renders gerados",
     users: "usuários ativos",
     countries: "países",
@@ -149,7 +149,7 @@ const pt = {
     label: "Comparativo",
     title: "O fluxo que você queria ter desde sempre.",
     description:
-      "O Vizai Render foi construído pra caber no seu dia a dia de trabalho — sem interromper o fluxo, sem hardware caro, sem curva de aprendizado longa.",
+      "O Vizai Render foi construído pra caber no seu dia a dia de trabalho, sem interromper o fluxo, sem hardware caro, sem curva de aprendizado longa.",
     withVizai: "Com Vizai",
     traditional: "Fluxo Tradicional",
     insideOf: "Dentro do",
@@ -174,7 +174,7 @@ const pt = {
   aiModels: {
     title: "Movido pelos modelos de IA mais avançados",
     subtitle:
-      "Vizai Render integra os melhores modelos de inteligência artificial do mundo para arquitetura — cada um especializado numa etapa do seu render.",
+      "Vizai Render integra os melhores modelos de inteligência artificial do mundo para arquitetura. Cada um especializado numa etapa do seu render.",
     roles: [
       "Inteligência & prompts",
       "Geração de imagem",
@@ -188,7 +188,7 @@ const pt = {
     title: "O que profissionais estão dizendo",
     subtitle: "Arquitetos, designers e estudantes que já usam o Vizai Render no dia a dia.",
     items: [
-      { quote: "Cara, eu ficava mandando o modelo pro cliente e ele não entendia nada. Hoje eu gero um render em 1 minuto, mando pelo WhatsApp e pronto — ele aprova na hora. Economizei tipo 3 horas por projeto.", name: "Camila Ferreira", role: "Arquiteta • São Paulo, SP" },
+      { quote: "Cara, eu ficava mandando o modelo pro cliente e ele não entendia nada. Hoje eu gero um render em 1 minuto, mando pelo WhatsApp e pronto. Ele aprova na hora. Economizei tipo 3 horas por projeto.", name: "Camila Ferreira", role: "Arquiteta • São Paulo, SP" },
       { quote: "Honestamente? Entrei com bastante desconfiança. Achei que ia sair aquela coisa plástica de render ruim. Mas o resultado me surpreendeu demais, especialmente nas cenas com luz natural. Virou minha ferramenta principal.", name: "Rafael Mendonça", role: "Designer de Interiores • Belo Horizonte, MG" },
       { quote: "Sou estudante ainda, não tenho grana pra placa de vídeo boa. Usei o Vizai pra entregar a prancha final do TCC e a banca perguntou qual escritório tinha me ajudado kkkk. Não falei nada.", name: "Lucas Andrade", role: "Estudante de Arquitetura • Curitiba, PR" },
       { quote: "A gente tem um escritório com 4 arquitetos e todo mundo migrou. Antes a gente gastava horas numa apresentação. Agora a gente mostra conceito já renderizado logo no primeiro encontro com o cliente.", name: "Patrícia Oliveira", role: "Sócia fundadora • Rio de Janeiro, RJ" },
@@ -199,15 +199,15 @@ const pt = {
   faq: {
     title: "Perguntas frequentes",
     items: [
-      { q: "O que é o Vizai Render?", a: "É um plugin para SketchUp, ArchiCAD e Revit que gera renders fotorrealistas com Inteligência Artificial diretamente dentro do software — sem exportar, sem abrir outra ferramenta." },
+      { q: "O que é o Vizai Render?", a: "É um plugin para SketchUp, ArchiCAD e Revit que gera renders fotorrealistas com Inteligência Artificial diretamente dentro do software, sem exportar, sem abrir outra ferramenta." },
       { q: "Preciso saber usar IA ou ter experiência com renderização?", a: "Não. Você configura a cena no seu programa preferido normalmente, escolhe o estilo de render e clica em um botão. O Vizai cuida do resto." },
       { q: "Como funcionam os créditos?", a: "Cada operação consome créditos: render 2K e edição com IA (inpaint) custam 4 créditos, upscale 4K custa 5 créditos, imagem 360° custa 5 créditos e IA Criativa custa 3 créditos. Operações avançadas como criação de blocos 3D custam 28 créditos, e geração de vídeo entre 22 e 83 créditos dependendo da duração. Você recebe 8 créditos grátis ao criar a conta. Planos mensais renovam automaticamente todo mês e créditos avulsos não expiram." },
       { q: "Posso cancelar minha assinatura quando quiser?", a: "Sim, sem fidelidade e sem burocracia. Você cancela direto pelo plugin com um clique. O plano continua ativo até o fim do período já pago." },
-      { q: "As imagens geradas são minhas?", a: "Sim. Você é o dono de tudo que gerar com o Vizai Render — pode usar em apresentações, portfólios, propostas comerciais ou onde quiser." },
+      { q: "As imagens geradas são minhas?", a: "Sim. Você é o dono de tudo que gerar com o Vizai Render. Pode usar em apresentações, portfólios, propostas comerciais ou onde quiser." },
       { q: "Meus projetos ficam armazenados nos servidores?", a: "Não. O Vizai processa a imagem da cena para gerar o render, mas não armazena nem retém os seus projetos. Os arquivos do SketchUp permanecem apenas na sua máquina." },
       { q: "Precisa de internet para funcionar?", a: "Sim. O processamento de IA é feito na nuvem, então é necessário estar conectado à internet durante o uso. A geração do render leva entre 20 e 60 segundos dependendo da conexão e da cena." },
-      { q: "Preciso de um computador potente para usar o Vizai?", a: "Não. Diferente de renderizadores tradicionais como V-Ray ou Lumion, o Vizai não usa a GPU nem a CPU do seu computador para processar. Todo o trabalho pesado acontece na nuvem. Você pode gerar um render fotorrealista em um notebook básico — o que importa é só a conexão com a internet." },
-      { q: "O que acontece quando meus créditos acabam?", a: "O plugin avisa antes de zerar. Você pode comprar um pacote avulso de créditos ou fazer upgrade do plano — tudo sem sair do SketchUp." },
+      { q: "Preciso de um computador potente para usar o Vizai?", a: "Não. Diferente de renderizadores tradicionais como V-Ray ou Lumion, o Vizai não usa a GPU nem a CPU do seu computador para processar. Todo o trabalho pesado acontece na nuvem. Você pode gerar um render fotorrealista em um notebook básico. O que importa é só a conexão com a internet." },
+      { q: "O que acontece quando meus créditos acabam?", a: "O plugin avisa antes de zerar. Você pode comprar um pacote avulso de créditos ou fazer upgrade do plano, tudo sem sair do SketchUp." },
       { q: "Quanto tempo leva para gerar um render?", a: "Entre 20 e 60 segundos, dependendo da complexidade da cena e do estilo escolhido." },
     ],
   },
@@ -348,7 +348,7 @@ const pt = {
     title: "Minha conta",
     subtitle: "Gerencie sua assinatura e dados de pagamento.",
     alreadySubscribedTitle: "Você já tem um plano ativo",
-    alreadySubscribedBody: "Para trocar de plano, abra o Portal de Pagamentos abaixo — a diferença é ajustada automaticamente.",
+    alreadySubscribedBody: "Para trocar de plano, abra o Portal de Pagamentos abaixo. A diferença é ajustada automaticamente.",
     portalErrorTitle: "Não foi possível abrir o Portal",
     portalErrorNoCustomer: "Você ainda não tem uma assinatura ativa. Veja os planos no site.",
     portalErrorGeneric: "Tente novamente em instantes. Se persistir, entre em contato com o suporte.",
@@ -419,9 +419,9 @@ const en: Dict = {
     demoP1:
       "Experience Vizai Render interactively, explore the tools and discover a fast, intuitive rendering workflow integrated into your favorite software.",
     demoP2:
-      "Everything you see here is interactive — adjust the lighting, choose the format and request a render to see the result in real time.",
+      "Everything you see here is interactive: adjust the lighting, choose the format and request a render to see the result in real time.",
     demoP2Mobile:
-      "Everything you see below is interactive — adjust the lighting, choose the format and request a render to see the result in real time.",
+      "Everything you see below is interactive: adjust the lighting, choose the format and request a render to see the result in real time.",
     compareTitle1: "Maximum fidelity in the rendering",
     compareTitle2: "of your project",
     compareSubtitle:
@@ -459,7 +459,7 @@ const en: Dict = {
       {
         title: "Trained for designers",
         description:
-          "It understands materials, scale and architectural lighting. It's not generic AI — it's optimized for real project scenes.",
+          "It understands materials, scale and architectural lighting. It's not generic AI. It's optimized for real project scenes.",
       },
       {
         title: "At your own pace",
@@ -489,7 +489,7 @@ const en: Dict = {
     ],
   },
   localTools: {
-    badge: "Free — no credits",
+    badge: "Free: no credits",
     title: "Tools window: Local features, for free",
     subtitle:
       "Two tools that run 100% on your computer, without spending credits: a full file cleanup and professional floor tiling.",
@@ -512,7 +512,7 @@ const en: Dict = {
     description:
       "No heavy software to install, no lighting to set up, no hours of waiting. Vizai Render plugs straight into your workflow.",
     steps: [
-      { title: "Scene ready in your software", description: "Frame the camera the way you always do. Vizai reads the active viewport — no exporting, no other software to open." },
+      { title: "Scene ready in your software", description: "Frame the camera the way you always do. Vizai reads the active viewport. No exporting, no other software to open." },
       { title: "Set up the render", description: "Choose the project type, the lighting style and the environment. Everything is adjustable before you render." },
       { title: "45 seconds. That's it.", description: "The AI processes in the cloud and delivers the image straight to your panel. No queue, no endless loading, no surprises." },
       { title: "Ready to present", description: "Download, generate variations or tweak parts of the image with Inpainting. From model to client in minutes." },
@@ -521,7 +521,7 @@ const en: Dict = {
   stats: {
     title: "Architects and designers already render with Vizai Render",
     subtitle:
-      "Straight from your software's viewport, no expensive GPU, no long learning curve — and the result appears in seconds.",
+      "Straight from your software's viewport, no lighting or material setup, no long learning curve. The result appears in seconds.",
     renders: "renders generated",
     users: "active users",
     countries: "countries",
@@ -532,7 +532,7 @@ const en: Dict = {
     label: "Comparison",
     title: "The workflow you always wished you had.",
     description:
-      "Vizai Render was built to fit into your day-to-day work — without breaking your flow, without expensive hardware, without a long learning curve.",
+      "Vizai Render was built to fit into your day-to-day work, without breaking your flow, without expensive hardware, without a long learning curve.",
     withVizai: "With Vizai",
     traditional: "Traditional Workflow",
     insideOf: "Inside",
@@ -549,7 +549,7 @@ const en: Dict = {
   marquee: {
     title: "Compatible with your favorite software",
     subtitle:
-      "No more taking screenshots and moving to external platforms — do it all in one place with Vizai Render.",
+      "No more taking screenshots and moving to external platforms, do it all in one place with Vizai Render.",
     comingSoon: "Coming soon",
     osCompat: "Available for:",
     langCompat: "Plugin in 3 languages:",
@@ -557,7 +557,7 @@ const en: Dict = {
   aiModels: {
     title: "Powered by the most advanced AI models",
     subtitle:
-      "Vizai Render integrates the world's best AI models for architecture — each specialized in a stage of your render.",
+      "Vizai Render integrates the world's best AI models for architecture, each specialized in a stage of your render.",
     roles: [
       "Intelligence & prompts",
       "Image generation",
@@ -571,7 +571,7 @@ const en: Dict = {
     title: "What professionals are saying",
     subtitle: "Architects, designers and students who already use Vizai Render every day.",
     items: [
-      { quote: "Look, I used to send the model to the client and they'd understand nothing. Now I generate a render in 1 minute, send it over WhatsApp and done — they approve it instantly. I save about 3 hours per project.", name: "Camila Ferreira", role: "Architect • São Paulo, Brazil" },
+      { quote: "Look, I used to send the model to the client and they'd understand nothing. Now I generate a render in 1 minute, send it over WhatsApp and done. They approve it instantly. I save about 3 hours per project.", name: "Camila Ferreira", role: "Architect • São Paulo, Brazil" },
       { quote: "Honestly? I went in pretty skeptical. I thought it would come out plasticky like a bad render. But the result really surprised me, especially the natural-light scenes. It became my main tool.", name: "Rafael Mendonça", role: "Interior Designer • Belo Horizonte, Brazil" },
       { quote: "I'm still a student, no money for a good graphics card. I used Vizai to deliver my final thesis board and the panel asked which firm had helped me, lol. I said nothing.", name: "Lucas Andrade", role: "Architecture Student • Curitiba, Brazil" },
       { quote: "We're a studio with 4 architects and everyone switched over. We used to spend hours on a presentation. Now we show a rendered concept right in the first client meeting.", name: "Patrícia Oliveira", role: "Founding Partner • Rio de Janeiro, Brazil" },
@@ -582,15 +582,15 @@ const en: Dict = {
   faq: {
     title: "Frequently asked questions",
     items: [
-      { q: "What is Vizai Render?", a: "It's a plugin for SketchUp, ArchiCAD and Revit that generates photorealistic renders with Artificial Intelligence right inside the software — no exporting, no opening another tool." },
+      { q: "What is Vizai Render?", a: "It's a plugin for SketchUp, ArchiCAD and Revit that generates photorealistic renders with Artificial Intelligence right inside the software. No exporting, no opening another tool." },
       { q: "Do I need to know how to use AI or have rendering experience?", a: "No. You set up the scene in your favorite software as usual, choose the render style and click a button. Vizai takes care of the rest." },
       { q: "How do credits work?", a: "Each operation consumes credits: a 2K render and AI edits (inpaint) cost 4 credits, 4K upscale costs 5 credits, a 360° image costs 5 credits and Creative AI costs 3 credits. Advanced operations like creating 3D blocks cost 28 credits, and video generation between 22 and 83 credits depending on the duration. You get 8 free credits when you create your account. Monthly plans renew automatically every month and one-off credits do not expire." },
       { q: "Can I cancel my subscription whenever I want?", a: "Yes, no commitment and no red tape. You cancel right from the plugin with one click. The plan stays active until the end of the period you've already paid for." },
-      { q: "Are the generated images mine?", a: "Yes. You own everything you generate with Vizai Render — you can use it in presentations, portfolios, commercial proposals or wherever you like." },
+      { q: "Are the generated images mine?", a: "Yes. You own everything you generate with Vizai Render. You can use it in presentations, portfolios, commercial proposals or wherever you like." },
       { q: "Are my projects stored on the servers?", a: "No. Vizai processes the scene image to generate the render, but it does not store or retain your projects. Your SketchUp files stay only on your machine." },
       { q: "Do I need internet to use it?", a: "Yes. The AI processing happens in the cloud, so you need to be connected to the internet while using it. Generating a render takes between 20 and 60 seconds depending on your connection and the scene." },
-      { q: "Do I need a powerful computer to use Vizai?", a: "No. Unlike traditional renderers like V-Ray or Lumion, Vizai doesn't use your computer's GPU or CPU to process. All the heavy lifting happens in the cloud. You can generate a photorealistic render on a basic laptop — all that matters is your internet connection." },
-      { q: "What happens when my credits run out?", a: "The plugin warns you before they hit zero. You can buy a one-off credit pack or upgrade your plan — all without leaving SketchUp." },
+      { q: "Do I need a powerful computer to use Vizai?", a: "No. Unlike traditional renderers like V-Ray or Lumion, Vizai doesn't use your computer's GPU or CPU to process. All the heavy lifting happens in the cloud. You can generate a photorealistic render on a basic laptop, all that matters is your internet connection." },
+      { q: "What happens when my credits run out?", a: "The plugin warns you before they hit zero. You can buy a one-off credit pack or upgrade your plan, all without leaving SketchUp." },
       { q: "How long does it take to generate a render?", a: "Between 20 and 60 seconds, depending on the complexity of the scene and the style chosen." },
     ],
   },
@@ -731,7 +731,7 @@ const en: Dict = {
     title: "My account",
     subtitle: "Manage your subscription and payment details.",
     alreadySubscribedTitle: "You already have an active plan",
-    alreadySubscribedBody: "To switch plans, open the Payments Portal below — the difference is adjusted automatically.",
+    alreadySubscribedBody: "To switch plans, open the Payments Portal below. The difference is adjusted automatically.",
     portalErrorTitle: "Could not open the Portal",
     portalErrorNoCustomer: "You don't have an active subscription yet. See the plans on the site.",
     portalErrorGeneric: "Please try again in a moment. If it persists, contact support.",
@@ -800,9 +800,9 @@ const es: Dict = {
     demoP1:
       "Experimenta Vizai Render de forma interactiva, explora las herramientas y descubre un flujo de renderizado rápido, intuitivo e integrado en tu programa favorito.",
     demoP2:
-      "Todo lo que ves al lado es interactivo — ajusta la iluminación, elige el formato y solicita un render para ver el resultado en tiempo real.",
+      "Todo lo que ves al lado es interactivo: ajusta la iluminación, elige el formato y solicita un render para ver el resultado en tiempo real.",
     demoP2Mobile:
-      "Todo lo que ves abajo es interactivo — ajusta la iluminación, elige el formato y solicita un render para ver el resultado en tiempo real.",
+      "Todo lo que ves abajo es interactivo: ajusta la iluminación, elige el formato y solicita un render para ver el resultado en tiempo real.",
     compareTitle1: "Máxima fidelidad en el renderizado",
     compareTitle2: "de tu proyecto",
     compareSubtitle:
@@ -840,7 +840,7 @@ const es: Dict = {
       {
         title: "Entrenada para quien proyecta",
         description:
-          "Entiende materiales, escalas e iluminación arquitectónica. No es IA genérica — está optimizada para escenas reales de proyecto.",
+          "Entiende materiales, escalas e iluminación arquitectónica. No es IA genérica. Está optimizada para escenas reales de proyecto.",
       },
       {
         title: "A tu ritmo",
@@ -870,7 +870,7 @@ const es: Dict = {
     ],
   },
   localTools: {
-    badge: "Gratis — sin créditos",
+    badge: "Gratis: sin créditos",
     title: "Ventana Tools: Herramientas locales, gratis",
     subtitle:
       "Dos herramientas que corren 100% en tu computadora, sin gastar créditos: la limpieza completa del archivo y paginación de piso profesional.",
@@ -893,7 +893,7 @@ const es: Dict = {
     description:
       "Nada de instalar software pesado, configurar luz o esperar horas. Vizai Render se integra directo en tu flujo.",
     steps: [
-      { title: "Escena lista en tu programa", description: "Posiciona la cámara como siempre lo haces. Vizai lee el viewport activo — sin exportar ni abrir otro software." },
+      { title: "Escena lista en tu programa", description: "Posiciona la cámara como siempre lo haces. Vizai lee el viewport activo, sin exportar ni abrir otro software." },
       { title: "Configura el render", description: "Elige el tipo de proyecto, el estilo de iluminación y el ambiente. Todo ajustable antes de renderizar." },
       { title: "45 segundos. Eso es todo.", description: "La IA procesa en la nube y entrega la imagen directo en el panel. Sin fila, sin carga eterna, sin sorpresas." },
       { title: "Listo para presentar", description: "Descarga, genera variaciones o ajusta partes de la imagen con Inpainting. Del modelo al cliente en minutos." },
@@ -902,7 +902,7 @@ const es: Dict = {
   stats: {
     title: "Arquitectos y diseñadores ya renderizan con Vizai Render",
     subtitle:
-      "Directo desde el viewport de tu programa, sin GPU cara, sin curva de aprendizaje larga — y el resultado aparece en segundos.",
+      "Directo desde el viewport de tu programa, sin configurar luces ni materiales, sin curva de aprendizaje larga. El resultado aparece en segundos.",
     renders: "renders generados",
     users: "usuarios activos",
     countries: "países",
@@ -913,7 +913,7 @@ const es: Dict = {
     label: "Comparativa",
     title: "El flujo que siempre quisiste tener.",
     description:
-      "Vizai Render fue construido para encajar en tu día a día de trabajo — sin interrumpir el flujo, sin hardware caro, sin curva de aprendizaje larga.",
+      "Vizai Render fue construido para encajar en tu día a día de trabajo, sin interrumpir el flujo, sin hardware caro, sin curva de aprendizaje larga.",
     withVizai: "Con Vizai",
     traditional: "Flujo Tradicional",
     insideOf: "Dentro de",
@@ -938,7 +938,7 @@ const es: Dict = {
   aiModels: {
     title: "Impulsado por los modelos de IA más avanzados",
     subtitle:
-      "Vizai Render integra los mejores modelos de inteligencia artificial del mundo para arquitectura — cada uno especializado en una etapa de tu render.",
+      "Vizai Render integra los mejores modelos de inteligencia artificial del mundo para arquitectura. Cada uno especializado en una etapa de tu render.",
     roles: [
       "Inteligencia & prompts",
       "Generación de imagen",
@@ -952,7 +952,7 @@ const es: Dict = {
     title: "Lo que dicen los profesionales",
     subtitle: "Arquitectos, diseñadores y estudiantes que ya usan Vizai Render en su día a día.",
     items: [
-      { quote: "Mira, antes le mandaba el modelo al cliente y no entendía nada. Hoy genero un render en 1 minuto, lo mando por WhatsApp y listo — lo aprueba al instante. Me ahorro como 3 horas por proyecto.", name: "Camila Ferreira", role: "Arquitecta • São Paulo, Brasil" },
+      { quote: "Mira, antes le mandaba el modelo al cliente y no entendía nada. Hoy genero un render en 1 minuto, lo mando por WhatsApp y listo. Lo aprueba al instante. Me ahorro como 3 horas por proyecto.", name: "Camila Ferreira", role: "Arquitecta • São Paulo, Brasil" },
       { quote: "¿Honestamente? Entré bastante desconfiada. Pensé que saldría esa cosa plástica de render malo. Pero el resultado me sorprendió muchísimo, especialmente en las escenas con luz natural. Se volvió mi herramienta principal.", name: "Rafael Mendonça", role: "Diseñador de Interiores • Belo Horizonte, Brasil" },
       { quote: "Todavía soy estudiante, no tengo plata para una buena placa de video. Usé Vizai para entregar la lámina final de la tesis y el jurado preguntó qué estudio me había ayudado, jaja. No dije nada.", name: "Lucas Andrade", role: "Estudiante de Arquitectura • Curitiba, Brasil" },
       { quote: "Tenemos un estudio con 4 arquitectos y todos migraron. Antes pasábamos horas en una presentación. Ahora mostramos el concepto ya renderizado en la primera reunión con el cliente.", name: "Patrícia Oliveira", role: "Socia fundadora • Río de Janeiro, Brasil" },
@@ -963,15 +963,15 @@ const es: Dict = {
   faq: {
     title: "Preguntas frecuentes",
     items: [
-      { q: "¿Qué es Vizai Render?", a: "Es un plugin para SketchUp, ArchiCAD y Revit que genera renders fotorrealistas con Inteligencia Artificial directamente dentro del software — sin exportar, sin abrir otra herramienta." },
+      { q: "¿Qué es Vizai Render?", a: "Es un plugin para SketchUp, ArchiCAD y Revit que genera renders fotorrealistas con Inteligencia Artificial directamente dentro del software, sin exportar, sin abrir otra herramienta." },
       { q: "¿Necesito saber usar IA o tener experiencia en renderizado?", a: "No. Configuras la escena en tu programa favorito como siempre, eliges el estilo de render y haces clic en un botón. Vizai se encarga del resto." },
       { q: "¿Cómo funcionan los créditos?", a: "Cada operación consume créditos: un render 2K y las ediciones con IA (inpaint) cuestan 4 créditos, el upscale 4K cuesta 5 créditos, una imagen 360° cuesta 5 créditos y la IA Creativa cuesta 3 créditos. Operaciones avanzadas como la creación de bloques 3D cuestan 28 créditos, y la generación de video entre 22 y 83 créditos según la duración. Recibes 8 créditos gratis al crear la cuenta. Los planes mensuales se renuevan automáticamente cada mes y los créditos individuales no caducan." },
       { q: "¿Puedo cancelar mi suscripción cuando quiera?", a: "Sí, sin permanencia y sin trámites. Cancelas directo desde el plugin con un clic. El plan sigue activo hasta el final del período ya pagado." },
-      { q: "¿Las imágenes generadas son mías?", a: "Sí. Eres el dueño de todo lo que generes con Vizai Render — puedes usarlo en presentaciones, portafolios, propuestas comerciales o donde quieras." },
+      { q: "¿Las imágenes generadas son mías?", a: "Sí. Eres el dueño de todo lo que generes con Vizai Render. Puedes usarlo en presentaciones, portafolios, propuestas comerciales o donde quieras." },
       { q: "¿Mis proyectos quedan almacenados en los servidores?", a: "No. Vizai procesa la imagen de la escena para generar el render, pero no almacena ni retiene tus proyectos. Los archivos de SketchUp permanecen solo en tu máquina." },
       { q: "¿Necesita internet para funcionar?", a: "Sí. El procesamiento de IA se hace en la nube, así que es necesario estar conectado a internet durante el uso. Generar un render lleva entre 20 y 60 segundos según la conexión y la escena." },
-      { q: "¿Necesito una computadora potente para usar Vizai?", a: "No. A diferencia de renderizadores tradicionales como V-Ray o Lumion, Vizai no usa la GPU ni la CPU de tu computadora para procesar. Todo el trabajo pesado ocurre en la nube. Puedes generar un render fotorrealista en una laptop básica — lo único que importa es la conexión a internet." },
-      { q: "¿Qué pasa cuando se acaban mis créditos?", a: "El plugin avisa antes de que lleguen a cero. Puedes comprar un paquete suelto de créditos o mejorar tu plan — todo sin salir de SketchUp." },
+      { q: "¿Necesito una computadora potente para usar Vizai?", a: "No. A diferencia de renderizadores tradicionales como V-Ray o Lumion, Vizai no usa la GPU ni la CPU de tu computadora para procesar. Todo el trabajo pesado ocurre en la nube. Puedes generar un render fotorrealista en una laptop básica. Lo único que importa es la conexión a internet." },
+      { q: "¿Qué pasa cuando se acaban mis créditos?", a: "El plugin avisa antes de que lleguen a cero. Puedes comprar un paquete suelto de créditos o mejorar tu plan, todo sin salir de SketchUp." },
       { q: "¿Cuánto tarda en generar un render?", a: "Entre 20 y 60 segundos, según la complejidad de la escena y el estilo elegido." },
     ],
   },
@@ -1112,7 +1112,7 @@ const es: Dict = {
     title: "Mi cuenta",
     subtitle: "Gestiona tu suscripción y datos de pago.",
     alreadySubscribedTitle: "Ya tienes un plan activo",
-    alreadySubscribedBody: "Para cambiar de plan, abre el Portal de Pagos abajo — la diferencia se ajusta automáticamente.",
+    alreadySubscribedBody: "Para cambiar de plan, abre el Portal de Pagos abajo. La diferencia se ajusta automáticamente.",
     portalErrorTitle: "No se pudo abrir el Portal",
     portalErrorNoCustomer: "Aún no tienes una suscripción activa. Mira los planes en el sitio.",
     portalErrorGeneric: "Inténtalo de nuevo en un momento. Si persiste, contacta con soporte.",

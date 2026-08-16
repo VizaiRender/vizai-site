@@ -28,7 +28,7 @@ export function AccountContent({
   const { lang } = useLang();
 
   const formatDate = (iso: string | null): string => {
-    if (!iso) return "—";
+    if (!iso) return "-";
     try {
       return new Date(iso).toLocaleDateString(langToLocale[lang], {
         day: "2-digit",
@@ -36,7 +36,7 @@ export function AccountContent({
         year: "numeric",
       });
     } catch {
-      return "—";
+      return "-";
     }
   };
 

@@ -15,7 +15,7 @@ const geist = Geist({
 export const metadata: Metadata = {
   metadataBase: new URL("https://vizairender.com"),
   title: {
-    default: "Vizai Render — Renders fotorrealistas com IA",
+    default: "Vizai Render: Renders fotorrealistas com IA",
     template: "%s | Vizai Render",
   },
   description: "Transforme modelos 3D do SketchUp em renders fotorrealistas em segundos com inteligência artificial.",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     alternateLocale: ["en_US", "es_ES"],
     url: "https://vizairender.com",
     siteName: "Vizai Render",
-    title: "Vizai Render — Renders fotorrealistas com IA",
+    title: "Vizai Render: Renders fotorrealistas com IA",
     description: "Transforme modelos 3D do SketchUp em renders fotorrealistas em segundos com inteligência artificial.",
     // PNG estático de propósito: a geração em runtime (next/og) dava 500 no
     // Cloudflare e o preview do link ficava sem imagem no WhatsApp/Messenger.
@@ -38,13 +38,13 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         type: "image/png",
-        alt: "Vizai Render — Renders fotorrealistas com IA",
+        alt: "Vizai Render: Renders fotorrealistas com IA",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vizai Render — Renders fotorrealistas com IA",
+    title: "Vizai Render: Renders fotorrealistas com IA",
     description: "Transforme modelos 3D do SketchUp em renders fotorrealistas em segundos com inteligência artificial.",
     creator: "@vizairender",
     images: ["https://vizairender.com/og.png"],

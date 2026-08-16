@@ -4,7 +4,7 @@ export const esUi: TreinoUiStrings = {
   badge: "Capacitación oficial Vizai Render",
   title: "Aprende a dominar Vizai Render",
   subtitle:
-    "Guías completas de todas las herramientas del plugin — desde tu primer render hasta presentaciones en video y 360°. Todo explicado paso a paso, con imágenes reales de la interfaz y de los resultados.",
+    "Guías completas de todas las herramientas del plugin. Desde tu primer render hasta presentaciones en video y 360°. Todo explicado paso a paso, con imágenes reales de la interfaz y de los resultados.",
   featuredLabel: "Empieza por aquí",
   readMore: "Leer guía",
   minRead: "min de lectura",
@@ -33,7 +33,7 @@ export const esArticles: Record<string, ArticleContent> = {
     blocks: [
       {
         type: "p",
-        text: "Vizai Render es un plugin de renderizado con IA que funciona dentro de SketchUp. Configuras la escena, eliges el estilo y recibes un render fotorrealista en segundos — sin exportar nada, sin programas externos y sin tarjeta gráfica potente. Esta guía deja todo funcionando.",
+        text: "Vizai Render es un plugin de renderizado con IA que funciona dentro de SketchUp. Configuras la escena, eliges el estilo y recibes un render fotorrealista en segundos, sin exportar nada, sin programas externos y sin tarjeta gráfica potente. Esta guía deja todo funcionando.",
       },
       { type: "h2", text: "Instalación" },
       {
@@ -61,11 +61,11 @@ export const esArticles: Record<string, ArticleContent> = {
       { type: "h2", text: "Inicio de sesión y créditos de bienvenida" },
       {
         type: "p",
-        text: "El inicio de sesión es con tu cuenta de Google, en un clic — sin crear contraseña nueva. En tu **primer inicio de sesión desde el plugin** recibes **8 créditos gratis** para probar las herramientas. El saldo aparece en la esquina superior derecha del panel, junto a tu perfil.",
+        text: "El inicio de sesión es con tu cuenta de Google, en un clic, sin crear contraseña nueva. En tu **primer inicio de sesión desde el plugin** recibes **8 créditos gratis** para probar las herramientas. El saldo aparece en la esquina superior derecha del panel, junto a tu perfil.",
       },
       {
         type: "tip",
-        text: "¿Creaste la cuenta en el sitio web? Los 8 créditos gratis se activan cuando inicias sesión por primera vez dentro del plugin — ahí es donde aparecen.",
+        text: "¿Creaste la cuenta en el sitio web? Los 8 créditos gratis se activan cuando inicias sesión por primera vez dentro del plugin. Ahí es donde aparecen.",
       },
       { type: "h2", text: "Conociendo el panel" },
       {
@@ -82,17 +82,17 @@ export const esArticles: Record<string, ArticleContent> = {
       {
         type: "ul",
         items: [
-          "**Escenas** — prepara la captura: iluminación, formato de imagen, distancia focal y composición.",
-          "**Estudio** — el corazón del plugin: genera el render fotorrealista o usa las herramientas de IA Creativa (moodboard, decoración, planta renderizada y diagrama).",
-          "**Video** — anima tus renders en videos cinematográficos con movimiento de cámara y sonido ambiente.",
-          "**360** — genera panoramas esféricos interactivos para que el cliente los explore en el navegador.",
-          "**Bloques** — convierte una foto de referencia en un modelo 3D para usar en la escena.",
-          "**Historial** — todo lo que generaste en el proyecto, con filtros y conteo de créditos.",
+          "**Escenas**: prepara la captura: iluminación, formato de imagen, distancia focal y composición.",
+          "**Estudio**: el corazón del plugin: genera el render fotorrealista o usa las herramientas de IA Creativa (moodboard, decoración, planta renderizada y diagrama).",
+          "**Video**: anima tus renders en videos cinematográficos con movimiento de cámara y sonido ambiente.",
+          "**360**: genera panoramas esféricos interactivos para que el cliente los explore en el navegador.",
+          "**Bloques**: convierte una foto de referencia en un modelo 3D para usar en la escena.",
+          "**Historial**: todo lo que generaste en el proyecto, con filtros y conteo de créditos.",
         ],
       },
       {
         type: "p",
-        text: "Además de las pestañas está la ventana **Tools** (pestaña lateral verde), con herramientas locales y gratuitas para optimizar el archivo y crear pisos seamless — y el **Editor**, que se abre cada vez que haces clic en Editar sobre un render.",
+        text: "Además de las pestañas está la ventana **Tools** (pestaña lateral verde), con herramientas locales y gratuitas para optimizar el archivo y crear pisos seamless, y el **Editor**, que se abre cada vez que haces clic en Editar sobre un render.",
       },
       {
         type: "tip",
@@ -108,7 +108,7 @@ export const esArticles: Record<string, ArticleContent> = {
     blocks: [
       {
         type: "p",
-        text: "Todo en Vizai Render funciona con **créditos**: cada generación con IA consume una cantidad fija, descontada de tu saldo. Las herramientas locales (la ventana Tools, los ajustes de foto del Editor y el Reflejo de Espejo) son **gratuitas** — solo pagas por lo que la IA genera.",
+        text: "Todo en Vizai Render funciona con **créditos**: cada generación con IA consume una cantidad fija, descontada de tu saldo. Las herramientas locales (la ventana Tools, los ajustes de foto del Editor y el Reflejo de Espejo) son **gratuitas**. Solo pagas por lo que la IA genera.",
       },
       { type: "h2", text: "Costo de cada herramienta" },
       {
@@ -141,8 +141,8 @@ export const esArticles: Record<string, ArticleContent> = {
       {
         type: "ul",
         items: [
-          "**Planes mensuales** — Starter (250 créditos/mes), Pro (600 créditos/mes) y Business (1.600 créditos/mes). Los créditos se renuevan cada mes y puedes cancelar cuando quieras.",
-          "**Paquetes únicos** — de 50 a 1.750 créditos en compra única. **No expiran** y se consumen después de los créditos mensuales.",
+          "**Planes mensuales**: Starter (250 créditos/mes), Pro (600 créditos/mes) y Business (1.600 créditos/mes). Los créditos se renuevan cada mes y puedes cancelar cuando quieras.",
+          "**Paquetes únicos**: de 50 a 1.750 créditos en compra única. **No expiran** y se consumen después de los créditos mensuales.",
         ],
       },
       {
@@ -167,11 +167,11 @@ export const esArticles: Record<string, ArticleContent> = {
   "preparando-a-cena": {
     title: "Pestaña Escenas: prepara el encuadre perfecto antes de renderizar",
     excerpt:
-      "Iluminación de la escena, formato de salida, distancia focal, regla de los tercios y 2 puntos de fuga — todo lo que define la calidad de tu render empieza aquí.",
+      "Iluminación de la escena, formato de salida, distancia focal, regla de los tercios y 2 puntos de fuga, todo lo que define la calidad de tu render empieza aquí.",
     blocks: [
       {
         type: "p",
-        text: "La IA renderiza exactamente lo que ve en tu viewport. Por eso, el paso que más influye en la calidad del resultado no es el prompt — es la **preparación de la escena**. La pestaña Escenas reúne todos los controles para eso, sin tocar las configuraciones de SketchUp.",
+        text: "La IA renderiza exactamente lo que ve en tu viewport. Por eso, el paso que más influye en la calidad del resultado no es el prompt. Es la **preparación de la escena**. La pestaña Escenas reúne todos los controles para eso, sin tocar las configuraciones de SketchUp.",
       },
       {
         type: "img",
@@ -183,7 +183,7 @@ export const esArticles: Record<string, ArticleContent> = {
       { type: "h2", text: "Iluminación de la escena" },
       {
         type: "p",
-        text: "Los controles **Claro** y **Oscuro** ajustan las sombras de SketchUp. Súbelos juntos para aclarar la escena y revelar más detalles — cuanto más vea la IA de tu modelo, más fiel es el render. El botón **Usar sol para sombreado** mejora la lectura de los volúmenes.",
+        text: "Los controles **Claro** y **Oscuro** ajustan las sombras de SketchUp. Súbelos juntos para aclarar la escena y revelar más detalles. Cuanto más vea la IA de tu modelo, más fiel es el render. El botón **Usar sol para sombreado** mejora la lectura de los volúmenes.",
       },
       {
         type: "p",
@@ -192,7 +192,7 @@ export const esArticles: Record<string, ArticleContent> = {
       { type: "h2", text: "Formato de salida" },
       {
         type: "p",
-        text: "Elige la proporción de la imagen final antes de renderizar: **Paisaje 16:9** (presentaciones), **Cuadrado 1:1**, **Feed 4:5** y **Retrato 9:16** (redes sociales), además de 5:4, **Clásico 4:3**, **Foto 3:2** y 7:5. La viewport muestra la máscara de recorte en tiempo real — lo que está dentro es lo que se renderiza.",
+        text: "Elige la proporción de la imagen final antes de renderizar: **Paisaje 16:9** (presentaciones), **Cuadrado 1:1**, **Feed 4:5** y **Retrato 9:16** (redes sociales), además de 5:4, **Clásico 4:3**, **Foto 3:2** y 7:5. La viewport muestra la máscara de recorte en tiempo real. Lo que está dentro es lo que se renderiza.",
       },
       { type: "h2", text: "Distancia focal" },
       {
@@ -201,20 +201,20 @@ export const esArticles: Record<string, ArticleContent> = {
       },
       {
         type: "tip",
-        text: "Para interiores residenciales, 24mm a 35mm es el estándar de la fotografía de arquitectura. Para fachadas, prueba 35mm a 55mm desde más lejos — distorsiona menos las verticales.",
+        text: "Para interiores residenciales, 24mm a 35mm es el estándar de la fotografía de arquitectura. Para fachadas, prueba 35mm a 55mm desde más lejos. Distorsiona menos las verticales.",
       },
       { type: "h2", text: "Guías de composición" },
       {
         type: "ul",
         items: [
-          "**Regla de los tercios** — superpone las líneas guía clásicas de fotografía en la viewport, para ubicar los puntos de interés en las zonas fuertes del cuadro.",
-          "**2 puntos de fuga** — activa la perspectiva arquitectónica de SketchUp: todas las verticales quedan perfectamente rectas, el estándar de las fotos profesionales de arquitectura.",
+          "**Regla de los tercios**: superpone las líneas guía clásicas de fotografía en la viewport, para ubicar los puntos de interés en las zonas fuertes del cuadro.",
+          "**2 puntos de fuga**: activa la perspectiva arquitectónica de SketchUp: todas las verticales quedan perfectamente rectas, el estándar de las fotos profesionales de arquitectura.",
         ],
       },
       { type: "h2", text: "Guardar escenas" },
       {
         type: "p",
-        text: "¿Encontraste el ángulo perfecto? Ponle nombre y haz clic en **Guardar** — la escena se crea en SketchUp y vuelves a ella cuando quieras. Guarda tus 3 o 4 ángulos principales antes de empezar a renderizar: facilita generar la serie completa de imágenes del proyecto y rehacer ajustes después.",
+        text: "¿Encontraste el ángulo perfecto? Ponle nombre y haz clic en **Guardar**. La escena se crea en SketchUp y vuelves a ella cuando quieras. Guarda tus 3 o 4 ángulos principales antes de empezar a renderizar: facilita generar la serie completa de imágenes del proyecto y rehacer ajustes después.",
       },
     ],
   },
@@ -222,11 +222,11 @@ export const esArticles: Record<string, ArticleContent> = {
   "primeiro-render": {
     title: "Tu primer render fotorrealista en el Estudio",
     excerpt:
-      "El paso a paso completo del modo Render: tipo de proyecto, clima, luces y detalles de la escena — y cómo escribir descripciones que mejoran el resultado.",
+      "El paso a paso completo del modo Render: tipo de proyecto, clima, luces y detalles de la escena, y cómo escribir descripciones que mejoran el resultado.",
     blocks: [
       {
         type: "p",
-        text: "Con la escena preparada, renderizar es seguir los 5 pasos numerados de la pestaña **Estudio**, en modo **Render**. En segundos la IA devuelve una imagen fotorrealista del ángulo exacto de tu viewport, preservando tu proyecto — geometría, materiales y composición.",
+        text: "Con la escena preparada, renderizar es seguir los 5 pasos numerados de la pestaña **Estudio**, en modo **Render**. En segundos la IA devuelve una imagen fotorrealista del ángulo exacto de tu viewport, preservando tu proyecto. Geometría, materiales y composición.",
       },
       {
         type: "img",
@@ -245,7 +245,7 @@ export const esArticles: Record<string, ArticleContent> = {
           },
           {
             title: "Calidad",
-            text: "El motor de imagen de Vizai (Nano Banana Pro) — cada render cuesta 4 créditos.",
+            text: "El motor de imagen de Vizai (Nano Banana Pro). Cada render cuesta 4 créditos.",
           },
           {
             title: "Estilo de clima",
@@ -269,12 +269,12 @@ export const esArticles: Record<string, ArticleContent> = {
       },
       {
         type: "p",
-        text: "El render aparece en el propio panel con el control **Antes/Después** para compararlo con el modelo original — incluso en pantalla completa. Desde ahí puedes **Descargar** la imagen, abrir el **Editor** para refinarla, o **Exportar en alta resolución**: la descarga estándar es gratis, y el upscale a **4K cuesta 5 créditos**.",
+        text: "El render aparece en el propio panel con el control **Antes/Después** para compararlo con el modelo original, incluso en pantalla completa. Desde ahí puedes **Descargar** la imagen, abrir el **Editor** para refinarla, o **Exportar en alta resolución**: la descarga estándar es gratis, y el upscale a **4K cuesta 5 créditos**.",
       },
       { type: "h2", text: "Escribiendo buenos detalles de escena" },
       {
         type: "p",
-        text: "El campo de detalles no necesita frases elaboradas — palabras clave separadas por comas funcionan mejor. Describe lo que la IA no puede adivinar del modelo:",
+        text: "El campo de detalles no necesita frases elaboradas. Palabras clave separadas por comas funcionan mejor. Describe lo que la IA no puede adivinar del modelo:",
       },
       {
         type: "ul",
@@ -290,7 +290,7 @@ export const esArticles: Record<string, ArticleContent> = {
       },
       {
         type: "warn",
-        text: "Si el render sale oscuro o con zonas “inventadas”, vuelve a la pestaña Escenas y aclara la iluminación — generalmente la IA no estaba viendo esa parte del modelo.",
+        text: "Si el render sale oscuro o con zonas “inventadas”, vuelve a la pestaña Escenas y aclara la iluminación. Generalmente la IA no estaba viendo esa parte del modelo.",
       },
       { type: "cost", text: "4 créditos por render · upscale 4K opcional por 5 créditos" },
     ],
@@ -299,11 +299,11 @@ export const esArticles: Record<string, ArticleContent> = {
   "editar-render": {
     title: "Editor: inpaint, nuevas perspectivas y ajustes profesionales",
     excerpt:
-      "Todo de la ventana Editar Render: corrige áreas específicas con IA, genera nuevos ángulos y closeups desde un render listo, recorta y termina la foto — sin rehacer el render.",
+      "Todo de la ventana Editar Render: corrige áreas específicas con IA, genera nuevos ángulos y closeups desde un render listo, recorta y termina la foto, sin rehacer el render.",
     blocks: [
       {
         type: "p",
-        text: "¿Generaste un buen render pero el sofá quedó raro? ¿Quieres el mismo ambiente desde otro ángulo, o un closeup de la encimera para la presentación? Para eso existe el **Editor** — haz clic en **Editar** sobre cualquier render y se abre en una ventana dedicada con tres pestañas: **Edición con IA**, **Recorte** y **Ajustes**.",
+        text: "¿Generaste un buen render pero el sofá quedó raro? ¿Quieres el mismo ambiente desde otro ángulo, o un closeup de la encimera para la presentación? Para eso existe el **Editor**. Haz clic en **Editar** sobre cualquier render y se abre en una ventana dedicada con tres pestañas: **Edición con IA**, **Recorte** y **Ajustes**.",
       },
       {
         type: "img",
@@ -329,7 +329,7 @@ export const esArticles: Record<string, ArticleContent> = {
           },
           {
             title: "Aplica y compara",
-            text: "Cada edición cuesta 4 créditos y entra al historial lateral — navega entre versiones y mantén presionado el botón Antes/Después para comparar con el original.",
+            text: "Cada edición cuesta 4 créditos y entra al historial lateral. Navega entre versiones y mantén presionado el botón Antes/Después para comparar con el original.",
           },
         ],
       },
@@ -340,7 +340,7 @@ export const esArticles: Record<string, ArticleContent> = {
       },
       {
         type: "tip",
-        text: "Sin ninguna máscara, el comando vale para toda la imagen — útil para cambios globales como “hacerlo nocturno” o “cambiar el color de las paredes”.",
+        text: "Sin ninguna máscara, el comando vale para toda la imagen, útil para cambios globales como “hacerlo nocturno” o “cambiar el color de las paredes”.",
       },
       { type: "h2", text: "Nuevas perspectivas: varias escenas desde un render" },
       {
@@ -350,9 +350,9 @@ export const esArticles: Record<string, ArticleContent> = {
       {
         type: "ul",
         items: [
-          "**“Closeup del sillón”** — marca el sillón (o solo escríbelo) y recibe un detalle aproximado, con materiales e iluminación preservados.",
-          "**“Vista lateral del ambiente”** o **“nueva perspectiva mostrando la cocina desde la derecha”** — genera el mismo espacio visto desde otro punto.",
-          "**“Vista de dron”** — aleja y eleva la cámara para una toma aérea.",
+          "**“Closeup del sillón”**: marca el sillón (o solo escríbelo) y recibe un detalle aproximado, con materiales e iluminación preservados.",
+          "**“Vista lateral del ambiente”** o **“nueva perspectiva mostrando la cocina desde la derecha”**. Genera el mismo espacio visto desde otro punto.",
+          "**“Vista de dron”**: aleja y eleva la cámara para una toma aérea.",
         ],
       },
       {
@@ -363,7 +363,7 @@ export const esArticles: Record<string, ArticleContent> = {
       },
       {
         type: "p",
-        text: "En la práctica, un único render de 4 créditos se vuelve la base de una **presentación completa**: genera la vista general, luego pide closeups de los detalles y ángulos alternativos por 4 créditos cada uno — mucho más rápido que reposicionar la cámara y re-renderizar cada vista.",
+        text: "En la práctica, un único render de 4 créditos se vuelve la base de una **presentación completa**: genera la vista general, luego pide closeups de los detalles y ángulos alternativos por 4 créditos cada uno. Mucho más rápido que reposicionar la cámara y re-renderizar cada vista.",
       },
       { type: "h2", text: "Recorte y Ajustes (gratis)" },
       {
@@ -387,7 +387,7 @@ export const esArticles: Record<string, ArticleContent> = {
       },
       {
         type: "p",
-        text: "Al hacer clic en **Finalizar Edición**, la versión final vuelve al panel principal — lista para convertirse en video, 360 o upscale 4K.",
+        text: "Al hacer clic en **Finalizar Edición**, la versión final vuelve al panel principal, lista para convertirse en video, 360 o upscale 4K.",
       },
       { type: "cost", text: "Edición con IA y nuevas perspectivas: 4 créditos cada una · Recorte, Ajustes y descarga 2K: gratis" },
     ],
@@ -396,11 +396,11 @@ export const esArticles: Record<string, ArticleContent> = {
   "reflexo-espelho": {
     title: "Reflejo del Espejo: espejos, vidrios, TV y suelo pulido",
     excerpt:
-      "SketchUp no renderiza reflejos — Vizai genera el reflejo real del ambiente en la superficie, gratis, antes del render. Sirve para espejo, vidrio de armario, TV apagada y suelo pulido.",
+      "SketchUp no renderiza reflejos: Vizai genera el reflejo real del ambiente en la superficie, gratis, antes del render. Sirve para espejo, vidrio de armario, TV apagada y suelo pulido.",
     blocks: [
       {
         type: "p",
-        text: "Una superficie que refleja es un problema clásico: SketchUp muestra una cara plana y la IA, sin referencia, se inventa un reflejo cualquiera. La herramienta **Reflejo del Espejo** (en la pestaña Escenas) proyecta en la cara lo que **realmente reflejaría** — y entonces sí renderizas, con el reflejo coherente con el ambiente.",
+        text: "Una superficie que refleja es un problema clásico: SketchUp muestra una cara plana y la IA, sin referencia, se inventa un reflejo cualquiera. La herramienta **Reflejo del Espejo** (en la pestaña Escenas) proyecta en la cara lo que **realmente reflejaría**, y entonces sí renderizas, con el reflejo coherente con el ambiente.",
       },
       {
         type: "video",
@@ -415,11 +415,11 @@ export const esArticles: Record<string, ArticleContent> = {
       {
         type: "ul",
         items: [
-          "**Espejo** — opaco, reflejo pleno. El comportamiento clásico de la herramienta.",
-          "**Suelo** — porcelánico pulido, encimera de mármol, mesa lacada. Reflejo suave por encima: el material del suelo sigue mandando en el aspecto.",
-          "**TV** — pantalla apagada. Opaca y bien oscura, con el ambiente apenas insinuado, como una pantalla apagada de verdad.",
-          "**Vidrio** — vidrio incoloro de mampara o puerta. Refleja menos y deja ver a través, sin alterar el color de lo que refleja.",
-          "**Bronce** y **Ahumado** — los vidrios tintados de puerta de armario. Semitransparentes: el reflejo aparece encima y el interior del armario por debajo.",
+          "**Espejo**: opaco, reflejo pleno. El comportamiento clásico de la herramienta.",
+          "**Suelo**: porcelánico pulido, encimera de mármol, mesa lacada. Reflejo suave por encima: el material del suelo sigue mandando en el aspecto.",
+          "**TV**: pantalla apagada. Opaca y bien oscura, con el ambiente apenas insinuado, como una pantalla apagada de verdad.",
+          "**Vidrio**: vidrio incoloro de mampara o puerta. Refleja menos y deja ver a través, sin alterar el color de lo que refleja.",
+          "**Bronce** y **Ahumado**: los vidrios tintados de puerta de armario. Semitransparentes: el reflejo aparece encima y el interior del armario por debajo.",
         ],
       },
       { type: "h2", text: "Cómo usarlo" },
@@ -432,7 +432,7 @@ export const esArticles: Record<string, ArticleContent> = {
           },
           {
             title: "Elige el tipo y haz clic en la cara",
-            text: "Selecciona el tipo de superficie, haz clic en **Generar Reflejo en la Escena** y luego en la cara — se ilumina en azul. No hace falta entrar en el grupo. Las pantallas de TV y los suelos importados suelen venir divididos en varios trozos: el plugin une los trozos vecinos solo y se ilumina la superficie entera.",
+            text: "Selecciona el tipo de superficie, haz clic en **Generar Reflejo en la Escena** y luego en la cara. Se ilumina en azul. No hace falta entrar en el grupo. Las pantallas de TV y los suelos importados suelen venir divididos en varios trozos: el plugin une los trozos vecinos solo y se ilumina la superficie entera.",
           },
           {
             title: "¿Superficie en partes separadas? Usa Shift",
@@ -440,46 +440,46 @@ export const esArticles: Record<string, ArticleContent> = {
           },
           {
             title: "Ajusta sin rehacer",
-            text: "Suelo y TV tienen un slider; vidrio, bronce y ahumado tienen dos — **brillo** y **transparencia**. Suelta el slider y el reflejo que ya está en la escena cambia al instante, sin generarlo otra vez. Cada slider tiene un botón para volver al valor por defecto.",
+            text: "Suelo y TV tienen un slider; vidrio, bronce y ahumado tienen dos. **Brillo** y **transparencia**. Suelta el slider y el reflejo que ya está en la escena cambia al instante, sin generarlo otra vez. Cada slider tiene un botón para volver al valor por defecto.",
           },
         ],
       },
       {
         type: "p",
-        text: "El plugin refleja la cámara de la escena por el plano de la superficie, captura el ambiente que realmente reflejaría y lo proyecta en la cara — en segundos, **sin coste de créditos**, porque todo ocurre localmente en tu SketchUp.",
+        text: "El plugin refleja la cámara de la escena por el plano de la superficie, captura el ambiente que realmente reflejaría y lo proyecta en la cara, en segundos, **sin coste de créditos**, porque todo ocurre localmente en tu SketchUp.",
       },
       {
         type: "warn",
-        text: "El reflejo queda **guardado en la escena** y desaparece al cambiar de escena — genera uno para cada una. Si cambias la vista de la escena después, rehaz el reflejo antes de renderizar. El botón **Borrar todos los reflejos** limpia de una vez todo lo que la herramienta creó en el modelo.",
+        text: "El reflejo queda **guardado en la escena** y desaparece al cambiar de escena. Genera uno para cada una. Si cambias la vista de la escena después, rehaz el reflejo antes de renderizar. El botón **Borrar todos los reflejos** limpia de una vez todo lo que la herramienta creó en el modelo.",
       },
       {
         type: "tip",
-        text: "En el vidrio tintado, el interior del armario solo aparece si el material de la puerta está transparente en SketchUp. Y conviene combinarlos: espejo en el baño, ahumado en las puertas del vestidor, suelo pulido en el salón — es el conjunto lo que hace que el render parezca una fotografía.",
+        text: "En el vidrio tintado, el interior del armario solo aparece si el material de la puerta está transparente en SketchUp. Y conviene combinarlos: espejo en el baño, ahumado en las puertas del vestidor, suelo pulido en el salón. Es el conjunto lo que hace que el render parezca una fotografía.",
       },
-      { type: "cost", text: "Gratis — procesado localmente, sin créditos" },
+      { type: "cost", text: "Gratis: procesado localmente, sin créditos" },
     ],
   },
 
   "luz-fake": {
     title: "Luz Falsa: tiras de LED y spots directo en SketchUp",
     excerpt:
-      "Vizai crea la luz como geometría — tira que contornea espejos y carpintería, spot con haz visible — para que la IA entienda la iluminación de tu proyecto.",
+      "Vizai crea la luz como geometría (tira que contornea espejos y carpintería, spot con haz visible) para que la IA entienda la iluminación de tu proyecto.",
     blocks: [
       {
         type: "p",
-        text: "SketchUp no muestra luz. Dibujas la cornisa, el nicho, el espejo — y la escena sigue plana, sin ninguna pista de lo que debe encender en el render. La **Luz Falsa** (en la pestaña Escenas, justo debajo del Reflejo de Espejo) lo resuelve dibujando la luz: una tira de LED que corre por el borde, o un spot con el haz visible. No es iluminación real — es una referencia clara para que la IA sepa dónde hay luz y de qué color es.",
+        text: "SketchUp no muestra luz. Dibujas la cornisa, el nicho, el espejo, y la escena sigue plana, sin ninguna pista de lo que debe encender en el render. La **Luz Falsa** (en la pestaña Escenas, justo debajo del Reflejo de Espejo) lo resuelve dibujando la luz: una tira de LED que corre por el borde, o un spot con el haz visible. No es iluminación real. Es una referencia clara para que la IA sepa dónde hay luz y de qué color es.",
       },
       {
         type: "video",
         src: "/treinamento/ui/luz-fake.mp4",
-        caption: "Tira de LED detrás del espejo, en la carpintería y spots en el techo — todo local, sin costo de créditos.",
+        caption: "Tira de LED detrás del espejo, en la carpintería y spots en el techo, todo local, sin costo de créditos.",
       },
       { type: "h2", text: "Tira de LED o Spot" },
       {
         type: "ul",
         items: [
-          "**Tira de LED** — corre a lo largo de una línea (cornisa, nicho, zócalo) o contornea el borde entero de un espejo. En **Tipo de objeto** eliges entre **Carpintería** y **Espejo**.",
-          "**Spot** — el haz cónico de una luminaria. Haces clic en la cara de la luminaria y el haz sale de ella.",
+          "**Tira de LED**: corre a lo largo de una línea (cornisa, nicho, zócalo) o contornea el borde entero de un espejo. En **Tipo de objeto** eliges entre **Carpintería** y **Espejo**.",
+          "**Spot**: el haz cónico de una luminaria. Haces clic en la cara de la luminaria y el haz sale de ella.",
         ],
       },
       { type: "h2", text: "Cómo usarla" },
@@ -492,11 +492,11 @@ export const esArticles: Record<string, ArticleContent> = {
           },
           {
             title: "Haz clic en Generar y luego en el lugar de la luz",
-            text: "Para tira en carpintería, haz clic en la **línea** por donde va a correr — mantén **Shift** para sumar varias líneas de una vez. Para tira en espejo, haz clic en la **cara del espejo** y contornea todo el borde. Para spot, haz clic en la **cara de la luminaria**. **ESC** sale de la herramienta.",
+            text: "Para tira en carpintería, haz clic en la **línea** por donde va a correr. Mantén **Shift** para sumar varias líneas de una vez. Para tira en espejo, haz clic en la **cara del espejo** y contornea todo el borde. Para spot, haz clic en la **cara de la luminaria**. **ESC** sale de la herramienta.",
           },
           {
             title: "Ajusta sin rehacer",
-            text: "Con una luz seleccionada en SketchUp, los sliders pasan a editar esa luz — suelta el slider y se reconstruye al instante. También puedes mover la luz a mano y el siguiente ajuste respeta la nueva posición.",
+            text: "Con una luz seleccionada en SketchUp, los sliders pasan a editar esa luz. Suelta el slider y se reconstruye al instante. También puedes mover la luz a mano y el siguiente ajuste respeta la nueva posición.",
           },
         ],
       },
@@ -510,9 +510,9 @@ export const esArticles: Record<string, ArticleContent> = {
       },
       {
         type: "tip",
-        text: "El uso que más rinde es la tira detrás del espejo — ese brillo contorneando el borde es lo que hace que la IA entregue el espejo retroiluminado que imaginaste. Combínala con el **Reflejo de Espejo** en la misma escena: uno da el reflejo, la otra da la luz.",
+        text: "El uso que más rinde es la tira detrás del espejo. Ese brillo contorneando el borde es lo que hace que la IA entregue el espejo retroiluminado que imaginaste. Combínala con el **Reflejo de Espejo** en la misma escena: uno da el reflejo, la otra da la luz.",
       },
-      { type: "cost", text: "Gratis — procesado localmente, sin créditos" },
+      { type: "cost", text: "Gratis: procesado localmente, sin créditos" },
     ],
   },
 
@@ -523,7 +523,7 @@ export const esArticles: Record<string, ArticleContent> = {
     blocks: [
       {
         type: "p",
-        text: "**Decorar Ambiente** es la herramienta de virtual staging de la IA Creativa: amuebla y decora un espacio a partir de una imagen base. Perfecta para mostrar el potencial de espacios vacíos — inmuebles en plano, reformas, home staging para venta.",
+        text: "**Decorar Ambiente** es la herramienta de virtual staging de la IA Creativa: amuebla y decora un espacio a partir de una imagen base. Perfecta para mostrar el potencial de espacios vacíos. Inmuebles en plano, reformas, home staging para venta.",
       },
       {
         type: "compare",
@@ -562,7 +562,7 @@ export const esArticles: Record<string, ArticleContent> = {
       { type: "h2", text: "Tipos de ambiente y estilos" },
       {
         type: "p",
-        text: "Son **13 tipos de ambiente** — Sala, Dormitorio, Cocina, Baño, Oficina, Balcón, Garaje, Hall, Piscina, Cava, Despensa, Comedor y Espacio Gourmet — y **8 estilos de decoración** que puedes combinar: Moderno, Minimalista, Clásico, Industrial, Escandinavo, Rústico, Contemporáneo y Tropical. Activa más de uno para un mix (ej.: Moderno + Escandinavo), o ninguno para dejar a la IA libre.",
+        text: "Son **13 tipos de ambiente** (Sala, Dormitorio, Cocina, Baño, Oficina, Balcón, Garaje, Hall, Piscina, Cava, Despensa, Comedor y Espacio Gourmet) y **8 estilos de decoración** que puedes combinar: Moderno, Minimalista, Clásico, Industrial, Escandinavo, Rústico, Contemporáneo y Tropical. Activa más de uno para un mix (ej.: Moderno + Escandinavo), o ninguno para dejar a la IA libre.",
       },
       {
         type: "tip",
@@ -579,7 +579,7 @@ export const esArticles: Record<string, ArticleContent> = {
     blocks: [
       {
         type: "p",
-        text: "La **Planta Renderizada** convierte un dibujo técnico — la vista superior de tu modelo o una planta que ya tienes en imagen — en una planta renderizada con pisos, muebles, vegetación y sombras, al estilo de las presentaciones de lanzamientos inmobiliarios.",
+        text: "La **Planta Renderizada** convierte un dibujo técnico (la vista superior de tu modelo o una planta que ya tienes en imagen) en una planta renderizada con pisos, muebles, vegetación y sombras, al estilo de las presentaciones de lanzamientos inmobiliarios.",
       },
       {
         type: "compare",
@@ -597,7 +597,7 @@ export const esArticles: Record<string, ArticleContent> = {
           },
           {
             title: "Proyección Paralela",
-            text: "Activa Cámara → Proyección Paralela — elimina la perspectiva y deja la planta “recta”, como un dibujo técnico.",
+            text: "Activa Cámara → Proyección Paralela: elimina la perspectiva y deja la planta “recta”, como un dibujo técnico.",
           },
           {
             title: "Encuadra y captura",
@@ -607,7 +607,7 @@ export const esArticles: Record<string, ArticleContent> = {
       },
       {
         type: "p",
-        text: "También puedes saltarte la captura y **subir una imagen desde tu PC** — funciona con plantas exportadas de AutoCAD, Revit o hasta una foto de un dibujo, siempre que las paredes sean legibles.",
+        text: "También puedes saltarte la captura y **subir una imagen desde tu PC**. Funciona con plantas exportadas de AutoCAD, Revit o hasta una foto de un dibujo, siempre que las paredes sean legibles.",
       },
       { type: "h2", text: "Observaciones que hacen la diferencia" },
       {
@@ -616,7 +616,7 @@ export const esArticles: Record<string, ArticleContent> = {
       },
       {
         type: "tip",
-        text: "Captura con los nombres de ambientes y cotas apagados si quieres una planta limpia — o mantén los textos si la presentación pide la planta anotada.",
+        text: "Captura con los nombres de ambientes y cotas apagados si quieres una planta limpia, o mantén los textos si la presentación pide la planta anotada.",
       },
       { type: "cost", text: "3 créditos por generación" },
     ],
@@ -625,11 +625,11 @@ export const esArticles: Record<string, ArticleContent> = {
   diagrama: {
     title: "Diagrama: vistas isométricas y axonométricas con 5 estilos",
     excerpt:
-      "Genera diagramas conceptuales de tu proyecto — del isométrico técnico en B&N a la maqueta física en madera balsa — desde una captura de la viewport.",
+      "Genera diagramas conceptuales de tu proyecto (del isométrico técnico en B&N a la maqueta física en madera balsa) desde una captura de la viewport.",
     blocks: [
       {
         type: "p",
-        text: "La herramienta **Diagrama** convierte una vista isométrica de tu modelo en láminas conceptuales con lenguaje de estudio de arquitectura — ideales para concursos, láminas de presentación y redes sociales.",
+        text: "La herramienta **Diagrama** convierte una vista isométrica de tu modelo en láminas conceptuales con lenguaje de estudio de arquitectura. Ideales para concursos, láminas de presentación y redes sociales.",
       },
       {
         type: "img",
@@ -658,7 +658,7 @@ export const esArticles: Record<string, ArticleContent> = {
       { type: "h2", text: "Los 5 estilos" },
       {
         type: "p",
-        text: "Primero elige el contexto — **Exterior** (con entorno) o **Interiores** (ambientes aislados) — y después el estilo:",
+        text: "Primero elige el contexto: **Exterior** (con entorno) o **Interiores** (ambientes aislados). Después el estilo:",
       },
       {
         type: "imgrow",
@@ -666,17 +666,17 @@ export const esArticles: Record<string, ArticleContent> = {
           {
             src: "/demo/assets/diag/tecnico.webp",
             alt: "Diagrama isométrico técnico",
-            caption: "Isométrico Técnico — líneas B&N con entorno urbano.",
+            caption: "Isométrico Técnico: líneas B&N con entorno urbano.",
           },
           {
             src: "/demo/assets/diag/destaque.webp",
             alt: "Diagrama con destaque",
-            caption: "Con Destaque — proyecto en color, entorno en gris.",
+            caption: "Con Destaque: proyecto en color, entorno en gris.",
           },
           {
             src: "/demo/assets/diag/colorido.webp",
             alt: "Diagrama colorido con contexto",
-            caption: "Colorido — ilustración acuarelada con entorno.",
+            caption: "Colorido: ilustración acuarelada con entorno.",
           },
         ],
       },
@@ -686,12 +686,12 @@ export const esArticles: Record<string, ArticleContent> = {
           {
             src: "/demo/assets/diag/maquete.webp",
             alt: "Diagrama estilo maqueta física",
-            caption: "Maqueta Física — estilo madera balsa.",
+            caption: "Maqueta Física: estilo madera balsa.",
           },
           {
             src: "/demo/assets/diag/int_axo.webp",
             alt: "Diagrama axonométrico de interiores",
-            caption: "Axonométrico — corte isométrico del ambiente interno.",
+            caption: "Axonométrico: corte isométrico del ambiente interno.",
           },
         ],
       },
@@ -706,11 +706,11 @@ export const esArticles: Record<string, ArticleContent> = {
   moodboard: {
     title: "Moodboard: paneles de materiales y concepto en un clic",
     excerpt:
-      "Crea moodboards profesionales desde una imagen de referencia — 7 composiciones de escena y 5 proporciones, del flat lay al panel de presentación.",
+      "Crea moodboards profesionales desde una imagen de referencia: 7 composiciones de escena y 5 proporciones, del flat lay al panel de presentación.",
     blocks: [
       {
         type: "p",
-        text: "El **Moodboard** genera paneles de referencia visual — muestras de materiales, paleta y objetos — a partir de una imagen base de tu proyecto o de referencias. Es la herramienta para el inicio de la conversación con el cliente: presenta el concepto antes incluso del primer render.",
+        text: "El **Moodboard** genera paneles de referencia visual (muestras de materiales, paleta y objetos) a partir de una imagen base de tu proyecto o de referencias. Es la herramienta para el inicio de la conversación con el cliente: presenta el concepto antes incluso del primer render.",
       },
       {
         type: "img",
@@ -721,18 +721,18 @@ export const esArticles: Record<string, ArticleContent> = {
       { type: "h2", text: "Composiciones disponibles" },
       {
         type: "p",
-        text: "Son **7 estilos de composición** — la “escena” donde se fotografían las muestras:",
+        text: "Son **7 estilos de composición**: la “escena” donde se fotografían las muestras:",
       },
       {
         type: "ul",
         items: [
-          "**Banco Studio** — superficie premium con fondo en degradado suave.",
-          "**Mesa de Proyecto** — sobre mesa de trabajo, fondo semidesenfocado.",
-          "**Vista Superior** — flat lay directo desde arriba, sin perspectiva.",
-          "**Panel de Presentación** — muestras fijadas en un tablero vertical.",
-          "**Suelo Iluminado** — flat lay en piso de madera con luz lateral.",
-          "**Línea de Materiales** — muestras alineadas en fila horizontal.",
-          "**Alfombra Decorada** — composición 3/4 sobre alfombra con objetos.",
+          "**Banco Studio**: superficie premium con fondo en degradado suave.",
+          "**Mesa de Proyecto**: sobre mesa de trabajo, fondo semidesenfocado.",
+          "**Vista Superior**: flat lay directo desde arriba, sin perspectiva.",
+          "**Panel de Presentación**: muestras fijadas en un tablero vertical.",
+          "**Suelo Iluminado**: flat lay en piso de madera con luz lateral.",
+          "**Línea de Materiales**: muestras alineadas en fila horizontal.",
+          "**Alfombra Decorada**: composición 3/4 sobre alfombra con objetos.",
         ],
       },
       {
@@ -758,7 +758,7 @@ export const esArticles: Record<string, ArticleContent> = {
   "video-com-ia": {
     title: "Video con IA: anima tus renders con cámara cinematográfica",
     excerpt:
-      "Convierte un render en un video de 4 a 15 segundos con movimiento de cámara profesional y sonido ambiente generado por IA — directo desde el plugin.",
+      "Convierte un render en un video de 4 a 15 segundos con movimiento de cámara profesional y sonido ambiente generado por IA, directo desde el plugin.",
     blocks: [
       {
         type: "p",
@@ -786,7 +786,7 @@ export const esArticles: Record<string, ArticleContent> = {
           },
           {
             title: "Frame final (opcional)",
-            text: "Define también la imagen de llegada y la IA crea la transición entre las dos — ideal para un “tour” entre dos ángulos del ambiente.",
+            text: "Define también la imagen de llegada y la IA crea la transición entre las dos. Ideal para un “tour” entre dos ángulos del ambiente.",
           },
           {
             title: "Proporción",
@@ -798,7 +798,7 @@ export const esArticles: Record<string, ArticleContent> = {
           },
           {
             title: "Duración",
-            text: "4, 6, 8, 10 o 15 segundos — el costo aparece en el botón antes de generar.",
+            text: "4, 6, 8, 10 o 15 segundos: el costo aparece en el botón antes de generar.",
           },
         ],
       },
@@ -813,16 +813,16 @@ export const esArticles: Record<string, ArticleContent> = {
       {
         type: "ul",
         items: [
-          "**Automático** — movimiento natural elegido por la IA (recomendado).",
-          "**Zoom In / Zoom Out** — acercamiento o alejamiento suave.",
-          "**Panorámica izquierda / derecha** — deslizamiento lateral.",
-          "**Tilt Up / Tilt Down** — inclinación hacia arriba o abajo.",
-          "**Órbita (Dron)** — giro suave alrededor del proyecto.",
+          "**Automático**: movimiento natural elegido por la IA (recomendado).",
+          "**Zoom In / Zoom Out**: acercamiento o alejamiento suave.",
+          "**Panorámica izquierda / derecha**: deslizamiento lateral.",
+          "**Tilt Up / Tilt Down**: inclinación hacia arriba o abajo.",
+          "**Órbita (Dron)**: giro suave alrededor del proyecto.",
         ],
       },
       {
         type: "p",
-        text: "¿Prefieres dirigir la escena? Describe el movimiento libremente (“la cámara avanza despacio por la sala revelando el balcón”) y usa las **Observaciones** para pedir foco en algún elemento. En el audio, elige **Sonido Ambiente por IA** — viento, pasos, sonidos urbanos, gratis — o video mudo para editar después.",
+        text: "¿Prefieres dirigir la escena? Describe el movimiento libremente (“la cámara avanza despacio por la sala revelando el balcón”) y usa las **Observaciones** para pedir foco en algún elemento. En el audio, elige **Sonido Ambiente por IA** (viento, pasos, sonidos urbanos, gratis) o video mudo para editar después.",
       },
       {
         type: "table",
@@ -837,7 +837,7 @@ export const esArticles: Record<string, ArticleContent> = {
       },
       {
         type: "tip",
-        text: "Los videos de 4–6 segundos con movimiento Automático o Zoom In son los que más convierten en redes sociales — y los más baratos. Empieza por ahí.",
+        text: "Los videos de 4–6 segundos con movimiento Automático o Zoom In son los que más convierten en redes sociales, y los más baratos. Empieza por ahí.",
       },
     ],
   },
@@ -845,17 +845,17 @@ export const esArticles: Record<string, ArticleContent> = {
   "panorama-360": {
     title: "Panorama 360°: presentaciones inmersivas que el cliente explora",
     excerpt:
-      "Marca la pared y dónde te paras — SketchUp captura todo el ambiente y la IA devuelve un panorama esférico que el cliente explora por link, sin instalar nada.",
+      "Marca la pared y dónde te paras: SketchUp captura todo el ambiente y la IA devuelve un panorama esférico que el cliente explora por link, sin instalar nada.",
     blocks: [
       {
         type: "p",
-        text: "La pestaña **360** convierte tu ambiente en un **panorama esférico interactivo** directo desde el modelo — sin renderizar nada antes. Marcas dónde va la cámara y el plugin hace el resto. El cliente recibe un link, lo abre en el navegador (computadora o celular) y explora el espacio girando la imagen.",
+        text: "La pestaña **360** convierte tu ambiente en un **panorama esférico interactivo** directo desde el modelo, sin renderizar nada antes. Marcas dónde va la cámara y el plugin hace el resto. El cliente recibe un link, lo abre en el navegador (computadora o celular) y explora el espacio girando la imagen.",
       },
       {
         type: "img",
         src: "/demo/360/pano-result.webp",
         alt: "Panorama 360 generado por Vizai Render",
-        caption: "El panorama generado — listo para el visor interactivo.",
+        caption: "El panorama generado: listo para el visor interactivo.",
       },
       { type: "h2", text: "Cómo generarlo" },
       {
@@ -867,7 +867,7 @@ export const esArticles: Record<string, ArticleContent> = {
       },
       {
         type: "p",
-        text: "No necesitas renderizar nada antes. **Haz clic en la pared** que quedará en el centro del panorama y después **dónde te paras** — SketchUp captura todo el ambiente solo, en todas las direcciones, y arma la imagen esférica. La IA convierte esa captura en una foto realista.",
+        text: "No necesitas renderizar nada antes. **Haz clic en la pared** que quedará en el centro del panorama y después **dónde te paras**. SketchUp captura todo el ambiente solo, en todas las direcciones, y arma la imagen esférica. La IA convierte esa captura en una foto realista.",
       },
       {
         type: "steps",
@@ -882,7 +882,7 @@ export const esArticles: Record<string, ArticleContent> = {
           },
           {
             title: "Revisa la vista previa",
-            text: "El plugin muestra el ambiente capturado antes de gastar crédito. Si el observador quedó dentro de un mueble, rehazlo — la vista previa es gratis.",
+            text: "El plugin muestra el ambiente capturado antes de gastar crédito. Si el observador quedó dentro de un mueble, rehazlo. La vista previa es gratis.",
           },
           {
             title: "Genera y comparte",
@@ -947,20 +947,20 @@ export const esArticles: Record<string, ArticleContent> = {
       },
       {
         type: "warn",
-        text: "Los bloques con densidad Pesado/Ultra pueden hacer lento el archivo en modelos grandes. Si te pasas, la ventana Tools (Impacto de los Componentes) muestra qué bloques están pesando — y la guía de Optimizar Archivo lo resuelve.",
+        text: "Los bloques con densidad Pesado/Ultra pueden hacer lento el archivo en modelos grandes. Si te pasas, la ventana Tools (Impacto de los Componentes) muestra qué bloques están pesando, y la guía de Optimizar Archivo lo resuelve.",
       },
       { type: "cost", text: "28 créditos por bloque generado" },
     ],
   },
 
   "otimizar-arquivo": {
-    title: "Tools — Optimizar Archivo: deja tu .skp ligero gratis",
+    title: "Optimizar Archivo (Tools): deja tu .skp ligero gratis",
     excerpt:
-      "Purge inteligente, materiales duplicados, reducción de texturas e informe de impacto de los componentes — la limpieza completa del archivo, 100% local y gratuita.",
+      "Purge inteligente, materiales duplicados, reducción de texturas e informe de impacto de los componentes. La limpieza completa del archivo, 100% local y gratuita.",
     blocks: [
       {
         type: "p",
-        text: "¿Archivo trabado, órbita entrecortada, .skp de cientos de MB? La ventana **Tools** (pestaña lateral verde del panel) incluye **Optimizar Archivo**: un conjunto de limpiezas que corre 100% en tu computadora, **sin costar créditos**. El tamaño del archivo aparece arriba, antes y después — ves el resultado al instante.",
+        text: "¿Archivo trabado, órbita entrecortada, .skp de cientos de MB? La ventana **Tools** (pestaña lateral verde del panel) incluye **Optimizar Archivo**: un conjunto de limpiezas que corre 100% en tu computadora, **sin costar créditos**. El tamaño del archivo aparece arriba, antes y después. Ves el resultado al instante.",
       },
       {
         type: "img",
@@ -973,36 +973,36 @@ export const esArticles: Record<string, ArticleContent> = {
       {
         type: "ul",
         items: [
-          "**Purge** — elimina materiales, componentes y estilos que no se usan en nada en el proyecto. Es la limpieza que más reduce archivos que pasaron por muchas versiones.",
-          "**Materiales Duplicados** — une materiales que usan la misma textura con nombres distintos (Madera, Madera1, Madera-copy…), común en modelos armados con bloques de orígenes variados.",
+          "**Purge**: elimina materiales, componentes y estilos que no se usan en nada en el proyecto. Es la limpieza que más reduce archivos que pasaron por muchas versiones.",
+          "**Materiales Duplicados**: une materiales que usan la misma textura con nombres distintos (Madera, Madera1, Madera-copy…), común en modelos armados con bloques de orígenes variados.",
         ],
       },
       { type: "h2", text: "Texturas" },
       {
         type: "p",
-        text: "El **Gestor de Texturas** lista todas las imágenes del modelo con sus dimensiones. Texturas 4K en el tirador de un cajón son peso muerto: selecciona las exageradas y redúcelas a la resolución objetivo en un clic. El aspecto en la viewport casi no cambia — el tamaño del archivo, sí.",
+        text: "El **Gestor de Texturas** lista todas las imágenes del modelo con sus dimensiones. Texturas 4K en el tirador de un cajón son peso muerto: selecciona las exageradas y redúcelas a la resolución objetivo en un clic. El aspecto en la viewport casi no cambia. El tamaño del archivo, sí.",
       },
       { type: "h2", text: "Impacto" },
       {
         type: "p",
-        text: "El informe de **Impacto de los Componentes** muestra qué bloques tienen más geometría (caras) y cuántas instancias existen de cada uno. Así descubres que un árbol bajado del Warehouse tiene 800 mil caras — y que está repetido 12 veces. El botón Ver localiza el componente en el modelo para que decidas qué hacer.",
+        text: "El informe de **Impacto de los Componentes** muestra qué bloques tienen más geometría (caras) y cuántas instancias existen de cada uno. Así descubres que un árbol bajado del Warehouse tiene 800 mil caras, y que está repetido 12 veces. El botón Ver localiza el componente en el modelo para que decidas qué hacer.",
       },
       {
         type: "tip",
         text: "Corre Optimizar Archivo antes de renderizar proyectos grandes: modelo ligero = viewport fluida = captura más rápida. Y haz respaldo la primera vez que corras limpiezas pesadas en un archivo importante.",
       },
-      { type: "cost", text: "Gratis — procesado localmente, sin créditos" },
+      { type: "cost", text: "Gratis: procesado localmente, sin créditos" },
     ],
   },
 
   "pisos-seamless": {
-    title: "Tools — Pisos Seamless: despiece de pisos profesional en segundos",
+    title: "Pisos Seamless (Tools): despiece de pisos profesional en segundos",
     excerpt:
       "Crea texturas de piso continuas desde cualquier imagen: porcelanato, madera con variaciones, junta configurable y aplicación directa en las caras.",
     blocks: [
       {
         type: "p",
-        text: "La segunda herramienta de la ventana **Tools** arma **texturas de piso seamless** a partir de imágenes sueltas — esa foto de porcelanato del sitio del proveedor se convierte en un piso despiezado, con junta y en la dimensión real de la pieza. También es local y gratuita.",
+        text: "La segunda herramienta de la ventana **Tools** arma **texturas de piso seamless** a partir de imágenes sueltas. Esa foto de porcelanato del sitio del proveedor se convierte en un piso despiezado, con junta y en la dimensión real de la pieza. También es local y gratuita.",
       },
       {
         type: "img",
@@ -1021,11 +1021,11 @@ export const esArticles: Record<string, ArticleContent> = {
           },
           {
             title: "Variaciones (opcional)",
-            text: "Agrega hasta 3 imágenes alternativas de la misma línea — el plugin intercala las piezas y elimina el efecto de repetición, esencial en maderas.",
+            text: "Agrega hasta 3 imágenes alternativas de la misma línea. El plugin intercala las piezas y elimina el efecto de repetición, esencial en maderas.",
           },
           {
             title: "Despiece y rotación",
-            text: "Cuadrícula Recta (alineada), Trabado 50% o Trabado 1/3 — y gira la pieza si lo necesitas (tablones en vertical, por ejemplo).",
+            text: "Cuadrícula Recta (alineada), Trabado 50% o Trabado 1/3, y gira la pieza si lo necesitas (tablones en vertical, por ejemplo).",
           },
           {
             title: "Dimensiones reales",
@@ -1033,20 +1033,20 @@ export const esArticles: Record<string, ArticleContent> = {
           },
           {
             title: "Junta",
-            text: "Grosor en milímetros y color — gris, beige, negra o combinando con la pieza.",
+            text: "Grosor en milímetros y color: gris, beige, negra o combinando con la pieza.",
           },
         ],
       },
       { type: "h2", text: "Aplicando al modelo" },
       {
         type: "p",
-        text: "La vista previa muestra el despiece en tiempo real. Para aplicar: **selecciona las caras del piso** en SketchUp antes de hacer clic en Aplicar Textura — el material se crea y se mapea directo en ellas. Sin selección, el plugin activa el bote de pintura para que hagas clic donde quieras.",
+        text: "La vista previa muestra el despiece en tiempo real. Para aplicar: **selecciona las caras del piso** en SketchUp antes de hacer clic en Aplicar Textura. El material se crea y se mapea directo en ellas. Sin selección, el plugin activa el bote de pintura para que hagas clic donde quieras.",
       },
       {
         type: "tip",
         text: "Pisos con despiece y junta correctos elevan el realismo del render: la IA respeta el dibujo del piso que ve en la escena. Arma el piso aquí antes de renderizar en el Estudio.",
       },
-      { type: "cost", text: "Gratis — procesado localmente, sin créditos" },
+      { type: "cost", text: "Gratis: procesado localmente, sin créditos" },
     ],
   },
 };
