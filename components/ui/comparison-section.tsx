@@ -15,7 +15,7 @@ export function ComparisonSection() {
             <span style={{ display: "inline-flex", alignItems: "baseline", gap: 4, flexWrap: "wrap" }}>
               {t.comparison.insideOf}{" "}
               <span style={{ display: "inline-flex", position: "relative" }}>
-                <AnimatedTextCycle words={["SketchUp", "ArchiCAD", "Revit"]} interval={2500} />
+                <AnimatedTextCycle words={["SketchUp"]} interval={2500} />
               </span>
             </span>
           ),

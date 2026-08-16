@@ -71,7 +71,7 @@ const pt = {
       {
         title: "Zero exportação",
         description:
-          "Instale o plugin e renderize direto do SketchUp / ArchiCAD / Revit. Sem salvar prints, sem janelas extras, sem interromper o fluxo.",
+          "Instale o plugin e renderize direto do SketchUp. Sem salvar prints, sem janelas extras, sem interromper o fluxo.",
       },
       {
         title: "Treinada pra quem projeta",
@@ -199,7 +199,7 @@ const pt = {
   faq: {
     title: "Perguntas frequentes",
     items: [
-      { q: "O que é o Vizai Render?", a: "É um plugin para SketchUp, ArchiCAD e Revit que gera renders fotorrealistas com Inteligência Artificial diretamente dentro do software, sem exportar, sem abrir outra ferramenta." },
+      { q: "O que é o Vizai Render?", a: "É um plugin para SketchUp que gera renders fotorrealistas com Inteligência Artificial diretamente dentro do software, sem exportar, sem abrir outra ferramenta." },
       { q: "Preciso saber usar IA ou ter experiência com renderização?", a: "Não. Você configura a cena no seu programa preferido normalmente, escolhe o estilo de render e clica em um botão. O Vizai cuida do resto." },
       { q: "Como funcionam os créditos?", a: "Cada operação consome créditos: render 2K e edição com IA (inpaint) custam 4 créditos, upscale 4K custa 5 créditos, imagem 360° custa 5 créditos e IA Criativa custa 3 créditos. Operações avançadas como criação de blocos 3D custam 28 créditos, e geração de vídeo entre 22 e 83 créditos dependendo da duração. Você recebe 8 créditos grátis ao criar a conta. Planos mensais renovam automaticamente todo mês e créditos avulsos não expiram." },
       { q: "Posso cancelar minha assinatura quando quiser?", a: "Sim, sem fidelidade e sem burocracia. Você cancela direto pelo plugin com um clique. O plano continua ativo até o fim do período já pago." },
@@ -454,7 +454,7 @@ const en: Dict = {
       {
         title: "Zero exporting",
         description:
-          "Install the plugin and render straight from SketchUp / ArchiCAD / Revit. No saving screenshots, no extra windows, no breaking your flow.",
+          "Install the plugin and render straight from SketchUp. No saving screenshots, no extra windows, no breaking your flow.",
       },
       {
         title: "Trained for designers",
@@ -582,7 +582,7 @@ const en: Dict = {
   faq: {
     title: "Frequently asked questions",
     items: [
-      { q: "What is Vizai Render?", a: "It's a plugin for SketchUp, ArchiCAD and Revit that generates photorealistic renders with Artificial Intelligence right inside the software. No exporting, no opening another tool." },
+      { q: "What is Vizai Render?", a: "It's a plugin for SketchUp that generates photorealistic renders with Artificial Intelligence right inside the software. No exporting, no opening another tool." },
       { q: "Do I need to know how to use AI or have rendering experience?", a: "No. You set up the scene in your favorite software as usual, choose the render style and click a button. Vizai takes care of the rest." },
       { q: "How do credits work?", a: "Each operation consumes credits: a 2K render and AI edits (inpaint) cost 4 credits, 4K upscale costs 5 credits, a 360° image costs 5 credits and Creative AI costs 3 credits. Advanced operations like creating 3D blocks cost 28 credits, and video generation between 22 and 83 credits depending on the duration. You get 8 free credits when you create your account. Monthly plans renew automatically every month and one-off credits do not expire." },
       { q: "Can I cancel my subscription whenever I want?", a: "Yes, no commitment and no red tape. You cancel right from the plugin with one click. The plan stays active until the end of the period you've already paid for." },
@@ -835,7 +835,7 @@ const es: Dict = {
       {
         title: "Cero exportación",
         description:
-          "Instala el plugin y renderiza directo desde SketchUp / ArchiCAD / Revit. Sin guardar capturas, sin ventanas extra, sin interrumpir tu flujo.",
+          "Instala el plugin y renderiza directo desde SketchUp. Sin guardar capturas, sin ventanas extra, sin interrumpir tu flujo.",
       },
       {
         title: "Entrenada para quien proyecta",
@@ -963,7 +963,7 @@ const es: Dict = {
   faq: {
     title: "Preguntas frecuentes",
     items: [
-      { q: "¿Qué es Vizai Render?", a: "Es un plugin para SketchUp, ArchiCAD y Revit que genera renders fotorrealistas con Inteligencia Artificial directamente dentro del software, sin exportar, sin abrir otra herramienta." },
+      { q: "¿Qué es Vizai Render?", a: "Es un plugin para SketchUp que genera renders fotorrealistas con Inteligencia Artificial directamente dentro del software, sin exportar, sin abrir otra herramienta." },
       { q: "¿Necesito saber usar IA o tener experiencia en renderizado?", a: "No. Configuras la escena en tu programa favorito como siempre, eliges el estilo de render y haces clic en un botón. Vizai se encarga del resto." },
       { q: "¿Cómo funcionan los créditos?", a: "Cada operación consume créditos: un render 2K y las ediciones con IA (inpaint) cuestan 4 créditos, el upscale 4K cuesta 5 créditos, una imagen 360° cuesta 5 créditos y la IA Creativa cuesta 3 créditos. Operaciones avanzadas como la creación de bloques 3D cuestan 28 créditos, y la generación de video entre 22 y 83 créditos según la duración. Recibes 8 créditos gratis al crear la cuenta. Los planes mensuales se renuevan automáticamente cada mes y los créditos individuales no caducan." },
       { q: "¿Puedo cancelar mi suscripción cuando quiera?", a: "Sí, sin permanencia y sin trámites. Cancelas directo desde el plugin con un clic. El plan sigue activo hasta el final del período ya pagado." },
