@@ -365,6 +365,13 @@ const pt = {
   },
   sucesso: {
     title: "Compra realizada com sucesso!",
+    // Boleto: a Stripe redireciona pra cá quando EMITE o boleto, não quando ele
+    // é pago. Sem estes textos a página dizia "compra confirmada" pra quem ainda
+    // não tinha pago — cliente real abriu suporte perguntando cadê o crédito.
+    pendingTitle: "Boleto gerado!",
+    pendingSubtitle: "Falta só o pagamento",
+    pendingNotice:
+      "Seus créditos entram automaticamente assim que o banco confirmar o pagamento do boleto — normalmente em algumas horas, podendo levar até 1 dia útil. Você não precisa fazer mais nada aqui.",
     youSubscribed: "Você assinou o",
     planPrefix: "Plano",
     creditsPerMonth: "{n} créditos/mês",
@@ -748,6 +755,10 @@ const en: Dict = {
   },
   sucesso: {
     title: "Purchase completed successfully!",
+    pendingTitle: "Boleto generated!",
+    pendingSubtitle: "Just the payment left",
+    pendingNotice:
+      "Your credits are added automatically as soon as the bank confirms the boleto payment — usually within a few hours, and up to 1 business day. There is nothing else you need to do here.",
     youSubscribed: "You subscribed to the",
     planPrefix: "Plan",
     creditsPerMonth: "{n} credits/mo",
@@ -1129,6 +1140,10 @@ const es: Dict = {
   },
   sucesso: {
     title: "¡Compra realizada con éxito!",
+    pendingTitle: "¡Boleto generado!",
+    pendingSubtitle: "Solo falta el pago",
+    pendingNotice:
+      "Tus créditos se acreditan automáticamente en cuanto el banco confirme el pago del boleto — normalmente en unas horas, y hasta 1 día hábil. No necesitas hacer nada más aquí.",
     youSubscribed: "Te suscribiste al",
     planPrefix: "Plan",
     creditsPerMonth: "{n} créditos/mes",

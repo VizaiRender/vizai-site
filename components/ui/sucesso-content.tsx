@@ -13,7 +13,17 @@ const PLAN_CREDITS_N: Record<string, string> = {
   business_annual: "16.000",
 };
 
-export function SucessoContent({ plan }: { plan: string | null | undefined }) {
+// `pending` = boleto emitido mas ainda NÃO pago. A Stripe manda o comprador pra
+// cá assim que gera o boleto, então sem este estado a página comemorava uma
+// compra que ainda não aconteceu e o cliente ficava esperando crédito que não
+// vinha. Cartão nunca cai aqui (paga na hora).
+export function SucessoContent({
+  plan,
+  pending = false,
+}: {
+  plan: string | null | undefined;
+  pending?: boolean;
+}) {
   const t = useT();
   const planName = t.planLabels[plan as keyof typeof t.planLabels] ?? t.planLabels.unknown;
   const creditsN = plan ? PLAN_CREDITS_N[plan] : null;
@@ -34,23 +44,30 @@ export function SucessoContent({ plan }: { plan: string | null | undefined }) {
         textAlign: "center",
       }}
     >
-      {/* Checkmark */}
+      {/* Ícone: check verde quando pago, relógio âmbar quando aguarda boleto */}
       <div
         style={{
           width: 52,
           height: 52,
           borderRadius: "50%",
-          background: "rgba(16, 185, 129, 0.15)",
-          border: "1.5px solid rgba(16, 185, 129, 0.4)",
+          background: pending ? "rgba(245, 158, 11, 0.15)" : "rgba(16, 185, 129, 0.15)",
+          border: `1.5px solid ${pending ? "rgba(245, 158, 11, 0.4)" : "rgba(16, 185, 129, 0.4)"}`,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           marginBottom: 20,
         }}
       >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <polyline points="20 6 9 17 4 12" />
-        </svg>
+        {pending ? (
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="9" />
+            <polyline points="12 7 12 12 15.5 14" />
+          </svg>
+        ) : (
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        )}
       </div>
 
       {/* Heading */}
@@ -65,8 +82,45 @@ export function SucessoContent({ plan }: { plan: string | null | undefined }) {
           marginBottom: 12,
         }}
       >
-        {t.sucesso.title}
+        {pending ? t.sucesso.pendingTitle : t.sucesso.title}
       </h1>
+
+      {/* Aviso do boleto: o ponto central da página quando o pagamento está em
+          aberto. Diz o prazo e deixa claro que não há nada mais a fazer. */}
+      {pending && (
+        <div
+          style={{
+            width: "100%",
+            background: "rgba(245, 158, 11, 0.08)",
+            border: "1px solid rgba(245, 158, 11, 0.25)",
+            borderRadius: 12,
+            padding: "14px 18px",
+            marginBottom: 24,
+          }}
+        >
+          <p
+            style={{
+              fontSize: "0.8rem",
+              fontWeight: 700,
+              color: "#fbbf24",
+              margin: 0,
+              marginBottom: 6,
+            }}
+          >
+            {t.sucesso.pendingSubtitle}
+          </p>
+          <p
+            style={{
+              fontSize: "0.875rem",
+              lineHeight: 1.5,
+              color: "rgba(255,255,255,0.75)",
+              margin: 0,
+            }}
+          >
+            {t.sucesso.pendingNotice}
+          </p>
+        </div>
+      )}
 
       {/* Plan badge */}
       <div
