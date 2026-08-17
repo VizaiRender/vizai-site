@@ -137,6 +137,20 @@ const demoHeaders = [
 const nextConfig: NextConfig = {
   async redirects() {
     return [
+      // Canonicalização de host. O site respondia 200 em www E sem www, sem
+      // redirecionar — e o cookie de sessão do Supabase é host-only (gravado no
+      // host exato do login). Resultado: quem logava no www e voltava por um
+      // link fixo sem www (cancel_url/success_url do checkout, que apontam pro
+      // apex) caía num host sem sessão e parecia deslogado. Sem canônico o
+      // Google também via o mesmo conteúdo em dois domínios, contra o que
+      // sitemap/robots/metadataBase já declaram (todos apontam pro apex).
+      // Precisa vir PRIMEIRO: as regras abaixo são relativas e manteriam o host.
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.vizairender.com" }],
+        destination: "https://vizairender.com/:path*",
+        permanent: true,
+      },
       // URL "adivinhável" que gente digita ou recebe por anúncio/WhatsApp
       { source: "/planos", destination: "/#pricing", permanent: true },
       { source: "/plans", destination: "/#pricing", permanent: true },
