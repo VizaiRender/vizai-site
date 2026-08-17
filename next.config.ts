@@ -145,10 +145,19 @@ const nextConfig: NextConfig = {
       // Google também via o mesmo conteúdo em dois domínios, contra o que
       // sitemap/robots/metadataBase já declaram (todos apontam pro apex).
       // Precisa vir PRIMEIRO: as regras abaixo são relativas e manteriam o host.
+      // São DUAS regras de propósito: com `/:path*` a raiz casa com vazio e o
+      // destino sai com o literal ":path*" na URL (404). `/:path+` exige ao
+      // menos um segmento, e a raiz vai numa regra própria.
       {
-        source: "/:path*",
+        source: "/",
         has: [{ type: "host", value: "www.vizairender.com" }],
-        destination: "https://vizairender.com/:path*",
+        destination: "https://vizairender.com/",
+        permanent: true,
+      },
+      {
+        source: "/:path+",
+        has: [{ type: "host", value: "www.vizairender.com" }],
+        destination: "https://vizairender.com/:path+",
         permanent: true,
       },
       // URL "adivinhável" que gente digita ou recebe por anúncio/WhatsApp
