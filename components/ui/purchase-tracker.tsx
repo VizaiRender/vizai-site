@@ -22,18 +22,21 @@ type Props = {
 // ID"), e as duas tags disparam no mesmo evento do dataLayer, então recebem o
 // mesmo valor. O transaction_id daqui viaja como order_id. Só a CAPI do boleto
 // (Cloud Run) usa o id da sessão Stripe como event_id, e esse caminho nunca
-// coexiste com o do browser. A trava em sessionStorage evita re-disparo no
-// refresh/voltar.
+// coexiste com o do browser. A trava fica em localStorage, não em sessionStorage:
+// sessionStorage é POR ABA, então reabrir o link numa aba nova (histórico,
+// restauração de sessão) re-disparava a mesma venda. Em localStorage a
+// transação dispara uma vez só naquele navegador, pra sempre.
 export function PurchaseTracker({ value, currency, transactionId, em, ph, fbc }: Props) {
   useEffect(() => {
     if (!transactionId || !value || !currency) return;
 
     const key = `purchase_fired_${transactionId}`;
     try {
-      if (sessionStorage.getItem(key)) return;
-      sessionStorage.setItem(key, "1");
+      if (localStorage.getItem(key)) return;
+      localStorage.setItem(key, "1");
     } catch {
-      // sessionStorage indisponível (modo privado): segue e dispara mesmo assim.
+      // localStorage indisponível (modo privado): segue e dispara mesmo assim —
+      // perder uma venda real é pior que arriscar uma repetida.
     }
 
     const w = window as Window & { dataLayer?: Record<string, unknown>[] };

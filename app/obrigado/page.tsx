@@ -25,7 +25,7 @@ const API_BASE =
 // undefined de propósito — ver a regra de disparo abaixo.
 async function fetchCheckoutStatus(
   sid?: string
-): Promise<{ paid?: boolean; em?: string; ph?: string }> {
+): Promise<{ paid?: boolean; created?: number; em?: string; ph?: string }> {
   if (!sid) return {};
   try {
     const r = await fetch(
@@ -50,7 +50,7 @@ export default async function ObrigadoPage({
   searchParams: Promise<{ sid?: string; val?: string; cur?: string; plan?: string }>;
 }) {
   const { sid, val, cur, plan } = await searchParams;
-  const { paid, em, ph } = await fetchCheckoutStatus(sid);
+  const { paid, created, em, ph } = await fetchCheckoutStatus(sid);
 
   // Id do clique no anúncio, guardado na chegada ao site (ver lib/fbc.ts). É
   // lido AQUI no servidor porque o cookie é httpOnly — o browser não alcança.
@@ -65,7 +65,19 @@ export default async function ObrigadoPage({
   // comportamento atual: um erro de rede não pode custar uma venda real de
   // cartão, que é a esmagadora maioria. O boleto pago depois é reportado pelo
   // SERVIDOR via Conversions API, então não fica descoberto.
-  const shouldTrackPurchase = paid !== false;
+  // ...e desde que o link não seja velho. Esta página dispara o pixel pra QUALQUER
+  // um que abra a URL com valor na query, então o cliente que reabre o
+  // agradecimento pelo histórico (ou cujo navegador restaura as abas) virava uma
+  // venda que nunca existiu. Na prática a Stripe redireciona em minutos; 6h é
+  // folga larga pro fluxo real. Boleto pago depois cai fora dessa janela de
+  // propósito — quem reporta esse é o servidor, pela Conversions API.
+  // `created` ausente (verificação falhou) não bloqueia: mesma regra do `paid`,
+  // erro de rede não pode custar uma venda de cartão.
+  const SIX_HOURS = 6 * 60 * 60;
+  const isStaleLink =
+    typeof created === "number" && Date.now() / 1000 - created > SIX_HOURS;
+
+  const shouldTrackPurchase = paid !== false && !isStaleLink;
 
   // Só tratamos como pendente o que o servidor CONFIRMOU estar em aberto. Se a
   // verificação falhou (paid undefined), mostramos a tela normal de sucesso —
