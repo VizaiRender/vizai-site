@@ -1,7 +1,9 @@
+import { cookies } from "next/headers";
 import { Confetti } from "@/components/ui/confetti";
 import Navbar from "@/app/components/Navbar";
 import { SucessoContent } from "@/components/ui/sucesso-content";
 import { PurchaseTracker } from "@/components/ui/purchase-tracker";
+import { FBC_COOKIE } from "@/lib/fbc";
 
 // Confirmação de compra: não deve aparecer no Google
 export const metadata = {
@@ -50,6 +52,12 @@ export default async function ObrigadoPage({
   const { sid, val, cur, plan } = await searchParams;
   const { paid, em, ph } = await fetchCheckoutStatus(sid);
 
+  // Id do clique no anúncio, guardado na chegada ao site (ver lib/fbc.ts). É
+  // lido AQUI no servidor porque o cookie é httpOnly — o browser não alcança.
+  // Sem isso o Purchase chegava na Meta sem clique nenhum (fbc em 0%), e a
+  // venda não voltava pro anúncio que a originou.
+  const fbc = (await cookies()).get(FBC_COOKIE)?.value;
+
   // Dispara o pixel a menos que o pagamento seja SABIDAMENTE não confirmado.
   // `paid === false` (boleto emitido e não pago) → não dispara.
   // `paid === true` (cartão, ou boleto já pago) → dispara.
@@ -84,7 +92,14 @@ export default async function ObrigadoPage({
           fez cliente achar que a compra estava concluída e abrir suporte. */}
       {!isPending && <Confetti />}
       {shouldTrackPurchase && (
-        <PurchaseTracker value={val} currency={cur} transactionId={sid} em={em} ph={ph} />
+        <PurchaseTracker
+          value={val}
+          currency={cur}
+          transactionId={sid}
+          em={em}
+          ph={ph}
+          fbc={fbc}
+        />
       )}
 
       <SucessoContent plan={plan} pending={isPending} />

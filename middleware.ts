@@ -1,8 +1,14 @@
 import { type NextRequest } from "next/server";
 import { updateSession } from "@/lib/supabase/middleware";
+import { captureClickId } from "@/lib/fbc";
 
 export async function middleware(request: NextRequest) {
-  return await updateSession(request);
+  const response = await updateSession(request);
+  // Grava o clique no anúncio na resposta que já existe — inclusive quando ela
+  // é um redirect (login/next), senão o clique se perderia justo em quem chega
+  // por link protegido.
+  captureClickId(request, response);
+  return response;
 }
 
 export const config = {
