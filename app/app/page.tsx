@@ -1,17 +1,12 @@
-import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { Footer } from "@/components/ui/footer";
 import { DashboardContent } from "@/components/ui/dashboard-content";
 import { fetchCreditsBalance, fetchSubscription } from "@/lib/vizai-api";
 
-export default async function DashboardPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ checkout?: string; notice?: string }>;
-}) {
-  const params = await searchParams;
-  if (params.checkout === "success") redirect("/sucesso");
-
+// Não existe mais página de retorno de checkout aqui. Toda volta do Stripe cai
+// na /obrigado, que é quem dispara o Purchase pro Meta — qualquer outra tela de
+// "compra concluída" nasceria sem rastreamento e apagaria a venda dos anúncios.
+export default async function DashboardPage() {
   const supabase = await createClient();
   const {
     data: { user },

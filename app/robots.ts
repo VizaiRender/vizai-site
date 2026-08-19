@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       // /obrigado fica de fora de propósito: ela usa noindex na meta tag,
       // e o Google precisa conseguir rastrear a página pra ler a tag.
-      disallow: ['/api/', '/auth/', '/login/', '/signup/', '/sucesso/', '/checkout/', '/app/'],
+      disallow: ['/api/', '/auth/', '/login/', '/signup/', '/checkout/', '/app/'],
     },
     sitemap: 'https://vizairender.com/sitemap.xml',
   }
