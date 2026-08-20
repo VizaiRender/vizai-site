@@ -2661,6 +2661,28 @@
       color: #1a6fff
     }
 
+    /* Sub-opção de entorno — só aparece quando "Fachada Externa" está ativa */
+    #entorno-row {
+      display: none;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 0.5px solid #2e4257
+    }
+
+    #entorno-grid .lcard span {
+      font-size: 9.4px;
+      text-align: center;
+      line-height: 1.25
+    }
+
+    .entorno-lbl {
+      font-size: 9.4px;
+      font-weight: 700;
+      color: #8fa8be;
+      margin-bottom: 5px;
+      letter-spacing: .2px
+    }
+
     textarea {
       width: 100%;
       resize: none;
@@ -6054,6 +6076,39 @@
                       <div class="psb" data-i18n="proj.building_sub">Residencial / Comercial</div>
                     </div>
                   </div>
+                  <div id="entorno-row">
+                    <div class="entorno-lbl" data-i18n="entorno.title">Entorno do terreno</div>
+                    <div class="lgrid-3" id="entorno-grid">
+                      <div class="lcard active" data-value="vizinhos" onclick="pickEntorno(this)">
+                        <svg viewBox="0 0 24 24">
+                          <path d="M2 12l4-3.5L10 12" />
+                          <path d="M3 12v8h6v-8" />
+                          <path d="M22 12l-4-3.5L14 12" />
+                          <path d="M21 12v8h-6v-8" />
+                          <path d="M9.5 20v-9L12 9l2.5 2v9" />
+                        </svg>
+                        <span data-i18n="entorno.houses">Casas vizinhas</span>
+                      </div>
+                      <div class="lcard" data-value="lotes" onclick="pickEntorno(this)">
+                        <svg viewBox="0 0 24 24">
+                          <path d="M2 20V10l3-2v12" />
+                          <path d="M22 20V10l-3-2v12" />
+                          <path d="M9.5 20v-9L12 9l2.5 2v9" />
+                          <line x1="2" y1="20" x2="22" y2="20" />
+                        </svg>
+                        <span data-i18n="entorno.lots">Lotes com muro</span>
+                      </div>
+                      <div class="lcard" data-value="vazio" onclick="pickEntorno(this)">
+                        <svg viewBox="0 0 24 24">
+                          <path d="M9.5 20v-9L12 9l2.5 2v9" />
+                          <line x1="2" y1="20" x2="22" y2="20" />
+                          <path d="M2 17.5c2.5-.6 4.5-.6 7-.2" />
+                          <path d="M22 17.5c-2.5-.6-4.5-.6-7-.2" />
+                        </svg>
+                        <span data-i18n="entorno.bare">Terreno vazio</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -9248,7 +9303,17 @@
       document.getElementById('ia-file-input').value = "";
     }
 
-    function pickProj(el) { document.getElementById('projgrid').querySelectorAll('.proj-card').forEach(c => c.classList.remove('active')); el.classList.add('active') }
+    function pickProj(el) { document.getElementById('projgrid').querySelectorAll('.proj-card').forEach(c => c.classList.remove('active')); el.classList.add('active'); syncEntornoRow() }
+
+    // A escolha de entorno só faz sentido em Fachada Externa.
+    function syncEntornoRow() {
+      const row = document.getElementById('entorno-row');
+      if (!row) return;
+      const proj = document.querySelector('#projgrid .proj-card.active');
+      row.style.display = (proj && proj.dataset.value === 'fachada') ? 'block' : 'none';
+    }
+
+    function pickEntorno(el) { document.getElementById('entorno-grid').querySelectorAll('.lcard').forEach(c => c.classList.remove('active')); el.classList.add('active') }
     function pickQ(el, c) { document.getElementById('qgrid').querySelectorAll('.qcard').forEach(x => x.classList.remove('active')); el.classList.add('active'); qCost = c; updateCost() }
     function updateCost() {
       const cr = t('cost.credits');
@@ -10692,7 +10757,7 @@ const DL_SVG = '<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0
         'fl.added': 'Trecho somado: clique sem Shift pra gerar', 'fl.ok': 'Luz criada!', 'fl.no_pick': 'Clique numa linha ou face', 'fl.no_sel': 'Selecione uma luz', 'fl.cleared': 'Luzes apagadas', 'fl.none': 'Nenhuma luz no modelo', 'fl.err': 'Erro',
         'shadow.title': 'Iluminação da cena', 'shadow.hint': 'Ajuste Claro e Escuro juntos para clarear a cena e revelar mais detalhes no render.', 'shadow.light': 'Claro', 'shadow.dark': 'Escuro', 'shadow.use_sun': 'Usar sol para sombreamento', 'shadow.use_sun_sub': 'Melhora visibilidade da cena no render', 'shadow.recommend_hint': 'Configuração recomendada:', 'shadow.recommend_ext': 'Externa', 'shadow.recommend_int': 'Interior',
         'studio.proj_type': '1. Tipo de projeto', 'studio.quality': '2. Qualidade', 'studio.lighting': '3. Estilo de clima', 'studio.lights': '4. Luzes', 'studio.details': '5. Detalhes da cena',
-        'proj.interior': 'Interiores', 'proj.interior_sub': 'Residencial', 'proj.facade': 'Fachada Externa', 'proj.facade_sub': 'Residencial', 'proj.nature': 'Meio à Natureza', 'proj.nature_sub': 'Integração', 'proj.commercial': 'Comercial', 'proj.commercial_sub': 'Loja / Escritório / Edifício', 'proj.building': 'Edifício', 'proj.building_sub': 'Residencial / Comercial',
+        'proj.interior': 'Interiores', 'proj.interior_sub': 'Residencial', 'proj.facade': 'Fachada Externa', 'proj.facade_sub': 'Residencial', 'proj.nature': 'Meio à Natureza', 'proj.nature_sub': 'Integração', 'proj.commercial': 'Comercial', 'proj.commercial_sub': 'Loja / Escritório / Edifício', 'proj.building': 'Edifício', 'proj.building_sub': 'Residencial / Comercial', 'entorno.title': 'Entorno do terreno', 'entorno.houses': 'Casas vizinhas', 'entorno.lots': 'Lotes com muro', 'entorno.bare': 'Terreno vazio',
         'light.day': 'Dia', 'light.sunset': 'Pôr do sol', 'light.night': 'Noite', 'light.cloudy': 'Nublado',
         'lights.on': 'Luzes acesas', 'lights.off': 'Luzes apagadas', 'lights.none': 'Nenhum',
         'pano.title': 'Panorama AI', 'pano.sub': 'Geração de Panorama 360° com IA',
@@ -10875,7 +10940,7 @@ const DL_SVG = '<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0
         'fl.added': 'Segment added: click without Shift to create', 'fl.ok': 'Light created!', 'fl.no_pick': 'Click a line or face', 'fl.no_sel': 'Select a light', 'fl.cleared': 'Lights deleted', 'fl.none': 'No lights in the model', 'fl.err': 'Error',
         'shadow.title': 'Scene Lighting', 'shadow.hint': 'Adjust Light and Dark together to brighten the scene and reveal more details in the render.', 'shadow.light': 'Light', 'shadow.dark': 'Dark', 'shadow.use_sun': 'Use sun for shadows', 'shadow.use_sun_sub': 'Improves scene visibility in render', 'shadow.recommend_hint': 'Recommended setting:', 'shadow.recommend_ext': 'Exterior', 'shadow.recommend_int': 'Interior',
         'studio.proj_type': '1. Project Type', 'studio.quality': '2. Quality', 'studio.lighting': '3. Weather Style', 'studio.lights': '4. Lights', 'studio.details': '5. Scene Details',
-        'proj.interior': 'Interiors', 'proj.interior_sub': 'Residential', 'proj.facade': 'External Facade', 'proj.facade_sub': 'Residential', 'proj.nature': 'In Nature', 'proj.nature_sub': 'Integration', 'proj.commercial': 'Commercial', 'proj.commercial_sub': 'Store / Office / Building', 'proj.building': 'Building', 'proj.building_sub': 'Residential / Commercial',
+        'proj.interior': 'Interiors', 'proj.interior_sub': 'Residential', 'proj.facade': 'External Facade', 'proj.facade_sub': 'Residential', 'proj.nature': 'In Nature', 'proj.nature_sub': 'Integration', 'proj.commercial': 'Commercial', 'proj.commercial_sub': 'Store / Office / Building', 'proj.building': 'Building', 'proj.building_sub': 'Residential / Commercial', 'entorno.title': 'Plot surroundings', 'entorno.houses': 'Neighboring houses', 'entorno.lots': 'Walled empty lots', 'entorno.bare': 'Open bare land',
         'light.day': 'Day', 'light.sunset': 'Sunset', 'light.night': 'Night', 'light.cloudy': 'Cloudy',
         'lights.on': 'Lights on', 'lights.off': 'Lights off', 'lights.none': 'None',
         'pano.title': 'Panorama AI', 'pano.sub': 'AI 360° Panorama Generation',
@@ -11058,7 +11123,7 @@ const DL_SVG = '<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0
         'fl.added': 'Tramo añadido: haz clic sin Shift para generar', 'fl.ok': '¡Luz creada!', 'fl.no_pick': 'Haz clic en una línea o cara', 'fl.no_sel': 'Selecciona una luz', 'fl.cleared': 'Luces borradas', 'fl.none': 'No hay luces en el modelo', 'fl.err': 'Error',
         'shadow.title': 'Iluminación de la escena', 'shadow.hint': 'Ajusta Claro y Oscuro juntos para iluminar la escena y revelar más detalles en el render.', 'shadow.light': 'Claro', 'shadow.dark': 'Oscuro', 'shadow.use_sun': 'Usar sol para sombras', 'shadow.use_sun_sub': 'Mejora la visibilidad de la escena en el render', 'shadow.recommend_hint': 'Configuración recomendada:', 'shadow.recommend_ext': 'Exterior', 'shadow.recommend_int': 'Interior',
         'studio.proj_type': '1. Tipo de proyecto', 'studio.quality': '2. Calidad', 'studio.lighting': '3. Estilo de clima', 'studio.lights': '4. Luces', 'studio.details': '5. Detalles de la escena',
-        'proj.interior': 'Interiores', 'proj.interior_sub': 'Residencial', 'proj.facade': 'Fachada Externa', 'proj.facade_sub': 'Residencial', 'proj.nature': 'En la Naturaleza', 'proj.nature_sub': 'Integración', 'proj.commercial': 'Comercial', 'proj.commercial_sub': 'Tienda / Oficina / Edificio', 'proj.building': 'Edificio', 'proj.building_sub': 'Residencial / Comercial',
+        'proj.interior': 'Interiores', 'proj.interior_sub': 'Residencial', 'proj.facade': 'Fachada Externa', 'proj.facade_sub': 'Residencial', 'proj.nature': 'En la Naturaleza', 'proj.nature_sub': 'Integración', 'proj.commercial': 'Comercial', 'proj.commercial_sub': 'Tienda / Oficina / Edificio', 'proj.building': 'Edificio', 'proj.building_sub': 'Residencial / Comercial', 'entorno.title': 'Entorno del terreno', 'entorno.houses': 'Casas vecinas', 'entorno.lots': 'Lotes con muro', 'entorno.bare': 'Terreno abierto',
         'light.day': 'Día', 'light.sunset': 'Atardecer', 'light.night': 'Noche', 'light.cloudy': 'Nublado',
         'lights.on': 'Luces encendidas', 'lights.off': 'Luces apagadas', 'lights.none': 'Ninguna',
         'pano.title': 'Panorama AI', 'pano.sub': 'Generación de Panorama 360° con IA',

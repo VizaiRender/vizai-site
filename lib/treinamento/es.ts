@@ -241,7 +241,7 @@ export const esArticles: Record<string, ArticleContent> = {
         items: [
           {
             title: "Tipo de proyecto",
-            text: "Le dice a la IA qué está viendo: Interiores, Fachada Externa, En la Naturaleza (integración con paisaje), Comercial (tienda, oficina) o Edificio. Cada tipo recibe un tratamiento específico de iluminación y contexto.",
+            text: "Le dice a la IA qué está viendo: Interiores, Fachada Externa, En la Naturaleza (integración con paisaje), Comercial (tienda, oficina) o Edificio. Cada tipo recibe un tratamiento específico de iluminación y contexto. Al elegir **Fachada Externa** aparece una segunda opción, el entorno del terreno: **Casas vecinas** (la predeterminada — una casa a cada lado, del mismo nivel que tu proyecto), **Lotes con muro** (terrenos vacíos con muro o cerca divisoria) o **Terreno abierto** (terreno abierto, sin muros ni cercas).",
           },
           {
             title: "Calidad",

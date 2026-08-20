@@ -241,7 +241,7 @@ export const enArticles: Record<string, ArticleContent> = {
         items: [
           {
             title: "Project type",
-            text: "Tells the AI what it's looking at: Interiors, Exterior Facade, Set in Nature (landscape integration), Commercial (store, office) or Building. Each type gets specific lighting and context treatment.",
+            text: "Tells the AI what it's looking at: Interiors, Exterior Facade, Set in Nature (landscape integration), Commercial (store, office) or Building. Each type gets specific lighting and context treatment. Picking **Exterior Facade** reveals a second choice, the plot surroundings: **Neighboring houses** (the default — one house on each side, matching your project's standard), **Walled empty lots** (vacant plots with a boundary wall or fence) or **Open bare land** (open ground, no walls or fences).",
           },
           {
             title: "Quality",
