@@ -6,6 +6,8 @@ interface ImagePair {
   before: string;
   after: string;
   label?: string;
+  /** Onde ancorar o corte quando a imagem é mais alta que o card. Padrão: centro. */
+  focus?: string;
 }
 
 interface CompareGridProps {
@@ -23,9 +25,9 @@ export function CompareGrid({ pairs }: CompareGridProps) {
           <Compare
             firstImage={pair.before}
             secondImage={pair.after}
-            firstImageClassName="object-cover"
-            secondImageClassname="object-cover"
-            className="w-full rounded-2xl h-[280px] md:h-[320px]"
+            firstImageClassName={`object-cover ${pair.focus ?? ""}`}
+            secondImageClassname={`object-cover ${pair.focus ?? ""}`}
+            className="w-full rounded-2xl h-[380px] md:h-[440px]"
             slideMode="drag"
             autoplay
           />

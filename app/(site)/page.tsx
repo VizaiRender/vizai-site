@@ -274,6 +274,14 @@ export default function Home() {
               before: "https://downloads.vizairender.com/site/compare-before-5.jpg?v=1",
               after: "https://downloads.vizairender.com/site/compare-after-5.jpg?v=1",
             },
+            {
+              before: "/compare3-before.jpg",
+              after: "/compare3-after.jpg",
+            },
+            {
+              before: "/compare4-before.jpg",
+              after: "/compare4-after.jpg",
+            },
           ]}
         />
       </section>
