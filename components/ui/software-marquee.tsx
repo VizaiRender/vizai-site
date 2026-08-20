@@ -41,8 +41,10 @@ export function SoftwareMarquee() {
     boxShadow: "var(--glass-shadow)",
     opacity: "var(--glass-opacity)",
   };
+  // No celular as três pílulas têm que caber numa linha só, então padding, gap e
+  // fonte encolhem junto com a tela — sem trocar o nome nativo do idioma por sigla.
   const langPillClass =
-    "group inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-2xl border border-[color:var(--glass-border)] transition-all duration-200 hover:-translate-y-1 hover:border-[#0940D2]";
+    "group inline-flex items-center justify-center gap-2 sm:gap-2 px-3.5 sm:px-5 py-2.5 sm:py-2.5 rounded-2xl border border-[color:var(--glass-border)] transition-all duration-200 hover:-translate-y-1 hover:border-[#0940D2]";
   const osIconClass =
     "text-[color:var(--foreground)] transition-colors duration-200 group-hover:text-[#0940D2]";
 
@@ -150,14 +152,19 @@ export function SoftwareMarquee() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          gap: 14,
-          flexWrap: "wrap",
+          gap: "clamp(7px, 2.2vw, 14px)",
+          flexWrap: "nowrap",
           color: "var(--foreground)",
         }}>
           {languages.map(({ code, label }) => (
             <div key={code} className={langPillClass} style={osPillStyle}>
-              <Flag lang={code} className="w-5 h-5" />
-              <span style={{ fontSize: "0.95rem", fontWeight: 500, color: "var(--foreground)" }}>{label}</span>
+              <Flag lang={code} className="w-[18px] h-[18px] sm:w-5 sm:h-5 shrink-0" />
+              <span style={{
+                fontSize: "clamp(0.82rem, 3.4vw, 0.95rem)",
+                fontWeight: 500,
+                color: "var(--foreground)",
+                whiteSpace: "nowrap",
+              }}>{label}</span>
             </div>
           ))}
         </div>
