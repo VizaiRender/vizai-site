@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Download } from "lucide-react";
 import { useT } from "@/lib/i18n";
+import { useHref } from "@/app/components/LanguageProvider";
 
 const PLAN_CREDITS_N: Record<string, string> = {
   starter_monthly: "250",
@@ -25,6 +26,7 @@ export function SucessoContent({
   pending?: boolean;
 }) {
   const t = useT();
+  const href = useHref();
   const planName = t.planLabels[plan as keyof typeof t.planLabels] ?? t.planLabels.unknown;
   const creditsN = plan ? PLAN_CREDITS_N[plan] : null;
   const isAnnual = !!plan && plan.endsWith("_annual");
@@ -215,7 +217,7 @@ export function SucessoContent({
 
       {/* CTAs */}
       <Link
-        href="/download"
+        href={href("/download")}
         className="w-full flex items-center justify-center gap-2 rounded-full font-bold text-sm py-4 px-6 bg-white text-black hover:opacity-80 transition-opacity"
         style={{ textDecoration: "none", marginBottom: 12 }}
       >

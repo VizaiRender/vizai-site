@@ -1,30 +1,8 @@
-import { Footer } from "@/components/ui/footer";
-import { TreinamentoContent } from "@/components/ui/treinamento-content";
+import { TreinamentoPage } from "@/components/pages/treinamento-page";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Treinamento",
-  description:
-    "Guias completos de todas as ferramentas do Vizai Render: render com IA, edição, vídeo, panorama 360°, blocos 3D, IA criativa e ferramentas gratuitas. Passo a passo com imagens reais.",
-  alternates: { canonical: "/treinamento" },
-  openGraph: {
-    title: "Treinamento | Vizai Render",
-    description:
-      "Guias completos de todas as ferramentas do Vizai Render. Passo a passo com imagens reais.",
-    url: "/treinamento",
-  },
-};
+export const metadata = buildMetadata("pt", "treinamento", "/treinamento");
 
-export default function TreinamentoPage() {
-  return (
-    <main className="flex flex-col min-h-screen">
-      <section
-        className="flex-1 max-w-5xl mx-auto px-6 pb-16 w-full"
-        style={{ paddingTop: "180px" }}
-      >
-        <TreinamentoContent />
-      </section>
-
-      <Footer />
-    </main>
-  );
+export default function Page() {
+  return <TreinamentoPage />;
 }

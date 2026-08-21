@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ArrowLeft, CreditCard, AlertCircle, Info } from "lucide-react";
 import { useT, langToLocale } from "@/lib/i18n";
-import { useLang } from "@/app/components/LanguageProvider";
+import { useLang, useHref } from "@/app/components/LanguageProvider";
 
 type Props = {
   email: string | null | undefined;
@@ -26,6 +26,7 @@ export function AccountContent({
 }: Props) {
   const t = useT();
   const { lang } = useLang();
+  const href = useHref();
 
   const formatDate = (iso: string | null): string => {
     if (!iso) return "-";
@@ -157,7 +158,7 @@ export function AccountContent({
 
         {isFreePlan ? (
           <Link
-            href="/#pricing"
+            href={href("/#pricing")}
             className="inline-flex items-center gap-2 bg-[#0940D2] hover:bg-[#0730b0] text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors"
           >
             {t.account.viewPlans}

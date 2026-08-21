@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Clock } from "lucide-react";
 import GradientBordersButton from "@/components/ui/gradient-borders-button";
-import { useLang } from "@/app/components/LanguageProvider";
+import { useLang, useHref } from "@/app/components/LanguageProvider";
 import {
   ARTICLES,
   CATEGORY_ORDER,
@@ -16,13 +16,14 @@ import {
 
 function ArticleCard({ meta, featured }: { meta: ArticleMeta; featured?: boolean }) {
   const { lang } = useLang();
+  const href = useHref();
   const ui = getTreinoUi(lang);
   const content = getArticleContent(meta.slug, lang);
   if (!content) return null;
 
   return (
     <Link
-      href={`/treinamento/${meta.slug}`}
+      href={href(`/treinamento/${meta.slug}`)}
       className={`group flex flex-col rounded-2xl overflow-hidden transition-transform duration-300 hover:-translate-y-1 ${
         featured ? "md:flex-row" : ""
       }`}
@@ -102,6 +103,7 @@ function ArticleCard({ meta, featured }: { meta: ArticleMeta; featured?: boolean
 
 export function TreinamentoContent() {
   const { lang } = useLang();
+  const href = useHref();
   const ui = getTreinoUi(lang);
 
   const featured = ARTICLES[0];
@@ -187,7 +189,7 @@ export function TreinamentoContent() {
             {ui.ctaSignup}
           </Link>
           <Link
-            href="/download"
+            href={href("/download")}
             className="inline-flex items-center justify-center gap-2 text-white text-sm font-semibold px-6 py-3 rounded-full transition-colors border border-white/30 hover:bg-white/10 w-full sm:w-auto"
           >
             {ui.ctaDownload}

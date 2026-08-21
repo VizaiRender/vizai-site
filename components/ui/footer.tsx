@@ -1,9 +1,11 @@
 "use client";
 
 import { useT } from "@/lib/i18n";
+import { useHref } from "@/app/components/LanguageProvider";
 
 export function Footer() {
   const t = useT();
+  const href = useHref();
   const brandName = "Vizai Render";
 
   const logo = <img src="/logo.svg" alt="Vizai Render" className="h-8 w-8 rounded-lg" />;
@@ -53,15 +55,15 @@ export function Footer() {
   ];
 
   const mainLinks = [
-    { href: "/#pricing", label: t.footer.plans },
-    { href: "/download", label: t.footer.download },
-    { href: "/treinamento", label: t.footer.training },
-    { href: "/#gallery", label: t.footer.gallery },
+    { href: href("/#pricing"), label: t.footer.plans },
+    { href: href("/download"), label: t.footer.download },
+    { href: href("/treinamento"), label: t.footer.training },
+    { href: href("/#gallery"), label: t.footer.gallery },
   ];
 
   const legalLinks = [
-    { href: "/privacy", label: t.footer.privacy },
-    { href: "/terms", label: t.footer.terms },
+    { href: href("/privacy"), label: t.footer.privacy },
+    { href: href("/terms"), label: t.footer.terms },
   ];
 
   const copyright = {
@@ -75,7 +77,7 @@ export function Footer() {
         
         {/* Top Section */}
         <div className="flex items-center justify-between">
-          <a href="/" className="flex items-center gap-2.5 hover:opacity-80 transition-opacity">
+          <a href={href("/")} className="flex items-center gap-2.5 hover:opacity-80 transition-opacity">
             {logo}
             <span className="font-medium text-lg" style={{ color: "var(--foreground)" }}>
               {brandName}

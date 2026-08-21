@@ -10,7 +10,7 @@ import {
   TriangleAlert,
   Zap,
 } from "lucide-react";
-import { useLang, type Lang } from "@/app/components/LanguageProvider";
+import { useLang, useHref, type Lang } from "@/app/components/LanguageProvider";
 import {
   getAdjacentArticles,
   getArticleContent,
@@ -351,13 +351,14 @@ function AdjacentLink({
   direction: "prev" | "next";
 }) {
   const { lang } = useLang();
+  const href = useHref();
   const ui = getTreinoUi(lang);
   const content = getArticleContent(slug, lang);
   if (!content) return null;
 
   return (
     <Link
-      href={`/treinamento/${slug}`}
+      href={href(`/treinamento/${slug}`)}
       className={`group flex flex-col gap-1.5 rounded-2xl p-5 flex-1 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg ${
         direction === "next" ? "items-end text-right" : ""
       }`}
@@ -390,6 +391,7 @@ function AdjacentLink({
 
 export function TreinamentoArticle({ slug }: { slug: string }) {
   const { lang } = useLang();
+  const href = useHref();
   const ui = getTreinoUi(lang);
   const meta = getArticleMeta(slug);
   const content = getArticleContent(slug, lang);
@@ -402,7 +404,7 @@ export function TreinamentoArticle({ slug }: { slug: string }) {
     <article>
       {/* Voltar */}
       <Link
-        href="/treinamento"
+        href={href("/treinamento")}
         className="inline-flex items-center gap-2 text-sm font-semibold mb-8 transition-colors hover:opacity-80"
         style={{ color: "#0940D2" }}
       >
@@ -468,7 +470,7 @@ export function TreinamentoArticle({ slug }: { slug: string }) {
             {ui.ctaSignup}
           </Link>
           <Link
-            href="/download"
+            href={href("/download")}
             className="inline-flex items-center justify-center gap-2 text-white text-sm font-semibold px-6 py-3 rounded-full transition-colors border border-white/30 hover:bg-white/10 w-full sm:w-auto sm:min-w-[190px]"
           >
             {ui.ctaDownload}

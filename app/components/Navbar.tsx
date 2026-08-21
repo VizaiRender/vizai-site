@@ -7,7 +7,7 @@ import { Download, LogOut, LayoutDashboard, Menu, X } from "lucide-react";
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { useLang, type Lang } from "./LanguageProvider";
+import { useLang, useHref, type Lang } from "./LanguageProvider";
 import { useT } from "@/lib/i18n";
 import { Flag } from "@/components/ui/flag";
 import { createClient } from "@/lib/supabase/client";
@@ -115,6 +115,7 @@ function UserMenu({ user, dark }: { user: User; dark: boolean }) {
 }
 
 export default function Navbar({ forceDark = false }: { forceDark?: boolean }) {
+  const href = useHref();
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -228,10 +229,12 @@ export default function Navbar({ forceDark = false }: { forceDark?: boolean }) {
           <nav className="mx-auto flex w-full items-center justify-between">
             <div className="flex items-center gap-12">
               <Link
-                href="/"
+                href={href("/")}
                 onClick={() => {
                   setMenuOpen(false);
-                  if (window.location.pathname === "/") {
+                  // Já estando na home DO IDIOMA ATUAL o Next não navega pra
+                  // lugar nenhum — sem isto, clicar no logo não faria nada.
+                  if (window.location.pathname === href("/")) {
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }
                 }}
@@ -244,14 +247,14 @@ export default function Navbar({ forceDark = false }: { forceDark?: boolean }) {
               </Link>
 
               <div className="hidden md:flex items-center gap-6">
-                <Link href="/#pricing" className={`text-sm transition-colors ${d ? "text-white/70 hover:text-white" : "text-black/60 hover:text-black"}`}>
+                <Link href={href("/#pricing")} className={`text-sm transition-colors ${d ? "text-white/70 hover:text-white" : "text-black/60 hover:text-black"}`}>
                   {t.nav.plans}
                 </Link>
-                <Link href="/treinamento" className={`text-sm transition-colors ${d ? "text-white/70 hover:text-white" : "text-black/60 hover:text-black"}`}>
+                <Link href={href("/treinamento")} className={`text-sm transition-colors ${d ? "text-white/70 hover:text-white" : "text-black/60 hover:text-black"}`}>
                   {t.nav.training}
                 </Link>
                 <Link
-                  href="/download"
+                  href={href("/download")}
                   className={`text-sm flex items-center gap-1.5 font-medium border px-3 py-1.5 rounded-full transition-colors ${d ? "text-white border-white/20 hover:bg-white/10" : "text-black border-black/20 hover:bg-black/5"}`}
                 >
                   <Download size={13} />

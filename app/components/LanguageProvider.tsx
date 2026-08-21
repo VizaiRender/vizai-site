@@ -1,56 +1,108 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import {
+  DEFAULT_LANG,
+  HREFLANG,
+  LANGS,
+  isLocalizedPath,
+  localePath,
+  splitLang,
+  type Lang,
+} from "@/lib/routes";
 
-export type Lang = "pt" | "en" | "es";
+export type { Lang };
 
-const STORAGE_KEY = "vizai-lang";
-const SUPPORTED: Lang[] = ["pt", "en", "es"];
+/** Onde a escolha de idioma fica guardada. Exportado porque a faixa de
+ * sugestão também grava aqui — dois literais soltos desandariam calados. */
+export const STORAGE_KEY = "vizai-lang";
+const SUPPORTED: Lang[] = LANGS;
 
 interface LanguageContextType {
   lang: Lang;
   setLang: (l: Lang) => void;
+  /** true quando o idioma veio da URL (páginas públicas), não do navegador. */
+  fromRoute: boolean;
 }
 
 const LanguageContext = createContext<LanguageContextType>({
-  lang: "pt",
+  lang: DEFAULT_LANG,
   setLang: () => {},
+  fromRoute: false,
 });
 
-function detectLang(): Lang {
-  if (typeof navigator === "undefined") return "pt";
+export function readStoredLang(): Lang | null {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored && SUPPORTED.includes(stored as Lang)) return stored as Lang;
+  } catch {}
+  return null;
+}
+
+export function detectLang(): Lang {
+  if (typeof navigator === "undefined") return DEFAULT_LANG;
   const candidates = [navigator.language, ...(navigator.languages ?? [])];
   for (const c of candidates) {
     const base = c.slice(0, 2).toLowerCase();
     if (SUPPORTED.includes(base as Lang)) return base as Lang;
   }
-  return "pt";
+  return DEFAULT_LANG;
 }
 
+/**
+ * Contexto de idioma.
+ *
+ * Nas páginas públicas o idioma vem do ENDEREÇO (`/`, `/en/...`, `/es/...`).
+ * Como `usePathname` já responde certo durante a renderização no servidor, o
+ * HTML sai traduzido de saída — era exatamente isso que faltava: antes o
+ * servidor mandava sempre português e a troca só acontecia depois de carregar,
+ * então todo visitante estrangeiro (e toda prévia de link no WhatsApp) via
+ * português.
+ *
+ * Nas rotas de login, painel e checkout (noindex, sem versão por idioma) segue
+ * valendo o comportamento antigo: preferência salva, senão idioma do navegador.
+ */
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  // SSR/primeira renderização sempre "pt" (evita mismatch de hidratação);
-  // ajustamos no cliente logo após montar.
-  const [lang, setLangState] = useState<Lang>("pt");
+  const router = useRouter();
+  const pathname = usePathname() || "/";
+
+  const routeDriven = isLocalizedPath(pathname);
+  const routeLang = splitLang(pathname).lang;
+
+  // Só usado FORA das páginas públicas. Começa em pt para servidor e cliente
+  // renderizarem a mesma coisa; ajusta logo após montar.
+  const [detected, setDetected] = useState<Lang>(DEFAULT_LANG);
 
   useEffect(() => {
-    let initial: Lang | null = null;
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored && SUPPORTED.includes(stored as Lang)) initial = stored as Lang;
-    } catch {}
-    if (!initial) initial = detectLang();
-    if (initial !== "pt") setLangState(initial);
-  }, []);
+    if (routeDriven) return;
+    const initial = readStoredLang() ?? detectLang();
+    if (initial !== DEFAULT_LANG) setDetected(initial);
+  }, [routeDriven]);
+
+  const lang = routeDriven ? routeLang : detected;
+
+  // O <html lang> mora no layout raiz e é escrito uma vez só; aqui ele passa a
+  // acompanhar o idioma da página. O next-themes já mexe nesse mesmo elemento,
+  // então não é novidade nesta base.
+  useEffect(() => {
+    document.documentElement.lang = HREFLANG[lang];
+  }, [lang]);
 
   const setLang = (l: Lang) => {
-    setLangState(l);
     try {
       localStorage.setItem(STORAGE_KEY, l);
     } catch {}
+    if (routeDriven) {
+      // Página pública: trocar de idioma é trocar de endereço.
+      router.push(localePath(l, splitLang(pathname).path));
+      return;
+    }
+    setDetected(l);
   };
 
   return (
-    <LanguageContext.Provider value={{ lang, setLang }}>
+    <LanguageContext.Provider value={{ lang, setLang, fromRoute: routeDriven }}>
       {children}
     </LanguageContext.Provider>
   );
@@ -58,4 +110,13 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
 export function useLang() {
   return useContext(LanguageContext);
+}
+
+/**
+ * Traduz um caminho canônico (o do português) para o idioma atual.
+ * `useHref()("/download")` devolve "/download", "/en/download" ou "/es/download".
+ */
+export function useHref() {
+  const { lang } = useLang();
+  return (path: string) => localePath(lang, path);
 }

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Download, CreditCard, Zap, LogOut, ShoppingBag } from "lucide-react";
 import { useT, langToLocale } from "@/lib/i18n";
-import { useLang } from "@/app/components/LanguageProvider";
+import { useLang, useHref } from "@/app/components/LanguageProvider";
 import type { CreditsBalance } from "@/lib/vizai-api";
 
 type Props = {
@@ -23,6 +23,7 @@ export function DashboardContent({
 }: Props) {
   const t = useT();
   const { lang } = useLang();
+  const href = useHref();
 
   const formatDate = (iso: string | null): string => {
     if (!iso) return "-";
@@ -81,7 +82,7 @@ export function DashboardContent({
           <p style={{ color: "var(--foreground-muted)" }}>{t.dashboard.downloadDesc}</p>
         </div>
         <Link
-          href="/download"
+          href={href("/download")}
           className="inline-flex items-center gap-2 bg-[#0940D2] hover:bg-[#0730b0] text-white text-base font-semibold px-6 py-3 rounded-full transition-colors shrink-0"
         >
           <Download size={18} />
@@ -208,7 +209,7 @@ export function DashboardContent({
           )}
           {isFreePlan ? (
             <Link
-              href="/#pricing"
+              href={href("/#pricing")}
               className="text-sm font-medium inline-flex items-center gap-1"
               style={{ color: "#0940D2" }}
             >
@@ -243,7 +244,7 @@ export function DashboardContent({
             {t.dashboard.buyCreditsDesc}
           </p>
           <Link
-            href="/#pricing-packs"
+            href={href("/#pricing-packs")}
             className="text-sm font-medium inline-flex items-center gap-1"
             style={{ color: "#0940D2" }}
           >
