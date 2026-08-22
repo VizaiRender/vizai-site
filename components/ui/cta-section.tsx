@@ -5,6 +5,7 @@ import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
 import Link from "next/link";
 import { useT } from "@/lib/i18n";
 import { useHref } from "@/app/components/LanguageProvider";
+import { GoogleMark } from "@/components/ui/google-mark";
 
 export function CtaSection() {
   const t = useT();
@@ -36,9 +37,12 @@ export function CtaSection() {
             <Button
               asChild
               size="lg"
-              className="bg-[#0940D2] text-white hover:bg-[#0730b0] rounded-full px-10 h-12 text-base transition-colors w-full sm:w-auto"
+              className="bg-[#0940D2] text-white hover:bg-[#0730b0] rounded-full px-5 md:px-6 h-12 text-base font-semibold transition-colors w-full sm:w-auto"
             >
-              <Link href="/signup">{t.cta.primary}</Link>
+              <Link href="/signup" className="inline-flex items-center justify-center gap-2.5 whitespace-nowrap">
+                <GoogleMark />
+                {t.cta.primary}
+              </Link>
             </Button>
 
             <Button

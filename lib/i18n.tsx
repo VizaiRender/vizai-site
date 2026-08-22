@@ -24,7 +24,7 @@ const pt = {
     heroTitle: "Render fotorrealista com IA direto do",
     heroSubtitle:
       "Sem GPU cara, sem exportar pra outro software, sem esperar horas. Instale o plugin e transforme sua viewport em imagem profissional em segundos.",
-    heroCta: "Teste agora",
+    heroCta: "Testar o Vizai com o Google",
     heroFree: "Grátis ·",
     heroCredits: "8 créditos para testar",
     watchTitle: "Veja o Vizai Render em ação",
@@ -211,11 +211,18 @@ const pt = {
       { q: "Quanto tempo leva para gerar um render?", a: "Entre 20 e 60 segundos, dependendo da complexidade da cena e do estilo escolhido." },
     ],
   },
+  midCta: {
+    eyebrow: "Sem cartão de crédito, sem instalar nada além do plugin",
+    title: "Faça o seu primeiro render agora",
+    connector: "com o",
+    primary: "Começar agora com o Google",
+    note: "Grátis · 8 créditos para testar",
+  },
   cta: {
     eyebrow: "Do modelo ao render profissional em segundos",
     title: "Dê vida aos seus projetos",
     connector: "com o",
-    primary: "Criar conta grátis",
+    primary: "Criar conta com o Google",
     secondary: "Baixar plugin",
   },
   footer: {
@@ -414,7 +421,7 @@ const en: Dict = {
     heroTitle: "Photorealistic AI rendering straight from",
     heroSubtitle:
       "No expensive GPU, no exporting to another software, no hours of waiting. Install the plugin and turn your viewport into a professional image in seconds.",
-    heroCta: "Try it now",
+    heroCta: "Try Vizai with Google",
     heroFree: "Free ·",
     heroCredits: "8 credits to try",
     watchTitle: "See Vizai Render in action",
@@ -601,11 +608,18 @@ const en: Dict = {
       { q: "How long does it take to generate a render?", a: "Between 20 and 60 seconds, depending on the complexity of the scene and the style chosen." },
     ],
   },
+  midCta: {
+    eyebrow: "No credit card, nothing to install beyond the plugin",
+    title: "Make your first render right now",
+    connector: "with",
+    primary: "Start now with Google",
+    note: "Free · 8 credits to try",
+  },
   cta: {
     eyebrow: "From model to professional render in seconds",
     title: "Bring your projects to life",
     connector: "with",
-    primary: "Create free account",
+    primary: "Create account with Google",
     secondary: "Download plugin",
   },
   footer: {
@@ -799,7 +813,7 @@ const es: Dict = {
     heroTitle: "Render fotorrealista con IA directo desde",
     heroSubtitle:
       "Sin GPU cara, sin exportar a otro software, sin esperar horas. Instala el plugin y convierte tu viewport en una imagen profesional en segundos.",
-    heroCta: "Pruébalo ahora",
+    heroCta: "Probar Vizai con Google",
     heroFree: "Gratis ·",
     heroCredits: "8 créditos para probar",
     watchTitle: "Mira Vizai Render en acción",
@@ -986,11 +1000,18 @@ const es: Dict = {
       { q: "¿Cuánto tarda en generar un render?", a: "Entre 20 y 60 segundos, según la complejidad de la escena y el estilo elegido." },
     ],
   },
+  midCta: {
+    eyebrow: "Sin tarjeta de crédito, sin instalar nada más que el plugin",
+    title: "Haz tu primer render ahora mismo",
+    connector: "con",
+    primary: "Empezar ahora con Google",
+    note: "Gratis · 8 créditos para probar",
+  },
   cta: {
     eyebrow: "Del modelo al render profesional en segundos",
     title: "Da vida a tus proyectos",
     connector: "con",
-    primary: "Crear cuenta gratis",
+    primary: "Crear cuenta con Google",
     secondary: "Descargar plugin",
   },
   footer: {

@@ -95,3 +95,68 @@ a[href] {
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
 }
+
+/* ---- CTA do meio: painel branco com contorno azul-claro ---- */
+.mid-cta-frame {
+  position: relative;
+  display: block;
+  border-radius: 30px;
+  padding: 1.5px;
+  background: linear-gradient(180deg, rgba(9, 64, 210, 0.35) 0%, rgba(9, 64, 210, 0.14) 45%, rgba(9, 64, 210, 0.05) 100%);
+  overflow: hidden;
+}
+
+/* Fio de luz na base */
+.mid-cta-frame::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 12%;
+  width: 76%;
+  height: 1px;
+  background: linear-gradient(to right, rgba(9, 64, 210, 0), rgba(9, 64, 210, 0.9), rgba(9, 64, 210, 0));
+  pointer-events: none;
+}
+
+.mid-cta-panel {
+  position: relative;
+  z-index: 1;
+  border-radius: 28px;
+  background-color: #ffffff;
+  /* luz azul subindo da base (fica atrás dos botões) + céu claro no topo */
+  background-image:
+    radial-gradient(120% 75% at 50% 118%, rgba(9, 64, 210, 0.16) 0%, rgba(9, 64, 210, 0) 62%),
+    linear-gradient(180deg, #ffffff 0%, #f3f7ff 100%);
+}
+
+.dark .mid-cta-frame { background: linear-gradient(180deg, rgba(77, 127, 255, 0.45) 0%, rgba(255, 255, 255, 0.12) 45%, rgba(255, 255, 255, 0.05) 100%); }
+
+.dark .mid-cta-panel {
+  background-color: #0f1729;
+  background-image:
+    radial-gradient(120% 75% at 50% 118%, rgba(77, 127, 255, 0.22) 0%, rgba(77, 127, 255, 0) 62%),
+    linear-gradient(180deg, #141f38 0%, #0b1120 100%);
+}
+
+.mid-cta-title { color: #0a0a0a; }
+.mid-cta-muted { color: #3f3f46; }
+.mid-cta-accent { color: #0940D2; }
+
+.dark .mid-cta-title { color: #ffffff; }
+.dark .mid-cta-muted { color: rgba(255, 255, 255, 0.65); }
+.dark .mid-cta-accent { color: #4d7fff; }
+
+.mid-cta-primary {
+  background-color: #0940D2;
+  color: #fff;
+}
+
+.mid-cta-primary:hover { background-color: #0730b0; }
+
+.mid-cta-secondary {
+  background-color: transparent;
+  color: var(--foreground);
+  border: 1px solid var(--border);
+}
+
+.mid-cta-secondary:hover { background-color: rgba(9, 64, 210, 0.06); }

@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import { useT } from "@/lib/i18n";
-import { useLang, useHref } from "@/app/components/LanguageProvider";
+import { useHref } from "@/app/components/LanguageProvider";
+import { GoogleMark } from "@/components/ui/google-mark";
+import { MidCtaSection } from "@/components/ui/mid-cta-section";
 import { DottedSurfaceLazy } from "@/components/ui/dotted-surface-lazy";
 import { CompareGrid } from "@/components/ui/compare-grid";
 import { AnimatedWords } from "@/components/ui/animated-words";
@@ -136,7 +138,6 @@ const galleryItems: ImageItem[] = [
 
 export function HomePage() {
   const t = useT();
-  const { lang } = useLang();
   const href = useHref();
   const localizedGallery: ImageItem[] = galleryItems.map((item, i) => ({
     ...item,
@@ -171,14 +172,15 @@ export function HomePage() {
             {t.home.heroSubtitle}
           </p>
 
-          <div className={`flex flex-col items-center gap-2 w-full ${lang === "es" ? "max-w-[300px] md:max-w-[340px]" : "max-w-[220px] md:max-w-[280px]"}`}>
+          <div className="flex flex-col items-center gap-2">
             <Link
               href="/signup"
-              className="bg-[#0940D2] hover:bg-[#0730b0] text-white text-lg font-semibold py-3 px-12 rounded-full transition-colors w-full text-center whitespace-nowrap"
+              className="bg-[#0940D2] hover:bg-[#0730b0] text-white text-base md:text-lg font-semibold py-3 px-5 md:px-6 rounded-full transition-colors inline-flex items-center justify-center gap-2.5 whitespace-nowrap"
             >
+              <GoogleMark />
               {t.home.heroCta}
             </Link>
-            <p className="text-xs w-full text-center flex items-center justify-center gap-1" style={{ color: "var(--foreground-muted)" }}>
+            <p className="text-xs text-center flex items-center justify-center gap-1" style={{ color: "var(--foreground-muted)" }}>
               {t.home.heroFree}
               <svg width="10" height="10" viewBox="0 0 24 24" fill="#0940D2">
                 <path d="M13 2L4.09 12.96A1 1 0 005 14.5h6.5L10 22l9.91-10.96A1 1 0 0019 10H12.5L13 2z" />
@@ -290,6 +292,9 @@ export function HomePage() {
       <SoftwareMarquee />
 
       <AiModelsSection />
+
+
+      <MidCtaSection />
 
       <ComparisonSection />
 

@@ -291,7 +291,7 @@ export default function Navbar({ forceDark = false }: { forceDark?: boolean }) {
                     </Link>
                     <Link
                       href="/signup"
-                      className={`hidden md:inline-flex text-sm font-medium px-4 py-2 rounded-full transition-colors ${d ? "bg-white text-black hover:bg-white/90" : "bg-black text-white hover:bg-black/80"}`}
+                      className={`hidden md:inline-flex text-sm font-medium px-4 py-2 rounded-full transition-colors bg-[#0940D2] text-white hover:bg-[#0730b0]`}
                     >
                       {t.nav.start}
                     </Link>
@@ -404,7 +404,7 @@ export default function Navbar({ forceDark = false }: { forceDark?: boolean }) {
                   <Link
                     href="/signup"
                     onClick={() => setMenuOpen(false)}
-                    className={`flex-1 text-center text-base font-medium px-4 py-3.5 rounded-full transition-colors ${d ? "bg-white text-black active:bg-white/90" : "bg-black text-white active:bg-black/80"}`}
+                    className={`flex-1 text-center text-base font-medium px-4 py-3.5 rounded-full transition-colors bg-[#0940D2] text-white active:bg-[#0730b0]`}
                   >
                     {t.nav.start}
                   </Link>
