@@ -258,8 +258,8 @@ export function HomePage() {
               after: "https://downloads.vizairender.com/site/compare-after-1.jpg?v=1",
             },
             {
-              before: "/compare2-before.jpg",
-              after: "/compare2-after.jpg",
+              before: "/compare3-before.jpg?v=2",
+              after: "/compare3-after.jpg?v=2",
             },
             {
               before: "https://downloads.vizairender.com/site/compare-before-2.jpg?v=1",
@@ -278,8 +278,8 @@ export function HomePage() {
               after: "https://downloads.vizairender.com/site/compare-after-5.jpg?v=1",
             },
             {
-              before: "/compare3-before.jpg",
-              after: "/compare3-after.jpg",
+              before: "/compare2-before.jpg",
+              after: "/compare2-after.jpg",
             },
             {
               before: "/compare4-before.jpg",

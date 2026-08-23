@@ -33,7 +33,7 @@ export function CtaSection() {
             cursorClassName="bg-[#0940D2]"
           />
 
-          <div className="mt-8 flex flex-col sm:flex-row sm:flex-wrap justify-center gap-4 w-full sm:w-auto">
+          <div className="mt-8 flex flex-col sm:flex-row sm:flex-wrap justify-center gap-4 w-full sm:w-auto px-8 sm:px-0">
             <Button
               asChild
               size="lg"

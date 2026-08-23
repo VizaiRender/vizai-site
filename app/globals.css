@@ -102,7 +102,7 @@ a[href] {
   display: block;
   border-radius: 30px;
   padding: 1.5px;
-  background: linear-gradient(180deg, rgba(9, 64, 210, 0.35) 0%, rgba(9, 64, 210, 0.14) 45%, rgba(9, 64, 210, 0.05) 100%);
+  background: rgba(9, 64, 210, 0.3);
   overflow: hidden;
 }
 
@@ -129,7 +129,7 @@ a[href] {
     linear-gradient(180deg, #ffffff 0%, #f3f7ff 100%);
 }
 
-.dark .mid-cta-frame { background: linear-gradient(180deg, rgba(77, 127, 255, 0.45) 0%, rgba(255, 255, 255, 0.12) 45%, rgba(255, 255, 255, 0.05) 100%); }
+.dark .mid-cta-frame { background: rgba(77, 127, 255, 0.3); }
 
 .dark .mid-cta-panel {
   background-color: #0f1729;

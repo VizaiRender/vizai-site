@@ -67,7 +67,7 @@ export function ComparisonSection() {
           {/* Coluna Vizai */}
           <div style={{
             borderRadius: 20,
-            border: "1.5px solid #0940D2",
+            border: "1.5px solid rgba(9, 64, 210, 0.3)",
             overflow: "hidden",
             backgroundColor: "rgba(9, 64, 210, 0.03)",
           }}>
