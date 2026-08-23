@@ -7,6 +7,8 @@ import { PageTransition } from "./components/PageTransition";
 import { LanguageProvider } from "./components/LanguageProvider";
 import { CookieBanner } from "./components/CookieBanner";
 import { LanguageSuggestion } from "./components/LanguageSuggestion";
+import { Analytics } from "./components/Analytics";
+import { BehaviorTracker } from "./components/BehaviorTracker";
 
 const geist = Geist({
   variable: "--font-geist-sans",
@@ -185,6 +187,8 @@ export default function RootLayout({
             </PageTransition>
             <LanguageSuggestion />
             <CookieBanner />
+            <Analytics />
+            <BehaviorTracker />
           </LanguageProvider>
         </ThemeProvider>
       </body>

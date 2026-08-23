@@ -20,7 +20,7 @@ export function VideoSection() {
   };
 
   return (
-    <section className="pt-20 sm:pt-[140px] pb-16 sm:pb-[80px] px-6">
+    <section className="pt-20 sm:pt-[140px] pb-16 sm:pb-[80px] px-6" data-track-section="video">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-10">
           <h2

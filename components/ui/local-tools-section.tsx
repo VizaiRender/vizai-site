@@ -11,7 +11,7 @@ export function LocalToolsSection() {
   const { lang } = useLang();
 
   return (
-    <section className="pb-40 px-6" id="tools-gratis">
+    <section className="pb-40 px-6" id="tools-gratis" data-track-section="tools-gratis">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">

@@ -41,7 +41,7 @@ export function ToolsSection() {
   }
 
   return (
-    <section className="pt-6 sm:pt-24 pb-40 px-6" id="ferramentas">
+    <section className="pt-6 sm:pt-24 pb-40 px-6" id="ferramentas" data-track-section="ferramentas">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="relative mb-10">

@@ -50,6 +50,12 @@ export function PurchaseTracker({ value, currency, transactionId, em, ph, fbc }:
       ...(ph ? { ph } : {}),
       ...(fbc ? { fbc } : {}),
     });
+
+    // NÃO espelhar a venda no GA4 daqui. O container web já tem a tag
+    // "01 | Google Analytics - Purchase" disparando neste mesmo evento do
+    // dataLayer (conferido no export do GTM). Duas fontes mandando a mesma
+    // venda dobrariam a RECEITA no relatório — e receita dobrada é o tipo de
+    // erro que ninguém percebe, porque o número só parece bom.
   }, [value, currency, transactionId, em, ph, fbc]);
 
   return null;

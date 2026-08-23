@@ -11,7 +11,7 @@ import { useT } from "@/lib/i18n";
 export function FaqSection() {
   const t = useT();
   return (
-    <section className="pt-8 sm:pt-24 pb-10 px-6">
+    <section className="pt-8 sm:pt-24 pb-10 px-6" data-track-section="faq">
       <div className="max-w-2xl mx-auto">
         <h2
           className="text-4xl md:text-5xl font-bold tracking-tight mb-4 sm:mb-12"

@@ -15,7 +15,7 @@ export function CtaSection() {
     { text: "Render.", className: "text-[#0940D2] dark:text-[#4d7fff]" },
   ];
   return (
-    <section className="relative py-16 md:py-32 overflow-hidden">
+    <section className="relative py-16 md:py-32 overflow-hidden" data-track-section="cta-final">
 
       <div className="relative mx-auto max-w-5xl px-6">
         <div className="flex flex-col items-center text-center">

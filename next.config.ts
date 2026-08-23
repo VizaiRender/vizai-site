@@ -12,6 +12,10 @@ const scriptSrc = [
   "https://www.googletagmanager.com",
   "https://sst.vizairender.com",
   "https://connect.facebook.net",
+  // Microsoft Clarity (mapa de calor + gravação de sessão). A tag inicial vem
+  // do www e ela mesma puxa scripts de subdomínios regionais.
+  "https://www.clarity.ms",
+  "https://*.clarity.ms",
 ].join(" ");
 
 const styleSrc = [
@@ -32,7 +36,14 @@ const imgSrc = [
   "https://www.googletagmanager.com",
   "https://sst.vizairender.com",
   "https://www.google-analytics.com",
+  // O GA4 cai em pixel de imagem quando o sendBeacon não está disponível.
+  // `analytics.google.com` fica FORA de propósito: aquele endereço é o sync do
+  // Google Signals (rastreio entre dispositivos por conta Google logada), que
+  // ninguém pediu. Segue bloqueado, como já estava.
+  "https://region1.google-analytics.com",
   "https://www.facebook.com",
+  "https://*.clarity.ms",
+  "https://c.bing.com",
 ].join(" ");
 
 const connectSrc = [
@@ -47,6 +58,10 @@ const connectSrc = [
   "https://region1.google-analytics.com",
   "https://www.facebook.com",
   "https://connect.facebook.net",
+  // Clarity manda o que gravou pra cá. Sem isso a tag carrega, parece que está
+  // funcionando e o painel fica vazio — o browser bloqueia o envio em silêncio.
+  "https://*.clarity.ms",
+  "https://c.bing.com",
   ...(isDev ? ["ws://localhost:*", "http://localhost:*"] : []),
 ].join(" ");
 
@@ -103,11 +118,16 @@ const securityHeaders = [
   // Ao sair do site, vaza só o domínio, não a URL completa
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
 
-  // Desliga capabilities que o site não usa
+  // Desliga capabilities que o site não usa.
+  //
+  // A origem vai entre aspas DUPLAS. Com aspas simples o cabeçalho é inválido
+  // pela gramática de structured headers e o Chrome descarta ele INTEIRO —
+  // ou seja, câmera, microfone e localização voltavam a ficar liberados, sem
+  // nenhum erro visível além de uma linha no console. Estava assim em produção.
   {
     key: "Permissions-Policy",
     value:
-      "camera=(), microphone=(), geolocation=(), payment=(self 'https://checkout.stripe.com'), usb=(), magnetometer=(), gyroscope=(), accelerometer=()",
+      'camera=(), microphone=(), geolocation=(), payment=(self "https://checkout.stripe.com"), usb=(), magnetometer=(), gyroscope=(), accelerometer=()',
   },
 
   // Perf bonus — habilita prefetch de DNS

@@ -114,6 +114,7 @@ const InteractiveImageBentoGallery: React.FC<
   return (
     <section
       id={id}
+      data-track-section="galeria"
       ref={targetRef}
       className="relative w-full overflow-hidden bg-transparent py-16 sm:py-24"
     >

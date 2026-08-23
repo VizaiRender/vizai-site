@@ -10,7 +10,7 @@ const stepIcons = [Camera, SlidersHorizontal, Zap, Sparkles];
 export function HowItWorksSection() {
   const t = useT();
   return (
-    <section className="w-full pt-8 pb-32 md:pb-24 px-6">
+    <section className="w-full pt-8 pb-32 md:pb-24 px-6" data-track-section="como-funciona">
       <div className="max-w-6xl mx-auto">
 
         {/* Label */}

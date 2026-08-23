@@ -146,7 +146,7 @@ export function HomePage() {
   }));
   return (
     <main className="flex flex-col">
-      <section className="hero-section isolate relative flex flex-col items-center justify-center min-h-screen pt-24 pb-20 px-6 overflow-hidden">
+      <section data-track-section="hero" className="hero-section isolate relative flex flex-col items-center justify-center min-h-screen pt-24 pb-20 px-6 overflow-hidden">
         <DottedSurfaceLazy className="absolute inset-0 z-0" />
 
         <div className="relative z-10 flex flex-col items-center">
@@ -197,7 +197,7 @@ export function HomePage() {
       <VideoSection />
 
       {/* Seção Demo Interativa */}
-      <section style={{ padding: "100px 24px 100px", position: "relative" }}>
+      <section data-track-section="demo-interativa" style={{ padding: "100px 24px 100px", position: "relative" }}>
         <div className="flex flex-col md:flex-row items-center md:justify-center gap-10 md:gap-20" style={{ maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 1 }}>
           <div className="w-full md:flex-none md:max-w-[460px]">
             <h2 style={{ fontSize: "clamp(2rem,2.8vw,2.5rem)", fontWeight: 400, color: "var(--foreground-muted)", margin: "0 0 20px", letterSpacing: "-0.03em", lineHeight: 1.1 }}>
@@ -238,7 +238,7 @@ export function HomePage() {
       <HowItWorksSection />
 
       {/* Seção Antes / Depois */}
-      <section className="pb-24 px-6 flex flex-col items-center gap-12">
+      <section data-track-section="antes-depois" className="pb-24 px-6 flex flex-col items-center gap-12">
         <div className="text-center max-w-4xl">
           <h2
             className="text-4xl md:text-5xl font-bold tracking-tight mb-4"

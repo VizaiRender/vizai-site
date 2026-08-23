@@ -24,7 +24,7 @@ export function ComparisonSection() {
       : { criteria: row.criteria, vizai: row.vizai, tradicional: row.tradicional }
   );
   return (
-    <section className="pt-10 sm:pt-[100px] pb-10 sm:pb-[100px] px-6" style={{}}>
+    <section className="pt-10 sm:pt-[100px] pb-10 sm:pb-[100px] px-6" style={{}} data-track-section="comparativo">
 
       <div style={{ maxWidth: 960, margin: "0 auto" }}>
 

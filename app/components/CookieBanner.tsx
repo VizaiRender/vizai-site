@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { useT } from "@/lib/i18n";
+import { CONSENT_EVENT, CONSENT_KEY } from "@/lib/analytics";
 
 const EXIT_MS = 300;
 
@@ -14,7 +15,7 @@ const CookieBanner = () => {
   useEffect(() => {
     const stored =
       typeof window !== "undefined"
-        ? localStorage.getItem("cookie-consent")
+        ? localStorage.getItem(CONSENT_KEY)
         : null;
     if (!stored) {
       setRender(true);
@@ -27,15 +28,23 @@ const CookieBanner = () => {
     setTimeout(() => setRender(false), EXIT_MS);
   };
 
-  const handleAccept = () => {
-    localStorage.setItem("cookie-consent", "true");
+  // O aviso existe pra resposta valer NA HORA, não só na próxima visita. Quem
+  // recusa e continua na mesma página tem a gravação de sessão e os eventos de
+  // comportamento desligados no mesmo instante (ver app/components/Analytics).
+  const registrar = (resposta: "true" | "false") => {
+    try {
+      localStorage.setItem(CONSENT_KEY, resposta);
+    } catch {
+      // Modo privado: sem onde guardar. Fecha o banner mesmo assim pra não
+      // ficar batendo na cara da pessoa a cada página.
+    }
+    window.dispatchEvent(new Event(CONSENT_EVENT));
     closeWithExit();
   };
 
-  const handleDecline = () => {
-    localStorage.setItem("cookie-consent", "false");
-    closeWithExit();
-  };
+  const handleAccept = () => registrar("true");
+
+  const handleDecline = () => registrar("false");
 
   if (!render) return null;
 

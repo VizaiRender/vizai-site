@@ -35,7 +35,7 @@ export function AiModelsSection() {
   const t = useT();
 
   return (
-    <section className="pt-12 sm:pt-24 pb-28 sm:pb-36 px-6">
+    <section className="pt-12 sm:pt-24 pb-28 sm:pb-36 px-6" data-track-section="modelos-ia">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">

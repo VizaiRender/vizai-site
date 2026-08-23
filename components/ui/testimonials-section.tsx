@@ -15,7 +15,7 @@ const avatars = [
 export function TestimonialsSection() {
   const t = useT();
   return (
-    <section className="w-full max-w-6xl mx-auto pt-8 pb-24 sm:py-24 px-6">
+    <section className="w-full max-w-6xl mx-auto pt-8 pb-24 sm:py-24 px-6" data-track-section="depoimentos">
       <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-3">
         {t.testimonials.title}
       </h3>

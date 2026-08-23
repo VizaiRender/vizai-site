@@ -36,7 +36,7 @@ FeatureCard.displayName = "FeatureCard";
 export function WhySection() {
   const t = useT();
   return (
-    <section className="w-full pt-24 pb-40 px-4 md:px-6">
+    <section className="w-full pt-24 pb-40 px-4 md:px-6" data-track-section="por-que-vizai">
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <p className="text-xs uppercase tracking-widest font-medium mb-4" style={{ color: "var(--foreground-muted)" }}>

@@ -59,7 +59,7 @@ function CountUp({
 export function StatsSection() {
   const t = useT();
   return (
-    <section className="w-full max-w-6xl mx-auto text-left py-24 px-6">
+    <section className="w-full max-w-6xl mx-auto text-left py-24 px-6" data-track-section="stats">
       <h3 className="text-xl sm:text-3xl font-medium text-gray-900 dark:text-white mb-3">
         {t.stats.title}
       </h3>

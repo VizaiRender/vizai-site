@@ -150,6 +150,10 @@ function pushBeginCheckout(args: { value: number; currency: Currency; plan: stri
     plan: args.plan,
     billing: args.billing,
   });
+  // NÃO espelhar isto no GA4 daqui. O container web já tem a tag
+  // "02 | Google Analytics - InitiateCheckout" disparando neste mesmo evento
+  // do dataLayer (conferido no export do GTM). Mandar de novo pelo código faria
+  // o funil contar cada intenção de compra duas vezes.
 }
 
 export function PricingSection() {
@@ -187,6 +191,7 @@ export function PricingSection() {
   return (
     <section 
       id="pricing" 
+      data-track-section="planos"
       style={{ position: "relative", overflow: "hidden" }}
       className="bg-[var(--background)] pt-10 sm:pt-[100px] pb-[100px]"
     >

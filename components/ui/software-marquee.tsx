@@ -49,7 +49,7 @@ export function SoftwareMarquee() {
     "text-[color:var(--foreground)] transition-colors duration-200 group-hover:text-[#0940D2]";
 
   return (
-    <section className="pt-12 sm:pt-[160px] pb-36 sm:pb-[100px]" style={{ textAlign: "center" }}>
+    <section className="pt-12 sm:pt-[160px] pb-36 sm:pb-[100px]" style={{ textAlign: "center" }} data-track-section="softwares">
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", marginBottom: 24 }}>
         <h2 style={{
           fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",

@@ -15,7 +15,7 @@ export function MidCtaSection() {
     { text: "Render.", className: "mid-cta-accent" },
   ];
   return (
-    <section className="px-4 md:px-6 py-10 md:py-16">
+    <section className="px-4 md:px-6 py-10 md:py-16" data-track-section="cta-meio">
       <div className="mid-cta-frame mx-auto max-w-6xl">
         <div className="mid-cta-panel py-20 md:py-28">
           <div className="relative z-10 mx-auto max-w-5xl px-6">

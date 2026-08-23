@@ -72,7 +72,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="w-full pb-16 pt-8 mt-6 sm:pt-16 sm:mt-16 bg-[var(--background)] relative z-20">
+    <footer className="w-full pb-16 pt-8 mt-6 sm:pt-16 sm:mt-16 bg-[var(--background)] relative z-20" data-track-section="footer">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         
         {/* Top Section */}
