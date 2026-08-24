@@ -7,9 +7,26 @@
 // - GA4: funil, página de saída, retenção. Responde o "quantos" e "em que
 //   ordem", e é o único dos dois que fecha o ciclo com begin_checkout/purchase.
 //
-// O GTM/Stape que já existe continua sendo do Meta — este arquivo NÃO empurra
-// nada pro dataLayer, justamente pra não correr risco de contar venda duas
-// vezes lá. Aqui só falamos gtag (GA4) e clarity.
+// COMO ISTO CHEGA NO GA4 (mudou em 24/08/2026, ler antes de mexer):
+//
+// Este arquivo NÃO carrega mais a biblioteca do GA4. Carregava, e isso derrubou
+// o rastreamento do Meta por 14 horas: eram DUAS instâncias do gtag para o
+// MESMO measurement id na mesma página, e a configuração do gtag é por id e
+// global. A do GTM aponta o `server_container_url` pro sst.vizairender.com; a
+// daqui não apontava pra lugar nenhum. Quem carregava por último ganhava, e na
+// maioria das vezes ganhava a daqui: o evento ia direto pro Google, não passava
+// pelo servidor da Stape, e a tag da Conversions API do Meta nunca disparava.
+// Medido na Meta: o lado servidor caiu de ~100% pra 17% do lado navegador.
+//
+// Agora existe UMA instância só, a do GTM. Este arquivo empurra comandos gtag
+// na fila do GTM com `send_to`, então herda a configuração dela, inclusive o
+// endereço do servidor. Caminho final: código -> gtag do GTM -> Stape -> GA4.
+//
+// REGRA QUE NÃO PODE SER QUEBRADA: nunca mandar daqui evento chamado
+// `purchase`, `begin_checkout` ou `page_view` puro. O gatilho "ec - eventos
+// Meta" do contêiner servidor casa com `^(page_view|begin_checkout|purchase)$`
+// e transformaria isso em conversão inventada na Meta. O pageview de navegação
+// interna leva `vz_nav: 1` justamente pra ser excluído lá.
 
 /**
  * Os dois IDs são públicos por natureza: viajam no HTML de todo visitante e não
@@ -39,13 +56,46 @@ export function isRecordablePath(pathname: string): boolean {
 }
 
 type AnalyticsWindow = Window & {
-  // Nome próprio de propósito. `window.gtag` é o nome que o GTM também pode
-  // ocupar; sobrescrever ele daria um jeito silencioso de um quebrar o outro,
-  // e quem quebraria é o rastreamento de venda do Meta, que já está validado
-  // em produção.
-  vizaiGtag?: (...args: unknown[]) => void;
+  // A fila do GTM, compartilhada de propósito. É ela que o gtag do container
+  // lê, e é assim que herdamos o `server_container_url` sem redefinir nada.
+  dataLayer?: unknown[];
   clarity?: (...args: unknown[]) => void;
 };
+
+/**
+ * Um comando gtag na fila do GTM.
+ *
+ * Tem que ser `function` com `arguments` de verdade: o gtag.js reconhece o
+ * comando pelo formato do objeto `arguments`, e uma lista comum passa batida e
+ * some sem erro nenhum.
+ *
+ * Se o GTM estiver bloqueado (bloqueador de anúncio), o comando fica parado na
+ * fila e nada acontece. É o mesmo destino que o resto da medição já tem.
+ */
+// Os parâmetros existem só pra assinatura bater; quem viaja é o `arguments`.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function gtagCmd(_comando?: unknown, _nome?: unknown, _params?: unknown) {
+  const win = w();
+  if (!win) return;
+  win.dataLayer = win.dataLayer || [];
+  // eslint-disable-next-line prefer-rest-params
+  win.dataLayer.push(arguments);
+}
+
+/** Endereço da página no momento do evento. Numa SPA o documento não recarrega,
+ *  então sem isto todo evento sairia carimbado com a página de ENTRADA e o
+ *  relatório diria que ninguém clica fora da home. */
+function contextoDaPagina(): Record<string, unknown> {
+  try {
+    return {
+      page_location: window.location.href,
+      page_path: window.location.pathname,
+      page_title: document.title,
+    };
+  } catch {
+    return {};
+  }
+}
 
 function w(): AnalyticsWindow | null {
   return typeof window === "undefined" ? null : (window as AnalyticsWindow);
@@ -90,9 +140,16 @@ export function analyticsAllowed(): boolean {
  */
 export function track(event: string, params: Record<string, unknown> = {}): void {
   const win = w();
-  if (!win || !analyticsAllowed()) return;
+  if (!win || !GA_MEASUREMENT_ID || !analyticsAllowed()) return;
   try {
-    win.vizaiGtag?.("event", event, params);
+    // `send_to` é o que amarra o evento na configuração do GTM. Sem ele o gtag
+    // manda pra toda configuração registrada na página, e um dia isso vira
+    // evento duplicado quando aparecer uma segunda.
+    gtagCmd("event", event, {
+      ...contextoDaPagina(),
+      ...params,
+      send_to: GA_MEASUREMENT_ID,
+    });
   } catch {
     // Analytics nunca pode derrubar a página. Falha calada é o certo aqui.
   }
@@ -133,23 +190,28 @@ export function clarityTag(key: string, value: string): void {
  * CUIDADO AO MEXER NO GTM: se algum dia alguém criar lá um gatilho de "History
  * Change" (mudança de histórico), as duas fontes passam a contar a mesma
  * navegação e o número dobra. Nesse dia, apague esta chamada — não o gatilho.
+ *
+ * O `vz_nav: 1` NÃO é enfeite. Este evento se chama `page_view`, e no contêiner
+ * servidor o gatilho "ec - eventos Meta" casa com esse nome e mandaria um
+ * PageView extra pra Conversions API, sem par no navegador e sem deduplicação.
+ * A marca existe pra aquele gatilho poder excluir esta navegação. Se ela sair
+ * daqui, a contagem da Meta infla calada.
  */
 export function trackPageView(url: string, title?: string): void {
   const win = w();
   if (!win || !GA_MEASUREMENT_ID || !analyticsAllowed()) return;
-  const pagina = {
-    page_location: window.location.origin + url,
-    page_path: url,
-    page_title: title ?? document.title,
-  };
   try {
-    // O `set` vem ANTES e não é detalhe. O gtag guarda a página de quando foi
-    // configurado, e numa SPA o documento não recarrega: sem isso, o pageview
-    // sairia com o endereço certo mas TODO evento seguinte (clique, rolagem,
-    // saída) continuaria sendo carimbado com a página de entrada. Nos
-    // relatórios prontos do GA4 pareceria que ninguém nunca clica fora da home.
-    win.vizaiGtag?.("set", pagina);
-    win.vizaiGtag?.("event", "page_view", pagina);
+    // Nada de `set` global. O `set` do gtag vale pra TODA configuração da
+    // página, então ele reescreveria também a página das tags de venda do GTM,
+    // que alimentam o Meta. O endereço vai evento a evento, que é o que o GA4
+    // precisa de qualquer forma.
+    gtagCmd("event", "page_view", {
+      page_location: window.location.origin + url,
+      page_path: url,
+      page_title: title ?? document.title,
+      vz_nav: 1,
+      send_to: GA_MEASUREMENT_ID,
+    });
   } catch {
     /* idem */
   }

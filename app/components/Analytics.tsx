@@ -2,11 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import Script from "next/script";
 import {
   CLARITY_PROJECT_ID,
   CONSENT_EVENT,
-  GA_MEASUREMENT_ID,
   analyticsAllowed,
   isRecordablePath,
   trackPageView,
@@ -120,48 +118,24 @@ export function Analytics() {
     }
   }, [pathname, allowed]);
 
-  if (!GA_MEASUREMENT_ID || allowed !== true) return null;
-
-  return (
-    <>
-      <Script
-        id="ga4-lib"
-        strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}&l=vizaiDataLayer`}
-      />
-      <Script
-        id="ga4-config"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-// Fila PRÓPRIA e nome PRÓPRIO, os dois separados do GTM (daí o &l= na URL da
-// lib acima). O GTM/Stape que manda venda pro Meta é um trabalho já validado em
-// produção; dividir a fila ou o nome com ele criaria um jeito silencioso de um
-// quebrar o outro.
-window.vizaiDataLayer = window.vizaiDataLayer || [];
-window.vizaiGtag = function(){window.vizaiDataLayer.push(arguments);};
-window.vizaiGtag('js', new Date());
-window.vizaiGtag('config', '${GA_MEASUREMENT_ID}', {
-  // NÃO manda pageview no carregamento: quem conta essa visita é a tag do GTM,
-  // medido no site em produção. A navegação interna, que o GTM não cobre, é
-  // mandada pelo componente.
-  send_page_view: false,
-  // Nada de publicidade personalizada a partir do GA4: quem faz remarketing
-  // aqui é o Meta, pelo GTM. Estes dois são respeitados de verdade (o
-  // anonymize_ip que costuma vir junto em tutoriais NÃO é: no GA4 ele é
-  // ignorado, porque o IP já não é guardado por padrão).
-  allow_google_signals: false,
-  allow_ad_personalization_signals: false
-  // NAO usar server_container_url aqui. Passar por sst.vizairender.com faria
-  // meus eventos entrarem no container servidor, e lá o gatilho da CAPI do Meta
-  // casa com ^(page_view|begin_checkout|purchase)$. O meu page_view de
-  // navegação interna viraria um PageView extra na Meta, SEM o par no pixel do
-  // navegador (que tem disablePushState ligado de propósito) — ou seja, sem
-  // deduplicação e com a contagem inflada. O preço de ir direto é perder
-  // alguma coisa pra bloqueador de anúncio; vale menos que sujar a Meta.
-});`,
-        }}
-      />
-    </>
-  );
+  // Nada de <script> do GA4 aqui, e isso é o conserto de 24/08/2026.
+  //
+  // Este componente carregava a biblioteca do gtag com o MESMO measurement id
+  // que a tag do GTM já usava. A configuração do gtag é por id e vale pra
+  // página inteira, então as duas brigavam: a do GTM aponta o
+  // `server_container_url` pro sst.vizairender.com, a daqui não apontava, e
+  // quem carregasse por último ganhava. Na maioria das cargas ganhava a daqui,
+  // o evento ia direto pro Google, não passava pelo servidor da Stape e a tag
+  // da Conversions API do Meta nunca disparava. Ficou assim 14 horas: na Meta,
+  // o lado servidor caiu de ~100% pra 17% do lado navegador, e a venda do dia
+  // seguinte perdeu a metade que carrega email, telefone e fbc.
+  //
+  // Fila própria (`&l=vizaiDataLayer`) NÃO protegia disso: a fila carrega os
+  // comandos, mas o endereço do servidor é atributo do measurement id.
+  //
+  // Agora quem carrega o GA4 é só o GTM, e os eventos daqui entram na fila dele
+  // com `send_to` (ver lib/analytics.ts). NÃO reintroduzir <Script> de gtag
+  // neste arquivo, com id nenhum: se um dia precisar mesmo de instância
+  // própria, tem que ser um measurement id DIFERENTE, de outro fluxo de dados.
+  return null;
 }
