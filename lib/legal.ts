@@ -21,7 +21,7 @@ export const SUPPORT_EMAIL = "suporte@vizairender.com";
 
 const privacyPt: LegalDoc = {
   title: "Política de Privacidade",
-  lastUpdated: "Última atualização: 28 de maio de 2026",
+  lastUpdated: "Última atualização: 25 de agosto de 2026",
   sections: [
     {
       heading: "1. Introdução",
@@ -47,6 +47,7 @@ const privacyPt: LegalDoc = {
             { lead: "Dados Técnicos:", text: "Endereço IP, versão do SketchUp e identificador de dispositivo. O identificador de dispositivo é utilizado exclusivamente para concessão única dos créditos gratuitos de boas-vindas e prevenção de abuso. Não é usado para rastreamento ou publicidade." },
             { lead: "Dados de Sessão Local:", text: "O plugin armazena seu token de autenticação nas preferências locais do SketchUp no seu computador, para manter você conectado entre sessões. Esse dado permanece no seu dispositivo e não é compartilhado." },
             { lead: "Dados de Pagamento:", text: "Processamos transações financeiras exclusivamente através do Stripe. Não armazenamos dados de cartão de crédito em nossos servidores." },
+            { lead: "Dados de Navegação e Publicidade:", text: "Quando você visita nosso site, coletamos endereço IP, informações do navegador e do dispositivo, páginas visitadas, cliques e rolagem, além de identificadores gravados em cookies. Se você já estiver conectado à sua conta e iniciar uma compra, geramos também um código derivado do seu e-mail para medir a eficácia dos nossos anúncios. A seção 5 detalha essas ferramentas e como recusá-las." },
           ],
         },
       ],
@@ -62,6 +63,7 @@ const privacyPt: LegalDoc = {
             { text: "Gerenciar sua conta, autenticar seu acesso, processar pagamentos e administrar seu saldo de créditos." },
             { text: "Detectar e prevenir uso abusivo (ex.: criação de múltiplas contas para acumular créditos gratuitos) por meio de identificadores de dispositivo." },
             { text: "Enviar comunicados administrativos e fornecer suporte técnico." },
+            { text: "Medir o desempenho dos nossos anúncios e exibir anúncios a quem já visitou o site, conforme detalhado na seção 5." },
             { text: "Melhorar a qualidade dos resultados gerados e a experiência geral do serviço." },
           ],
         },
@@ -76,13 +78,38 @@ const privacyPt: LegalDoc = {
           items: [
             { lead: "Provedores de IA:", text: "Google Cloud (Vertex AI / Gemini / Imagen) para processamento de imagens e Fal.ai (Kling) para geração de vídeo. Suas imagens são enviadas a esses provedores somente para executar a renderização solicitada, conforme suas respectivas políticas de privacidade." },
             { lead: "Infraestrutura:", text: "Google Cloud Run (hospedagem do servidor), Supabase (banco de dados e autenticação) e Stripe (pagamentos), todos obrigados por contrato a proteger seus dados." },
+            { lead: "Medição e Publicidade:", text: "Meta Platforms (Pixel e Conversions API), Google (Google Analytics 4 e Google Tag Manager), e Stape (servidor de etiquetas que intermedia esses envios). Compartilhamos com essas empresas dados de navegação e identificadores. Nunca compartilhamos o conteúdo das suas cenas 3D ou das imagens geradas. A seção 5 explica em detalhe o que é enviado e como recusar." },
             { lead: "Obrigação Legal:", text: "Se exigido por lei, regulação ou em resposta a processos legais válidos." },
           ],
         },
       ],
     },
     {
-      heading: "5. Segurança e Retenção dos Dados",
+      heading: "5. Cookies, Medição e Publicidade",
+      blocks: [
+        { type: "p", text: "Nosso site usa cookies e tecnologias semelhantes para funcionar, para entender como as pessoas navegam e para medir o resultado dos nossos anúncios. O plugin dentro do SketchUp não faz nada disso. Tudo o que esta seção descreve acontece somente no site." },
+        { type: "h3", text: "Ferramentas que utilizamos" },
+        {
+          type: "ul",
+          items: [
+            { lead: "Google Tag Manager:", text: "Organiza o carregamento das demais ferramentas. É carregado através do endereço sst.vizairender.com, que é nosso e é operado pela Stape." },
+            { lead: "Google Analytics 4:", text: "Estatísticas de audiência: páginas visitadas, origem da visita, tempo de permanência e interações de interesse, como o clique em um plano. Não enviamos seu nome nem seu e-mail para o Google Analytics." },
+            { lead: "Meta Pixel e Conversions API:", text: "Medem quantas pessoas que viram nossos anúncios no Facebook e no Instagram visitaram o site, iniciaram uma compra ou compraram, e permitem exibir anúncios para quem já nos visitou. São enviados endereço IP, informações do navegador, identificadores gravados em cookies, o identificador do clique no anúncio e, quando você está conectado à sua conta, um código derivado do seu e-mail (hash SHA-256). Enviamos esse código, e não o seu e-mail em texto legível." },
+          ],
+        },
+        { type: "h3", text: "Cookies que utilizamos" },
+        {
+          type: "ul",
+          items: [
+            { lead: "Necessários:", text: "Mantêm você conectado à sua conta e preservam preferências como idioma e tema. Sem eles o site não funciona corretamente." },
+            { lead: "Medição e publicidade:", text: "Guardam identificadores do navegador e o identificador do clique no anúncio que trouxe você até aqui. O identificador do clique dura 90 dias. Os demais variam conforme a ferramenta." },
+          ],
+        },
+        { type: "p", text: "Você pode limitar ou bloquear esses cookies a qualquer momento nas configurações de privacidade e rastreamento do seu navegador, e ajustar as preferências de anúncios diretamente na sua conta do Facebook e do Instagram. Meta, Google e Stape são empresas estrangeiras, portanto os dados descritos nesta seção são tratados fora do Brasil." },
+      ],
+    },
+    {
+      heading: "6. Segurança e Retenção dos Dados",
       blocks: [
         {
           type: "p",
@@ -91,16 +118,16 @@ const privacyPt: LegalDoc = {
       ],
     },
     {
-      heading: "6. Seus Direitos",
+      heading: "7. Seus Direitos",
       blocks: [
         {
           type: "p",
-          text: "Você tem o direito de solicitar acesso, correção ou exclusão de suas informações pessoais armazenadas conosco. Para solicitar a exclusão da sua conta ou exercer qualquer outro direito de privacidade, entre em contato através dos nossos canais de suporte.",
+          text: "Você tem o direito de solicitar acesso, correção ou exclusão de suas informações pessoais armazenadas conosco. Se você estiver no Brasil, a Lei Geral de Proteção de Dados também lhe garante o direito de confirmar a existência do tratamento, solicitar a portabilidade dos seus dados e se opor às atividades de medição e publicidade descritas na seção 5. Para solicitar a exclusão da sua conta ou exercer qualquer outro direito de privacidade, entre em contato através dos nossos canais de suporte.",
         },
       ],
     },
     {
-      heading: "7. Contato",
+      heading: "8. Contato",
       blocks: [
         {
           type: "p",
@@ -113,7 +140,7 @@ const privacyPt: LegalDoc = {
 
 const privacyEn: LegalDoc = {
   title: "Privacy Policy",
-  lastUpdated: "Last updated: May 28, 2026",
+  lastUpdated: "Last updated: August 25, 2026",
   sections: [
     {
       heading: "1. Introduction",
@@ -139,6 +166,7 @@ const privacyEn: LegalDoc = {
             { lead: "Technical Data:", text: "IP address, SketchUp version and device identifier. The device identifier is used solely to grant the one-time welcome free credits and to prevent abuse. It is not used for tracking or advertising." },
             { lead: "Local Session Data:", text: "The plugin stores your authentication token in SketchUp's local preferences on your computer, to keep you logged in between sessions. This data remains on your device and is not shared." },
             { lead: "Payment Data:", text: "We process financial transactions exclusively through Stripe. We do not store credit card data on our servers." },
+            { lead: "Browsing and Advertising Data:", text: "When you visit our website we collect IP address, browser and device information, pages visited, clicks and scrolling, as well as identifiers stored in cookies. If you are already signed in to your account and start a purchase, we also generate a code derived from your email address in order to measure the effectiveness of our ads. Section 5 details these tools and how to opt out." },
           ],
         },
       ],
@@ -154,6 +182,7 @@ const privacyEn: LegalDoc = {
             { text: "Manage your account, authenticate your access, process payments and administer your credit balance." },
             { text: "Detect and prevent abusive use (e.g., creating multiple accounts to accumulate free credits) by means of device identifiers." },
             { text: "Send administrative communications and provide technical support." },
+            { text: "Measure the performance of our ads and show ads to people who have already visited the website, as detailed in section 5." },
             { text: "Improve the quality of generated results and the overall service experience." },
           ],
         },
@@ -168,13 +197,38 @@ const privacyEn: LegalDoc = {
           items: [
             { lead: "AI Providers:", text: "Google Cloud (Vertex AI / Gemini / Imagen) for image processing and Fal.ai (Kling) for video generation. Your images are sent to these providers only to perform the requested rendering, in accordance with their respective privacy policies." },
             { lead: "Infrastructure:", text: "Google Cloud Run (server hosting), Supabase (database and authentication) and Stripe (payments), all contractually obligated to protect your data." },
+            { lead: "Measurement and Advertising:", text: "Meta Platforms (Pixel and Conversions API), Google (Google Analytics 4 and Google Tag Manager), and Stape (the tagging server that relays these transmissions). We share browsing data and identifiers with these companies. We never share the content of your 3D scenes or generated images. Section 5 explains in detail what is sent and how to opt out." },
             { lead: "Legal Obligation:", text: "If required by law, regulation or in response to valid legal proceedings." },
           ],
         },
       ],
     },
     {
-      heading: "5. Data Security and Retention",
+      heading: "5. Cookies, Measurement and Advertising",
+      blocks: [
+        { type: "p", text: "Our website uses cookies and similar technologies to work properly, to understand how people browse and to measure the results of our ads. The plugin inside SketchUp does none of this. Everything described in this section happens on the website only." },
+        { type: "h3", text: "Tools we use" },
+        {
+          type: "ul",
+          items: [
+            { lead: "Google Tag Manager:", text: "Orchestrates the loading of the other tools. It is loaded through the address sst.vizairender.com, which is ours and is operated by Stape." },
+            { lead: "Google Analytics 4:", text: "Audience statistics: pages visited, traffic source, time on site and interactions of interest, such as clicking a plan. We do not send your name or your email address to Google Analytics." },
+            { lead: "Meta Pixel and Conversions API:", text: "Measure how many people who saw our ads on Facebook and Instagram visited the site, started a purchase or bought, and allow us to show ads to people who have already visited us. We send IP address, browser information, identifiers stored in cookies, the ad click identifier and, when you are signed in to your account, a code derived from your email address (SHA-256 hash). We send that code, not your email address in readable form." },
+          ],
+        },
+        { type: "h3", text: "Cookies we use" },
+        {
+          type: "ul",
+          items: [
+            { lead: "Necessary:", text: "Keep you signed in to your account and preserve preferences such as language and theme. Without them the site does not work properly." },
+            { lead: "Measurement and advertising:", text: "Store browser identifiers and the identifier of the ad click that brought you here. The ad click identifier lasts 90 days. The others vary by tool." },
+          ],
+        },
+        { type: "p", text: "You can limit or block these cookies at any time in your browser\u2019s privacy and tracking settings, and adjust ad preferences directly in your Facebook and Instagram account. Meta, Google and Stape are companies based outside Brazil, so the data described in this section is processed abroad." },
+      ],
+    },
+    {
+      heading: "6. Data Security and Retention",
       blocks: [
         {
           type: "p",
@@ -183,16 +237,16 @@ const privacyEn: LegalDoc = {
       ],
     },
     {
-      heading: "6. Your Rights",
+      heading: "7. Your Rights",
       blocks: [
         {
           type: "p",
-          text: "You have the right to request access to, correction of or deletion of your personal information stored with us. To request deletion of your account or exercise any other privacy right, contact us through our support channels.",
+          text: "You have the right to request access to, correction of or deletion of your personal information stored with us. If you are in Brazil, the General Data Protection Law (LGPD) also grants you the right to confirm the existence of processing, request portability of your data and object to the measurement and advertising activities described in section 5. To request deletion of your account or exercise any other privacy right, contact us through our support channels.",
         },
       ],
     },
     {
-      heading: "7. Contact",
+      heading: "8. Contact",
       blocks: [
         {
           type: "p",
@@ -205,7 +259,7 @@ const privacyEn: LegalDoc = {
 
 const privacyEs: LegalDoc = {
   title: "Política de Privacidad",
-  lastUpdated: "Última actualización: 28 de mayo de 2026",
+  lastUpdated: "Última actualización: 25 de agosto de 2026",
   sections: [
     {
       heading: "1. Introducción",
@@ -231,6 +285,7 @@ const privacyEs: LegalDoc = {
             { lead: "Datos Técnicos:", text: "Dirección IP, versión de SketchUp e identificador de dispositivo. El identificador de dispositivo se utiliza exclusivamente para la concesión única de los créditos gratuitos de bienvenida y la prevención de abuso. No se usa para rastreo ni publicidad." },
             { lead: "Datos de Sesión Local:", text: "El plugin almacena tu token de autenticación en las preferencias locales de SketchUp en tu computadora, para mantenerte conectado entre sesiones. Ese dato permanece en tu dispositivo y no se comparte." },
             { lead: "Datos de Pago:", text: "Procesamos transacciones financieras exclusivamente a través de Stripe. No almacenamos datos de tarjeta de crédito en nuestros servidores." },
+            { lead: "Datos de Navegación y Publicidad:", text: "Cuando visitas nuestro sitio recopilamos dirección IP, información del navegador y del dispositivo, páginas visitadas, clics y desplazamiento, además de identificadores guardados en cookies. Si ya has iniciado sesión en tu cuenta e inicias una compra, generamos también un código derivado de tu correo electrónico para medir la eficacia de nuestros anuncios. La sección 5 detalla estas herramientas y cómo rechazarlas." },
           ],
         },
       ],
@@ -246,6 +301,7 @@ const privacyEs: LegalDoc = {
             { text: "Gestionar tu cuenta, autenticar tu acceso, procesar pagos y administrar tu saldo de créditos." },
             { text: "Detectar y prevenir uso abusivo (p. ej.: creación de múltiples cuentas para acumular créditos gratuitos) mediante identificadores de dispositivo." },
             { text: "Enviar comunicados administrativos y brindar soporte técnico." },
+            { text: "Medir el rendimiento de nuestros anuncios y mostrar anuncios a quienes ya visitaron el sitio, según se detalla en la sección 5." },
             { text: "Mejorar la calidad de los resultados generados y la experiencia general del servicio." },
           ],
         },
@@ -260,13 +316,38 @@ const privacyEs: LegalDoc = {
           items: [
             { lead: "Proveedores de IA:", text: "Google Cloud (Vertex AI / Gemini / Imagen) para procesamiento de imágenes y Fal.ai (Kling) para generación de video. Tus imágenes se envían a estos proveedores únicamente para ejecutar el renderizado solicitado, conforme a sus respectivas políticas de privacidad." },
             { lead: "Infraestructura:", text: "Google Cloud Run (alojamiento del servidor), Supabase (base de datos y autenticación) y Stripe (pagos), todos obligados por contrato a proteger tus datos." },
+            { lead: "Medición y Publicidad:", text: "Meta Platforms (Pixel y Conversions API), Google (Google Analytics 4 y Google Tag Manager), y Stape (servidor de etiquetas que intermedia estos envíos). Compartimos con estas empresas datos de navegación e identificadores. Nunca compartimos el contenido de tus escenas 3D ni de las imágenes generadas. La sección 5 explica en detalle qué se envía y cómo rechazarlo." },
             { lead: "Obligación Legal:", text: "Si lo exige la ley, una regulación o en respuesta a procesos legales válidos." },
           ],
         },
       ],
     },
     {
-      heading: "5. Seguridad y Retención de Datos",
+      heading: "5. Cookies, Medición y Publicidad",
+      blocks: [
+        { type: "p", text: "Nuestro sitio usa cookies y tecnologías similares para funcionar, para entender cómo navegan las personas y para medir el resultado de nuestros anuncios. El plugin dentro de SketchUp no hace nada de esto. Todo lo que describe esta sección ocurre únicamente en el sitio." },
+        { type: "h3", text: "Herramientas que utilizamos" },
+        {
+          type: "ul",
+          items: [
+            { lead: "Google Tag Manager:", text: "Organiza la carga de las demás herramientas. Se carga a través de la dirección sst.vizairender.com, que es nuestra y está operada por Stape." },
+            { lead: "Google Analytics 4:", text: "Estadísticas de audiencia: páginas visitadas, origen de la visita, tiempo de permanencia e interacciones de interés, como el clic en un plan. No enviamos tu nombre ni tu correo electrónico a Google Analytics." },
+            { lead: "Meta Pixel y Conversions API:", text: "Miden cuántas personas que vieron nuestros anuncios en Facebook e Instagram visitaron el sitio, iniciaron una compra o compraron, y permiten mostrar anuncios a quienes ya nos visitaron. Se envían dirección IP, información del navegador, identificadores guardados en cookies, el identificador del clic en el anuncio y, cuando has iniciado sesión en tu cuenta, un código derivado de tu correo electrónico (hash SHA-256). Enviamos ese código, no tu correo en texto legible." },
+          ],
+        },
+        { type: "h3", text: "Cookies que utilizamos" },
+        {
+          type: "ul",
+          items: [
+            { lead: "Necesarias:", text: "Te mantienen conectado a tu cuenta y conservan preferencias como idioma y tema. Sin ellas el sitio no funciona correctamente." },
+            { lead: "Medición y publicidad:", text: "Guardan identificadores del navegador y el identificador del clic en el anuncio que te trajo hasta aquí. El identificador del clic dura 90 días. Los demás varían según la herramienta." },
+          ],
+        },
+        { type: "p", text: "Puedes limitar o bloquear estas cookies en cualquier momento en la configuración de privacidad y rastreo de tu navegador, y ajustar las preferencias de anuncios directamente en tu cuenta de Facebook e Instagram. Meta, Google y Stape son empresas extranjeras, por lo que los datos descritos en esta sección se tratan fuera de Brasil." },
+      ],
+    },
+    {
+      heading: "6. Seguridad y Retención de Datos",
       blocks: [
         {
           type: "p",
@@ -275,16 +356,16 @@ const privacyEs: LegalDoc = {
       ],
     },
     {
-      heading: "6. Tus Derechos",
+      heading: "7. Tus Derechos",
       blocks: [
         {
           type: "p",
-          text: "Tienes derecho a solicitar acceso, corrección o eliminación de tu información personal almacenada con nosotros. Para solicitar la eliminación de tu cuenta o ejercer cualquier otro derecho de privacidad, contáctanos a través de nuestros canales de soporte.",
+          text: "Tienes derecho a solicitar acceso, corrección o eliminación de tu información personal almacenada con nosotros. Si te encuentras en Brasil, la Ley General de Protección de Datos (LGPD) también te garantiza el derecho a confirmar la existencia del tratamiento, solicitar la portabilidad de tus datos y oponerte a las actividades de medición y publicidad descritas en la sección 5. Para solicitar la eliminación de tu cuenta o ejercer cualquier otro derecho de privacidad, contáctanos a través de nuestros canales de soporte.",
         },
       ],
     },
     {
-      heading: "7. Contacto",
+      heading: "8. Contacto",
       blocks: [
         {
           type: "p",
