@@ -6,6 +6,7 @@ import { useLang } from "@/app/components/LanguageProvider";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "next-themes";
 import { AnimatedGridBg } from "./animated-grid-bg";
+import { createClient } from "@/lib/supabase/client";
 
 type Currency = "BRL" | "USD" | "EUR";
 type Tab = "assinatura" | "avulso";
@@ -136,10 +137,29 @@ function parsePriceToNumber(s: string): number {
   return Number.isFinite(n) ? n : 0;
 }
 
+// SHA-256 em hexadecimal do email, na normalização que o Meta exige (sem
+// espaços, minúsculo). O email em texto puro NUNCA entra no dataLayer: o que
+// viaja é só o hash, igual ao que a /obrigado já faz no `purchase`.
+// `crypto.subtle` só existe em contexto seguro (https ou localhost); onde não
+// existir, o hash não sai e o evento segue sem email, como era antes.
+async function hashEmail(email: string): Promise<string | null> {
+  try {
+    const bytes = new TextEncoder().encode(email.trim().toLowerCase());
+    const buf = await crypto.subtle.digest("SHA-256", bytes);
+    return Array.from(new Uint8Array(buf))
+      .map((b) => b.toString(16).padStart(2, "0"))
+      .join("");
+  } catch {
+    return null;
+  }
+}
+
 // Dispara begin_checkout (InitiateCheckout) no dataLayer ao clicar num plano.
 // Espelha o padrão do `purchase`: a deduplicação Pixel x CAPI é feita pelo
-// {{event_id}} gerado no próprio GTM, então aqui só mandamos value/currency/plan.
-function pushBeginCheckout(args: { value: number; currency: Currency; plan: string; billing: Billing | "onetime" }) {
+// {{event_id}} gerado no próprio GTM, então aqui mandamos só value/currency/
+// plan mais o `em` (hash do email) quando o visitante já está logado — é ele
+// que tira o InitiateCheckout de 0% de correspondência por email na Meta.
+function pushBeginCheckout(args: { value: number; currency: Currency; plan: string; billing: Billing | "onetime"; em?: string | null }) {
   if (!args.value) return;
   const w = window as Window & { dataLayer?: Record<string, unknown>[] };
   w.dataLayer = w.dataLayer || [];
@@ -149,6 +169,7 @@ function pushBeginCheckout(args: { value: number; currency: Currency; plan: stri
     currency: args.currency,
     plan: args.plan,
     billing: args.billing,
+    ...(args.em ? { em: args.em } : {}),
   });
   // NÃO espelhar isto no GA4 daqui. O container web já tem a tag
   // "02 | Google Analytics - InitiateCheckout" disparando neste mesmo evento
@@ -165,6 +186,30 @@ export function PricingSection() {
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
+
+  // Hash do email de quem já está logado, preparado ANTES do clique: o clique
+  // navega na hora pra /checkout, então não daria tempo de calcular ali.
+  // `getSession` lê o cookie que já está no navegador, sem ida à rede —
+  // `getUser` custaria uma requisição a mais só pra buscar um email que aqui
+  // não decide nada. Visitante deslogado fica sem `em`, e o evento sai igual
+  // ao de hoje.
+  const [emHash, setEmHash] = useState<string | null>(null);
+  useEffect(() => {
+    let cancelado = false;
+    createClient()
+      .auth.getSession()
+      .then(({ data }) => {
+        const email = data.session?.user?.email;
+        if (!email) return;
+        return hashEmail(email).then((h) => {
+          if (!cancelado && h) setEmHash(h);
+        });
+      })
+      .catch(() => {});
+    return () => {
+      cancelado = true;
+    };
+  }, []);
   const dark = mounted && theme === "dark";
 
   const plans = planData.map((p, i) => ({ ...p, ...t.pricing.plans[i], suffix: i === 0 ? "" : t.pricing.perMonth }));
@@ -342,6 +387,7 @@ export function PricingSection() {
                             ? `${plan.id}_${isAnual ? "annual" : "monthly"}`
                             : packLookupKeys[plan.id],
                         billing: tab === "assinatura" ? billing : "onetime",
+                        em: emHash,
                       })
                     }
                     style={{
