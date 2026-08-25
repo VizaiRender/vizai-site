@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { X } from "lucide-react";
 import { readStoredLang, useLang, STORAGE_KEY } from "./LanguageProvider";
 import { isLocalizedPath, localePath, splitLang, type Lang } from "@/lib/routes";
+import { Flag } from "@/components/ui/flag";
 
 const DISMISS_KEY = "vizai-lang-hint-off";
 
@@ -28,8 +29,6 @@ const COPY: Record<Lang, { message: string; action: string; close: string }> = {
     close: "Cerrar",
   },
 };
-
-const FLAG: Record<Lang, string> = { pt: "🇧🇷", en: "🇺🇸", es: "🇪🇸" };
 
 const SUPPORTED: Lang[] = ["pt", "en", "es"];
 
@@ -112,9 +111,7 @@ export function LanguageSuggestion() {
       }`}
     >
       <div className="flex items-center gap-3 rounded-full border border-border bg-white px-4 py-2 shadow-lg dark:bg-neutral-900">
-        <span aria-hidden className="text-base leading-none">
-          {FLAG[suggested]}
-        </span>
+        <Flag lang={suggested} className="w-5 h-5" />
         <p className="flex-1 text-xs leading-snug text-[var(--foreground-muted)]">
           {copy.message}
         </p>
