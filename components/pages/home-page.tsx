@@ -1,5 +1,7 @@
 "use client";
 
+import { Fragment, type ReactNode } from "react";
+
 import Link from "next/link";
 import { useT } from "@/lib/i18n";
 import { useHref } from "@/app/components/LanguageProvider";
@@ -136,6 +138,76 @@ const galleryItems: ImageItem[] = [
   },
 ];
 
+
+/**
+ * PAINEL DE CONTROLE DA HOME
+ *
+ * Esta lista é a ORDEM em que as seções aparecem na página, de cima para baixo.
+ * Ela é a única fonte da verdade: mudar aqui muda o site.
+ *
+ * COMO MEXER
+ * - Trocar de posição: mova a linha para cima ou para baixo.
+ * - Esconder: transforme a linha em comentário pondo // na frente. A linha
+ *   comentada guarda o lugar onde a seção estava, então voltar é só tirar o //.
+ * - Não invente nome: cada chave tem que existir no objeto `secoes` lá embaixo,
+ *   senão o projeto nem compila. Isso é de propósito, é a rede de segurança.
+ *
+ * Os nomes são os mesmos que a medição usa (`data-track-section`), então o que
+ * você lê aqui é o que aparece nos relatórios de comportamento.
+ *
+ * DUAS LINHAS QUE É MELHOR NÃO MOVER: `hero` precisa ser a primeira, porque ela
+ * ocupa a tela inteira e é o que segura a primeira impressão; e `footer`
+ * precisa ser a última, porque é rodapé.
+ */
+const ORDEM_DA_HOME: ChaveDeSecao[] = [
+  "hero",
+  "stats",
+  "como-funciona",
+  "antes-depois",
+  "cta-meio",
+  "demo-interativa",
+  "por-que-vizai",
+  "ferramentas",
+  "tools-gratis",
+  // Video: saiu do 3o lugar em 26/08/2026. Tinha 2 cliques no play em ~190
+  // sessoes, nenhum no computador, e ocupava area nobre.
+  "video",
+  // Planos subiu de 16o para ca no mesmo dia: 29 sessoes foram parar em
+  // /#pricing pelo menu, ou seja, gente cacando preco numa pagina que so
+  // mostrava isso la embaixo, fora do alcance de quem rola 26% em media.
+  "planos",
+  // Prova social logo depois do preco: e ali que a duvida aparece.
+  "depoimentos",
+  "galeria",
+  "softwares",
+  "modelos-ia",
+  "comparativo",
+  "faq",
+  "cta-final",
+  "footer",
+];
+
+type ChaveDeSecao =
+  | "hero"
+  | "stats"
+  | "video"
+  | "demo-interativa"
+  | "por-que-vizai"
+  | "ferramentas"
+  | "tools-gratis"
+  | "como-funciona"
+  | "antes-depois"
+  | "softwares"
+  | "modelos-ia"
+  | "cta-meio"
+  | "comparativo"
+  | "galeria"
+  | "depoimentos"
+  | "planos"
+  | "faq"
+  | "cta-final"
+  | "footer";
+
 export function HomePage() {
   const t = useT();
   const href = useHref();
@@ -144,8 +216,13 @@ export function HomePage() {
     title: t.home.gallery[i].title,
     desc: t.home.gallery[i].desc,
   }));
-  return (
-    <main className="flex flex-col">
+
+  // O conteúdo de cada seção. A ORDEM não está aqui, está no painel lá em cima.
+  // `Record` obriga este objeto a ter todas as chaves do tipo: se alguém criar
+  // uma seção nova no painel e esquecer de escrever o conteúdo, o projeto para
+  // de compilar em vez de publicar uma página com buraco.
+  const secoes: Record<ChaveDeSecao, ReactNode> = {
+    hero: (
       <section data-track-section="hero" className="hero-section isolate relative flex flex-col items-center justify-center min-h-screen pt-24 pb-20 px-6 overflow-hidden">
         <DottedSurfaceLazy className="absolute inset-0 z-0" />
 
@@ -190,13 +267,14 @@ export function HomePage() {
           </div>
         </div>
       </section>
+    ),
 
-      <StatsSection />
+    stats: <StatsSection />,
 
-      {/* Seção Vídeo de demonstração (por idioma) */}
-      <VideoSection />
+    // Vídeo de demonstração, um por idioma.
+    video: <VideoSection />,
 
-      {/* Seção Demo Interativa */}
+    "demo-interativa": (
       <section data-track-section="demo-interativa" style={{ padding: "100px 24px 100px", position: "relative" }}>
         <div className="flex flex-col md:flex-row items-center md:justify-center gap-10 md:gap-20" style={{ maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 1 }}>
           <div className="w-full md:flex-none md:max-w-[460px]">
@@ -226,18 +304,18 @@ export function HomePage() {
           </div>
         </div>
       </section>
+    ),
 
-      {/* Seção Por Que Vizai Render */}
-      <WhySection />
+    "por-que-vizai": <WhySection />,
 
-      <ToolsSection />
+    ferramentas: <ToolsSection />,
 
-      {/* Janela Tools — ferramentas locais grátis */}
-      <LocalToolsSection />
+    // Janela Tools: ferramentas locais grátis.
+    "tools-gratis": <LocalToolsSection />,
 
-      <HowItWorksSection />
+    "como-funciona": <HowItWorksSection />,
 
-      {/* Seção Antes / Depois */}
+    "antes-depois": (
       <section data-track-section="antes-depois" className="pb-24 px-6 flex flex-col items-center gap-12">
         <div className="text-center max-w-4xl">
           <h2
@@ -288,32 +366,41 @@ export function HomePage() {
           ]}
         />
       </section>
+    ),
 
-      <SoftwareMarquee />
+    softwares: <SoftwareMarquee />,
 
-      <AiModelsSection />
+    "modelos-ia": <AiModelsSection />,
 
+    "cta-meio": <MidCtaSection />,
 
-      <MidCtaSection />
+    comparativo: <ComparisonSection />,
 
-      <ComparisonSection />
-
+    galeria: (
       <InteractiveImageBentoGallery
         id="gallery"
         title={t.home.galleryTitle}
         description={t.home.galleryDescription}
         imageItems={localizedGallery}
       />
+    ),
 
-      <TestimonialsSection />
+    depoimentos: <TestimonialsSection />,
 
-      <PricingSection />
+    planos: <PricingSection />,
 
-      <FaqSection />
+    faq: <FaqSection />,
 
-      <CtaSection />
+    "cta-final": <CtaSection />,
 
-      <Footer />
+    footer: <Footer />,
+  };
+
+  return (
+    <main className="flex flex-col">
+      {ORDEM_DA_HOME.map((chave) => (
+        <Fragment key={chave}>{secoes[chave]}</Fragment>
+      ))}
     </main>
   );
 }
