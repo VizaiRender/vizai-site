@@ -19,8 +19,11 @@ export function VideoSection() {
     setPlaying(true);
   };
 
+  // Sem respiro próprio em cima: a seção acima (Janela Tools) já termina com
+  // pb-40, que sozinho dá 160px. Quando o vídeo vivia logo abaixo do hero ele
+  // precisava do seu, e somar os dois deixava 300px de vazio na emenda.
   return (
-    <section className="pt-20 sm:pt-[140px] pb-16 sm:pb-[80px] px-6" data-track-section="video">
+    <section className="pb-16 sm:pb-[80px] px-6" data-track-section="video">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-10">
           <h2
