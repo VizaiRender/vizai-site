@@ -120,7 +120,37 @@ export const CONSENT_EVENT = "vizai-consent-change";
  * O que NÃO está aqui: o GTM/Meta, que carrega no layout e é um trabalho
  * validado em produção. Ligar consentimento nele é um passo à parte.
  */
+/**
+ * Endereços onde a medição vale. Qualquer outro host (localhost, preview do
+ * Cloudflare, túnel de teste) fica de fora.
+ *
+ * Motivo, medido em 2026-08-26: o relatório do Clarity trazia 13 visitas de
+ * `localhost:3111`, ou seja, a máquina de desenvolvimento mandando dado pro
+ * projeto de PRODUÇÃO. Com ~200 sessões por período, isso é 6% de dado falso,
+ * e envenena justamente a leitura de página nova, que é quando a gente mais
+ * mexe no site rodando local.
+ *
+ * Pra testar a medição localmente de propósito, subir o dev com
+ * `NEXT_PUBLIC_MEASURE_LOCAL=1`.
+ */
+const MEASURED_HOSTS = ["vizairender.com", "www.vizairender.com"];
+
+function medindoNesteHost(): boolean {
+  if (process.env.NEXT_PUBLIC_MEASURE_LOCAL === "1") return true;
+  try {
+    return MEASURED_HOSTS.includes(window.location.hostname);
+  } catch {
+    // Sem window (render no servidor) não existe host pra decidir, e nada é
+    // medido de lá mesmo.
+    return false;
+  }
+}
+
 export function analyticsAllowed(): boolean {
+  // A trava de host vem primeiro de propósito: ela não depende de consentimento
+  // nem de storage, e vale pro Clarity e pros eventos de comportamento juntos,
+  // porque todo mundo aqui passa por esta função.
+  if (!medindoNesteHost()) return false;
   try {
     return localStorage.getItem(CONSENT_KEY) !== "false";
   } catch {
@@ -157,6 +187,27 @@ export function track(event: string, params: Record<string, unknown> = {}): void
     win.clarity?.("event", event);
   } catch {
     /* idem */
+  }
+}
+
+/**
+ * Um evento com NOME PRÓPRIO no Clarity, sem par no GA4.
+ *
+ * Existe porque `track()` manda tudo pro Clarity como o mesmo nome de evento,
+ * já que lá evento não aceita parâmetro. Resultado: dentro do Clarity o clique
+ * que baixa o plugin era indistinguível do clique em qualquer outro botão, e
+ * não dava pra usar como etapa de funil.
+ *
+ * O caminho alternativo (evento inteligente por TEXTO do botão, montado no
+ * painel) não resolve: "Baixar plugin" é o texto do menu e do rodapé também,
+ * que aparecem em 10 páginas e só navegam. Aqui só entra o clique verdadeiro.
+ */
+export function clarityEvent(name: string): void {
+  if (!analyticsAllowed()) return;
+  try {
+    w()?.clarity?.("event", name);
+  } catch {
+    /* analytics nunca derruba a página */
   }
 }
 

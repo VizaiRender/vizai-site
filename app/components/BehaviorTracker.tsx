@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { clarityTag, isRecordablePath, track } from "@/lib/analytics";
+import { clarityEvent, clarityTag, isRecordablePath, track } from "@/lib/analytics";
 
 /** Marcos de rolagem. 90 existe porque quase nenhuma página chega a 100 de
  *  verdade (rodapé, barra do celular), e sem ele "leu até o fim" some. */
@@ -129,6 +129,15 @@ export function BehaviorTracker() {
         } catch {
           /* href estranho: manda o clique sem destino */
         }
+      }
+
+      // O clique que REALMENTE baixa o arquivo ganha nome próprio no Clarity.
+      // O atributo `download` é o que separa o botão de verdade dos links de
+      // menu e rodapé, que têm o mesmo texto e só navegam. Com isso o funil do
+      // Clarity passa a contar download de verdade, sem depender de o painel
+      // adivinhar o que é botão pelo texto escrito nele.
+      if (el instanceof HTMLAnchorElement && el.hasAttribute("download")) {
+        clarityEvent("download_plugin");
       }
 
       track("element_click", params);
