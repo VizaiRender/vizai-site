@@ -8,7 +8,12 @@ const pt = {
   nav: {
     plans: "Planos",
     training: "Treinamento",
-    download: "Baixar plugin",
+    // Não repetir "Baixar plugin" aqui: esse é o texto do botão que REALMENTE
+    // baixa o arquivo, na página de download. Com os dois nomes iguais, as
+    // gravações do Clarity mostraram gente clicando neste, do menu, achando que
+    // baixava (ele só navega). "Como instalar" também descreve melhor o que a
+    // página de destino entrega: passo a passo, requisitos e o arquivo.
+    download: "Como instalar",
     login: "Entrar",
     start: "Começar",
     dashboard: "Meu painel",
@@ -223,11 +228,16 @@ const pt = {
     title: "Dê vida aos seus projetos",
     connector: "com o",
     primary: "Criar conta com o Google",
-    secondary: "Baixar plugin",
+    // Os dois CTAs da home levam pra /download, que é uma PÁGINA, não o arquivo.
+    // Só o botão de lá baixa de verdade, e agora ele é o único lugar do site
+    // escrito "Baixar plugin".
+    secondary: "Como instalar",
   },
   footer: {
     plans: "Planos",
-    download: "Baixar plugin",
+    // Mesmo motivo do menu: só o botão que baixa o arquivo de verdade se chama
+    // "Baixar plugin" no site inteiro.
+    download: "Como instalar",
     training: "Treinamento",
     gallery: "Galeria",
     privacy: "Privacidade",
@@ -405,7 +415,7 @@ const en: Dict = {
   nav: {
     plans: "Plans",
     training: "Training",
-    download: "Download plugin",
+    download: "How to install",
     login: "Log in",
     start: "Get started",
     dashboard: "My dashboard",
@@ -620,11 +630,11 @@ const en: Dict = {
     title: "Bring your projects to life",
     connector: "with",
     primary: "Create account with Google",
-    secondary: "Download plugin",
+    secondary: "How to install",
   },
   footer: {
     plans: "Plans",
-    download: "Download plugin",
+    download: "How to install",
     training: "Training",
     gallery: "Gallery",
     privacy: "Privacy",
@@ -797,7 +807,7 @@ const es: Dict = {
   nav: {
     plans: "Planes",
     training: "Capacitación",
-    download: "Descargar plugin",
+    download: "Cómo instalar",
     login: "Entrar",
     start: "Empezar",
     dashboard: "Mi panel",
@@ -1012,11 +1022,11 @@ const es: Dict = {
     title: "Da vida a tus proyectos",
     connector: "con",
     primary: "Crear cuenta con Google",
-    secondary: "Descargar plugin",
+    secondary: "Cómo instalar",
   },
   footer: {
     plans: "Planes",
-    download: "Descargar plugin",
+    download: "Cómo instalar",
     training: "Entrenamiento",
     gallery: "Galería",
     privacy: "Privacidad",

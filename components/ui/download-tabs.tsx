@@ -50,9 +50,15 @@ function DownloadButton({ manifest }: { manifest: DownloadManifest | null }) {
         href={manifest.url}
         download
         rel="noopener"
-        className="inline-flex items-center gap-2 bg-[#0940D2] hover:bg-[#0730b0] text-white text-lg font-semibold px-8 py-4 rounded-full transition-colors"
+        // ~7% maior que o original (text-lg / py-4), com folga extra nas
+        // laterais: é o único caminho de verdade da página e ele precisa ganhar
+        // do resto da tela sem parecer um banner.
+        // O brilho no hover troca o degradê inteiro de uma vez. Fazer isso
+        // pelas paradas de cor não funciona: gradiente é background-image, e
+        // background-image não faz transição, então o efeito apareceria seco.
+        className="inline-flex items-center gap-3 border-2 border-[#FF4D4F] bg-[linear-gradient(135deg,#2B6BFF_0%,#0940D2_52%,#0A2E9E_100%)] text-white text-[1.3rem] font-semibold px-12 py-[1.25rem] rounded-full shadow-lg shadow-[#0940D2]/25 transition-[filter,box-shadow] duration-200 hover:brightness-110 hover:shadow-xl hover:shadow-[#0940D2]/40"
       >
-        <Download size={20} />
+        <Download size={22} />
         {t.download.tabs.downloadBtn}
       </a>
       <p className="text-sm" style={{ color: "var(--foreground-muted)" }}>

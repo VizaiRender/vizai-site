@@ -6,6 +6,7 @@ import { useTheme } from "next-themes";
 import { Download, LogOut, LayoutDashboard, Menu, X } from "lucide-react";
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 import { useLang, useHref, type Lang } from "./LanguageProvider";
 import { useT } from "@/lib/i18n";
@@ -124,6 +125,25 @@ export default function Navbar({ forceDark = false }: { forceDark?: boolean }) {
   const [authResolved, setAuthResolved] = useState(false);
   const { lang, setLang } = useLang();
   const t = useT();
+
+  /**
+   * Na própria página de download o botão "Baixar plugin" do menu vira um
+   * engodo: ele aponta pra página onde a pessoa já está, então clicar nele não
+   * faz nada. E o menu é fixo, então ele acompanha a rolagem a página inteira,
+   * sempre acima do botão de verdade.
+   *
+   * Isso não é teoria. Medido no Clarity em 26/08/2026: 45 dos 49 cliques
+   * mortos do site inteiro estavam em /download, 33 deles no desktop (que é
+   * onde este menu aparece aberto; no celular ele vive dentro do hambúrguer).
+   * Nas gravações dá pra ver a pessoa clicando aqui achando que baixa. No mesmo
+   * período, de 49 sessões que abriram a página, 2 chegaram a clicar no botão
+   * de verdade.
+   *
+   * Some só aqui. Em toda outra página ele continua igual, porque é ele que
+   * traz gente pra cá.
+   */
+  const pathname = usePathname();
+  const naPaginaDeDownload = /\/download\/?$/.test(pathname);
 
   useEffect(() => {
     setMounted(true);
@@ -253,13 +273,15 @@ export default function Navbar({ forceDark = false }: { forceDark?: boolean }) {
                 <Link href={href("/treinamento")} className={`text-sm transition-colors ${d ? "text-white/70 hover:text-white" : "text-black/60 hover:text-black"}`}>
                   {t.nav.training}
                 </Link>
-                <Link
-                  href={href("/download")}
-                  className={`text-sm flex items-center gap-1.5 font-medium border px-3 py-1.5 rounded-full transition-colors ${d ? "text-white border-white/20 hover:bg-white/10" : "text-black border-black/20 hover:bg-black/5"}`}
-                >
-                  <Download size={13} />
-                  {t.nav.download}
-                </Link>
+                {!naPaginaDeDownload && (
+                  <Link
+                    href={href("/download")}
+                    className={`text-sm flex items-center gap-1.5 font-medium border px-3 py-1.5 rounded-full transition-colors ${d ? "text-white border-white/20 hover:bg-white/10" : "text-black border-black/20 hover:bg-black/5"}`}
+                  >
+                    <Download size={13} />
+                    {t.nav.download}
+                  </Link>
+                )}
               </div>
             </div>
 
@@ -364,7 +386,11 @@ export default function Navbar({ forceDark = false }: { forceDark?: boolean }) {
               {[
                 { href: "/#pricing", label: t.nav.plans },
                 { href: "/treinamento", label: t.nav.training },
-                { href: "/download", label: t.nav.download },
+                // Mesmo motivo do menu de desktop: na página de download este
+                // item não leva a lugar nenhum.
+                ...(naPaginaDeDownload
+                  ? []
+                  : [{ href: "/download", label: t.nav.download }]),
               ].map(({ href, label }, i) => (
                 <motion.div
                   key={href}
