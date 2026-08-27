@@ -176,7 +176,17 @@ const InteractiveImageBentoGallery: React.FC<
                     src={item.url}
                     alt={item.title}
                     fill
-                    sizes="(max-width: 768px) 50vw, 33vw"
+                    // Medido no site publicado: o quadro pequeno aparece com
+                    // 238px e o largo com 494px, em QUALQUER largura de tela
+                    // (a tira é rolável e a coluna é fixa em 15rem). Por isso
+                    // aqui vai pixel, e não `vw`: com `33vw` o navegador pedia
+                    // 640px pra um quadro de 238. Em tela Retina a conta dobra
+                    // e ele chegava a pedir 1920px.
+                    sizes={
+                      item.span.includes("col-span-2")
+                        ? "(max-width: 768px) 50vw, 496px"
+                        : "(max-width: 768px) 50vw, 240px"
+                    }
                     draggable={false}
                     className={cn(
                       "object-cover transition-transform duration-500 group-hover:scale-105",

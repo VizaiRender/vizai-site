@@ -94,7 +94,7 @@ export function Compare({
         src={secondImage}
         alt="depois"
         fill
-        sizes="(max-width: 768px) 100vw, 800px"
+        sizes="(max-width: 768px) 100vw, 500px"
         className={cn("object-cover", secondImageClassname)}
         draggable={false}
       />
@@ -104,7 +104,7 @@ export function Compare({
         src={firstImage}
         alt="antes"
         fill
-        sizes="(max-width: 768px) 100vw, 800px"
+        sizes="(max-width: 768px) 100vw, 500px"
         className={cn("object-cover", firstImageClassName)}
         style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
         draggable={false}

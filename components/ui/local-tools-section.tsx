@@ -43,7 +43,7 @@ export function LocalToolsSection() {
                   src={`/treinamento/ui/${screenshots[i]}-${lang}.webp`}
                   alt={item.name}
                   fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 768px) 100vw, 450px"
                   className="object-cover object-top p-3 transition-transform duration-500 group-hover:scale-[1.03]"
                 />
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#0d1726] to-transparent" />
