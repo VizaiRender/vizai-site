@@ -5137,10 +5137,10 @@
       </div>
       <div class="ep-body">
         <div style="display:flex;gap:6px;overflow-x:auto;margin-bottom:10px;scrollbar-width:none">
-          <div class="ep-gitem active" data-proj="interiores" onclick="loadEditDemoImage('interiores.webp',this)" style="flex-shrink:0;cursor:pointer;border-radius:7px;border:1.5px solid #2e4257;overflow:hidden;width:56px;transition:border-color .15s"><img src="interiores.webp" style="width:56px;height:38px;object-fit:cover;display:block"><div style="font-size:8.5px;color:#8fa8be;text-align:center;padding:2px 3px;background:#253347">Interiores</div></div>
-          <div class="ep-gitem" data-proj="fachada" onclick="loadEditDemoImage('render.webp',this)" style="flex-shrink:0;cursor:pointer;border-radius:7px;border:1.5px solid #2e4257;overflow:hidden;width:56px;transition:border-color .15s"><img src="render.webp" style="width:56px;height:38px;object-fit:cover;display:block"><div style="font-size:8.5px;color:#8fa8be;text-align:center;padding:2px 3px;background:#253347">Fachada</div></div>
-          <div class="ep-gitem" data-proj="natureza" onclick="loadEditDemoImage('natureza.webp',this)" style="flex-shrink:0;cursor:pointer;border-radius:7px;border:1.5px solid #2e4257;overflow:hidden;width:56px;transition:border-color .15s"><img src="natureza.webp" style="width:56px;height:38px;object-fit:cover;display:block"><div style="font-size:8.5px;color:#8fa8be;text-align:center;padding:2px 3px;background:#253347">Natureza</div></div>
-          <div class="ep-gitem" data-proj="comercial" onclick="loadEditDemoImage('comercial.webp',this)" style="flex-shrink:0;cursor:pointer;border-radius:7px;border:1.5px solid #2e4257;overflow:hidden;width:56px;transition:border-color .15s"><img src="comercial.webp" style="width:56px;height:38px;object-fit:cover;display:block"><div style="font-size:8.5px;color:#8fa8be;text-align:center;padding:2px 3px;background:#253347">Comercial</div></div>
+          <div class="ep-gitem active" data-proj="interiores" onclick="loadEditDemoImage('interiores.webp',this)" style="flex-shrink:0;cursor:pointer;border-radius:7px;border:1.5px solid #2e4257;overflow:hidden;width:56px;transition:border-color .15s"><img src="interiores-mini.webp" style="width:56px;height:38px;object-fit:cover;display:block"><div style="font-size:8.5px;color:#8fa8be;text-align:center;padding:2px 3px;background:#253347">Interiores</div></div>
+          <div class="ep-gitem" data-proj="fachada" onclick="loadEditDemoImage('render.webp',this)" style="flex-shrink:0;cursor:pointer;border-radius:7px;border:1.5px solid #2e4257;overflow:hidden;width:56px;transition:border-color .15s"><img src="render-mini.webp" style="width:56px;height:38px;object-fit:cover;display:block"><div style="font-size:8.5px;color:#8fa8be;text-align:center;padding:2px 3px;background:#253347">Fachada</div></div>
+          <div class="ep-gitem" data-proj="natureza" onclick="loadEditDemoImage('natureza.webp',this)" style="flex-shrink:0;cursor:pointer;border-radius:7px;border:1.5px solid #2e4257;overflow:hidden;width:56px;transition:border-color .15s"><img src="natureza-mini.webp" style="width:56px;height:38px;object-fit:cover;display:block"><div style="font-size:8.5px;color:#8fa8be;text-align:center;padding:2px 3px;background:#253347">Natureza</div></div>
+          <div class="ep-gitem" data-proj="comercial" onclick="loadEditDemoImage('comercial.webp',this)" style="flex-shrink:0;cursor:pointer;border-radius:7px;border:1.5px solid #2e4257;overflow:hidden;width:56px;transition:border-color .15s"><img src="comercial-mini.webp" style="width:56px;height:38px;object-fit:cover;display:block"><div style="font-size:8.5px;color:#8fa8be;text-align:center;padding:2px 3px;background:#253347">Comercial</div></div>
         </div>
         <style>.ep-gitem.active{border-color:#1a6fff!important}.ep-gitem.active div{color:#60a5fa!important}</style>
         <div class="ep-canvas-wrap" id="epcanvaswrap"><img id="ep-bg-img" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0;display:none"><canvas id="editCanvas" style="position:relative;z-index:1"></canvas></div>
@@ -9450,6 +9450,12 @@
         return;
       }
       document.getElementById('editpopup').classList.add('show');
+      // A tira usa miniaturas de 4 KB; clicar numa delas abre a foto grande.
+      // Buscamos as quatro AGORA, quando a tela de edicao abre, e nao no
+      // carregamento da home: assim quem nunca abre esta tela (a maioria) nao
+      // paga meio mega, e quem abre acha o clique instantaneo.
+      ['interiores.webp','render.webp','natureza.webp','comercial.webp']
+        .forEach(function(u) { new Image().src = u; });
       setTimeout(function() {
         const match = document.querySelector('.ep-gitem[data-proj="' + _pt + '"]') || document.querySelector('.ep-gitem');
         loadEditDemoImage(_url, match);
@@ -10334,6 +10340,9 @@
       if (!existing) {
         var img = document.createElement('img');
         img.className = 'frame-preview-img';
+        // lazy: esta previa nasce numa aba escondida. Sem isto o navegador
+        // baixa a foto no carregamento da home, pra ninguem ver.
+        img.loading = 'lazy';
         drop.appendChild(img);
         existing = img;
       }
@@ -12658,6 +12667,7 @@ const DL_SVG = '<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0
         if (p360box) {
           p360box.innerHTML = '';
           var p360img = document.createElement('img');
+          p360img.loading = 'lazy';   // aba 360 comeca escondida, ver nota acima
           p360img.src = '360/pano-clay.webp';
           p360img.alt = 'Prévia do ambiente capturado';
           p360box.appendChild(p360img);

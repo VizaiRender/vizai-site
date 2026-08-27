@@ -53,11 +53,25 @@
 /logos-ai/*
   Cache-Control: public,max-age=2592000
 
-# A maquete do demo leva 1 dia, não 30: aqui dentro mora o index.html dela, e
-# uma correção na maquete não pode ficar um mês invisível pra quem já visitou.
-# Um dia já elimina a revalidação a cada visita, que é o problema real.
-/demo/*
+# A maquete do demo, separada em duas velocidades. O index.html leva 1 dia
+# porque é ele que muda quando a maquete é corrigida, e uma correção não pode
+# ficar um mês invisível pra quem já visitou. As fotos e o modelo 3D levam 30
+# dias: são 1 MB, praticamente nunca mudam, e a 1 dia o navegador rebaixava
+# tudo de novo a cada visita. Trocar uma foto da maquete pede nome novo.
+/demo/
   Cache-Control: public,max-age=86400
+/demo/index.html
+  Cache-Control: public,max-age=86400
+/demo/*.webp
+  Cache-Control: public,max-age=2592000
+/demo/*.png
+  Cache-Control: public,max-age=2592000
+/demo/*.jpg
+  Cache-Control: public,max-age=2592000
+/demo/*.mp4
+  Cache-Control: public,max-age=2592000
+/demo/*.glb
+  Cache-Control: public,max-age=2592000
 
 # Arquivos soltos na raiz, um a um de propósito (curinga aqui pegaria as pastas
 # acima e duplicaria o cabeçalho).

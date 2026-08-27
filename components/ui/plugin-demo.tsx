@@ -41,7 +41,10 @@ export function PluginDemo() {
         }}>
           <iframe
             key={pluginLang}
-            src={`/demo/index.html?lang=${pluginLang}`}
+            // "/demo/" e nao "/demo/index.html": o segundo responde 307 e
+            // manda pro primeiro, ou seja, toda visita gastava uma ida e volta
+            // extra bem no caminho da maquete.
+            src={`/demo/?lang=${pluginLang}`}
             title="Vizai Render Demo"
             loading="lazy"
             style={{ width: "100%", height: "100%", border: "none", display: "block" }}
