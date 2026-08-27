@@ -133,7 +133,7 @@ export const CONSENT_EVENT = "vizai-consent-change";
  * Pra testar a medição localmente de propósito, subir o dev com
  * `NEXT_PUBLIC_MEASURE_LOCAL=1`.
  */
-const MEASURED_HOSTS = ["vizairender.com", "www.vizairender.com"];
+export const MEASURED_HOSTS = ["vizairender.com", "www.vizairender.com"];
 
 function medindoNesteHost(): boolean {
   if (process.env.NEXT_PUBLIC_MEASURE_LOCAL === "1") return true;
