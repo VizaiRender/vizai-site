@@ -25,7 +25,18 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
     const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 10000);
     camera.position.set(0, 355, 1220);
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    // O fundo é decoração. Se o navegador não conseguir dar um contexto
+    // gráfico (máquina fraca, driver velho, contextos WebGL demais na aba), o
+    // three.js LANÇA "Error creating WebGL context". Sem este try, a exceção
+    // sobe pelo efeito e, como o site não tinha rede de segurança, derrubava a
+    // PÁGINA INTEIRA — o visitante via tela preta em vez de perder só o fundo.
+    // Apareceu em 1,09% das sessões no Clarity.
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    } catch {
+      return;
+    }
     // Limita a densidade de pixels a 2x: em telas 3x (celulares) renderiza
     // ~metade dos pixels, sem diferença visível num fundo de pontos. Grande
     // economia de GPU/CPU no celular fraco.
@@ -104,6 +115,16 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
       renderer.setSize(window.innerWidth, window.innerHeight);
     };
 
+    // Perder o contexto no meio da sessão (a GPU reinicia, a aba fica muito
+    // tempo em segundo plano) faria o `render` estourar a cada quadro. Para o
+    // laço e não volta: sem contexto não há o que desenhar.
+    const contextoPerdido = (e: Event) => {
+      e.preventDefault();
+      stop();
+      onScreen = false;
+    };
+    renderer.domElement.addEventListener("webglcontextlost", contextoPerdido);
+
     window.addEventListener("resize", handleResize);
     document.addEventListener("visibilitychange", update);
     update();
@@ -111,6 +132,7 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
     return () => {
       stop();
       io.disconnect();
+      renderer.domElement.removeEventListener("webglcontextlost", contextoPerdido);
       window.removeEventListener("resize", handleResize);
       document.removeEventListener("visibilitychange", update);
       geometry.dispose();

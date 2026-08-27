@@ -160,6 +160,32 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={geist.variable} suppressHydrationWarning>
       <head>
+        {/*
+          Remendo pro empacotador da Cloudflare, NÃO é código nosso de verdade.
+
+          O next-themes monta o script anti-piscada serializando uma função
+          (`fn.toString()`) direto no HTML. O esbuild do OpenNext compila o
+          servidor com `keepNames`, o que injeta uma chamada ao helper interno
+          `__name(fn, "fn")` DENTRO daquela função — e o helper existe só no
+          bundle do servidor, nunca no navegador.
+
+          Resultado em produção: `ReferenceError: __name is not defined` na
+          primeira linha útil do script, ABORTANDO ele antes da linha que aplica
+          o tema. Quem escolheu escuro via fundo branco até a hidratação.
+          Não acontece em `next start`, só no build do Worker.
+
+          Definir `__name` como repasse resolve: é exatamente o que o helper faz
+          de útil aqui (renomear função, irrelevante em runtime). Precisa vir no
+          <head>, porque o script do tema é a primeira coisa do <body>.
+
+          Pode sair quando o OpenNext parar de aplicar `keepNames` em código que
+          vira string. Conferir com: build do Worker + procurar `__name` no HTML.
+        */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.__name=window.__name||function(f){return f};`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
