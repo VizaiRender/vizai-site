@@ -52,10 +52,11 @@ export function SoftwareMarquee() {
     <section className="pt-12 sm:pt-[160px] pb-36 sm:pb-[100px]" style={{ textAlign: "center" }} data-track-section="softwares">
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", marginBottom: 24 }}>
         <h2 style={{
-          fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",
+          fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
           fontWeight: 700,
           color: "var(--foreground)",
           letterSpacing: "-0.02em",
+          lineHeight: 1.1,
           margin: "0 0 16px",
         }}>
           {t.marquee.title}

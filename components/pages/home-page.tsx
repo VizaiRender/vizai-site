@@ -278,7 +278,7 @@ export function HomePage() {
       <section data-track-section="demo-interativa" style={{ padding: "100px 24px 100px", position: "relative" }}>
         <div className="flex flex-col md:flex-row items-center md:justify-center gap-10 md:gap-20" style={{ maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 1 }}>
           <div className="w-full md:flex-none md:max-w-[460px]">
-            <h2 style={{ fontSize: "clamp(2rem,2.8vw,2.5rem)", fontWeight: 400, color: "var(--foreground-muted)", margin: "0 0 20px", letterSpacing: "-0.03em", lineHeight: 1.1 }}>
+            <h2 style={{ fontSize: "clamp(2rem,3.4vw,3rem)", fontWeight: 400, color: "var(--foreground-muted)", margin: "0 0 20px", letterSpacing: "-0.03em", lineHeight: 1.1 }}>
               {t.home.demoTitlePre}{" "}
               <span style={{ color: "var(--foreground)" }}>
                 <AnimatedTextCycle words={t.home.demoCycle} interval={3000} />

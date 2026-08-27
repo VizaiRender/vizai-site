@@ -246,7 +246,7 @@ export function PricingSection() {
 
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: 48 }}>
-          <h2 style={{ fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, color: "var(--foreground)", margin: "0 0 16px", letterSpacing: "-0.02em" }}>
+          <h2 style={{ fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 700, color: "var(--foreground)", margin: "0 0 16px", letterSpacing: "-0.02em", lineHeight: 1.1 }}>
             {t.pricing.title}
           </h2>
           <p style={{ fontSize: "1rem", color: "var(--foreground-muted)", margin: 0, maxWidth: 520, marginInline: "auto" }}>
