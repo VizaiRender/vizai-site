@@ -15,16 +15,38 @@
 # must-revalidate`: o navegador vai ao servidor conferir CADA arquivo em CADA
 # visita, dezenas de idas e voltas antes de a página montar.
 #
-# 30 dias, e NÃO `immutable`: estes nomes não têm hash, então uma arte trocada
-# ficaria presa no navegador de quem já visitou. Trinta dias limita o estrago.
-# Precisa que uma troca apareça na hora? renomeie o arquivo (`foo-v2.jpg`),
-# mesma convenção do `?v=1` já usado nas imagens do R2.
+# Vídeo e imagem seguem regras diferentes desde que o otimizador de imagem foi
+# religado, e o motivo não é óbvio:
+#
+# IMAGEM (`immutable`): a imagem não chega mais no navegador por este caminho,
+# ela passa pelo /_next/image. E o otimizador SÓ coloca cache no que ele gera
+# se o arquivo de origem vier marcado `immutable` — sem isto o resultado sai
+# sem cache nenhum e o visitante rebaixa tudo a cada visita, que é pior que
+# hoje. O preço: TROCAR UMA ARTE EXIGE RENOMEAR O ARQUIVO (`foo-v2.jpg`) ou
+# somar `?v=N` (e declarar esse N no localPatterns do next.config.ts).
+# Sobrescrever com o mesmo nome não aparece mais pra quem já visitou.
+#
+# VÍDEO (30 dias, sem `immutable`): vídeo não passa por otimizador, chega
+# direto. Aqui `immutable` só traria a desvantagem, sem nenhuma vantagem.
+#
+# Extensão que não estiver listada abaixo fica SEM cache (`max-age=0`). Ao
+# somar um tipo novo de arquivo nestas pastas, acrescente a linha dele.
 # ---------------------------------------------------------------------------
-/tools/*
+/tools/*.mp4
   Cache-Control: public,max-age=2592000
+/tools/*.jpg
+  Cache-Control: public,max-age=31536000,immutable
+/tools/*.webp
+  Cache-Control: public,max-age=31536000,immutable
+/tools/*.avif
+  Cache-Control: public,max-age=31536000,immutable
+/treinamento/*.mp4
+  Cache-Control: public,max-age=2592000
+/treinamento/*.jpg
+  Cache-Control: public,max-age=31536000,immutable
+/treinamento/*.webp
+  Cache-Control: public,max-age=31536000,immutable
 /videos/*
-  Cache-Control: public,max-age=2592000
-/treinamento/*
   Cache-Control: public,max-age=2592000
 /flags/*
   Cache-Control: public,max-age=2592000
@@ -42,17 +64,17 @@
 /apple-touch-icon.png
   Cache-Control: public,max-age=2592000
 /compare2-after.jpg
-  Cache-Control: public,max-age=2592000
+  Cache-Control: public,max-age=31536000,immutable
 /compare2-before.jpg
-  Cache-Control: public,max-age=2592000
+  Cache-Control: public,max-age=31536000,immutable
 /compare3-after.jpg
-  Cache-Control: public,max-age=2592000
+  Cache-Control: public,max-age=31536000,immutable
 /compare3-before.jpg
-  Cache-Control: public,max-age=2592000
+  Cache-Control: public,max-age=31536000,immutable
 /compare4-after.jpg
-  Cache-Control: public,max-age=2592000
+  Cache-Control: public,max-age=31536000,immutable
 /compare4-before.jpg
-  Cache-Control: public,max-age=2592000
+  Cache-Control: public,max-age=31536000,immutable
 /file.svg
   Cache-Control: public,max-age=2592000
 /globe.svg

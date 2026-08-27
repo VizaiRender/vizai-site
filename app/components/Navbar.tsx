@@ -260,7 +260,10 @@ export default function Navbar({ forceDark = false }: { forceDark?: boolean }) {
                 }}
                 className="flex items-center gap-2.5"
               >
-                <Image src="/logo.svg" alt="Vizai Render" width={32} height={32} className="rounded-lg" />
+                {/* unoptimized: SVG não passa pelo otimizador de imagem (ele devolve 400
+                    quando dangerouslyAllowSVG é falso, que é o certo). Sem isto o
+                    logo some da barra em todas as páginas. */}
+                <Image src="/logo.svg" alt="Vizai Render" width={32} height={32} className="rounded-lg" unoptimized />
                 <span className={`font-normal text-lg tracking-tight ${d ? "text-white" : "text-black"}`}>
                   Vizai Render
                 </span>

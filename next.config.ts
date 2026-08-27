@@ -187,13 +187,32 @@ const nextConfig: NextConfig = {
     ];
   },
   images: {
-    // Otimizador desligado: o endpoint /_next/image quebra no Worker da
-    // Cloudflare (erro 1101 ao codificar AVIF). Com unoptimized, o next/image
-    // serve os arquivos originais direto (já versionados e com peso ok).
-    unoptimized: true,
+    // Otimizador LIGADO. Ele já esteve desligado por causa do erro 1101 no
+    // Worker da Cloudflare ao codificar AVIF. Hoje o Next 16 só pede WebP
+    // por padrão (images-manifest: formats = ["image/webp"]), e o
+    // @opennextjs/cloudflare atende /_next/image pelo binding IMAGES
+    // declarado no wrangler.jsonc. AVIF não entra mais no caminho — se algum
+    // dia alguém quiser AVIF, o erro 1101 volta.
+    // Um detalhe que quebra o site inteiro se esquecido: SVG passando pelo
+    // otimizador vira 400, porque dangerouslyAllowSVG é falso (e deve seguir
+    // assim). O único <Image> com SVG é o logo da barra, marcado unoptimized.
     // Imagens otimizadas passam a ser cacheadas por 1 ano (padrão do Next é
     // só 60s → o navegador/edge re-baixava à toa = "efficient cache lifetimes").
     minimumCacheTTL: 31536000,
+    // O Next 16 passou a exigir que query string em imagem local seja
+    // declarada aqui. Deixar liberado (um item sem "search") seria um buraco:
+    // cada query diferente vira uma transformacao nova e paga na Cloudflare,
+    // entao qualquer um poderia queimar a cota pedindo /logo.png?1, ?2, ?3...
+    // Por isso a lista e exata, com espaco pra trocar arte ate o "?v=5".
+    // Passou disso, o build QUEBRA com a mensagem certa e e so somar a linha.
+    localPatterns: [
+      { pathname: "/**", search: "" },
+      { pathname: "/**", search: "?v=1" },
+      { pathname: "/**", search: "?v=2" },
+      { pathname: "/**", search: "?v=3" },
+      { pathname: "/**", search: "?v=4" },
+      { pathname: "/**", search: "?v=5" },
+    ],
     remotePatterns: [
       { protocol: "https", hostname: "i.pravatar.cc" },
       { protocol: "https", hostname: "lh3.googleusercontent.com" },
@@ -208,8 +227,13 @@ const nextConfig: NextConfig = {
         headers: securityHeaders,
       },
       {
-        // Imagens otimizadas: cache longo no navegador/edge. As URLs já são
-        // versionadas (?v=1) e o next/image varia por Accept, então é seguro.
+        // ATENÇÃO: esta regra NÃO vale em produção. No Worker da Cloudflare o
+        // /_next/image é atendido antes do Next, e quem decide o cache é o
+        // @opennextjs/cloudflare: ele só marca cache longo quando o arquivo de
+        // ORIGEM vem com `immutable`. É por isso que public/_headers marca as
+        // imagens como immutable — tirar de lá deixa toda imagem do site sem
+        // cache nenhum, sem nenhum erro aparecer. Aqui em baixo só serve pro
+        // `next dev`.
         source: "/_next/image",
         headers: [
           {
