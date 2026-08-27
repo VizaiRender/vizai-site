@@ -6,13 +6,20 @@
  * tela preta com "This page couldn't load". Foi assim que o fundo 3D derrubou
  * 1,09% das sessões (ver `dotted-surface.tsx`).
  *
- * Fica DENTRO do layout, então tema, idioma e fontes continuam valendo aqui.
+ * Fica DENTRO do layout raiz, então tema, idioma e fontes continuam valendo.
  * O caso em que nem o layout sobe é o `global-error.tsx`, ao lado.
+ *
+ * A barra e o rodapé são importados aqui à mão de propósito. Esta tela fica
+ * ACIMA do layout do grupo `(site)`, que é quem normalmente monta a barra, e
+ * cobre também login, cadastro e a área logada. Importando os dois, ela mantém
+ * essa cobertura toda e ainda aparece com a moldura do site.
  */
 
 import { useEffect } from "react";
 import Link from "next/link";
 import { useLang, useHref } from "@/app/components/LanguageProvider";
+import Navbar from "@/app/components/Navbar";
+import { Footer } from "@/components/ui/footer";
 import { clarityEvent, clarityTag } from "@/lib/analytics";
 
 // Dicionário local, e não o `lib/i18n`, de propósito: são quatro frases que
@@ -61,37 +68,43 @@ export default function Error({
   }, [error]);
 
   return (
-    <main className="flex flex-col items-center justify-center text-center px-6 py-32 min-h-[70vh]">
-      <h1
-        className="text-4xl md:text-5xl font-bold tracking-tight mb-4"
-        style={{ color: "var(--foreground)" }}
-      >
-        {t.titulo}
-      </h1>
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
 
-      <p
-        className="text-base max-w-md mb-10"
-        style={{ color: "var(--foreground-muted)" }}
-      >
-        {t.texto}
-      </p>
-
-      <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-        <button
-          type="button"
-          onClick={reset}
-          className="bg-[#0940D2] text-white hover:bg-[#0730b0] rounded-full px-8 h-12 text-base font-semibold transition-colors w-full sm:w-auto"
+      <main className="flex-1 flex flex-col items-center justify-center text-center px-6 py-32">
+        <h1
+          className="text-4xl md:text-5xl font-bold tracking-tight mb-4"
+          style={{ color: "var(--foreground)" }}
         >
-          {t.tentar}
-        </button>
+          {t.titulo}
+        </h1>
 
-        <Link
-          href={href("/")}
-          className="inline-flex items-center justify-center bg-transparent border border-gray-300 dark:border-white/25 text-black dark:text-white hover:bg-gray-50 dark:hover:bg-white/10 rounded-full px-8 h-12 text-base font-semibold transition-colors w-full sm:w-auto"
+        <p
+          className="text-base max-w-md mb-10"
+          style={{ color: "var(--foreground-muted)" }}
         >
-          {t.inicio}
-        </Link>
-      </div>
-    </main>
+          {t.texto}
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+          <button
+            type="button"
+            onClick={reset}
+            className="bg-[#0940D2] text-white hover:bg-[#0730b0] rounded-full px-8 h-12 text-base font-semibold transition-colors w-full sm:w-auto"
+          >
+            {t.tentar}
+          </button>
+
+          <Link
+            href={href("/")}
+            className="inline-flex items-center justify-center bg-transparent border border-gray-300 dark:border-white/25 text-black dark:text-white hover:bg-gray-50 dark:hover:bg-white/10 rounded-full px-8 h-12 text-base font-semibold transition-colors w-full sm:w-auto"
+          >
+            {t.inicio}
+          </Link>
+        </div>
+      </main>
+
+      <Footer />
+    </div>
   );
 }
