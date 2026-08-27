@@ -1,5 +1,6 @@
 "use client";
 
+import { AutoVideo } from "@/components/ui/auto-video";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Clock } from "lucide-react";
@@ -38,7 +39,7 @@ function ArticleCard({ meta, featured }: { meta: ArticleMeta; featured?: boolean
         }`}
       >
         {featured ? (
-          <video
+          <AutoVideo
             src="/tutorial-sketchup.mp4"
             autoPlay
             loop

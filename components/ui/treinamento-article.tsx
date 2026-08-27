@@ -1,5 +1,6 @@
 "use client";
 
+import { AutoVideo } from "@/components/ui/auto-video";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -247,7 +248,7 @@ function Block({ block, lang }: { block: TreinoBlock; lang: Lang }) {
             className="rounded-2xl overflow-hidden"
             style={{ border: "1px solid var(--border)" }}
           >
-            <video
+            <AutoVideo
               src={block.src}
               autoPlay
               muted

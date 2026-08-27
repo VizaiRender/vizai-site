@@ -8,6 +8,7 @@ import Link from "next/link";
 import type { DownloadManifest } from "@/lib/download-manifest";
 import { formatSize } from "@/lib/download-manifest";
 import { useT } from "@/lib/i18n";
+import { AutoVideo } from "@/components/ui/auto-video";
 
 type SoftwareValue = "sketchup" | "archicad" | "revit";
 
@@ -84,7 +85,7 @@ function SketchupContent({ manifest }: { manifest: DownloadManifest | null }) {
           className="w-full rounded-2xl border bg-white dark:bg-[#111111] shadow-sm overflow-hidden"
           style={{ borderColor: "rgba(127,127,127,0.15)" }}
         >
-          <video
+          <AutoVideo
             src="/tutorial-sketchup.mp4"
             autoPlay
             loop

@@ -23,6 +23,22 @@ export function Marquee({
 }: MarqueeProps) {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = React.useState(false);
+  // Animação de CSS infinita segue consumindo composição mesmo com a seção
+  // longe da tela. Aqui é estado (e não ref) de propósito: precisa provocar
+  // um render pra trocar a classe, e isso só acontece ao entrar e sair da
+  // área visível, não a cada quadro.
+  const [foraDaTela, setForaDaTela] = React.useState(false);
+
+  React.useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => setForaDaTela(!entry.isIntersecting),
+      { rootMargin: "200px", threshold: 0 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   const items = React.Children.toArray(children);
   const isVertical = direction === "up" || direction === "down";
@@ -114,7 +130,7 @@ export function Marquee({
           className={cn(
             "marquee-scroller flex shrink-0",
             isVertical && "flex-col",
-            isPaused && "paused",
+            (isPaused || foraDaTela) && "paused",
           )}
         >
           {items.map((item, index) => (

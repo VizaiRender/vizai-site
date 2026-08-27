@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef, useEffect } from "react";
-import { motion, useMotionValue, useMotionTemplate, useAnimationFrame } from "framer-motion";
+import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
+import { useOnScreen } from "@/components/ui/use-on-screen";
 
 const GridPattern = ({ id, offsetX, offsetY }: { id: string, offsetX: any, offsetY: any }) => {
   return (
@@ -31,11 +32,17 @@ const GridPattern = ({ id, offsetX, offsetY }: { id: string, offsetX: any, offse
 
 export function AnimatedGridBg() {
   const containerRef = useRef<HTMLDivElement>(null);
+  // Animar o deslocamento de um `<pattern>` SVG re-rasteriza a seção inteira a
+  // cada quadro (pattern não é composto na GPU). Fora da tela isso é gasto puro.
+  const naTela = useOnScreen(containerRef);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
+      // `getBoundingClientRect` força cálculo de layout; com a seção longe da
+      // tela o holofote nem aparece, então nem medimos.
+      if (!naTela.current) return;
       if (containerRef.current) {
         const { left, top } = containerRef.current.getBoundingClientRect();
         mouseX.set(e.clientX - left);
@@ -44,20 +51,17 @@ export function AnimatedGridBg() {
     };
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [mouseX, mouseY]);
+  }, [mouseX, mouseY, naTela]);
 
   const gridOffsetX = useMotionValue(0);
   const gridOffsetY = useMotionValue(0);
 
-  const speedX = 0.5; 
-  const speedY = 0.5;
-
-  useAnimationFrame(() => {
-    const currentX = gridOffsetX.get();
-    const currentY = gridOffsetY.get();
-    gridOffsetX.set((currentX + speedX) % 40);
-    gridOffsetY.set((currentY + speedY) % 40);
-  });
+  // A grade fica PARADA de propósito. Antes ela deslizava na diagonal, e animar
+  // o deslocamento de um `<pattern>` SVG re-rasteriza a seção inteira a cada
+  // quadro (pattern não é composto na GPU) — 60 repintes por segundo justamente
+  // na tela onde a pessoa decide comprar. O deslizamento era lento demais pra
+  // alguém notar. O holofote que segue o mouse continua: ele repinta só quando
+  // o mouse se move, não o tempo todo.
 
   const maskImage = useMotionTemplate`radial-gradient(300px circle at ${mouseX}px ${mouseY}px, black, transparent)`;
 

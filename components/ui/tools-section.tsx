@@ -4,6 +4,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useT } from "@/lib/i18n";
+import { AutoVideo } from "@/components/ui/auto-video";
 
 const isVideo = (src: string) => src.toLowerCase().endsWith(".mp4");
 
@@ -26,7 +27,7 @@ const tools: Tool[] = [
   { id: 6, mediaSrc: "/tools/tool-06.jpg" },
   { id: 7, mediaSrc: "/tools/tool-07.jpg", hoverSrc: "/tools/tool-07-empty.avif" },
   { id: 8, mediaSrc: "/tools/tool-08.jpg" },
-  { id: 9, mediaSrc: "/tools/tool-09.png" },
+  { id: 9, mediaSrc: "/tools/tool-09.webp" },
 ];
 
 export function ToolsSection() {
@@ -96,7 +97,7 @@ export function ToolsSection() {
               {tool.mediaSrc ? (
                 <>
                   {isVideo(tool.mediaSrc) ? (
-                    <video
+                    <AutoVideo
                       src={tool.mediaSrc}
                       autoPlay
                       loop

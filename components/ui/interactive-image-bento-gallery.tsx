@@ -11,6 +11,7 @@ import {
   AnimatePresence,
 } from "motion/react"
 import { X } from "lucide-react"
+import { useOnScreen } from "@/components/ui/use-on-screen";
 
 // Defines the structure for each image item in the gallery
 export type ImageItem = {
@@ -67,8 +68,12 @@ const InteractiveImageBentoGallery: React.FC<
   
   const x = useMotionValue(0)
   const direction = useRef(-1) // -1 for left, 1 for right
+  // Fora da tela a tira não precisa deslizar: o `x.set` a cada quadro obriga
+  // o navegador a recompor uma faixa com 25 imagens grandes, para sempre.
+  const naTela = useOnScreen(targetRef)
 
   useAnimationFrame((t, delta) => {
+    if (!naTela.current) return
     if (!isInteracting && dragConstraint < 0) {
       let currentX = x.get()
       let newX = currentX + (delta * 0.03 * direction.current)
