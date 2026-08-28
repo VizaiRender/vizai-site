@@ -25,7 +25,7 @@ export const ARTICLES: ArticleMeta[] = [
   // IA Criativa
   { slug: "decorar-ambiente", category: "creative", cover: "/tools/tool-07.jpg", minutes: 4 },
   { slug: "planta-humanizada", category: "creative", cover: "/tools/tool-08.jpg", minutes: 4 },
-  { slug: "diagrama", category: "creative", cover: "/tools/tool-09.png", minutes: 4 },
+  { slug: "diagrama", category: "creative", cover: "/tools/tool-09.webp", minutes: 4 },
   { slug: "moodboard", category: "creative", cover: "/tools/tool-06.jpg", minutes: 4 },
   // Apresentação
   { slug: "video-com-ia", category: "present", cover: "/demo/capa-video.webp", minutes: 6 },

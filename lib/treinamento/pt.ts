@@ -633,7 +633,7 @@ export const ptArticles: Record<string, ArticleContent> = {
       },
       {
         type: "img",
-        src: "/tools/tool-09.png",
+        src: "/tools/tool-09.webp",
         alt: "Diagrama gerado pelo Vizai Render",
         caption: "Diagrama gerado a partir de uma captura isométrica do modelo.",
       },
