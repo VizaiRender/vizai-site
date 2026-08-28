@@ -19,6 +19,15 @@
   "images": {
     "binding": "IMAGES"
   },
+  "r2_buckets": [
+    {
+      "binding": "NEXT_INC_CACHE_R2_BUCKET",
+      "bucket_name": "vizai-site-cache"
+    }
+  ],
+  "vars": {
+    "NEXT_INC_CACHE_R2_PREFIX": "paginas-prontas"
+  },
   "observability": {
     "enabled": true
   }
