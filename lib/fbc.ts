@@ -93,7 +93,13 @@ function sincronizarComMeta(
 ) {
   const deles = request.cookies.get(FBC_META)?.value;
 
-  if (deles && deles !== nosso && quandoClicou(deles) > quandoClicou(nosso)) {
+  // O `_fbc` chega do NAVEGADOR do visitante, então é entrada de terceiro igual
+  // ao fbclid da URL, e passa pela mesma desconfiança. Sem esta validação dava
+  // pra guardar lixo no nosso `vz_fbc` (a fonte da verdade!) e depois mandar
+  // esse lixo pra Meta como id de clique — pior que não mandar nada. E um
+  // carimbo de tempo no futuro venceria a comparação PARA SEMPRE, congelando a
+  // atribuição daquele visitante num clique falso.
+  if (deles && ehFbcValido(deles) && deles !== nosso && quandoClicou(deles) > quandoClicou(nosso)) {
     gravar(response, deles);
     return;
   }
@@ -107,6 +113,21 @@ function sincronizarComMeta(
       maxAge: NINETY_DAYS,
     });
   }
+}
+
+// Formato exato que a Meta usa: `fb.<indice>.<ms>.<fbclid>`, com o fbclid no
+// mesmo alfabeto base64url aceito na URL.
+const FBC_FORMATO = /^fb\.\d{1,3}\.\d{10,17}\.[A-Za-z0-9_-]{1,400}$/;
+
+// Um clique não pode ter acontecido no futuro nem antes da validade do cookie.
+// A folga de 1 dia cobre relógio adiantado do visitante.
+const FOLGA_RELOGIO = 24 * 60 * 60 * 1000;
+
+function ehFbcValido(valor: string): boolean {
+  if (!FBC_FORMATO.test(valor)) return false;
+  const ms = quandoClicou(valor);
+  const agora = Date.now();
+  return ms <= agora + FOLGA_RELOGIO && ms >= agora - NINETY_DAYS * 1000;
 }
 
 /** Momento do clique dentro do formato `fb.<indice>.<ms>.<fbclid>`. Valor
