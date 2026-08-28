@@ -11,7 +11,6 @@ import { AnimatePresence, motion } from "motion/react";
 import { useLang, useHref, type Lang } from "./LanguageProvider";
 import { useT } from "@/lib/i18n";
 import { Flag } from "@/components/ui/flag";
-import { createClient } from "@/lib/supabase/client";
 import type { User } from "@supabase/supabase-js";
 
 const langOrder: Lang[] = ["pt", "en", "es"];
@@ -152,17 +151,41 @@ export default function Navbar({ forceDark = false }: { forceDark?: boolean }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  /**
+   * O cliente do Supabase pesa 240 KB e a barra e a unica coisa que precisa
+   * dele em pagina publica: so pra saber se mostra "Entrar" ou o avatar.
+   * Como isso ja acontecia depois da pagina pintar, carregar sob demanda tira
+   * o peso do pacote inicial de todas elas sem mudar nada na tela.
+   */
   useEffect(() => {
-    const supabase = createClient();
-    supabase.auth.getUser().then(({ data }) => {
-      setUser(data.user);
-      setAuthResolved(true);
+    let vivo = true;
+    let desinscrever: (() => void) | null = null;
+
+    import("@/lib/supabase/client").then(({ createClient }) => {
+      if (!vivo) return;
+      const supabase = createClient();
+      supabase.auth.getUser().then(({ data }) => {
+        if (!vivo) return;
+        setUser(data.user);
+        setAuthResolved(true);
+      });
+      const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
+        if (!vivo) return;
+        setUser(session?.user ?? null);
+        setAuthResolved(true);
+      });
+      desinscrever = () => sub.subscription.unsubscribe();
+    }).catch(() => {
+      // Se o pedaco nao chegar (rede caindo, cache furado), a barra nao pode
+      // ficar sem "Entrar" nem sem o avatar pra sempre. Assume deslogado, que
+      // e o estado seguro: no maximo pede login de novo.
+      if (vivo) setAuthResolved(true);
     });
-    const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-      setAuthResolved(true);
-    });
-    return () => sub.subscription.unsubscribe();
+
+    return () => {
+      vivo = false;
+      desinscrever?.();
+    };
   }, []);
 
   // Trava o scroll da página enquanto o menu mobile está aberto.

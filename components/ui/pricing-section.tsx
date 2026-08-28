@@ -6,7 +6,6 @@ import { useLang } from "@/app/components/LanguageProvider";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "next-themes";
 import { AnimatedGridBg } from "./animated-grid-bg";
-import { createClient } from "@/lib/supabase/client";
 
 type Currency = "BRL" | "USD" | "EUR";
 type Tab = "assinatura" | "avulso";
@@ -196,8 +195,10 @@ export function PricingSection() {
   const [emHash, setEmHash] = useState<string | null>(null);
   useEffect(() => {
     let cancelado = false;
-    createClient()
-      .auth.getSession()
+    // Mesmo motivo do Navbar: sob demanda, pra nao carregar 240 KB de
+    // Supabase no pacote inicial da home.
+    import("@/lib/supabase/client")
+      .then(({ createClient }) => createClient().auth.getSession())
       .then(({ data }) => {
         const email = data.session?.user?.email;
         if (!email) return;
