@@ -14,8 +14,10 @@ export async function getDownloadManifest(): Promise<DownloadManifest | null> {
   try {
     const res = await fetch(MANIFEST_URL, {
       // O `revalidate` do Next NAO segura esta busca no Worker da Cloudflare:
-      // medido, ela acontecia em TODA visita e custava ~125 ms no caminho
-      // critico da /download, antes de o HTML comecar a sair. O `cf.cacheTtl`
+      // ela acontecia em TODA visita, no caminho critico da /download, antes
+      // de o HTML comecar a sair. Medido em producao, antes e depois deste
+      // deploy: a pagina saiu de 172 ms pra 18 ms de atraso em relacao a uma
+      // pagina sem revalidacao. O `cf.cacheTtl`
       // e o cache da propria Cloudflare, compartilhado entre as execucoes do
       // Worker no mesmo ponto de presenca, e esse funciona.
       // 300 s continua sendo a janela: uma versao nova do plugin aparece na
