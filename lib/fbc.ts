@@ -14,6 +14,20 @@ export const FBC_COOKIE = "vz_fbc";
 // continua httpOnly e segue sendo a fonte usada no servidor, na /obrigado.
 export const FBC_COOKIE_JS = "vz_fbc_js";
 
+// O cookie da PRÓPRIA Meta. Escrevemos nele também, e o motivo é que as tags do
+// Pixel no navegador NÃO conseguem receber o nosso valor: nos templates usados
+// (Meta Pixel e Facebook Pixel by Stape) a lista de Advanced Matching não tem a
+// opção `fbc`, e o que estava configurado em "Object Properties" vira
+// `custom_data`, onde a Meta ignora. Ou seja, no navegador o pixel só usa este
+// cookie aqui — e quem escrevia nele era o sst.vizairender.com, que o Safari
+// trata como terceiro disfarçado e corta pra 7 DIAS.
+//
+// Gravando `_fbc` daqui, do apex, ele é cookie de primeira parte de verdade e
+// vale os 90 dias. Se o Stape reescrever curto no meio do caminho, a próxima
+// visita restaura, porque o `vz_fbc` httpOnly (que ninguém mais toca) continua
+// sendo a fonte da verdade.
+const FBC_META = "_fbc";
+
 // Por que um cookie NOSSO em vez de escrever direto no `_fbc` da Meta:
 // quem grava o `_fbc` é o sst.vizairender.com, que é CNAME pro Stape. O Safari
 // trata domínio mascarado assim como terceiro disfarçado e corta a validade do
@@ -57,10 +71,57 @@ export function captureClickId(request: NextRequest, response: NextResponse) {
       maxAge: NINETY_DAYS,
     });
   }
+
+  sincronizarComMeta(request, response, original);
 }
 
-/** Grava o par de cookies com o mesmo valor: o httpOnly, que o servidor lê na
- *  /obrigado, e a cópia legível, que o GTM lê no navegador. */
+/**
+ * Mantém o `_fbc` da Meta e o nosso `vz_fbc` com o MESMO valor, sempre o do
+ * clique mais recente. Corre nos dois sentidos de propósito:
+ *
+ * - o pixel viu um clique que a gente não viu (chegada por uma URL que o
+ *   middleware não cobre, ou fbclid que o nosso filtro recusou): adotamos o
+ *   dele, senão a gente sobrescreveria um clique NOVO por um velho, que é pior
+ *   do que não ter feito nada;
+ * - o nosso é o mais recente (o normal): reescrevemos o dele, devolvendo os 90
+ *   dias que o Safari tinha cortado.
+ */
+function sincronizarComMeta(
+  request: NextRequest,
+  response: NextResponse,
+  nosso: string | undefined,
+) {
+  const deles = request.cookies.get(FBC_META)?.value;
+
+  if (deles && deles !== nosso && quandoClicou(deles) > quandoClicou(nosso)) {
+    gravar(response, deles);
+    return;
+  }
+
+  if (nosso && deles !== nosso) {
+    response.cookies.set(FBC_META, nosso, {
+      httpOnly: false,
+      secure: true,
+      sameSite: "lax",
+      path: "/",
+      maxAge: NINETY_DAYS,
+    });
+  }
+}
+
+/** Momento do clique dentro do formato `fb.<indice>.<ms>.<fbclid>`. Valor
+ *  estranho vira 0, então ele nunca ganha de um valor bem formado. */
+function quandoClicou(valor: string | undefined): number {
+  if (!valor) return 0;
+  const partes = valor.split(".");
+  if (partes.length < 4 || partes[0] !== "fb") return 0;
+  const ms = Number(partes[2]);
+  return Number.isFinite(ms) ? ms : 0;
+}
+
+/** Grava os TRÊS cookies com o mesmo valor: o nosso httpOnly (fonte da verdade,
+ *  lido no servidor pela /obrigado), a cópia legível que o GTM lê, e o `_fbc` da
+ *  própria Meta, que é o único que o Pixel do navegador enxerga. */
 function gravar(response: NextResponse, valor: string) {
   const base = {
     secure: true,
@@ -70,4 +131,5 @@ function gravar(response: NextResponse, valor: string) {
   };
   response.cookies.set(FBC_COOKIE, valor, { ...base, httpOnly: true });
   response.cookies.set(FBC_COOKIE_JS, valor, { ...base, httpOnly: false });
+  response.cookies.set(FBC_META, valor, { ...base, httpOnly: false });
 }
