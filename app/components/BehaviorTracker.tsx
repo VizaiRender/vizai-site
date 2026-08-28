@@ -143,12 +143,38 @@ export function BehaviorTracker() {
       track("element_click", params);
     };
 
+    // --- Medidas em cache ---------------------------------------------------
+    // Ler `getBoundingClientRect()` e `scrollHeight` OBRIGA o navegador a
+    // recalcular o layout na hora. Fazer isso pra 18 seções a cada quadro de
+    // rolagem era o "Forced reflow" que aparecia em vermelho no PageSpeed.
+    //
+    // O que salva: durante a rolagem a página não muda de forma. A posição de
+    // cada seção no documento é a MESMA do primeiro ao último quadro. Então
+    // medimos uma vez e reaproveitamos, e só remedimos quando a forma muda de
+    // verdade: o observador de tamanho abaixo e o `resize` da janela avisam.
+    // A varredura por quadro continua existindo (é ela que impede seção de
+    // sumir em rolagem rápida), só que agora é conta, não leitura de layout.
+    type Medida = { el: HTMLElement; name: string; index: number; topo: number; altura: number };
+    let medidas: Medida[] = [];
+    let alturaRolavel = 0;
+    let precisaRemedir = true;
+
+    const remedir = () => {
+      const sy = window.scrollY;
+      medidas = named.map((s) => {
+        const r = s.el.getBoundingClientRect();
+        return { ...s, topo: r.top + sy, altura: r.height };
+      });
+      alturaRolavel = document.documentElement.scrollHeight - window.innerHeight;
+      precisaRemedir = false;
+    };
+
     // --- Profundidade de rolagem -------------------------------------------
     const measure = () => {
       ticking = false;
       if (disposed) return;
-      const doc = document.documentElement;
-      const scrollable = doc.scrollHeight - window.innerHeight;
+      if (precisaRemedir) remedir();
+      const scrollable = alturaRolavel;
       const pct =
         scrollable <= 0
           ? 100
@@ -201,13 +227,13 @@ export function BehaviorTracker() {
     const sweepSections = () => {
       const vh = window.innerHeight;
       deepestReach = Math.max(deepestReach, window.scrollY + vh);
-      for (const s of named) {
-        const r = s.el.getBoundingClientRect();
-        // Altura zero: ainda não carregou (vídeo, demo, galeria). Volta na
-        // próxima varredura, quando o conteúdo chegar.
-        if (r.height <= 0) continue;
-        const topInDoc = r.top + window.scrollY;
-        if (deepestReach < topInDoc + seenThreshold(r.height, vh)) continue;
+      if (precisaRemedir) remedir();
+      for (const s of medidas) {
+        // Altura zero: ainda não carregou (vídeo, demo, galeria). Volta quando
+        // o conteúdo chegar — o observador de tamanho avisa e a medida é
+        // refeita, então não precisa forçar leitura aqui.
+        if (s.altura <= 0) continue;
+        if (deepestReach < s.topo + seenThreshold(s.altura, vh)) continue;
         if (s.index > lastSectionIndex) {
           lastSectionIndex = s.index;
           lastSection = s.name;
@@ -262,12 +288,26 @@ export function BehaviorTracker() {
     // isso acontecer com a rolagem parada, nada dispararia a varredura — daí
     // o observador de tamanho.
     const resize = new ResizeObserver(() => {
+      precisaRemedir = true;
       if (!ticking && !disposed) {
         ticking = true;
         rafId = requestAnimationFrame(measure);
       }
     });
     sections.forEach((el) => resize.observe(el));
+    // O <main> também, e não é redundância: conteúdo que cresce DENTRO de uma
+    // seção sem mudar a altura dela ainda pode empurrar a página inteira, e é
+    // a altura total que decide a porcentagem de rolagem.
+    const main = document.querySelector("main");
+    if (main) resize.observe(main);
+
+    // Girar o celular ou mexer na janela muda tudo de lugar. O observador acima
+    // costuma pegar (a seção muda de largura), mas mudança só de ALTURA da
+    // janela não redimensiona seção nenhuma e passaria batido.
+    const onResize = () => {
+      precisaRemedir = true;
+    };
+    window.addEventListener("resize", onResize, { passive: true });
 
     return () => {
       disposed = true;
@@ -277,6 +317,7 @@ export function BehaviorTracker() {
       window.removeEventListener("scroll", onScroll);
       document.removeEventListener("visibilitychange", onVisibility);
       window.removeEventListener("pagehide", sendExit);
+      window.removeEventListener("resize", onResize);
       resize.disconnect();
       clearTimeout(restTimer);
     };
