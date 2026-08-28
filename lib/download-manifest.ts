@@ -13,9 +13,17 @@ const MANIFEST_URL =
 export async function getDownloadManifest(): Promise<DownloadManifest | null> {
   try {
     const res = await fetch(MANIFEST_URL, {
+      // O `revalidate` do Next NAO segura esta busca no Worker da Cloudflare:
+      // medido, ela acontecia em TODA visita e custava ~125 ms no caminho
+      // critico da /download, antes de o HTML comecar a sair. O `cf.cacheTtl`
+      // e o cache da propria Cloudflare, compartilhado entre as execucoes do
+      // Worker no mesmo ponto de presenca, e esse funciona.
+      // 300 s continua sendo a janela: uma versao nova do plugin aparece na
+      // pagina em no maximo 5 minutos.
       next: { revalidate: 300 },
+      cf: { cacheTtl: 300, cacheEverything: true },
       headers: { Accept: "application/json" },
-    });
+    } as RequestInit);
     if (!res.ok) return null;
     const data = (await res.json()) as Partial<DownloadManifest>;
     if (!data?.latest || !data?.url || !data?.sha256) return null;
