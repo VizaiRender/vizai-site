@@ -16,6 +16,14 @@ const scriptSrc = [
   // do www e ela mesma puxa scripts de subdomínios regionais.
   "https://www.clarity.ms",
   "https://*.clarity.ms",
+  // Analise Web da Cloudflare. Ela injeta este script em TODA pagina na saida
+  // do servidor, querendo ou nao: sem esta linha o browser bloqueava, dava erro
+  // no console em toda pagina e o painel ficava vazio. E o unico lugar de onde
+  // sai Core Web Vitals (LCP, INP, CLS) de visitante de verdade, que e o que o
+  // Google usa pra ranquear. Nao usa cookie.
+  // A tag injetada vem com `integrity`, entao se o CDN da Cloudflare for
+  // adulterado o browser recusa o script em vez de executar.
+  "https://static.cloudflareinsights.com",
 ].join(" ");
 
 const styleSrc = [
@@ -62,6 +70,10 @@ const connectSrc = [
   // funcionando e o painel fica vazio — o browser bloqueia o envio em silêncio.
   "https://*.clarity.ms",
   "https://c.bing.com",
+  // O beacon manda a medicao pro proprio site (/cdn-cgi/rum, coberto por
+  // 'self') e usa este endereco como reserva. Sem ele a medicao carrega, parece
+  // que funciona, e o envio morre em silencio.
+  "https://cloudflareinsights.com",
   ...(isDev ? ["ws://localhost:*", "http://localhost:*"] : []),
 ].join(" ");
 
