@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { X } from "lucide-react";
-import { readStoredLang, useLang, STORAGE_KEY } from "./LanguageProvider";
+import { readStoredLang, useLang, persistLang } from "./LanguageProvider";
 import { isLocalizedPath, localePath, splitLang, type Lang } from "@/lib/routes";
 import { Flag } from "@/components/ui/flag";
 
@@ -90,9 +90,7 @@ export function LanguageSuggestion() {
   const target = localePath(suggested, splitLang(pathname).path);
 
   const remember = () => {
-    try {
-      localStorage.setItem(STORAGE_KEY, suggested);
-    } catch {}
+    persistLang(suggested);
   };
 
   const dismiss = () => {

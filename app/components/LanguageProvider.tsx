@@ -17,6 +17,24 @@ export type { Lang };
 /** Onde a escolha de idioma fica guardada. Exportado porque a faixa de
  * sugestão também grava aqui — dois literais soltos desandariam calados. */
 export const STORAGE_KEY = "vizai-lang";
+
+/**
+ * Grava a escolha de idioma em localStorage E em cookie.
+ *
+ * O cookie existe porque o middleware roda no servidor, ANTES de a página
+ * carregar, e de lá não se enxerga o localStorage. Sem ele, o redirecionamento
+ * de idioma ficaria empurrando pro inglês alguém que escolheu português de
+ * propósito — brigar com a escolha do usuário é pior que o problema original.
+ */
+export function persistLang(l: Lang) {
+  try {
+    localStorage.setItem(STORAGE_KEY, l);
+  } catch {}
+  try {
+    // 1 ano; Lax basta porque só é lido em navegação de topo.
+    document.cookie = `${STORAGE_KEY}=${l}; path=/; max-age=31536000; SameSite=Lax`;
+  } catch {}
+}
 const SUPPORTED: Lang[] = LANGS;
 
 interface LanguageContextType {
@@ -90,9 +108,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   }, [lang]);
 
   const setLang = (l: Lang) => {
-    try {
-      localStorage.setItem(STORAGE_KEY, l);
-    } catch {}
+    persistLang(l);
     if (routeDriven) {
       // Página pública: trocar de idioma é trocar de endereço.
       router.push(localePath(l, splitLang(pathname).path));
