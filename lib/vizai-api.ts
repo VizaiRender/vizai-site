@@ -75,16 +75,36 @@ export async function fetchSubscription(
   }
 }
 
+/**
+ * Identificadores de anúncio que viajam junto com o checkout.
+ *
+ * Servem pro Purchase de boleto/Pix, que nasce num webhook da Stripe: lá não há
+ * navegador, nem cookie, nem IP do comprador, e o evento chegava na Meta só com
+ * email e telefone. O servidor guarda isto na sessão da Stripe e lê de volta na
+ * hora que o boleto é pago.
+ *
+ * Todos opcionais: quem nunca clicou num anúncio não tem fbc, e o checkout tem
+ * que funcionar igual.
+ */
+export type CheckoutTracking = {
+  fbc?: string;
+  fbp?: string;
+  external_id?: string;
+  ip?: string;
+  ua?: string;
+};
+
 export async function createCheckoutSession(
   accessToken: string,
   lookupKey: string,
-  currency: string
+  currency: string,
+  tracking?: CheckoutTracking
 ): Promise<{ url: string } | { error: string; code?: string }> {
   try {
     const res = await authedFetch("/api/create-checkout-session", accessToken, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ lookup_key: lookupKey, currency }),
+      body: JSON.stringify({ lookup_key: lookupKey, currency, tracking }),
     });
     if (!res.ok) {
       const data = await res.json().catch(() => ({})) as { error?: string };
