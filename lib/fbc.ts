@@ -28,6 +28,23 @@ export const FBC_COOKIE_JS = "vz_fbc_js";
 // sendo a fonte da verdade.
 const FBC_META = "_fbc";
 
+// Marca que o `_fbc` preso ao host já foi apagado NESTE navegador.
+//
+// Existe porque a limpeza e a gravação do cookie bom não podem sair na mesma
+// resposta. As duas se chamam `_fbc` e só diferem no alcance, e alcance não é
+// coisa que dê pra conferir depois: se o navegador tratar as duas como o mesmo
+// cookie, o apagamento (que vem por último) leva junto o valor bom. Como a
+// limpeza rodava em TODA visita, isso virava um laço — grava e apaga, grava e
+// apaga — e o `_fbc` nunca chegava vivo no InitiateCheckout nem no Purchase.
+// Medido na Meta em 30/08/2026: fbc em 0,0% nos dois, contra 63,5% no PageView,
+// que é o único que não depende do cookie (a tag do servidor remonta o valor
+// pelo fbclid da URL de chegada).
+//
+// Com o marcador, a limpeza acontece uma vez só e sozinha. No pior caso o
+// visitante fica sem `_fbc` por UM carregamento de página, e a visita seguinte
+// regrava. Antes era pra sempre.
+const FBC_LIMPEZA = "vz_fbc_limpo";
+
 // Por que um cookie NOSSO em vez de escrever direto no `_fbc` da Meta:
 // quem grava o `_fbc` é o sst.vizairender.com, que é CNAME pro Stape. O Safari
 // trata domínio mascarado assim como terceiro disfarçado e corta a validade do
@@ -77,31 +94,44 @@ export function captureClickId(request: NextRequest, response: NextResponse) {
   const fbclid = request.nextUrl.searchParams.get("fbclid");
   const dominio = dominioDoCookie(request);
 
+  // Primeira passagem deste navegador por aqui? Então marca, pra que a limpeza
+  // abaixo aconteça uma vez só e nunca mais. Ver o comentário do FBC_LIMPEZA.
+  const marcar = dominio !== undefined && !request.cookies.get(FBC_LIMPEZA);
+
+  // E só apaga se houver mesmo o que apagar. Quem chega sem `_fbc` nenhum (o
+  // visitante novo, que é a maioria) não paga o carregamento de página sem
+  // cookie: nesse caso a gente marca e grava normalmente, na mesma resposta.
+  const apagar = marcar && request.cookies.has(FBC_META);
+  const podeGravarMeta = !apagar;
+
   if (fbclid && FBCLID.test(fbclid)) {
     // Formato exigido pela Meta: fb.<subdomainIndex>.<clique em ms>.<fbclid>.
     // O índice é 1 porque o cookie mora no apex — o www é redirecionado antes do
     // middleware, pelo redirects() do next.config.
-    gravar(response, `fb.1.${Date.now()}.${fbclid}`, dominio);
-    return;
+    gravar(response, `fb.1.${Date.now()}.${fbclid}`, dominio, podeGravarMeta);
+  } else {
+    // Sem fbclid na URL, mas com clique já guardado e ainda sem a cópia legível:
+    // espelha. Sem isto, todo mundo que clicou no anúncio ANTES desta mudança
+    // ficaria sem fbc no navegador até clicar num anúncio de novo — e o ciclo de
+    // compra aqui é de semanas, então seria justamente a galera prestes a comprar.
+    const jaTem = request.cookies.get(FBC_COOKIE_JS)?.value;
+    const original = request.cookies.get(FBC_COOKIE)?.value;
+    if (!jaTem && original) {
+      response.cookies.set(FBC_COOKIE_JS, original, {
+        httpOnly: false,
+        secure: true,
+        sameSite: "lax",
+        path: "/",
+        maxAge: NINETY_DAYS,
+      });
+    }
+
+    sincronizarComMeta(request, response, original, dominio, podeGravarMeta);
   }
 
-  // Sem fbclid na URL, mas com clique já guardado e ainda sem a cópia legível:
-  // espelha. Sem isto, todo mundo que clicou no anúncio ANTES desta mudança
-  // ficaria sem fbc no navegador até clicar num anúncio de novo — e o ciclo de
-  // compra aqui é de semanas, então seria justamente a galera prestes a comprar.
-  const jaTem = request.cookies.get(FBC_COOKIE_JS)?.value;
-  const original = request.cookies.get(FBC_COOKIE)?.value;
-  if (!jaTem && original) {
-    response.cookies.set(FBC_COOKIE_JS, original, {
-      httpOnly: false,
-      secure: true,
-      sameSite: "lax",
-      path: "/",
-      maxAge: NINETY_DAYS,
-    });
-  }
-
-  sincronizarComMeta(request, response, original, dominio);
+  // POR ÚLTIMO, sempre. O cabeçalho cru da limpeza é varrido por qualquer
+  // `response.cookies.set` que venha depois dele.
+  if (marcar) finalizarLimpeza(response, apagar);
 }
 
 /**
@@ -119,7 +149,8 @@ function sincronizarComMeta(
   request: NextRequest,
   response: NextResponse,
   nosso: string | undefined,
-  dominio?: string,
+  dominio: string | undefined,
+  podeGravarMeta: boolean,
 ) {
   const deles = request.cookies.get(FBC_META)?.value;
 
@@ -130,7 +161,7 @@ function sincronizarComMeta(
   // carimbo de tempo no futuro venceria a comparação PARA SEMPRE, congelando a
   // atribuição daquele visitante num clique falso.
   if (deles && ehFbcValido(deles) && deles !== nosso && quandoClicou(deles) > quandoClicou(nosso)) {
-    gravar(response, deles, dominio);
+    gravar(response, deles, dominio, podeGravarMeta);
     return;
   }
 
@@ -144,7 +175,7 @@ function sincronizarComMeta(
   //
   // De brinde, cada visita renova os 90 dias — que era o objetivo original
   // deste arquivo, já que o Safari corta a validade de quem ele desconfia.
-  if (nosso) {
+  if (nosso && podeGravarMeta) {
     gravarMeta(response, nosso, dominio);
   }
 }
@@ -177,7 +208,12 @@ function quandoClicou(valor: string | undefined): number {
 /** Grava os TRÊS cookies com o mesmo valor: o nosso httpOnly (fonte da verdade,
  *  lido no servidor pela /obrigado), a cópia legível que o GTM lê, e o `_fbc` da
  *  própria Meta, que é o único que o Pixel do navegador enxerga. */
-function gravar(response: NextResponse, valor: string, dominio?: string) {
+function gravar(
+  response: NextResponse,
+  valor: string,
+  dominio: string | undefined,
+  podeGravarMeta: boolean,
+) {
   const base = {
     secure: true,
     sameSite: "lax" as const,
@@ -186,19 +222,21 @@ function gravar(response: NextResponse, valor: string, dominio?: string) {
   };
   response.cookies.set(FBC_COOKIE, valor, { ...base, httpOnly: true });
   response.cookies.set(FBC_COOKIE_JS, valor, { ...base, httpOnly: false });
-  gravarMeta(response, valor, dominio);
+
+  // Os nossos dois cookies vão sempre. O `_fbc` fica de fora na única resposta
+  // que faz a limpeza, porque gravar e apagar juntos é justamente o que
+  // quebrava. A fonte da verdade é o `vz_fbc` acima, então nada se perde: a
+  // visita seguinte regrava o `_fbc` a partir dele.
+  if (podeGravarMeta) gravarMeta(response, valor, dominio);
 }
 
 /**
- * Grava o `_fbc` com alcance de domínio e APAGA a versão presa ao host.
+ * Grava o `_fbc` com alcance de domínio. NADA além disso.
  *
- * Apagar não é capricho. Cookie com o mesmo nome e alcances diferentes são dois
- * cookies distintos pro navegador, e ele manda OS DOIS no mesmo cabeçalho. Aí
- * ninguém sabe qual valor vale: nem o Pixel, nem o nosso próprio
- * `sincronizarComMeta`, que leria um valor e sobrescreveria o outro. Todo mundo
- * que passou por aqui entre 27 e 28/08/2026 tem uma dessas presas ao host.
- *
- * Some junto o `_fbc` de alcance curto que o sst.vizairender.com escrevia.
+ * O apagamento da versão presa ao host morava aqui e saiu daqui de propósito:
+ * ele rodava em toda visita, na mesma resposta que gravava o valor bom, e o
+ * navegador não tem como dizer qual dos dois `_fbc` ele apagou. Agora é uma
+ * operação separada, uma vez por navegador — ver `finalizarLimpeza`.
  */
 function gravarMeta(response: NextResponse, valor: string, dominio?: string) {
   response.cookies.set(FBC_META, valor, {
@@ -209,22 +247,37 @@ function gravarMeta(response: NextResponse, valor: string, dominio?: string) {
     httpOnly: false,
     ...(dominio ? { domain: dominio } : {}),
   });
+}
 
-  if (dominio) {
-    // Cabeçalho CRU, e DEPOIS da gravação acima, nesta ordem.
-    //
-    // `response.cookies.set` guarda os cookies num mapa por nome e reescreve a
-    // lista inteira de cabeçalhos a cada chamada. Duas coisas saem disso:
-    // guardar dois `_fbc` pelo mapa é impossível (o segundo apaga o primeiro), e
-    // um cabeçalho cru colocado ANTES é varrido pela próxima gravação. Medido no
-    // preview nas duas ordens: antes saía 1 cabeçalho, agora saem 2.
-    //
-    // Isto aqui só funciona porque `captureClickId` é a última coisa que o
-    // middleware faz antes de devolver a resposta. Se um dia entrar alguma
-    // gravação de cookie depois dela, esta linha morre em silêncio.
-    response.headers.append(
-      "Set-Cookie",
-      `${FBC_META}=; Path=/; Max-Age=0; Secure; SameSite=Lax`,
-    );
-  }
+/**
+ * Apaga o `_fbc` preso ao host e marca que já apagou. Uma vez por navegador.
+ *
+ * Cookie com o mesmo nome e alcances diferentes são dois cookies distintos pra
+ * especificação, e o navegador manda OS DOIS no mesmo cabeçalho — aí nem o
+ * Pixel nem a tag do servidor sabem qual vale, e a tag pega o primeiro, que é o
+ * mais velho. Por isso a limpeza precisa existir. Quem tem um desses é quem
+ * passou pelo site entre 27 e 28/08/2026, mais o `_fbc` de alcance curto que o
+ * sst.vizairender.com escrevia.
+ *
+ * A ORDEM DAQUI É O PONTO. `response.cookies.set` reescreve a lista inteira de
+ * cabeçalhos a cada chamada, então o cabeçalho cru tem que vir DEPOIS da
+ * gravação do marcador, e esta função tem que ser a última coisa do
+ * `captureClickId`. Se um dia entrar alguma gravação de cookie depois dela,
+ * esta linha morre em silêncio e a limpeza nunca acontece.
+ */
+function finalizarLimpeza(response: NextResponse, apagar: boolean) {
+  response.cookies.set(FBC_LIMPEZA, "1", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "lax",
+    path: "/",
+    maxAge: NINETY_DAYS,
+  });
+
+  if (!apagar) return;
+
+  response.headers.append(
+    "Set-Cookie",
+    `${FBC_META}=; Path=/; Max-Age=0; Secure; SameSite=Lax`,
+  );
 }
