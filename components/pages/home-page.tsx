@@ -345,7 +345,9 @@ export function HomePage() {
             },
             {
               before: "https://downloads.vizairender.com/site/compare-before-3.jpg?v=2",
-              after: "https://downloads.vizairender.com/site/compare-after-4.jpg?v=2",
+              // Nome NOVO de propósito: o CDN manda immutable de 1 ano, então
+              // sobrescrever compare-after-4.jpg não chegaria em quem já visitou.
+              after: "https://downloads.vizairender.com/site/compare-fachada-real.jpg",
             },
             {
               before: "https://downloads.vizairender.com/site/compare-before-4.jpg?v=2",
