@@ -8,7 +8,8 @@ import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
-import { useLang, useHref, type Lang } from "./LanguageProvider";
+import { useLang, useHref, persistLang, type Lang } from "./LanguageProvider";
+import { HREFLANG, localePath, splitLang } from "@/lib/routes";
 import { useT } from "@/lib/i18n";
 import { Flag } from "@/components/ui/flag";
 import type { User } from "@supabase/supabase-js";
@@ -122,7 +123,7 @@ export default function Navbar({ forceDark = false }: { forceDark?: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const [authResolved, setAuthResolved] = useState(false);
-  const { lang, setLang } = useLang();
+  const { lang, setLang, fromRoute } = useLang();
   const t = useT();
 
   /**
@@ -202,6 +203,56 @@ export default function Navbar({ forceDark = false }: { forceDark?: boolean }) {
 
   const d = forceDark || !mounted ? true : theme === "dark";
 
+  /**
+   * Endereço da MESMA página no outro idioma. Só existe nas páginas públicas,
+   * onde o idioma mora na URL; no login e no painel não há versão por idioma.
+   */
+  const langHref = (l: Lang) =>
+    fromRoute ? localePath(l, splitLang(pathname || "/").path) : null;
+
+  /**
+   * Opção de idioma do menu.
+   *
+   * Era <button> com onClick, e botão o Google não clica: a única forma de ele
+   * chegar em /en e /es eram as tags hreflang e o sitemap. Funciona, mas é uma
+   * perna só — se um dos dois quebrasse, as traduções sumiriam da busca sem
+   * nenhum aviso. Nas páginas públicas isto agora é um <a href> de verdade,
+   * rastreável, e o clique continua gravando a escolha no cookie que o
+   * middleware lê. Fora delas (painel, login) segue sendo botão, porque lá não
+   * existe endereço por idioma pra apontar.
+   */
+  const LangOption = ({
+    to,
+    className,
+    label,
+    children,
+  }: {
+    to: Lang;
+    className: string;
+    label?: string;
+    children: React.ReactNode;
+  }) => {
+    const target = langHref(to);
+    if (!target) {
+      return (
+        <button onClick={() => setLang(to)} className={className} aria-label={label ?? to}>
+          {children}
+        </button>
+      );
+    }
+    return (
+      <Link
+        href={target}
+        hrefLang={HREFLANG[to]}
+        onClick={() => persistLang(to)}
+        className={className}
+        aria-label={label ?? to}
+      >
+        {children}
+      </Link>
+    );
+  };
+
   const LangPicker = () => (
     <div className="relative group">
       <button
@@ -226,14 +277,13 @@ export default function Navbar({ forceDark = false }: { forceDark?: boolean }) {
           {langOrder
             .filter((l) => l !== lang)
             .map((l) => (
-              <button
+              <LangOption
                 key={l}
-                onClick={() => setLang(l)}
+                to={l}
                 className={`px-2 py-1.5 rounded-lg transition-colors leading-none ${d ? "hover:bg-white/10" : "hover:bg-black/5"}`}
-                aria-label={l}
               >
                 <Flag lang={l} />
-              </button>
+              </LangOption>
             ))}
         </div>
       </div>
@@ -313,17 +363,25 @@ export default function Navbar({ forceDark = false }: { forceDark?: boolean }) {
 
             <div className="flex items-center gap-3">
               {/* Desktop controls */}
-              {mounted && (
-                <div className="hidden md:flex items-center gap-3">
-                  <LangPicker />
+              <div className="hidden md:flex items-center gap-3">
+                {/*
+                  O seletor de idioma sai de dentro do portão do `mounted`.
+                  Preso lá, ele só nascia DEPOIS da hidratação, então o link
+                  pras traduções não existia no HTML que o servidor manda e o
+                  Google não tinha por onde chegar em /en e /es. O tema fica,
+                  porque a leitura do next-themes é mesmo só do cliente e sem
+                  a espera dá divergência de hidratação.
+                */}
+                <LangPicker />
+                {mounted && (
                   <div data-theme={d ? "dark" : undefined}>
                     <AnimatedThemeToggler
                       isDark={theme === "dark"}
                       onToggle={() => setTheme(theme === "dark" ? "light" : "dark")}
                     />
                   </div>
-                </div>
-              )}
+                )}
+              </div>
               {authResolved ? (
                 user ? (
                   <div className="hidden md:block">
@@ -352,16 +410,13 @@ export default function Navbar({ forceDark = false }: { forceDark?: boolean }) {
               {/* Mobile: idioma + theme toggle (só quando menu aberto) + hamburger/X */}
               <div className="md:hidden flex items-center gap-1">
                 {mounted && authResolved && !user && (
-                  <button
-                    onClick={() => {
-                      const idx = langOrder.indexOf(lang);
-                      setLang(langOrder[(idx + 1) % langOrder.length]);
-                    }}
+                  <LangOption
+                    to={langOrder[(langOrder.indexOf(lang) + 1) % langOrder.length]}
                     className={`leading-none w-8 h-8 flex items-center justify-center rounded-full transition-colors ${d ? "hover:bg-white/10" : "hover:bg-black/5"}`}
-                    aria-label={t.nav.changeLanguage}
+                    label={t.nav.changeLanguage}
                   >
                     <Flag lang={lang} />
-                  </button>
+                  </LangOption>
                 )}
                 {mounted && menuOpen && (
                   <div data-theme={d ? "dark" : undefined}>
@@ -476,9 +531,9 @@ export default function Navbar({ forceDark = false }: { forceDark?: boolean }) {
               {authResolved && user && (
                 <div className="flex items-center justify-center gap-2">
                   {langOrder.map((l) => (
-                    <button
+                    <LangOption
                       key={l}
-                      onClick={() => setLang(l)}
+                      to={l}
                       className={`w-11 h-11 rounded-full flex items-center justify-center leading-none transition-colors ${
                         lang === l
                           ? d
@@ -488,10 +543,9 @@ export default function Navbar({ forceDark = false }: { forceDark?: boolean }) {
                             ? "hover:bg-white/10"
                             : "hover:bg-black/5"
                       }`}
-                      aria-label={l}
                     >
                       <Flag lang={l} className="w-7 h-7" />
-                    </button>
+                    </LangOption>
                   ))}
                 </div>
               )}
