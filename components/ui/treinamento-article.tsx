@@ -436,9 +436,12 @@ export function TreinamentoArticle({ slug }: { slug: string }) {
       >
         {content.title}
       </h1>
+      {/* Chamada do guia. É maior que o corpo de propósito, então precisa de uma
+          cor mais forte também: com o mesmo cinza do corpo, a diferença de
+          tamanho parecia erro em vez de hierarquia. */}
       <p
         className="text-base md:text-lg leading-relaxed mb-10"
-        style={{ color: "var(--foreground-muted)" }}
+        style={{ color: "var(--foreground-soft)" }}
       >
         {content.excerpt}
       </p>

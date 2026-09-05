@@ -29,7 +29,7 @@ export const ptArticles: Record<string, ArticleContent> = {
   "primeiros-passos": {
     title: "Primeiros passos: instale o plugin e faça seu primeiro login",
     excerpt:
-      "Como instalar o Vizai Render no SketchUp, entrar com sua conta Google, ativar os 8 créditos grátis e entender o painel em poucos minutos.",
+      "Como instalar o Vizai Render no SketchUp, entrar com sua conta Google, ativar os 8 créditos grátis e entender quanto custa cada ferramenta.",
     blocks: [
       {
         type: "p",
@@ -67,45 +67,7 @@ export const ptArticles: Record<string, ArticleContent> = {
         type: "tip",
         text: "Criou a conta pelo site? Os 8 créditos grátis são ativados quando você faz o primeiro login dentro do plugin. É lá que eles aparecem.",
       },
-      { type: "h2", text: "Conhecendo o painel" },
-      {
-        type: "img",
-        src: "/treinamento/ui/cenas-{lang}.webp",
-        alt: "Painel principal do Vizai Render",
-        caption: "O painel do Vizai Render dentro do SketchUp.",
-        ui: true,
-      },
-      {
-        type: "p",
-        text: "O painel é organizado em 6 abas, que acompanham o fluxo natural de um projeto:",
-      },
-      {
-        type: "ul",
-        items: [
-          "**Cenas**: prepara a captura (iluminação, formato da imagem, distância focal e composição).",
-          "**Estúdio**: o coração do plugin, onde você gera o render fotorrealista ou usa as ferramentas de IA Criativa (moodboard, decoração, planta humanizada e diagrama).",
-          "**Vídeo**: anima seus renders em vídeos cinematográficos com movimento de câmera e som ambiente.",
-          "**360**: gera panoramas esféricos interativos para o cliente explorar no navegador.",
-          "**Blocos**: transforma uma foto de referência em um modelo 3D para usar na cena.",
-          "**Histórico**: tudo o que você gerou no projeto, com filtros e contagem de créditos.",
-        ],
-      },
-      {
-        type: "p",
-        text: "Além das abas, há a janela **Tools** (aba lateral verde), com ferramentas locais e gratuitas para otimizar o arquivo e criar pisos seamless, e o **Editor**, que abre sempre que você clica em Editar sobre um render.",
-      },
-      {
-        type: "tip",
-        text: "Siga a ordem das abas: prepare a cena na aba Cenas, renderize no Estúdio e só então parta para vídeo, 360 ou edições. Cena bem preparada = render melhor e menos créditos gastos com tentativas.",
-      },
-    ],
-  },
-
-  "como-funciona-creditos": {
-    title: "Como funcionam os créditos, planos e custos de cada ferramenta",
-    excerpt:
-      "Entenda o sistema de créditos do Vizai Render: quanto custa cada operação, a diferença entre planos mensais e pacotes avulsos, e como acompanhar seu saldo.",
-    blocks: [
+      { type: "h2", text: "Como funcionam os créditos, planos e custos de cada ferramenta" },
       {
         type: "p",
         text: "Tudo no Vizai Render funciona com **créditos**: cada geração com IA consome uma quantidade fixa, descontada do seu saldo. Ferramentas locais (como a janela Tools, os ajustes de foto do Editor e o Reflexo de Espelho) são **gratuitas**. Você só paga pelo que a IA gera.",

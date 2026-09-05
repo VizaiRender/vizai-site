@@ -192,6 +192,11 @@ const nextConfig: NextConfig = {
         destination: "https://vizairender.com/:path+",
         permanent: true,
       },
+      // O guia de créditos foi absorvido pelo "primeiros-passos" (set/2026).
+      // A URL antiga estava no sitemap e indexada, então vai de 301 em vez de 404.
+      { source: "/treinamento/como-funciona-creditos", destination: "/treinamento/primeiros-passos", permanent: true },
+      { source: "/en/treinamento/como-funciona-creditos", destination: "/en/treinamento/primeiros-passos", permanent: true },
+      { source: "/es/treinamento/como-funciona-creditos", destination: "/es/treinamento/primeiros-passos", permanent: true },
       // URL "adivinhável" que gente digita ou recebe por anúncio/WhatsApp
       { source: "/planos", destination: "/#pricing", permanent: true },
       { source: "/plans", destination: "/#pricing", permanent: true },
