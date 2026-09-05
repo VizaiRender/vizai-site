@@ -317,5 +317,6 @@ aqui**: são do servidor, no Secret Manager do GCP.
 - **Não publicado ainda:** a fusão do guia de créditos dentro do
   primeiros-passos, com os 301 nos três idiomas. Está versionado, aguardando o
   `npm run deploy`, que sai junto com a gravação das aulas em vídeo.
-- **Pendente:** banner de consentimento de cookies, necessário agora que GA e
-  Pixel estão no site.
+- **Banner de cookies: fica como está, por decisão de 05/09.** Ele desliga o
+  Clarity e os eventos de comportamento, mas não o GTM nem o Pixel. A Política
+  de Privacidade descreve isso com precisão. Não tratar como pendência.
