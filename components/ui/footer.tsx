@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useT } from "@/lib/i18n";
 import { useHref } from "@/app/components/LanguageProvider";
 
@@ -67,11 +68,39 @@ export function Footer() {
     },
   ];
 
-  const mainLinks = [
-    { href: href("/#pricing"), label: t.footer.plans },
-    { href: href("/download"), label: t.footer.download },
-    { href: href("/treinamento"), label: t.footer.training },
-    { href: href("/#gallery"), label: t.footer.gallery },
+  // Três colunas de links internos. Além de organizar, dá ao Google um caminho
+  // para cada página do site a partir de qualquer lugar, que é o que ajuda a
+  // busca orgânica: página sem link interno é página que o robô custa a achar.
+  // Três colunas de links internos. Além de organizar, dá ao Google um caminho
+  // para cada página do site a partir de qualquer lugar, que é o que ajuda a
+  // busca orgânica: página sem link interno é página que o robô custa a achar.
+  // Entrar e Criar conta ficam de fora de propósito: são noindex, já estão no
+  // topo do site e no bloco de convite logo acima do rodapé.
+  const linkColumns = [
+    {
+      title: t.footer.colProduct,
+      links: [
+        { href: href("/#pricing"), label: t.footer.plans },
+        { href: href("/download"), label: t.footer.download },
+        { href: href("/#gallery"), label: t.footer.gallery },
+      ],
+    },
+    {
+      title: t.footer.colTraining,
+      links: [
+        { href: href("/treinamento"), label: t.footer.allLessons },
+        { href: href("/treinamento/primeiro-render"), label: t.footer.lessonRender },
+        { href: href("/treinamento/reflexo-espelho"), label: t.footer.lessonMirror },
+      ],
+    },
+    {
+      title: t.footer.colGuides,
+      links: [
+        { href: href("/treinamento/primeiros-passos"), label: t.footer.firstSteps },
+        { href: href("/treinamento/decorar-ambiente"), label: t.footer.decorate },
+        { href: href("/treinamento/planta-humanizada"), label: t.footer.floorPlan },
+      ],
+    },
   ];
 
   const legalLinks = [
@@ -85,81 +114,97 @@ export function Footer() {
   };
 
   return (
-    <footer className="w-full pb-16 pt-8 mt-6 sm:pt-16 sm:mt-16 bg-[var(--background)] relative z-20" data-track-section="footer">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        
-        {/* Top Section */}
-        <div className="flex items-center justify-between">
-          <a href={href("/")} className="flex items-center gap-2.5 hover:opacity-80 transition-opacity">
-            {logo}
-            <span className="font-medium text-lg" style={{ color: "var(--foreground)" }}>
-              {brandName}
-            </span>
-          </a>
+    <footer className="w-full pb-10 pt-4 mt-4 sm:pt-6 sm:mt-6 bg-[var(--background)] relative z-20" data-track-section="footer">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Cartão arredondado: o rodapé fica destacado do corpo da página */}
+        <div
+          className="rounded-3xl px-6 py-10 sm:px-10 sm:py-12"
+          style={{
+            backgroundColor: "rgba(128,128,128,0.05)",
+            border: "1px solid var(--border)",
+          }}
+        >
+        <div className="flex flex-col gap-10 lg:flex-row lg:justify-between lg:gap-16">
 
-          <div className="flex items-center gap-2">
-            {socialLinks.map((link, i) => (
-              <a
-                key={i}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={link.label}
-                className="flex items-center justify-center h-9 w-9 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 transition-colors"
-                style={{ color: "var(--foreground)" }}
-              >
-                {link.icon}
-              </a>
-            ))}
+          {/* Marca, frase e redes */}
+          <div className="max-w-sm">
+            <Link href={href("/")} className="inline-flex items-center gap-2.5 hover:opacity-80 transition-opacity">
+              {logo}
+              <span className="font-medium text-lg" style={{ color: "var(--foreground)" }}>
+                {brandName}
+              </span>
+            </Link>
+
+            <p className="mt-4 text-sm leading-relaxed" style={{ color: "var(--foreground-muted)" }}>
+              {t.footer.tagline}
+            </p>
+
+            {/* Centralizados no celular, à esquerda a partir do tablet */}
+            <div className="mt-5 flex items-center justify-center gap-2 sm:justify-start">
+              {socialLinks.map((link, i) => (
+                <a
+                  key={i}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={link.label}
+                  className="flex items-center justify-center h-9 w-9 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/20 transition-colors"
+                  style={{ color: "var(--foreground)" }}
+                >
+                  {link.icon}
+                </a>
+              ))}
+            </div>
           </div>
+
+          {/* Colunas de links */}
+          <nav className="grid grid-cols-2 items-start gap-x-8 gap-y-10 sm:flex sm:gap-12 lg:gap-16">
+            {linkColumns.map((col) => (
+              <div key={col.title}>
+                <h3 className="text-sm font-semibold mb-4" style={{ color: "var(--foreground)" }}>
+                  {col.title}
+                </h3>
+                <ul className="flex flex-col gap-3">
+                  {col.links.map((link) => (
+                    <li key={link.label}>
+                      <Link
+                        href={link.href}
+                        className="text-sm hover:underline underline-offset-4 transition-colors"
+                        style={{ color: "var(--foreground-muted)" }}
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </nav>
         </div>
 
-        {/* Divider */}
-        <hr className="my-3 border-black/10 dark:border-white/20" />
+        <hr className="mt-10 mb-6 border-black/10 dark:border-white/20" />
 
-        {/* Bottom Section */}
-        <div className="flex flex-col items-center gap-5 text-center md:items-start md:text-left">
-
-          {/* Main Links */}
+        {/* Copyright e links legais */}
+        <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:justify-between sm:text-left">
+          <p className="text-sm" style={{ color: "var(--foreground-muted)" }}>
+            {copyright.text}. {copyright.license}
+          </p>
           <nav>
-            <ul className="flex flex-wrap justify-center md:justify-start gap-6">
-              {mainLinks.map((link, i) => (
-                <li key={i}>
-                  <a
-                    href={link.href}
-                    className="text-sm font-medium hover:underline underline-offset-4 transition-colors"
-                    style={{ color: "var(--foreground)" }}
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          {/* Legal Links */}
-          <nav>
-            <ul className="flex flex-wrap justify-center md:justify-start gap-6">
+            <ul className="flex flex-wrap justify-center gap-6">
               {legalLinks.map((link, i) => (
                 <li key={i}>
-                  <a
+                  <Link
                     href={link.href}
-                    className="text-sm hover:underline underline-offset-4 transition-colors"
+                    className="text-sm underline underline-offset-4 hover:no-underline transition-colors"
                     style={{ color: "var(--foreground-muted)" }}
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </nav>
-
-          {/* Copyright */}
-          <div className="flex flex-col gap-1 text-sm" style={{ color: "var(--foreground-muted)" }}>
-            <p>{copyright.text}</p>
-            <p>{copyright.license}</p>
-          </div>
-
+        </div>
         </div>
       </div>
     </footer>

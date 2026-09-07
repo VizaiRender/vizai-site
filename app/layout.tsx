@@ -79,6 +79,13 @@ const jsonLd = {
         "@type": "ImageObject",
         url: "https://vizairender.com/icon.png",
       },
+      // Perfis oficiais da marca. É o sameAs que faz o Google ligar estes
+      // perfis ao Vizai Render; sem ele os links do rodapé são só links.
+      sameAs: [
+        "https://instagram.com/vizairender",
+        "https://tiktok.com/@vizairender",
+        "https://www.linkedin.com/company/vizairender/",
+      ],
       contactPoint: {
         "@type": "ContactPoint",
         email: "contato@vizairender.com",
