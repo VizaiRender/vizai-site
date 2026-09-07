@@ -100,56 +100,47 @@ export function AulasPlayer() {
             border: "1px solid var(--border)",
           }}
         >
-          {tocando && aula.src ? (
-            <video
-              key={`${aula.slug}-${lang}`}
-              ref={videoRef}
-              src={aula.src}
-              poster={aula.poster ?? undefined}
-              controls
-              autoPlay
-              playsInline
-              preload="metadata"
-              onLoadedMetadata={ligarLegendaDoIdioma}
-              onEnded={() => atual < AULAS.length - 1 && trocar(atual + 1)}
-              className="absolute inset-0 w-full h-full object-cover"
-            >
-              {(["pt", "en", "es"] as const).map((l) => (
-                <track
-                  key={l}
-                  kind="subtitles"
-                  src={captionSrc(aula.slug, l)}
-                  srcLang={l}
-                  label={LEGENDA_LABEL[l]}
-                  default={l === lang}
-                />
-              ))}
-            </video>
-          ) : (
+          <video
+            key={`${aula.slug}-${lang}`}
+            ref={videoRef}
+            src={aula.src ?? undefined}
+            poster={aula.poster ?? undefined}
+            controls={tocando}
+            playsInline
+            preload="none"
+            onPlay={() => setTocando(true)}
+            onLoadedMetadata={ligarLegendaDoIdioma}
+            onEnded={() => atual < AULAS.length - 1 && trocar(atual + 1)}
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            {(["pt", "en", "es"] as const).map((l) => (
+              <track
+                key={l}
+                kind="subtitles"
+                src={captionSrc(aula.slug, l)}
+                srcLang={l}
+                label={LEGENDA_LABEL[l]}
+                default={l === lang}
+              />
+            ))}
+          </video>
+
+          {!tocando && (
             <button
               type="button"
-              onClick={() => aula.src && setTocando(true)}
+              onClick={() => {
+                setTocando(true);
+                videoRef.current?.play().catch(() => setTocando(false));
+              }}
               disabled={!aula.src}
               aria-label={`${ui.lesson} ${aula.id}: ${texto.title}`}
-              className="group absolute inset-0 w-full h-full disabled:cursor-default"
+              className="group absolute inset-0 w-full h-full flex items-center justify-center bg-black/25 transition-colors hover:bg-black/35 disabled:cursor-default"
             >
-              {aula.poster && (
-                <Image
-                  src={aula.poster}
-                  alt={texto.title}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 66vw"
-                  priority
-                  className="object-cover object-center"
-                />
-              )}
-              <span className="absolute inset-0 flex items-center justify-center bg-black/25 transition-colors group-hover:bg-black/35">
-                <span
-                  className="flex items-center justify-center w-20 h-20 rounded-full shadow-lg transition-transform duration-300 group-hover:scale-110"
-                  style={{ backgroundColor: aula.src ? "#0940D2" : "rgba(255,255,255,0.25)", color: "#fff" }}
-                >
-                  <Play className="w-9 h-9 ml-1" fill="currentColor" />
-                </span>
+              <span
+                className="flex items-center justify-center w-20 h-20 rounded-full shadow-lg transition-transform duration-300 group-hover:scale-110"
+                style={{ backgroundColor: aula.src ? "#0940D2" : "rgba(255,255,255,0.25)", color: "#fff" }}
+              >
+                <Play className="w-9 h-9 ml-1" fill="currentColor" />
               </span>
             </button>
           )}
