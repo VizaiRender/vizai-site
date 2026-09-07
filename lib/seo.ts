@@ -33,14 +33,14 @@ export const SEO: Record<Lang, Record<PageId, PageSeo>> = {
         "Transforme modelos 3D do SketchUp em renders fotorrealistas em segundos com inteligência artificial.",
     },
     download: {
-      title: "Baixar plugin",
+      title: "Plugin de render com IA para SketchUp",
       description:
-        "Baixe o plugin Vizai Render para SketchUp. Instalação em menos de 1 minuto.",
+        "Instale no SketchUp em menos de 1 minuto, no Windows ou no Mac, do SketchUp 2023 em diante. São 8 créditos grátis no primeiro login.",
     },
     treinamento: {
-      title: "Treinamento",
+      title: "8 aulas em vídeo de render com IA",
       description:
-        "Guias completos de todas as ferramentas do Vizai Render: render com IA, edição, vídeo, panorama 360°, blocos 3D, IA criativa e ferramentas gratuitas. Passo a passo com imagens reais.",
+        "8 aulas em vídeo com legenda: primeiro render, reflexo de espelho, luz fake, textura seamless, vídeo com IA, panorama 360 e blocos 3D.",
     },
     privacy: {
       title: "Política de Privacidade",
@@ -58,14 +58,14 @@ export const SEO: Record<Lang, Record<PageId, PageSeo>> = {
         "Turn your SketchUp 3D models into photorealistic renders in seconds with artificial intelligence. No expensive GPU, no exporting to another program.",
     },
     download: {
-      title: "Download the plugin",
+      title: "AI rendering plugin for SketchUp",
       description:
-        "Download the Vizai Render plugin for SketchUp. Installs in under a minute.",
+        "Install it in SketchUp in under a minute, on Windows or Mac, SketchUp 2023 and up. You get 8 free credits on your first login.",
     },
     treinamento: {
-      title: "Training",
+      title: "8 video lessons on AI rendering",
       description:
-        "Complete guides to every Vizai Render tool: AI rendering, editing, video, 360° panoramas, 3D blocks, creative AI and the free tools. Step by step, with real screenshots.",
+        "8 subtitled video lessons: first render, mirror reflections, fake light, seamless textures, AI video, 360 panorama and 3D blocks.",
     },
     privacy: {
       title: "Privacy Policy",
@@ -83,14 +83,14 @@ export const SEO: Record<Lang, Record<PageId, PageSeo>> = {
         "Convierte tus modelos 3D de SketchUp en renders fotorrealistas en segundos con inteligencia artificial. Sin GPU cara y sin exportar a otro programa.",
     },
     download: {
-      title: "Descargar el plugin",
+      title: "Plugin de render con IA para SketchUp",
       description:
-        "Descarga el plugin Vizai Render para SketchUp. Se instala en menos de un minuto.",
+        "Instálalo en SketchUp en menos de un minuto, en Windows o Mac, desde SketchUp 2023. Son 8 créditos gratis en el primer inicio de sesión.",
     },
     treinamento: {
-      title: "Capacitación",
+      title: "8 clases en video de render con IA",
       description:
-        "Guías completas de todas las herramientas de Vizai Render: render con IA, edición, video, panorama 360°, bloques 3D, IA creativa y herramientas gratuitas. Paso a paso, con imágenes reales.",
+        "8 clases en video con subtítulos: primer render, reflejo de espejo, luz fake, textura seamless, video con IA, panorama 360 y bloques 3D.",
     },
     privacy: {
       title: "Política de Privacidad",
