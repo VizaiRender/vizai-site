@@ -2,7 +2,7 @@ import type { ArticleContent, TreinoUiStrings } from "./types";
 
 export const esUi: TreinoUiStrings = {
   badge: "Capacitación oficial Vizai Render",
-  title: "Aprende a dominar Vizai Render",
+  title: "Entrenamiento Vizai Render",
   subtitle:
     "Guías completas de todas las herramientas del plugin. Desde tu primer render hasta presentaciones en video y 360°. Todo explicado paso a paso, con imágenes reales de la interfaz y de los resultados.",
   featuredLabel: "Empieza por aquí",
@@ -17,6 +17,7 @@ export const esUi: TreinoUiStrings = {
   ctaDownload: "Descargar plugin",
   ctaSignup: "Crear cuenta gratis",
   categories: {
+    aulas: "Clase en video",
     start: "Empieza aquí",
     render: "Render",
     creative: "IA Creativa",
@@ -26,6 +27,335 @@ export const esUi: TreinoUiStrings = {
 };
 
 export const esArticles: Record<string, ArticleContent> = {
+  "primeiro-render": {
+    title: "Tu primer render fotorrealista en SketchUp, del encuadre al resultado",
+    excerpt:
+      "La clase completa: prepara la escena en la pestaña Escenas, genera el render en Estudio y refina la imagen en el editor, sin salir de SketchUp.",
+    blocks: [
+{
+        type: "p",
+        text: "La IA renderiza exactamente lo que ve en tu viewport. Por eso, el paso que más influye en la calidad del resultado no es el prompt. Es la **preparación de la escena**. La pestaña Escenas reúne todos los controles para eso, sin tocar las configuraciones de SketchUp.",
+      },
+      {
+        type: "img",
+        src: "/treinamento/ui/cenas-full-{lang}.webp",
+        alt: "Pestaña Escenas completa de Vizai Render",
+        caption: "La pestaña Escenas: iluminación, formato, focal y guías de composición.",
+        ui: true,
+      },
+      { type: "h2", text: "Iluminación de la escena" },
+      {
+        type: "p",
+        text: "Los controles **Claro** y **Oscuro** ajustan las sombras de SketchUp. Súbelos juntos para aclarar la escena y revelar más detalles. Cuanto más vea la IA de tu modelo, más fiel es el render. El botón **Usar sol para sombreado** mejora la lectura de los volúmenes.",
+      },
+      {
+        type: "p",
+        text: "¿No quieres pensar en eso? Usa los presets: **Exterior** para fachadas y áreas abiertas, **Interior** para ambientes internos. Aplican la configuración recomendada en un clic, y el plugin restaura las sombras originales de tu archivo al cerrar el panel.",
+      },
+      { type: "h2", text: "Formato de salida" },
+      {
+        type: "p",
+        text: "Elige la proporción de la imagen final antes de renderizar: **Paisaje 16:9** (presentaciones), **Cuadrado 1:1**, **Feed 4:5** y **Retrato 9:16** (redes sociales), además de 5:4, **Clásico 4:3**, **Foto 3:2** y 7:5. La viewport muestra la máscara de recorte en tiempo real. Lo que está dentro es lo que se renderiza.",
+      },
+      { type: "h2", text: "Distancia focal" },
+      {
+        type: "p",
+        text: "La distancia focal cambia por completo la lectura del espacio: **24mm (gran angular)** abraza interiores pequeños, **35–55mm** son neutras y realistas, **70–85mm** comprimen la perspectiva como una foto profesional de detalle. También hay un modo **Custom** para definir el valor manualmente.",
+      },
+      {
+        type: "tip",
+        text: "Para interiores residenciales, 24mm a 35mm es el estándar de la fotografía de arquitectura. Para fachadas, prueba 35mm a 55mm desde más lejos. Distorsiona menos las verticales.",
+      },
+      { type: "h2", text: "Guías de composición" },
+      {
+        type: "ul",
+        items: [
+          "**Regla de los tercios**: superpone las líneas guía clásicas de fotografía en la viewport, para ubicar los puntos de interés en las zonas fuertes del cuadro.",
+          "**2 puntos de fuga**: activa la perspectiva arquitectónica de SketchUp: todas las verticales quedan perfectamente rectas, el estándar de las fotos profesionales de arquitectura.",
+        ],
+      },
+      { type: "h2", text: "Guardar escenas" },
+      {
+        type: "p",
+        text: "¿Encontraste el ángulo perfecto? Ponle nombre y haz clic en **Guardar**. La escena se crea en SketchUp y vuelves a ella cuando quieras. Guarda tus 3 o 4 ángulos principales antes de empezar a renderizar: facilita generar la serie completa de imágenes del proyecto y rehacer ajustes después.",
+      },
+        { type: "p", text: "Con la escena guardada, es hora de generar la primera imagen. Todo pasa en la pestaña Estudio, y toma menos de un minuto." },
+{
+        type: "p",
+        text: "Con la escena preparada, renderizar es seguir los 5 pasos numerados de la pestaña **Estudio**, en modo **Render**. En segundos la IA devuelve una imagen fotorrealista del ángulo exacto de tu viewport, preservando tu proyecto. Geometría, materiales y composición.",
+      },
+      {
+        type: "img",
+        src: "/treinamento/ui/studio-render-{lang}.webp",
+        alt: "Pestaña Estudio en modo Render",
+        caption: "El modo Render del Estudio: 5 pasos numerados hasta el botón Renderizar.",
+        ui: true,
+      },
+      { type: "h2", text: "Los 5 pasos" },
+      {
+        type: "steps",
+        items: [
+          {
+            title: "Tipo de proyecto",
+            text: "Le dice a la IA qué está viendo: Interiores, Fachada Externa, En la Naturaleza (integración con paisaje), Comercial (tienda, oficina) o Edificio. Cada tipo recibe un tratamiento específico de iluminación y contexto. Al elegir **Fachada Externa** aparece una segunda opción, el entorno del terreno: **Casas vecinas** (la predeterminada — una casa a cada lado, del mismo nivel que tu proyecto), **Lotes con muro** (terrenos vacíos con muro o cerca divisoria) o **Terreno abierto** (terreno abierto, sin muros ni cercas).",
+          },
+          {
+            title: "Calidad",
+            text: "El motor de imagen de Vizai (Nano Banana Pro). Cada render cuesta 4 créditos.",
+          },
+          {
+            title: "Estilo de clima",
+            text: "Día, Atardecer, Noche o Nublado. Define el cielo, la temperatura de la luz y el clima general de la imagen.",
+          },
+          {
+            title: "Luces",
+            text: "Luces encendidas (interiores de noche o ambientes acogedores), apagadas, o Ninguno para que la IA decida lo natural.",
+          },
+          {
+            title: "Detalles de la escena",
+            text: "Campo libre opcional para orientar a la IA: materiales, vegetación, atmósfera. Se integra automáticamente al prompt.",
+          },
+        ],
+      },
+      { type: "h2", text: "El resultado" },
+      {
+        type: "compare",
+        before: { src: "/compare2-before.jpg", label: "Modelo SketchUp" },
+        after: { src: "/compare2-after.jpg", label: "Render Vizai" },
+      },
+      {
+        type: "p",
+        text: "El render aparece en el propio panel con el control **Antes/Después** para compararlo con el modelo original, incluso en pantalla completa. Desde ahí puedes **Descargar** la imagen, abrir el **Editor** para refinarla, o **Exportar en alta resolución**: la descarga estándar es gratis, y el upscale a **4K cuesta 5 créditos**.",
+      },
+      { type: "h2", text: "Escribiendo buenos detalles de escena" },
+      {
+        type: "p",
+        text: "El campo de detalles no necesita frases elaboradas. Palabras clave separadas por comas funcionan mejor. Describe lo que la IA no puede adivinar del modelo:",
+      },
+      {
+        type: "ul",
+        items: [
+          "**Materiales específicos**: “piso de porcelanato satinado, carpintería de madera clara, encimera de cuarzo blanco”.",
+          "**Vegetación y entorno**: “vegetación tropical, césped recortado, calle arbolada”.",
+          "**Atmósfera**: “luz suave de atardecer, ambiente acogedor”.",
+        ],
+      },
+      {
+        type: "tip",
+        text: "Aplica texturas reales al modelo en vez de dejarlo todo blanco: la IA respeta los materiales que ve. Modelo texturizado + detalles cortos en el prompt = el resultado más fiel.",
+      },
+      {
+        type: "warn",
+        text: "Si el render sale oscuro o con zonas “inventadas”, vuelve a la pestaña Escenas y aclara la iluminación. Generalmente la IA no estaba viendo esa parte del modelo.",
+      },
+      { type: "cost", text: "4 créditos por render · upscale 4K opcional por 5 créditos" },
+        { type: "p", text: "El render está listo, pero no tienes que quedarte con el primer resultado. La ventana Editar permite corregir un detalle, crear nuevas perspectivas y ajustar la imagen sin gastar otro render." },
+{
+        type: "p",
+        text: "¿Generaste un buen render pero el sofá quedó raro? ¿Quieres el mismo ambiente desde otro ángulo, o un closeup de la encimera para la presentación? Para eso existe el **Editor**. Haz clic en **Editar** sobre cualquier render y se abre en una ventana dedicada con tres pestañas: **Edición con IA**, **Recorte** y **Ajustes**.",
+      },
+      {
+        type: "img",
+        src: "/treinamento/ui/editor-ia-{lang}.webp",
+        alt: "Ventana Editar Render con la pestaña Edición con IA",
+        caption: "El Editor: herramientas de máscara, prompt de edición e historial a la derecha.",
+      },
+      { type: "h2", text: "Edición con IA (inpaint)" },
+      {
+        type: "p",
+        text: "El inpaint permite alterar **solo un área** de la imagen, manteniendo todo lo demás intacto. Pinta la región que quieres cambiar y describe la modificación:",
+      },
+      {
+        type: "steps",
+        items: [
+          {
+            title: "Marca el área",
+            text: "Usa el Pincel (con control de grosor), el Rectángulo o el Círculo para crear la máscara. ¿Te equivocaste? Borrador, Deshacer trazo o Limpiar máscara.",
+          },
+          {
+            title: "Describe el cambio",
+            text: "“Cambiar el sofá por uno de lino beige”, “quitar el coche”, “agregar cuadros en la pared”… La IA edita solo el área marcada.",
+          },
+          {
+            title: "Aplica y compara",
+            text: "Cada edición cuesta 4 créditos y entra al historial lateral. Navega entre versiones y mantén presionado el botón Antes/Después para comparar con el original.",
+          },
+        ],
+      },
+      {
+        type: "video",
+        src: "/tools/tool-edit.mp4",
+        caption: "Inpaint en acción: marca, describe y la IA cambia solo esa área.",
+      },
+      {
+        type: "tip",
+        text: "Sin ninguna máscara, el comando vale para toda la imagen, útil para cambios globales como “hacerlo nocturno” o “cambiar el color de las paredes”.",
+      },
+      { type: "h2", text: "Nuevas perspectivas: varias escenas desde un render" },
+      {
+        type: "p",
+        text: "Este es uno de los recursos más potentes del Editor: pide **otro ángulo** del mismo ambiente directamente en el campo de texto, sin mover la cámara en SketchUp y sin gastar un render nuevo desde cero. La IA entiende la intención de tu comando:",
+      },
+      {
+        type: "ul",
+        items: [
+          "**“Closeup del sillón”**: marca el sillón (o solo escríbelo) y recibe un detalle aproximado, con materiales e iluminación preservados.",
+          "**“Vista lateral del ambiente”** o **“nueva perspectiva mostrando la cocina desde la derecha”**. Genera el mismo espacio visto desde otro punto.",
+          "**“Vista de dron”**: aleja y eleva la cámara para una toma aérea.",
+        ],
+      },
+      {
+        type: "img",
+        src: "/tools/tool-02.jpg",
+        alt: "Nuevas perspectivas generadas desde un render",
+        caption: "Un render base puede convertirse en una serie completa de imágenes del proyecto.",
+      },
+      {
+        type: "p",
+        text: "En la práctica, un único render de 4 créditos se vuelve la base de una **presentación completa**: genera la vista general, luego pide closeups de los detalles y ángulos alternativos por 4 créditos cada uno. Mucho más rápido que reposicionar la cámara y re-renderizar cada vista.",
+      },
+      { type: "h2", text: "Recorte y Ajustes (gratis)" },
+      {
+        type: "imgrow",
+        images: [
+          {
+            src: "/treinamento/ui/editor-crop-{lang}.webp",
+            alt: "Pestaña Recorte del Editor",
+            caption: "Recorte con proporciones listas o libre.",
+          },
+          {
+            src: "/treinamento/ui/editor-adjust-{lang}.webp",
+            alt: "Pestaña Ajustes del Editor",
+            caption: "Ajustes finos de foto, sin costo.",
+          },
+        ],
+      },
+      {
+        type: "p",
+        text: "La pestaña **Recorte** reencuadra la imagen en las proporciones del plugin (Paisaje, Cuadrado, Feed, Retrato, Clásico, Foto) o en recorte libre/personalizado. La pestaña **Ajustes** la termina como en un editor de fotos: **brillo, contraste, saturación, exposición y temperatura**. Las dos son totalmente gratuitas, igual que la descarga en 2K.",
+      },
+      {
+        type: "p",
+        text: "Al hacer clic en **Finalizar Edición**, la versión final vuelve al panel principal, lista para convertirse en video, 360 o upscale 4K.",
+      },
+      { type: "cost", text: "Edición con IA y nuevas perspectivas: 4 créditos cada una · Recorte, Ajustes y descarga 2K: gratis" },
+    ],
+  },
+  "reflexo-espelho": {
+    title: "Reflejo de espejo y Luz Fake en SketchUp",
+    excerpt:
+      "Cómo atar el reflejo en espejos, vidrios y piso pulido a tu escena, y cómo poner tiras de LED y spots directo en el modelo.",
+    blocks: [
+{
+        type: "p",
+        text: "Una superficie que refleja es un problema clásico: SketchUp muestra una cara plana y la IA, sin referencia, se inventa un reflejo cualquiera. La herramienta **Reflejo del Espejo** (en la pestaña Escenas) proyecta en la cara lo que **realmente reflejaría**, y entonces sí renderizas, con el reflejo coherente con el ambiente.",
+      },
+      {
+        type: "video",
+        src: "/treinamento/ui/reflexo-espelho.mp4",
+        caption: "Reflejo aplicado directamente en la pestaña Escenas, sin coste de créditos.",
+      },
+      { type: "h2", text: "Seis tipos de superficie" },
+      {
+        type: "p",
+        text: "La captura es la misma para todos; lo que cambia es el acabado. Elige el tipo **antes** de hacer clic en la cara:",
+      },
+      {
+        type: "ul",
+        items: [
+          "**Espejo**: opaco, reflejo pleno. El comportamiento clásico de la herramienta.",
+          "**Suelo**: porcelánico pulido, encimera de mármol, mesa lacada. Reflejo suave por encima: el material del suelo sigue mandando en el aspecto.",
+          "**TV**: pantalla apagada. Opaca y bien oscura, con el ambiente apenas insinuado, como una pantalla apagada de verdad.",
+          "**Vidrio**: vidrio incoloro de mampara o puerta. Refleja menos y deja ver a través, sin alterar el color de lo que refleja.",
+          "**Bronce** y **Ahumado**: los vidrios tintados de puerta de armario. Semitransparentes: el reflejo aparece encima y el interior del armario por debajo.",
+        ],
+      },
+      { type: "h2", text: "Cómo usarlo" },
+      {
+        type: "steps",
+        items: [
+          {
+            title: "Guarda la escena",
+            text: "Deja la vista que vas a renderizar y guárdala como escena. El reflejo queda atado a esa escena.",
+          },
+          {
+            title: "Elige el tipo y haz clic en la cara",
+            text: "Selecciona el tipo de superficie, haz clic en **Generar Reflejo en la Escena** y luego en la cara. Se ilumina en azul. No hace falta entrar en el grupo. Las pantallas de TV y los suelos importados suelen venir divididos en varios trozos: el plugin une los trozos vecinos solo y se ilumina la superficie entera.",
+          },
+          {
+            title: "¿Superficie en partes separadas? Usa Shift",
+            text: "Espejo en paneles o vidrio en hojas: mantén **Shift** y haz clic en las otras caras, luego **Enter**. Sale un reflejo continuo, sin junta entre las partes.",
+          },
+          {
+            title: "Ajusta sin rehacer",
+            text: "Suelo y TV tienen un slider; vidrio, bronce y ahumado tienen dos. **Brillo** y **transparencia**. Suelta el slider y el reflejo que ya está en la escena cambia al instante, sin generarlo otra vez. Cada slider tiene un botón para volver al valor por defecto.",
+          },
+        ],
+      },
+      {
+        type: "p",
+        text: "El plugin refleja la cámara de la escena por el plano de la superficie, captura el ambiente que realmente reflejaría y lo proyecta en la cara, en segundos, **sin coste de créditos**, porque todo ocurre localmente en tu SketchUp.",
+      },
+      {
+        type: "warn",
+        text: "El reflejo queda **guardado en la escena** y desaparece al cambiar de escena. Genera uno para cada una. Si cambias la vista de la escena después, rehaz el reflejo antes de renderizar. El botón **Borrar todos los reflejos** limpia de una vez todo lo que la herramienta creó en el modelo.",
+      },
+      {
+        type: "tip",
+        text: "En el vidrio tintado, el interior del armario solo aparece si el material de la puerta está transparente en SketchUp. Y conviene combinarlos: espejo en el baño, ahumado en las puertas del vestidor, suelo pulido en el salón. Es el conjunto lo que hace que el render parezca una fotografía.",
+      },
+      { type: "cost", text: "Gratis: procesado localmente, sin créditos" },
+        { type: "p", text: "El reflejo ya está en la escena. Ahora vamos a la segunda herramienta de esta clase, la Luz Fake, que resuelve la iluminación del ambiente sin modelar ninguna luminaria." },
+{
+        type: "p",
+        text: "SketchUp no muestra luz. Dibujas la cornisa, el nicho, el espejo, y la escena sigue plana, sin ninguna pista de lo que debe encender en el render. La **Luz Falsa** (en la pestaña Escenas, justo debajo del Reflejo de Espejo) lo resuelve dibujando la luz: una tira de LED que corre por el borde, o un spot con el haz visible. No es iluminación real. Es una referencia clara para que la IA sepa dónde hay luz y de qué color es.",
+      },
+      {
+        type: "video",
+        src: "/treinamento/ui/luz-fake.mp4",
+        caption: "Tira de LED detrás del espejo, en la carpintería y spots en el techo, todo local, sin costo de créditos.",
+      },
+      { type: "h2", text: "Tira de LED o Spot" },
+      {
+        type: "ul",
+        items: [
+          "**Tira de LED**: corre a lo largo de una línea (cornisa, nicho, zócalo) o contornea el borde entero de un espejo. En **Tipo de objeto** eliges entre **Carpintería** y **Espejo**.",
+          "**Spot**: el haz cónico de una luminaria. Haces clic en la cara de la luminaria y el haz sale de ella.",
+        ],
+      },
+      { type: "h2", text: "Cómo usarla" },
+      {
+        type: "steps",
+        items: [
+          {
+            title: "Elige el modo y ajusta la luz",
+            text: "Selecciona **Tira de LED** o **Spot**, el color (por defecto un blanco cálido, #ffe76e), la dirección del haz y los sliders de **Alcance**, **Intensidad** y **Apertura**. Cada modo guarda sus propios valores.",
+          },
+          {
+            title: "Haz clic en Generar y luego en el lugar de la luz",
+            text: "Para tira en carpintería, haz clic en la **línea** por donde va a correr. Mantén **Shift** para sumar varias líneas de una vez. Para tira en espejo, haz clic en la **cara del espejo** y contornea todo el borde. Para spot, haz clic en la **cara de la luminaria**. **ESC** sale de la herramienta.",
+          },
+          {
+            title: "Ajusta sin rehacer",
+            text: "Con una luz seleccionada en SketchUp, los sliders pasan a editar esa luz. Suelta el slider y se reconstruye al instante. También puedes mover la luz a mano y el siguiente ajuste respeta la nueva posición.",
+          },
+        ],
+      },
+      {
+        type: "p",
+        text: "La tira es una franja continua: las esquinas se encuentran sin rasgarse, y en un contorno vertical (el espejo) el brillo sale hacia afuera siguiendo la forma, mientras que en uno horizontal (la cornisa) baja o sube. Todo se genera en tu computadora, en segundos, **sin consumir créditos**.",
+      },
+      {
+        type: "warn",
+        text: "Es luz **falsa**: no ilumina la escena de SketchUp, sirve como referencia visual para el render. El botón **Apagar todas las luces** elimina de una vez todo lo que la herramienta creó en el modelo.",
+      },
+      {
+        type: "tip",
+        text: "El uso que más rinde es la tira detrás del espejo. Ese brillo contorneando el borde es lo que hace que la IA entregue el espejo retroiluminado que imaginaste. Combínala con el **Reflejo de Espejo** en la misma escena: uno da el reflejo, la otra da la luz.",
+      },
+      { type: "cost", text: "Gratis: procesado localmente, sin créditos" },
+    ],
+  },
   "primeiros-passos": {
     title: "Primeros pasos: instala el plugin e inicia sesión por primera vez",
     excerpt:
@@ -126,357 +456,10 @@ export const esArticles: Record<string, ArticleContent> = {
     ],
   },
 
-  "preparando-a-cena": {
-    title: "Pestaña Escenas: prepara el encuadre perfecto antes de renderizar",
-    excerpt:
-      "Iluminación de la escena, formato de salida, distancia focal, regla de los tercios y 2 puntos de fuga, todo lo que define la calidad de tu render empieza aquí.",
-    blocks: [
-      {
-        type: "p",
-        text: "La IA renderiza exactamente lo que ve en tu viewport. Por eso, el paso que más influye en la calidad del resultado no es el prompt. Es la **preparación de la escena**. La pestaña Escenas reúne todos los controles para eso, sin tocar las configuraciones de SketchUp.",
-      },
-      {
-        type: "img",
-        src: "/treinamento/ui/cenas-full-{lang}.webp",
-        alt: "Pestaña Escenas completa de Vizai Render",
-        caption: "La pestaña Escenas: iluminación, formato, focal y guías de composición.",
-        ui: true,
-      },
-      { type: "h2", text: "Iluminación de la escena" },
-      {
-        type: "p",
-        text: "Los controles **Claro** y **Oscuro** ajustan las sombras de SketchUp. Súbelos juntos para aclarar la escena y revelar más detalles. Cuanto más vea la IA de tu modelo, más fiel es el render. El botón **Usar sol para sombreado** mejora la lectura de los volúmenes.",
-      },
-      {
-        type: "p",
-        text: "¿No quieres pensar en eso? Usa los presets: **Exterior** para fachadas y áreas abiertas, **Interior** para ambientes internos. Aplican la configuración recomendada en un clic, y el plugin restaura las sombras originales de tu archivo al cerrar el panel.",
-      },
-      { type: "h2", text: "Formato de salida" },
-      {
-        type: "p",
-        text: "Elige la proporción de la imagen final antes de renderizar: **Paisaje 16:9** (presentaciones), **Cuadrado 1:1**, **Feed 4:5** y **Retrato 9:16** (redes sociales), además de 5:4, **Clásico 4:3**, **Foto 3:2** y 7:5. La viewport muestra la máscara de recorte en tiempo real. Lo que está dentro es lo que se renderiza.",
-      },
-      { type: "h2", text: "Distancia focal" },
-      {
-        type: "p",
-        text: "La distancia focal cambia por completo la lectura del espacio: **24mm (gran angular)** abraza interiores pequeños, **35–55mm** son neutras y realistas, **70–85mm** comprimen la perspectiva como una foto profesional de detalle. También hay un modo **Custom** para definir el valor manualmente.",
-      },
-      {
-        type: "tip",
-        text: "Para interiores residenciales, 24mm a 35mm es el estándar de la fotografía de arquitectura. Para fachadas, prueba 35mm a 55mm desde más lejos. Distorsiona menos las verticales.",
-      },
-      { type: "h2", text: "Guías de composición" },
-      {
-        type: "ul",
-        items: [
-          "**Regla de los tercios**: superpone las líneas guía clásicas de fotografía en la viewport, para ubicar los puntos de interés en las zonas fuertes del cuadro.",
-          "**2 puntos de fuga**: activa la perspectiva arquitectónica de SketchUp: todas las verticales quedan perfectamente rectas, el estándar de las fotos profesionales de arquitectura.",
-        ],
-      },
-      { type: "h2", text: "Guardar escenas" },
-      {
-        type: "p",
-        text: "¿Encontraste el ángulo perfecto? Ponle nombre y haz clic en **Guardar**. La escena se crea en SketchUp y vuelves a ella cuando quieras. Guarda tus 3 o 4 ángulos principales antes de empezar a renderizar: facilita generar la serie completa de imágenes del proyecto y rehacer ajustes después.",
-      },
-    ],
-  },
 
-  "primeiro-render": {
-    title: "Tu primer render fotorrealista en el Estudio",
-    excerpt:
-      "El paso a paso completo del modo Render: tipo de proyecto, clima, luces y detalles de la escena, y cómo escribir descripciones que mejoran el resultado.",
-    blocks: [
-      {
-        type: "p",
-        text: "Con la escena preparada, renderizar es seguir los 5 pasos numerados de la pestaña **Estudio**, en modo **Render**. En segundos la IA devuelve una imagen fotorrealista del ángulo exacto de tu viewport, preservando tu proyecto. Geometría, materiales y composición.",
-      },
-      {
-        type: "img",
-        src: "/treinamento/ui/studio-render-{lang}.webp",
-        alt: "Pestaña Estudio en modo Render",
-        caption: "El modo Render del Estudio: 5 pasos numerados hasta el botón Renderizar.",
-        ui: true,
-      },
-      { type: "h2", text: "Los 5 pasos" },
-      {
-        type: "steps",
-        items: [
-          {
-            title: "Tipo de proyecto",
-            text: "Le dice a la IA qué está viendo: Interiores, Fachada Externa, En la Naturaleza (integración con paisaje), Comercial (tienda, oficina) o Edificio. Cada tipo recibe un tratamiento específico de iluminación y contexto. Al elegir **Fachada Externa** aparece una segunda opción, el entorno del terreno: **Casas vecinas** (la predeterminada — una casa a cada lado, del mismo nivel que tu proyecto), **Lotes con muro** (terrenos vacíos con muro o cerca divisoria) o **Terreno abierto** (terreno abierto, sin muros ni cercas).",
-          },
-          {
-            title: "Calidad",
-            text: "El motor de imagen de Vizai (Nano Banana Pro). Cada render cuesta 4 créditos.",
-          },
-          {
-            title: "Estilo de clima",
-            text: "Día, Atardecer, Noche o Nublado. Define el cielo, la temperatura de la luz y el clima general de la imagen.",
-          },
-          {
-            title: "Luces",
-            text: "Luces encendidas (interiores de noche o ambientes acogedores), apagadas, o Ninguno para que la IA decida lo natural.",
-          },
-          {
-            title: "Detalles de la escena",
-            text: "Campo libre opcional para orientar a la IA: materiales, vegetación, atmósfera. Se integra automáticamente al prompt.",
-          },
-        ],
-      },
-      { type: "h2", text: "El resultado" },
-      {
-        type: "compare",
-        before: { src: "/compare2-before.jpg", label: "Modelo SketchUp" },
-        after: { src: "/compare2-after.jpg", label: "Render Vizai" },
-      },
-      {
-        type: "p",
-        text: "El render aparece en el propio panel con el control **Antes/Después** para compararlo con el modelo original, incluso en pantalla completa. Desde ahí puedes **Descargar** la imagen, abrir el **Editor** para refinarla, o **Exportar en alta resolución**: la descarga estándar es gratis, y el upscale a **4K cuesta 5 créditos**.",
-      },
-      { type: "h2", text: "Escribiendo buenos detalles de escena" },
-      {
-        type: "p",
-        text: "El campo de detalles no necesita frases elaboradas. Palabras clave separadas por comas funcionan mejor. Describe lo que la IA no puede adivinar del modelo:",
-      },
-      {
-        type: "ul",
-        items: [
-          "**Materiales específicos**: “piso de porcelanato satinado, carpintería de madera clara, encimera de cuarzo blanco”.",
-          "**Vegetación y entorno**: “vegetación tropical, césped recortado, calle arbolada”.",
-          "**Atmósfera**: “luz suave de atardecer, ambiente acogedor”.",
-        ],
-      },
-      {
-        type: "tip",
-        text: "Aplica texturas reales al modelo en vez de dejarlo todo blanco: la IA respeta los materiales que ve. Modelo texturizado + detalles cortos en el prompt = el resultado más fiel.",
-      },
-      {
-        type: "warn",
-        text: "Si el render sale oscuro o con zonas “inventadas”, vuelve a la pestaña Escenas y aclara la iluminación. Generalmente la IA no estaba viendo esa parte del modelo.",
-      },
-      { type: "cost", text: "4 créditos por render · upscale 4K opcional por 5 créditos" },
-    ],
-  },
 
-  "editar-render": {
-    title: "Editor: inpaint, nuevas perspectivas y ajustes profesionales",
-    excerpt:
-      "Todo de la ventana Editar Render: corrige áreas específicas con IA, genera nuevos ángulos y closeups desde un render listo, recorta y termina la foto, sin rehacer el render.",
-    blocks: [
-      {
-        type: "p",
-        text: "¿Generaste un buen render pero el sofá quedó raro? ¿Quieres el mismo ambiente desde otro ángulo, o un closeup de la encimera para la presentación? Para eso existe el **Editor**. Haz clic en **Editar** sobre cualquier render y se abre en una ventana dedicada con tres pestañas: **Edición con IA**, **Recorte** y **Ajustes**.",
-      },
-      {
-        type: "img",
-        src: "/treinamento/ui/editor-ia-{lang}.webp",
-        alt: "Ventana Editar Render con la pestaña Edición con IA",
-        caption: "El Editor: herramientas de máscara, prompt de edición e historial a la derecha.",
-      },
-      { type: "h2", text: "Edición con IA (inpaint)" },
-      {
-        type: "p",
-        text: "El inpaint permite alterar **solo un área** de la imagen, manteniendo todo lo demás intacto. Pinta la región que quieres cambiar y describe la modificación:",
-      },
-      {
-        type: "steps",
-        items: [
-          {
-            title: "Marca el área",
-            text: "Usa el Pincel (con control de grosor), el Rectángulo o el Círculo para crear la máscara. ¿Te equivocaste? Borrador, Deshacer trazo o Limpiar máscara.",
-          },
-          {
-            title: "Describe el cambio",
-            text: "“Cambiar el sofá por uno de lino beige”, “quitar el coche”, “agregar cuadros en la pared”… La IA edita solo el área marcada.",
-          },
-          {
-            title: "Aplica y compara",
-            text: "Cada edición cuesta 4 créditos y entra al historial lateral. Navega entre versiones y mantén presionado el botón Antes/Después para comparar con el original.",
-          },
-        ],
-      },
-      {
-        type: "video",
-        src: "/tools/tool-edit.mp4",
-        caption: "Inpaint en acción: marca, describe y la IA cambia solo esa área.",
-      },
-      {
-        type: "tip",
-        text: "Sin ninguna máscara, el comando vale para toda la imagen, útil para cambios globales como “hacerlo nocturno” o “cambiar el color de las paredes”.",
-      },
-      { type: "h2", text: "Nuevas perspectivas: varias escenas desde un render" },
-      {
-        type: "p",
-        text: "Este es uno de los recursos más potentes del Editor: pide **otro ángulo** del mismo ambiente directamente en el campo de texto, sin mover la cámara en SketchUp y sin gastar un render nuevo desde cero. La IA entiende la intención de tu comando:",
-      },
-      {
-        type: "ul",
-        items: [
-          "**“Closeup del sillón”**: marca el sillón (o solo escríbelo) y recibe un detalle aproximado, con materiales e iluminación preservados.",
-          "**“Vista lateral del ambiente”** o **“nueva perspectiva mostrando la cocina desde la derecha”**. Genera el mismo espacio visto desde otro punto.",
-          "**“Vista de dron”**: aleja y eleva la cámara para una toma aérea.",
-        ],
-      },
-      {
-        type: "img",
-        src: "/tools/tool-02.jpg",
-        alt: "Nuevas perspectivas generadas desde un render",
-        caption: "Un render base puede convertirse en una serie completa de imágenes del proyecto.",
-      },
-      {
-        type: "p",
-        text: "En la práctica, un único render de 4 créditos se vuelve la base de una **presentación completa**: genera la vista general, luego pide closeups de los detalles y ángulos alternativos por 4 créditos cada uno. Mucho más rápido que reposicionar la cámara y re-renderizar cada vista.",
-      },
-      { type: "h2", text: "Recorte y Ajustes (gratis)" },
-      {
-        type: "imgrow",
-        images: [
-          {
-            src: "/treinamento/ui/editor-crop-{lang}.webp",
-            alt: "Pestaña Recorte del Editor",
-            caption: "Recorte con proporciones listas o libre.",
-          },
-          {
-            src: "/treinamento/ui/editor-adjust-{lang}.webp",
-            alt: "Pestaña Ajustes del Editor",
-            caption: "Ajustes finos de foto, sin costo.",
-          },
-        ],
-      },
-      {
-        type: "p",
-        text: "La pestaña **Recorte** reencuadra la imagen en las proporciones del plugin (Paisaje, Cuadrado, Feed, Retrato, Clásico, Foto) o en recorte libre/personalizado. La pestaña **Ajustes** la termina como en un editor de fotos: **brillo, contraste, saturación, exposición y temperatura**. Las dos son totalmente gratuitas, igual que la descarga en 2K.",
-      },
-      {
-        type: "p",
-        text: "Al hacer clic en **Finalizar Edición**, la versión final vuelve al panel principal, lista para convertirse en video, 360 o upscale 4K.",
-      },
-      { type: "cost", text: "Edición con IA y nuevas perspectivas: 4 créditos cada una · Recorte, Ajustes y descarga 2K: gratis" },
-    ],
-  },
 
-  "reflexo-espelho": {
-    title: "Reflejo del Espejo: espejos, vidrios, TV y suelo pulido",
-    excerpt:
-      "SketchUp no renderiza reflejos: Vizai genera el reflejo real del ambiente en la superficie, gratis, antes del render. Sirve para espejo, vidrio de armario, TV apagada y suelo pulido.",
-    blocks: [
-      {
-        type: "p",
-        text: "Una superficie que refleja es un problema clásico: SketchUp muestra una cara plana y la IA, sin referencia, se inventa un reflejo cualquiera. La herramienta **Reflejo del Espejo** (en la pestaña Escenas) proyecta en la cara lo que **realmente reflejaría**, y entonces sí renderizas, con el reflejo coherente con el ambiente.",
-      },
-      {
-        type: "video",
-        src: "/treinamento/ui/reflexo-espelho.mp4",
-        caption: "Reflejo aplicado directamente en la pestaña Escenas, sin coste de créditos.",
-      },
-      { type: "h2", text: "Seis tipos de superficie" },
-      {
-        type: "p",
-        text: "La captura es la misma para todos; lo que cambia es el acabado. Elige el tipo **antes** de hacer clic en la cara:",
-      },
-      {
-        type: "ul",
-        items: [
-          "**Espejo**: opaco, reflejo pleno. El comportamiento clásico de la herramienta.",
-          "**Suelo**: porcelánico pulido, encimera de mármol, mesa lacada. Reflejo suave por encima: el material del suelo sigue mandando en el aspecto.",
-          "**TV**: pantalla apagada. Opaca y bien oscura, con el ambiente apenas insinuado, como una pantalla apagada de verdad.",
-          "**Vidrio**: vidrio incoloro de mampara o puerta. Refleja menos y deja ver a través, sin alterar el color de lo que refleja.",
-          "**Bronce** y **Ahumado**: los vidrios tintados de puerta de armario. Semitransparentes: el reflejo aparece encima y el interior del armario por debajo.",
-        ],
-      },
-      { type: "h2", text: "Cómo usarlo" },
-      {
-        type: "steps",
-        items: [
-          {
-            title: "Guarda la escena",
-            text: "Deja la vista que vas a renderizar y guárdala como escena. El reflejo queda atado a esa escena.",
-          },
-          {
-            title: "Elige el tipo y haz clic en la cara",
-            text: "Selecciona el tipo de superficie, haz clic en **Generar Reflejo en la Escena** y luego en la cara. Se ilumina en azul. No hace falta entrar en el grupo. Las pantallas de TV y los suelos importados suelen venir divididos en varios trozos: el plugin une los trozos vecinos solo y se ilumina la superficie entera.",
-          },
-          {
-            title: "¿Superficie en partes separadas? Usa Shift",
-            text: "Espejo en paneles o vidrio en hojas: mantén **Shift** y haz clic en las otras caras, luego **Enter**. Sale un reflejo continuo, sin junta entre las partes.",
-          },
-          {
-            title: "Ajusta sin rehacer",
-            text: "Suelo y TV tienen un slider; vidrio, bronce y ahumado tienen dos. **Brillo** y **transparencia**. Suelta el slider y el reflejo que ya está en la escena cambia al instante, sin generarlo otra vez. Cada slider tiene un botón para volver al valor por defecto.",
-          },
-        ],
-      },
-      {
-        type: "p",
-        text: "El plugin refleja la cámara de la escena por el plano de la superficie, captura el ambiente que realmente reflejaría y lo proyecta en la cara, en segundos, **sin coste de créditos**, porque todo ocurre localmente en tu SketchUp.",
-      },
-      {
-        type: "warn",
-        text: "El reflejo queda **guardado en la escena** y desaparece al cambiar de escena. Genera uno para cada una. Si cambias la vista de la escena después, rehaz el reflejo antes de renderizar. El botón **Borrar todos los reflejos** limpia de una vez todo lo que la herramienta creó en el modelo.",
-      },
-      {
-        type: "tip",
-        text: "En el vidrio tintado, el interior del armario solo aparece si el material de la puerta está transparente en SketchUp. Y conviene combinarlos: espejo en el baño, ahumado en las puertas del vestidor, suelo pulido en el salón. Es el conjunto lo que hace que el render parezca una fotografía.",
-      },
-      { type: "cost", text: "Gratis: procesado localmente, sin créditos" },
-    ],
-  },
 
-  "luz-fake": {
-    title: "Luz Falsa: tiras de LED y spots directo en SketchUp",
-    excerpt:
-      "Vizai crea la luz como geometría (tira que contornea espejos y carpintería, spot con haz visible) para que la IA entienda la iluminación de tu proyecto.",
-    blocks: [
-      {
-        type: "p",
-        text: "SketchUp no muestra luz. Dibujas la cornisa, el nicho, el espejo, y la escena sigue plana, sin ninguna pista de lo que debe encender en el render. La **Luz Falsa** (en la pestaña Escenas, justo debajo del Reflejo de Espejo) lo resuelve dibujando la luz: una tira de LED que corre por el borde, o un spot con el haz visible. No es iluminación real. Es una referencia clara para que la IA sepa dónde hay luz y de qué color es.",
-      },
-      {
-        type: "video",
-        src: "/treinamento/ui/luz-fake.mp4",
-        caption: "Tira de LED detrás del espejo, en la carpintería y spots en el techo, todo local, sin costo de créditos.",
-      },
-      { type: "h2", text: "Tira de LED o Spot" },
-      {
-        type: "ul",
-        items: [
-          "**Tira de LED**: corre a lo largo de una línea (cornisa, nicho, zócalo) o contornea el borde entero de un espejo. En **Tipo de objeto** eliges entre **Carpintería** y **Espejo**.",
-          "**Spot**: el haz cónico de una luminaria. Haces clic en la cara de la luminaria y el haz sale de ella.",
-        ],
-      },
-      { type: "h2", text: "Cómo usarla" },
-      {
-        type: "steps",
-        items: [
-          {
-            title: "Elige el modo y ajusta la luz",
-            text: "Selecciona **Tira de LED** o **Spot**, el color (por defecto un blanco cálido, #ffe76e), la dirección del haz y los sliders de **Alcance**, **Intensidad** y **Apertura**. Cada modo guarda sus propios valores.",
-          },
-          {
-            title: "Haz clic en Generar y luego en el lugar de la luz",
-            text: "Para tira en carpintería, haz clic en la **línea** por donde va a correr. Mantén **Shift** para sumar varias líneas de una vez. Para tira en espejo, haz clic en la **cara del espejo** y contornea todo el borde. Para spot, haz clic en la **cara de la luminaria**. **ESC** sale de la herramienta.",
-          },
-          {
-            title: "Ajusta sin rehacer",
-            text: "Con una luz seleccionada en SketchUp, los sliders pasan a editar esa luz. Suelta el slider y se reconstruye al instante. También puedes mover la luz a mano y el siguiente ajuste respeta la nueva posición.",
-          },
-        ],
-      },
-      {
-        type: "p",
-        text: "La tira es una franja continua: las esquinas se encuentran sin rasgarse, y en un contorno vertical (el espejo) el brillo sale hacia afuera siguiendo la forma, mientras que en uno horizontal (la cornisa) baja o sube. Todo se genera en tu computadora, en segundos, **sin consumir créditos**.",
-      },
-      {
-        type: "warn",
-        text: "Es luz **falsa**: no ilumina la escena de SketchUp, sirve como referencia visual para el render. El botón **Apagar todas las luces** elimina de una vez todo lo que la herramienta creó en el modelo.",
-      },
-      {
-        type: "tip",
-        text: "El uso que más rinde es la tira detrás del espejo. Ese brillo contorneando el borde es lo que hace que la IA entregue el espejo retroiluminado que imaginaste. Combínala con el **Reflejo de Espejo** en la misma escena: uno da el reflejo, la otra da la luz.",
-      },
-      { type: "cost", text: "Gratis: procesado localmente, sin créditos" },
-    ],
-  },
 
   "decorar-ambiente": {
     title: "Decorar Ambiente: muebles y decoración con IA en espacios vacíos",
@@ -717,298 +700,7 @@ export const esArticles: Record<string, ArticleContent> = {
     ],
   },
 
-  "video-com-ia": {
-    title: "Video con IA: anima tus renders con cámara cinematográfica",
-    excerpt:
-      "Convierte un render en un video de 4 a 15 segundos con movimiento de cámara profesional y sonido ambiente generado por IA, directo desde el plugin.",
-    blocks: [
-      {
-        type: "p",
-        text: "La pestaña **Video** convierte cualquier render en un clip cinematográfico usando **Kling 3.0 Pro**, uno de los motores de video más avanzados del mundo. El resultado sale en **1080p**, con movimiento de cámara suave y, si quieres, sonido ambiente generado por IA.",
-      },
-      {
-        type: "video",
-        src: "/tools/tool-03.mp4",
-        caption: "Video generado desde un render del plugin.",
-      },
-      { type: "h2", text: "Montando el video" },
-      {
-        type: "img",
-        src: "/treinamento/ui/video-{lang}.webp",
-        alt: "Pestaña Video de Vizai Render",
-        caption: "La pestaña Video: frames, proporción, cámara y duración.",
-        ui: true,
-      },
-      {
-        type: "steps",
-        items: [
-          {
-            title: "Frame inicial",
-            text: "El punto de partida del video: usa el último render, elige del historial o sube desde tu PC.",
-          },
-          {
-            title: "Frame final (opcional)",
-            text: "Define también la imagen de llegada y la IA crea la transición entre las dos. Ideal para un “tour” entre dos ángulos del ambiente.",
-          },
-          {
-            title: "Proporción",
-            text: "16:9 paisaje, 1:1 cuadrado o 9:16 vertical para Reels y Stories.",
-          },
-          {
-            title: "Cámara y audio",
-            text: "Elige el movimiento y el sonido en el modal de configuración (detalles abajo).",
-          },
-          {
-            title: "Duración",
-            text: "4, 6, 8, 10 o 15 segundos: el costo aparece en el botón antes de generar.",
-          },
-        ],
-      },
-      { type: "h2", text: "Movimientos de cámara" },
-      {
-        type: "img",
-        src: "/treinamento/ui/modal-camera-{lang}.webp",
-        alt: "Modal de cámara y audio del video",
-        caption: "8 movimientos listos + descripción libre del movimiento.",
-        ui: true,
-      },
-      {
-        type: "ul",
-        items: [
-          "**Automático**: movimiento natural elegido por la IA (recomendado).",
-          "**Zoom In / Zoom Out**: acercamiento o alejamiento suave.",
-          "**Panorámica izquierda / derecha**: deslizamiento lateral.",
-          "**Tilt Up / Tilt Down**: inclinación hacia arriba o abajo.",
-          "**Órbita (Dron)**: giro suave alrededor del proyecto.",
-        ],
-      },
-      {
-        type: "p",
-        text: "¿Prefieres dirigir la escena? Describe el movimiento libremente (“la cámara avanza despacio por la sala revelando el balcón”) y usa las **Observaciones** para pedir foco en algún elemento. En el audio, elige **Sonido Ambiente por IA** (viento, pasos, sonidos urbanos, gratis) o video mudo para editar después.",
-      },
-      {
-        type: "table",
-        head: ["Duración", "Costo"],
-        rows: [
-          ["4 segundos", "22 créditos"],
-          ["6 segundos", "33 créditos"],
-          ["8 segundos", "44 créditos"],
-          ["10 segundos", "55 créditos"],
-          ["15 segundos", "83 créditos"],
-        ],
-      },
-      {
-        type: "tip",
-        text: "Los videos de 4–6 segundos con movimiento Automático o Zoom In son los que más convierten en redes sociales, y los más baratos. Empieza por ahí.",
-      },
-    ],
-  },
 
-  "panorama-360": {
-    title: "Panorama 360°: presentaciones inmersivas que el cliente explora",
-    excerpt:
-      "Marca la pared y dónde te paras: SketchUp captura todo el ambiente y la IA devuelve un panorama esférico que el cliente explora por link, sin instalar nada.",
-    blocks: [
-      {
-        type: "p",
-        text: "La pestaña **360** convierte tu ambiente en un **panorama esférico interactivo** directo desde el modelo, sin renderizar nada antes. Marcas dónde va la cámara y el plugin hace el resto. El cliente recibe un link, lo abre en el navegador (computadora o celular) y explora el espacio girando la imagen.",
-      },
-      {
-        type: "img",
-        src: "/demo/360/pano-result.webp",
-        alt: "Panorama 360 generado por Vizai Render",
-        caption: "El panorama generado: listo para el visor interactivo.",
-      },
-      { type: "h2", text: "Cómo generarlo" },
-      {
-        type: "img",
-        src: "/treinamento/ui/pano-{lang}.webp",
-        alt: "Pestaña 360 de Vizai Render",
-        caption: "La pestaña 360: marca la pared y después dónde se para el observador.",
-        ui: true,
-      },
-      {
-        type: "p",
-        text: "No necesitas renderizar nada antes. **Haz clic en la pared** que quedará en el centro del panorama y después **dónde te paras**. SketchUp captura todo el ambiente solo, en todas las direcciones, y arma la imagen esférica. La IA convierte esa captura en una foto realista.",
-      },
-      {
-        type: "steps",
-        items: [
-          {
-            title: "Elige la pared del frente",
-            text: "Queda en el centro del panorama. La unión cae en la pared opuesta, así que deja la más bonita al frente.",
-          },
-          {
-            title: "Marca dónde te paras",
-            text: "Haz clic en el piso, en el punto desde donde mirará el cliente. La altura del ojo viene en 1,60 m y puedes cambiarla.",
-          },
-          {
-            title: "Revisa la vista previa",
-            text: "El plugin muestra el ambiente capturado antes de gastar crédito. Si el observador quedó dentro de un mueble, rehazlo. La vista previa es gratis.",
-          },
-          {
-            title: "Genera y comparte",
-            text: "5 créditos. Después: visualízalo en el plugin, descarga la imagen, copia el link o envíalo directo por WhatsApp.",
-          },
-        ],
-      },
-      {
-        type: "tip",
-        text: "Elige una pared sin muebles pegados y un punto de vista con espacio alrededor. Un observador apretado en una esquina achata el ambiente; desde el medio del cuarto, el panorama respira.",
-      },
-      { type: "cost", text: "5 créditos por panorama · link para compartir gratis" },
-    ],
-  },
-  "blocos-3d": {
-    title: "Bloques 3D: convierte cualquier foto en un modelo para SketchUp",
-    excerpt:
-      "¿Viste la silla perfecta en una referencia? La pestaña Bloques convierte la foto en un modelo 3D texturizado y lo importa directo a tu escena.",
-    blocks: [
-      {
-        type: "p",
-        text: "La pestaña **Bloques** resuelve un clásico: el cliente quiere un mueble específico que no existe en el 3D Warehouse. Envía una foto de referencia y la IA reconstruye el objeto en 3D, con textura, listo para importar a la escena en la escala correcta.",
-      },
-      {
-        type: "img",
-        src: "/tools/tool-05.webp",
-        alt: "Bloque 3D generado desde una foto",
-        caption: "De la foto de referencia al bloque 3D en la escena.",
-      },
-      { type: "h2", text: "Cómo generarlo" },
-      {
-        type: "img",
-        src: "/treinamento/ui/blocos-{lang}.webp",
-        alt: "Pestaña Bloques de Vizai Render",
-        caption: "La pestaña Bloques: foto, densidad de malla y textura.",
-        ui: true,
-      },
-      {
-        type: "steps",
-        items: [
-          {
-            title: "Agrega la foto de referencia",
-            text: "Arrastra o haz clic para subirla. Funciona mejor con el objeto completo visible, bien iluminado y con fondo limpio.",
-          },
-          {
-            title: "Nombra el bloque",
-            text: "El nombre organiza el componente en tu modelo (ej.: “Silla de Madera”).",
-          },
-          {
-            title: "Elige la densidad de polígonos",
-            text: "Ligero, Recomendado, Pesado o Ultra. Para SketchUp, Ligero o Recomendado mantienen el archivo ágil.",
-          },
-          {
-            title: "Textura",
-            text: "Con textura PBR (colores y materiales de la foto) o solo geometría, para aplicar tus propios materiales.",
-          },
-          {
-            title: "Importa o descarga",
-            text: "Importar en la escena coloca el bloque directo en el modelo; o descarga el .GLB para usarlo en cualquier software.",
-          },
-        ],
-      },
-      {
-        type: "warn",
-        text: "Los bloques con densidad Pesado/Ultra pueden hacer lento el archivo en modelos grandes. Si te pasas, la ventana Tools (Impacto de los Componentes) muestra qué bloques están pesando, y la guía de Optimizar Archivo lo resuelve.",
-      },
-      { type: "cost", text: "28 créditos por bloque generado" },
-    ],
-  },
 
-  "otimizar-arquivo": {
-    title: "Optimizar Archivo (Tools): deja tu .skp ligero gratis",
-    excerpt:
-      "Purge inteligente, materiales duplicados, reducción de texturas e informe de impacto de los componentes. La limpieza completa del archivo, 100% local y gratuita.",
-    blocks: [
-      {
-        type: "p",
-        text: "¿Archivo trabado, órbita entrecortada, .skp de cientos de MB? La ventana **Tools** (pestaña lateral verde del panel) incluye **Optimizar Archivo**: un conjunto de limpiezas que corre 100% en tu computadora, **sin costar créditos**. El tamaño del archivo aparece arriba, antes y después. Ves el resultado al instante.",
-      },
-      {
-        type: "img",
-        src: "/treinamento/ui/tools-otimizar-{lang}.webp",
-        alt: "Ventana Tools con la pestaña Optimizar Archivo",
-        caption: "Optimizar Archivo: Limpieza, Texturas e Impacto.",
-        ui: true,
-      },
-      { type: "h2", text: "Limpieza" },
-      {
-        type: "ul",
-        items: [
-          "**Purge**: elimina materiales, componentes y estilos que no se usan en nada en el proyecto. Es la limpieza que más reduce archivos que pasaron por muchas versiones.",
-          "**Materiales Duplicados**: une materiales que usan la misma textura con nombres distintos (Madera, Madera1, Madera-copy…), común en modelos armados con bloques de orígenes variados.",
-        ],
-      },
-      { type: "h2", text: "Texturas" },
-      {
-        type: "p",
-        text: "El **Gestor de Texturas** lista todas las imágenes del modelo con sus dimensiones. Texturas 4K en el tirador de un cajón son peso muerto: selecciona las exageradas y redúcelas a la resolución objetivo en un clic. El aspecto en la viewport casi no cambia. El tamaño del archivo, sí.",
-      },
-      { type: "h2", text: "Impacto" },
-      {
-        type: "p",
-        text: "El informe de **Impacto de los Componentes** muestra qué bloques tienen más geometría (caras) y cuántas instancias existen de cada uno. Así descubres que un árbol bajado del Warehouse tiene 800 mil caras, y que está repetido 12 veces. El botón Ver localiza el componente en el modelo para que decidas qué hacer.",
-      },
-      {
-        type: "tip",
-        text: "Corre Optimizar Archivo antes de renderizar proyectos grandes: modelo ligero = viewport fluida = captura más rápida. Y haz respaldo la primera vez que corras limpiezas pesadas en un archivo importante.",
-      },
-      { type: "cost", text: "Gratis: procesado localmente, sin créditos" },
-    ],
-  },
 
-  "pisos-seamless": {
-    title: "Pisos Seamless (Tools): despiece de pisos profesional en segundos",
-    excerpt:
-      "Crea texturas de piso continuas desde cualquier imagen: porcelanato, madera con variaciones, junta configurable y aplicación directa en las caras.",
-    blocks: [
-      {
-        type: "p",
-        text: "La segunda herramienta de la ventana **Tools** arma **texturas de piso seamless** a partir de imágenes sueltas. Esa foto de porcelanato del sitio del proveedor se convierte en un piso despiezado, con junta y en la dimensión real de la pieza. También es local y gratuita.",
-      },
-      {
-        type: "img",
-        src: "/treinamento/ui/tools-pisos-{lang}.webp",
-        alt: "Pestaña Pisos Seamless de la ventana Tools",
-        caption: "Vista previa en vivo del despiece, con junta y dimensiones reales.",
-        ui: true,
-      },
-      { type: "h2", text: "Armando el piso" },
-      {
-        type: "steps",
-        items: [
-          {
-            title: "Textura base",
-            text: "Sube la imagen de la pieza (foto del porcelanato, de la madera, del azulejo).",
-          },
-          {
-            title: "Variaciones (opcional)",
-            text: "Agrega hasta 3 imágenes alternativas de la misma línea. El plugin intercala las piezas y elimina el efecto de repetición, esencial en maderas.",
-          },
-          {
-            title: "Despiece y rotación",
-            text: "Cuadrícula Recta (alineada), Trabado 50% o Trabado 1/3, y gira la pieza si lo necesitas (tablones en vertical, por ejemplo).",
-          },
-          {
-            title: "Dimensiones reales",
-            text: "Ancho y alto de la pieza en centímetros (90×90, 20×120…). La textura entra a SketchUp ya en la escala correcta.",
-          },
-          {
-            title: "Junta",
-            text: "Grosor en milímetros y color: gris, beige, negra o combinando con la pieza.",
-          },
-        ],
-      },
-      { type: "h2", text: "Aplicando al modelo" },
-      {
-        type: "p",
-        text: "La vista previa muestra el despiece en tiempo real. Para aplicar: **selecciona las caras del piso** en SketchUp antes de hacer clic en Aplicar Textura. El material se crea y se mapea directo en ellas. Sin selección, el plugin activa el bote de pintura para que hagas clic donde quieras.",
-      },
-      {
-        type: "tip",
-        text: "Pisos con despiece y junta correctos elevan el realismo del render: la IA respeta el dibujo del piso que ve en la escena. Arma el piso aquí antes de renderizar en el Estudio.",
-      },
-      { type: "cost", text: "Gratis: procesado localmente, sin créditos" },
-    ],
-  },
 };

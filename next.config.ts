@@ -87,11 +87,17 @@ const frameSrc = [
 
 const fontSrc = ["'self'", "data:", "https://fonts.gstatic.com"].join(" ");
 
+// Aulas em vídeo do Treinamento: os arquivos moram no R2 e são servidos pelo
+// CDN próprio. Sem media-src explícito eles caem no default-src 'self' e o
+// navegador bloqueia o play sem dizer o motivo na tela.
+const mediaSrc = ["'self'", "blob:", "https://cdn.vizairender.com"].join(" ");
+
 const cspDirectives = [
   `default-src 'self'`,
   `script-src ${scriptSrc}`,
   `style-src ${styleSrc}`,
   `img-src ${imgSrc}`,
+  `media-src ${mediaSrc}`,
   `font-src ${fontSrc}`,
   `connect-src ${connectSrc}`,
   `frame-src ${frameSrc}`,
@@ -197,6 +203,30 @@ const nextConfig: NextConfig = {
       { source: "/treinamento/como-funciona-creditos", destination: "/treinamento/primeiros-passos", permanent: true },
       { source: "/en/treinamento/como-funciona-creditos", destination: "/en/treinamento/primeiros-passos", permanent: true },
       { source: "/es/treinamento/como-funciona-creditos", destination: "/es/treinamento/primeiros-passos", permanent: true },
+      // Os 10 guias de Render, Apresentação e Ferramentas grátis viraram as 8
+      // aulas em vídeo (set/2026). As URLs estavam indexadas, então vão de 301
+      // para o índice do Treinamento, onde o assunto de cada uma agora vive.
+      ...[
+        "video-com-ia",
+        "panorama-360",
+        "blocos-3d",
+        "otimizar-arquivo",
+        "pisos-seamless",
+      ].flatMap((slug) => [
+        { source: `/treinamento/${slug}`, destination: "/treinamento", permanent: true },
+        { source: `/en/treinamento/${slug}`, destination: "/en/treinamento", permanent: true },
+        { source: `/es/treinamento/${slug}`, destination: "/es/treinamento", permanent: true },
+      ]),
+      // Guias absorvidos pelas aulas 1 e 2: vão para a página da aula que os cobre.
+      ...[
+        ["preparando-a-cena", "primeiro-render"],
+        ["editar-render", "primeiro-render"],
+        ["luz-fake", "reflexo-espelho"],
+      ].flatMap(([de, para]) => [
+        { source: `/treinamento/${de}`, destination: `/treinamento/${para}`, permanent: true },
+        { source: `/en/treinamento/${de}`, destination: `/en/treinamento/${para}`, permanent: true },
+        { source: `/es/treinamento/${de}`, destination: `/es/treinamento/${para}`, permanent: true },
+      ]),
       // URL "adivinhável" que gente digita ou recebe por anúncio/WhatsApp
       { source: "/planos", destination: "/#pricing", permanent: true },
       { source: "/plans", destination: "/#pricing", permanent: true },

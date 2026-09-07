@@ -30,7 +30,7 @@ export type ArticleContent = {
   blocks: TreinoBlock[];
 };
 
-export type CategoryId = "start" | "render" | "creative" | "present" | "free";
+export type CategoryId = "start" | "render" | "creative" | "present" | "free" | "aulas";
 
 export type ArticleMeta = {
   slug: string;
@@ -39,6 +39,8 @@ export type ArticleMeta = {
   cover: string;
   /** Tempo de leitura em minutos. */
   minutes: number;
+  /** Slug da aula em vídeo, quando a página tem o vídeo no topo. */
+  aula?: string;
 };
 
 export type TreinoUiStrings = {

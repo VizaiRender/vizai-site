@@ -63,6 +63,7 @@ function articleJsonLd(
   title: string,
   description: string,
   image: string,
+  aula?: string,
 ) {
   const url = absoluteUrl(lang, `/treinamento/${slug}`);
   return {
@@ -102,9 +103,36 @@ function articleJsonLd(
           { "@type": "ListItem", position: 3, name: title },
         ],
       },
+      ...(aula
+        ? [
+            {
+              "@type": "VideoObject",
+              "@id": `${url}#video`,
+              name: title,
+              description,
+              thumbnailUrl: `${SITE_URL}/treinamento/capas/${aula}.jpg`,
+              contentUrl: `https://cdn.vizairender.com/treinamento/${aula}.mp4`,
+              uploadDate: "2026-09-06",
+              duration: AULA_ISO[aula] ?? undefined,
+              inLanguage: lang,
+            },
+          ]
+        : []),
     ],
   };
 }
+
+/** Duração de cada aula no formato que o schema.org pede. */
+const AULA_ISO: Record<string, string> = {
+  "primeiro-render": "PT12M21S",
+  "reflexo-e-luz-fake": "PT4M28S",
+  "otimizar-arquivo": "PT1M40S",
+  "texturas-seamless": "PT1M49S",
+  "gerando-videos": "PT2M25S",
+  "imagem-360": "PT1M25S",
+  "gerando-blocos": "PT2M9S",
+  historico: "PT39S",
+};
 
 export function ArticlePage({ slug, lang }: { slug: string; lang: Lang }) {
   if (!ARTICLES.some((a) => a.slug === slug)) notFound();
@@ -119,6 +147,7 @@ export function ArticlePage({ slug, lang }: { slug: string; lang: Lang }) {
           content.title,
           content.excerpt,
           resolveSrc(meta.cover, lang),
+          meta.aula,
         )
       : null;
 

@@ -1,5 +1,6 @@
 "use client";
 
+import { AulaVideo } from "@/components/ui/aula-video";
 import { AutoVideo } from "@/components/ui/auto-video";
 import Link from "next/link";
 import Image from "next/image";
@@ -445,6 +446,10 @@ export function TreinamentoArticle({ slug }: { slug: string }) {
       >
         {content.excerpt}
       </p>
+
+      {/* Aula em vídeo, quando a página tem uma. O texto abaixo é o guia
+          completo do mesmo assunto, para quem prefere ler a assistir. */}
+      {meta.aula && <AulaVideo slug={meta.aula} titulo={content.title} />}
 
       {/* Conteúdo */}
       {content.blocks.map((block, i) => (

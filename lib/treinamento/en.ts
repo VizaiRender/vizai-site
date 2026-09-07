@@ -2,7 +2,7 @@ import type { ArticleContent, TreinoUiStrings } from "./types";
 
 export const enUi: TreinoUiStrings = {
   badge: "Official Vizai Render training",
-  title: "Learn to master Vizai Render",
+  title: "Vizai Render Training",
   subtitle:
     "Complete guides to every tool in the plugin, from your first render to video and 360° presentations. Everything explained step by step, with real images of the interface and the results.",
   featuredLabel: "Start here",
@@ -17,6 +17,7 @@ export const enUi: TreinoUiStrings = {
   ctaDownload: "Download plugin",
   ctaSignup: "Create free account",
   categories: {
+    aulas: "Video lesson",
     start: "Start here",
     render: "Render",
     creative: "Creative AI",
@@ -26,6 +27,335 @@ export const enUi: TreinoUiStrings = {
 };
 
 export const enArticles: Record<string, ArticleContent> = {
+  "primeiro-render": {
+    title: "Your first photorealistic render in SketchUp, from framing to final image",
+    excerpt:
+      "The full lesson: set the scene in the Scenes tab, generate the render in Studio and refine the image in the editor, without leaving SketchUp.",
+    blocks: [
+{
+        type: "p",
+        text: "The AI renders exactly what it sees in your viewport. That's why the step that most influences quality isn't the prompt. It's **scene preparation**. The Scenes tab gathers every control for it, without touching SketchUp's settings.",
+      },
+      {
+        type: "img",
+        src: "/treinamento/ui/cenas-full-{lang}.webp",
+        alt: "Full Scenes tab of Vizai Render",
+        caption: "The Scenes tab: lighting, format, focal length and composition guides.",
+        ui: true,
+      },
+      { type: "h2", text: "Scene lighting" },
+      {
+        type: "p",
+        text: "The **Light** and **Dark** controls adjust SketchUp's shadows. Raise both together to brighten the scene and reveal more detail. The more the AI sees of your model, the more faithful the render. The **Use sun for shading** toggle improves how volumes read.",
+      },
+      {
+        type: "p",
+        text: "Don't want to think about it? Use the presets: **Exterior** for facades and open areas, **Interior** for indoor spaces. One click applies the recommended setup, and the plugin restores your file's original shadow settings when you close the panel.",
+      },
+      { type: "h2", text: "Output format" },
+      {
+        type: "p",
+        text: "Choose the final aspect ratio before rendering: **Landscape 16:9** (presentations), **Square 1:1**, **Feed 4:5** and **Portrait 9:16** (social media), plus 5:4, **Classic 4:3**, **Photo 3:2** and 7:5. The viewport shows the crop mask in real time. What's inside is what gets rendered.",
+      },
+      { type: "h2", text: "Focal length" },
+      {
+        type: "p",
+        text: "Focal length completely changes how the space reads: **24mm (wide angle)** embraces small interiors, **35–55mm** are neutral and realistic, **70–85mm** compress the perspective like a professional detail shot. There's also a **Custom** mode to set the value manually.",
+      },
+      {
+        type: "tip",
+        text: "For residential interiors, 24mm to 35mm is the architecture photography standard. For facades, try 35mm to 55mm from further away. It distorts verticals less.",
+      },
+      { type: "h2", text: "Composition guides" },
+      {
+        type: "ul",
+        items: [
+          "**Rule of thirds**: overlays photography's classic guide lines on the viewport, so you can place points of interest on the strong spots of the frame.",
+          "**2-point perspective**: activates SketchUp's architectural perspective: every vertical stays perfectly straight, the standard in professional architecture photos.",
+        ],
+      },
+      { type: "h2", text: "Saving scenes" },
+      {
+        type: "p",
+        text: "Found the perfect angle? Name it and click **Save**. The scene is created in SketchUp so you can return to it anytime. Save your 3 or 4 main angles before rendering: it makes generating the project's full image series (and redoing tweaks later) much easier.",
+      },
+        { type: "p", text: "With the scene saved, it is time to generate the first image. Everything happens in the Studio tab, and it takes less than a minute." },
+{
+        type: "p",
+        text: "With the scene prepared, rendering is just following the 5 numbered steps in the **Studio** tab, in **Render** mode. In seconds the AI returns a photorealistic image of your exact viewport angle, preserving your design. Geometry, materials and composition.",
+      },
+      {
+        type: "img",
+        src: "/treinamento/ui/studio-render-{lang}.webp",
+        alt: "Studio tab in Render mode",
+        caption: "Studio's Render mode: 5 numbered steps down to the Render button.",
+        ui: true,
+      },
+      { type: "h2", text: "The 5 steps" },
+      {
+        type: "steps",
+        items: [
+          {
+            title: "Project type",
+            text: "Tells the AI what it's looking at: Interiors, Exterior Facade, Set in Nature (landscape integration), Commercial (store, office) or Building. Each type gets specific lighting and context treatment. Picking **Exterior Facade** reveals a second choice, the plot surroundings: **Neighboring houses** (the default — one house on each side, matching your project's standard), **Walled empty lots** (vacant plots with a boundary wall or fence) or **Open bare land** (open ground, no walls or fences).",
+          },
+          {
+            title: "Quality",
+            text: "Vizai's image engine (Nano Banana Pro): each render costs 4 credits.",
+          },
+          {
+            title: "Weather style",
+            text: "Day, Sunset, Night or Cloudy. Sets the sky, light temperature and overall mood of the image.",
+          },
+          {
+            title: "Lights",
+            text: "Lights on (nighttime interiors or cozy spaces), lights off, or None to let the AI decide what's natural.",
+          },
+          {
+            title: "Scene details",
+            text: "Optional free-text field to guide the AI: materials, vegetation, atmosphere. It's automatically merged into the prompt.",
+          },
+        ],
+      },
+      { type: "h2", text: "The result" },
+      {
+        type: "compare",
+        before: { src: "/compare2-before.jpg", label: "SketchUp model" },
+        after: { src: "/compare2-after.jpg", label: "Vizai render" },
+      },
+      {
+        type: "p",
+        text: "The render appears right in the panel with the **Before/After** control to compare against the original model. Full screen included. From there you can **Download** the image, open the **Editor** to refine it, or **Export in high resolution**: the standard download is free, and the **4K upscale costs 5 credits**.",
+      },
+      { type: "h2", text: "Writing good scene details" },
+      {
+        type: "p",
+        text: "The details field doesn't need elaborate sentences. Comma-separated keywords work best. Describe what the AI can't guess from the model:",
+      },
+      {
+        type: "ul",
+        items: [
+          "**Specific materials**: “satin porcelain floor, freijó wood joinery, white quartz countertop”.",
+          "**Vegetation and surroundings**: “tropical vegetation, trimmed lawn, tree-lined street”.",
+          "**Atmosphere**: “soft late-afternoon light, cozy ambiance”.",
+        ],
+      },
+      {
+        type: "tip",
+        text: "Apply real textures to the model instead of leaving it all white: the AI respects the materials it sees. Textured model + short prompt details = the most faithful result.",
+      },
+      {
+        type: "warn",
+        text: "If the render comes out dark or with “invented” areas, go back to the Scenes tab and brighten the lighting. The AI usually just couldn't see that part of the model.",
+      },
+      { type: "cost", text: "4 credits per render · optional 4K upscale for 5 credits" },
+        { type: "p", text: "The render is done, but you do not have to settle for the first result. The Edit window lets you fix a detail, create new perspectives and adjust the image without spending another render." },
+{
+        type: "p",
+        text: "Got a good render, but the sofa looks off? Want the same room from another angle, or a close-up of the countertop for a presentation? That's what the **Editor** is for. Click **Edit** on any render and it opens in a dedicated window with three tabs: **AI Editing**, **Crop** and **Adjustments**.",
+      },
+      {
+        type: "img",
+        src: "/treinamento/ui/editor-ia-{lang}.webp",
+        alt: "Edit Render window with the AI Editing tab",
+        caption: "The Editor: mask tools, edit prompt and history on the right.",
+      },
+      { type: "h2", text: "AI Editing (inpainting)" },
+      {
+        type: "p",
+        text: "Inpainting lets you change **just one area** of the image while keeping everything else intact. Paint the region you want to change and describe the edit:",
+      },
+      {
+        type: "steps",
+        items: [
+          {
+            title: "Mark the area",
+            text: "Use the Brush (with thickness control), Rectangle or Circle to create the mask. Made a mistake? Eraser, Undo stroke or Clear mask.",
+          },
+          {
+            title: "Describe the change",
+            text: "“Replace the sofa with a beige linen one”, “remove the car”, “add framed art to the wall”… The AI edits only the marked area.",
+          },
+          {
+            title: "Apply and compare",
+            text: "Each edit costs 4 credits and joins the side history. Navigate between versions and hold the Before/After button to compare with the original.",
+          },
+        ],
+      },
+      {
+        type: "video",
+        src: "/tools/tool-edit.mp4",
+        caption: "Inpainting in action: mark, describe, and the AI changes only that area.",
+      },
+      {
+        type: "tip",
+        text: "With no mask at all, your command applies to the whole image. Handy for global changes like “make it nighttime” or “change the wall color”.",
+      },
+      { type: "h2", text: "New perspectives: several scenes from one render" },
+      {
+        type: "p",
+        text: "This is one of the Editor's most powerful features: ask for **another angle** of the same space right in the text field, without moving the camera in SketchUp and without spending a brand-new render. The AI understands the intent of your command:",
+      },
+      {
+        type: "ul",
+        items: [
+          "**“Close-up of the armchair”**: mark the armchair (or just type it) and get a tight detail shot, with materials and lighting preserved.",
+          "**“Side view of the room”** or **“new perspective showing the kitchen from the right”**. Generates the same space seen from another point.",
+          "**“Drone view”**: pulls the camera up and away for an aerial shot.",
+        ],
+      },
+      {
+        type: "img",
+        src: "/tools/tool-02.jpg",
+        alt: "New perspectives generated from one render",
+        caption: "One base render can become a whole series of project images.",
+      },
+      {
+        type: "p",
+        text: "In practice, a single 4-credit render becomes the basis of a **complete presentation**: generate the overview, then ask for detail close-ups and alternative angles at 4 credits each, much faster than repositioning the camera and re-rendering every view.",
+      },
+      { type: "h2", text: "Crop and Adjustments (free)" },
+      {
+        type: "imgrow",
+        images: [
+          {
+            src: "/treinamento/ui/editor-crop-{lang}.webp",
+            alt: "Editor Crop tab",
+            caption: "Crop with preset ratios or freeform.",
+          },
+          {
+            src: "/treinamento/ui/editor-adjust-{lang}.webp",
+            alt: "Editor Adjustments tab",
+            caption: "Fine photo adjustments, at no cost.",
+          },
+        ],
+      },
+      {
+        type: "p",
+        text: "The **Crop** tab reframes the image to the plugin's ratios (Landscape, Square, Feed, Portrait, Classic, Photo) or free/custom crops. The **Adjustments** tab finishes it like a photo editor: **brightness, contrast, saturation, exposure and temperature**. Both are completely free, as is the 2K download.",
+      },
+      {
+        type: "p",
+        text: "Clicking **Finish Editing** sends the final version back to the main panel, ready to become a video, a 360 or a 4K upscale.",
+      },
+      { type: "cost", text: "AI editing and new perspectives: 4 credits each · Crop, Adjustments and 2K download: free" },
+    ],
+  },
+  "reflexo-espelho": {
+    title: "Mirror reflections and Fake Light in SketchUp",
+    excerpt:
+      "How to tie reflections on mirrors, glass and polished floors to your scene, and how to place LED strips and spots right in the model.",
+    blocks: [
+{
+        type: "p",
+        text: "A reflective surface is a classic problem: SketchUp shows a flat face, and the AI, with no reference, invents a random reflection. The **Mirror Reflection** tool (in the Scenes tab) projects onto the face what it would **really reflect**, and then you render, with the reflection consistent with the room.",
+      },
+      {
+        type: "video",
+        src: "/treinamento/ui/reflexo-espelho.mp4",
+        caption: "Reflection applied right in the Scenes tab, with no credit cost.",
+      },
+      { type: "h2", text: "Six surface types" },
+      {
+        type: "p",
+        text: "The capture is the same for all of them; what changes is the finish. Pick the type **before** clicking the face:",
+      },
+      {
+        type: "ul",
+        items: [
+          "**Mirror**: opaque, full reflection. The tool's classic behaviour.",
+          "**Floor**: polished porcelain, marble countertops, lacquered tables. A faint reflection on top: the floor material still drives the look.",
+          "**TV**: a switched-off screen. Opaque and very dark, with the room only hinted at, like a real dark panel.",
+          "**Clear**: clear glass on a shower or a door. Reflects less and lets you see through, without shifting the colour of what it reflects.",
+          "**Bronze** and **Smoked**: the tinted glass of cabinet doors. Semi-transparent: the reflection sits on top and the cabinet interior shows underneath.",
+        ],
+      },
+      { type: "h2", text: "How to use it" },
+      {
+        type: "steps",
+        items: [
+          {
+            title: "Save the scene",
+            text: "Set the viewport to the view you'll render and save it as a scene. The reflection is tied to that scene.",
+          },
+          {
+            title: "Pick the type and click the face",
+            text: "Select the surface type, click **Generate Reflection in Scene** and then the face. It lights up blue. No need to enter the group. Imported TV screens and floors often come split into many pieces: the plugin joins the neighbouring pieces on its own and the whole surface lights up.",
+          },
+          {
+            title: "Surface in separate parts? Use Shift",
+            text: "Panelled mirrors or glass in sheets: hold **Shift** and click the other faces, then press **Enter**. You get one continuous reflection, with no seam between the parts.",
+          },
+          {
+            title: "Tune it without redoing it",
+            text: "Floor and TV have one slider; clear, bronze and smoked have two. **Brightness** and **transparency**. Release the slider and the reflection already in the scene updates instantly, with no need to generate again. Each slider has a reset button.",
+          },
+        ],
+      },
+      {
+        type: "p",
+        text: "The plugin reflects the scene camera across the surface plane, captures what it would really reflect and projects it onto the face, in seconds, **at no credit cost**, since everything happens locally in your SketchUp.",
+      },
+      {
+        type: "warn",
+        text: "The reflection is **saved in the scene** and disappears when you switch scenes. Generate one per scene. If you change the scene's view later, redo the reflection before rendering. The **Delete all reflections** button clears everything the tool created in the model at once.",
+      },
+      {
+        type: "tip",
+        text: "With tinted glass, the cabinet interior only shows if the door material is transparent in SketchUp. And do combine them: a mirror in the bathroom, smoked glass on the closet doors, a polished floor in the living room. The set is what makes the render look like a photograph.",
+      },
+      { type: "cost", text: "Free: processed locally, no credits" },
+        { type: "p", text: "The reflection is in the scene. Now to the second tool in this lesson, Fake Light, which solves room lighting without modeling a single fixture." },
+{
+        type: "p",
+        text: "SketchUp doesn't show light. You model the cove, the niche, the mirror, and the scene stays flat, with no hint of what should glow in the render. **Fake Light** (in the Scenes tab, right below Mirror Reflection) solves that by drawing the light: an LED strip running along an edge, or a spot with a visible beam. It isn't real lighting. It's a clear reference so the AI knows where the light is and what color it is.",
+      },
+      {
+        type: "video",
+        src: "/treinamento/ui/luz-fake.mp4",
+        caption: "LED strip behind the mirror, in the millwork and spots on the ceiling, all local, with no credit cost.",
+      },
+      { type: "h2", text: "LED Strip or Spot" },
+      {
+        type: "ul",
+        items: [
+          "**LED Strip**: runs along a line (cove, niche, baseboard) or traces the entire edge of a mirror. Under **Object type** you pick between **Millwork** and **Mirror**.",
+          "**Spot**: the cone of light from a fixture. You click the fixture face and the beam comes out of it.",
+        ],
+      },
+      { type: "h2", text: "How to use it" },
+      {
+        type: "steps",
+        items: [
+          {
+            title: "Pick the mode and set the light",
+            text: "Choose **LED Strip** or **Spot**, the color (the default is a warm white, #ffe76e), the beam direction and the **Reach**, **Intensity** and **Spread** sliders. Each mode keeps its own values.",
+          },
+          {
+            title: "Click Create, then click where the light goes",
+            text: "For a strip on millwork, click the **line** it should run along. Hold **Shift** to add several lines at once. For a strip on a mirror, click the **mirror face** and it traces the whole edge. For a spot, click the **fixture face**. **ESC** exits the tool.",
+          },
+          {
+            title: "Fine-tune without redoing it",
+            text: "With a light selected in SketchUp, the sliders start editing that light. Release the slider and it rebuilds instantly. You can also move the light by hand and the next adjustment respects the new position.",
+          },
+        ],
+      },
+      {
+        type: "p",
+        text: "The strip is one continuous band: corners meet without tearing, and on an upright outline (the mirror) the glow spreads outward following the shape, while on a horizontal one (the cove) it goes down or up. Everything is generated on your computer, in seconds, **with no credits used**.",
+      },
+      {
+        type: "warn",
+        text: "It's **fake** light: it doesn't illuminate the SketchUp scene, it works as a visual reference for the render. The **Clear all lights** button removes everything the tool created in the model at once.",
+      },
+      {
+        type: "tip",
+        text: "The highest-payoff use is the strip behind a mirror. That glow tracing the edge is what makes the AI deliver the backlit mirror you had in mind. Combine it with **Mirror Reflection** in the same scene: one gives you the reflection, the other gives you the light.",
+      },
+      { type: "cost", text: "Free: processed locally, no credits" },
+    ],
+  },
   "primeiros-passos": {
     title: "Getting started: install the plugin and sign in for the first time",
     excerpt:
@@ -126,357 +456,10 @@ export const enArticles: Record<string, ArticleContent> = {
     ],
   },
 
-  "preparando-a-cena": {
-    title: "Scenes tab: set up the perfect framing before rendering",
-    excerpt:
-      "Scene lighting, output format, focal length, rule of thirds and 2-point perspective, everything that defines your render quality starts here.",
-    blocks: [
-      {
-        type: "p",
-        text: "The AI renders exactly what it sees in your viewport. That's why the step that most influences quality isn't the prompt. It's **scene preparation**. The Scenes tab gathers every control for it, without touching SketchUp's settings.",
-      },
-      {
-        type: "img",
-        src: "/treinamento/ui/cenas-full-{lang}.webp",
-        alt: "Full Scenes tab of Vizai Render",
-        caption: "The Scenes tab: lighting, format, focal length and composition guides.",
-        ui: true,
-      },
-      { type: "h2", text: "Scene lighting" },
-      {
-        type: "p",
-        text: "The **Light** and **Dark** controls adjust SketchUp's shadows. Raise both together to brighten the scene and reveal more detail. The more the AI sees of your model, the more faithful the render. The **Use sun for shading** toggle improves how volumes read.",
-      },
-      {
-        type: "p",
-        text: "Don't want to think about it? Use the presets: **Exterior** for facades and open areas, **Interior** for indoor spaces. One click applies the recommended setup, and the plugin restores your file's original shadow settings when you close the panel.",
-      },
-      { type: "h2", text: "Output format" },
-      {
-        type: "p",
-        text: "Choose the final aspect ratio before rendering: **Landscape 16:9** (presentations), **Square 1:1**, **Feed 4:5** and **Portrait 9:16** (social media), plus 5:4, **Classic 4:3**, **Photo 3:2** and 7:5. The viewport shows the crop mask in real time. What's inside is what gets rendered.",
-      },
-      { type: "h2", text: "Focal length" },
-      {
-        type: "p",
-        text: "Focal length completely changes how the space reads: **24mm (wide angle)** embraces small interiors, **35–55mm** are neutral and realistic, **70–85mm** compress the perspective like a professional detail shot. There's also a **Custom** mode to set the value manually.",
-      },
-      {
-        type: "tip",
-        text: "For residential interiors, 24mm to 35mm is the architecture photography standard. For facades, try 35mm to 55mm from further away. It distorts verticals less.",
-      },
-      { type: "h2", text: "Composition guides" },
-      {
-        type: "ul",
-        items: [
-          "**Rule of thirds**: overlays photography's classic guide lines on the viewport, so you can place points of interest on the strong spots of the frame.",
-          "**2-point perspective**: activates SketchUp's architectural perspective: every vertical stays perfectly straight, the standard in professional architecture photos.",
-        ],
-      },
-      { type: "h2", text: "Saving scenes" },
-      {
-        type: "p",
-        text: "Found the perfect angle? Name it and click **Save**. The scene is created in SketchUp so you can return to it anytime. Save your 3 or 4 main angles before rendering: it makes generating the project's full image series (and redoing tweaks later) much easier.",
-      },
-    ],
-  },
 
-  "primeiro-render": {
-    title: "Your first photorealistic render in the Studio",
-    excerpt:
-      "The complete walkthrough of Render mode: project type, weather, lights and scene details, plus how to write descriptions that improve the result.",
-    blocks: [
-      {
-        type: "p",
-        text: "With the scene prepared, rendering is just following the 5 numbered steps in the **Studio** tab, in **Render** mode. In seconds the AI returns a photorealistic image of your exact viewport angle, preserving your design. Geometry, materials and composition.",
-      },
-      {
-        type: "img",
-        src: "/treinamento/ui/studio-render-{lang}.webp",
-        alt: "Studio tab in Render mode",
-        caption: "Studio's Render mode: 5 numbered steps down to the Render button.",
-        ui: true,
-      },
-      { type: "h2", text: "The 5 steps" },
-      {
-        type: "steps",
-        items: [
-          {
-            title: "Project type",
-            text: "Tells the AI what it's looking at: Interiors, Exterior Facade, Set in Nature (landscape integration), Commercial (store, office) or Building. Each type gets specific lighting and context treatment. Picking **Exterior Facade** reveals a second choice, the plot surroundings: **Neighboring houses** (the default — one house on each side, matching your project's standard), **Walled empty lots** (vacant plots with a boundary wall or fence) or **Open bare land** (open ground, no walls or fences).",
-          },
-          {
-            title: "Quality",
-            text: "Vizai's image engine (Nano Banana Pro): each render costs 4 credits.",
-          },
-          {
-            title: "Weather style",
-            text: "Day, Sunset, Night or Cloudy. Sets the sky, light temperature and overall mood of the image.",
-          },
-          {
-            title: "Lights",
-            text: "Lights on (nighttime interiors or cozy spaces), lights off, or None to let the AI decide what's natural.",
-          },
-          {
-            title: "Scene details",
-            text: "Optional free-text field to guide the AI: materials, vegetation, atmosphere. It's automatically merged into the prompt.",
-          },
-        ],
-      },
-      { type: "h2", text: "The result" },
-      {
-        type: "compare",
-        before: { src: "/compare2-before.jpg", label: "SketchUp model" },
-        after: { src: "/compare2-after.jpg", label: "Vizai render" },
-      },
-      {
-        type: "p",
-        text: "The render appears right in the panel with the **Before/After** control to compare against the original model. Full screen included. From there you can **Download** the image, open the **Editor** to refine it, or **Export in high resolution**: the standard download is free, and the **4K upscale costs 5 credits**.",
-      },
-      { type: "h2", text: "Writing good scene details" },
-      {
-        type: "p",
-        text: "The details field doesn't need elaborate sentences. Comma-separated keywords work best. Describe what the AI can't guess from the model:",
-      },
-      {
-        type: "ul",
-        items: [
-          "**Specific materials**: “satin porcelain floor, freijó wood joinery, white quartz countertop”.",
-          "**Vegetation and surroundings**: “tropical vegetation, trimmed lawn, tree-lined street”.",
-          "**Atmosphere**: “soft late-afternoon light, cozy ambiance”.",
-        ],
-      },
-      {
-        type: "tip",
-        text: "Apply real textures to the model instead of leaving it all white: the AI respects the materials it sees. Textured model + short prompt details = the most faithful result.",
-      },
-      {
-        type: "warn",
-        text: "If the render comes out dark or with “invented” areas, go back to the Scenes tab and brighten the lighting. The AI usually just couldn't see that part of the model.",
-      },
-      { type: "cost", text: "4 credits per render · optional 4K upscale for 5 credits" },
-    ],
-  },
 
-  "editar-render": {
-    title: "Editor: inpainting, new perspectives and professional adjustments",
-    excerpt:
-      "Everything in the Edit Render window: fix specific areas with AI, generate new angles and close-ups from a finished render, crop and finish the photo, without re-rendering.",
-    blocks: [
-      {
-        type: "p",
-        text: "Got a good render, but the sofa looks off? Want the same room from another angle, or a close-up of the countertop for a presentation? That's what the **Editor** is for. Click **Edit** on any render and it opens in a dedicated window with three tabs: **AI Editing**, **Crop** and **Adjustments**.",
-      },
-      {
-        type: "img",
-        src: "/treinamento/ui/editor-ia-{lang}.webp",
-        alt: "Edit Render window with the AI Editing tab",
-        caption: "The Editor: mask tools, edit prompt and history on the right.",
-      },
-      { type: "h2", text: "AI Editing (inpainting)" },
-      {
-        type: "p",
-        text: "Inpainting lets you change **just one area** of the image while keeping everything else intact. Paint the region you want to change and describe the edit:",
-      },
-      {
-        type: "steps",
-        items: [
-          {
-            title: "Mark the area",
-            text: "Use the Brush (with thickness control), Rectangle or Circle to create the mask. Made a mistake? Eraser, Undo stroke or Clear mask.",
-          },
-          {
-            title: "Describe the change",
-            text: "“Replace the sofa with a beige linen one”, “remove the car”, “add framed art to the wall”… The AI edits only the marked area.",
-          },
-          {
-            title: "Apply and compare",
-            text: "Each edit costs 4 credits and joins the side history. Navigate between versions and hold the Before/After button to compare with the original.",
-          },
-        ],
-      },
-      {
-        type: "video",
-        src: "/tools/tool-edit.mp4",
-        caption: "Inpainting in action: mark, describe, and the AI changes only that area.",
-      },
-      {
-        type: "tip",
-        text: "With no mask at all, your command applies to the whole image. Handy for global changes like “make it nighttime” or “change the wall color”.",
-      },
-      { type: "h2", text: "New perspectives: several scenes from one render" },
-      {
-        type: "p",
-        text: "This is one of the Editor's most powerful features: ask for **another angle** of the same space right in the text field, without moving the camera in SketchUp and without spending a brand-new render. The AI understands the intent of your command:",
-      },
-      {
-        type: "ul",
-        items: [
-          "**“Close-up of the armchair”**: mark the armchair (or just type it) and get a tight detail shot, with materials and lighting preserved.",
-          "**“Side view of the room”** or **“new perspective showing the kitchen from the right”**. Generates the same space seen from another point.",
-          "**“Drone view”**: pulls the camera up and away for an aerial shot.",
-        ],
-      },
-      {
-        type: "img",
-        src: "/tools/tool-02.jpg",
-        alt: "New perspectives generated from one render",
-        caption: "One base render can become a whole series of project images.",
-      },
-      {
-        type: "p",
-        text: "In practice, a single 4-credit render becomes the basis of a **complete presentation**: generate the overview, then ask for detail close-ups and alternative angles at 4 credits each, much faster than repositioning the camera and re-rendering every view.",
-      },
-      { type: "h2", text: "Crop and Adjustments (free)" },
-      {
-        type: "imgrow",
-        images: [
-          {
-            src: "/treinamento/ui/editor-crop-{lang}.webp",
-            alt: "Editor Crop tab",
-            caption: "Crop with preset ratios or freeform.",
-          },
-          {
-            src: "/treinamento/ui/editor-adjust-{lang}.webp",
-            alt: "Editor Adjustments tab",
-            caption: "Fine photo adjustments, at no cost.",
-          },
-        ],
-      },
-      {
-        type: "p",
-        text: "The **Crop** tab reframes the image to the plugin's ratios (Landscape, Square, Feed, Portrait, Classic, Photo) or free/custom crops. The **Adjustments** tab finishes it like a photo editor: **brightness, contrast, saturation, exposure and temperature**. Both are completely free, as is the 2K download.",
-      },
-      {
-        type: "p",
-        text: "Clicking **Finish Editing** sends the final version back to the main panel, ready to become a video, a 360 or a 4K upscale.",
-      },
-      { type: "cost", text: "AI editing and new perspectives: 4 credits each · Crop, Adjustments and 2K download: free" },
-    ],
-  },
 
-  "reflexo-espelho": {
-    title: "Mirror Reflection: mirrors, glass, TV and polished floors",
-    excerpt:
-      "SketchUp doesn't render reflections: Vizai generates the room's real reflection on the surface, for free, before you render. Works for mirrors, cabinet glass, switched-off TVs and polished floors.",
-    blocks: [
-      {
-        type: "p",
-        text: "A reflective surface is a classic problem: SketchUp shows a flat face, and the AI, with no reference, invents a random reflection. The **Mirror Reflection** tool (in the Scenes tab) projects onto the face what it would **really reflect**, and then you render, with the reflection consistent with the room.",
-      },
-      {
-        type: "video",
-        src: "/treinamento/ui/reflexo-espelho.mp4",
-        caption: "Reflection applied right in the Scenes tab, with no credit cost.",
-      },
-      { type: "h2", text: "Six surface types" },
-      {
-        type: "p",
-        text: "The capture is the same for all of them; what changes is the finish. Pick the type **before** clicking the face:",
-      },
-      {
-        type: "ul",
-        items: [
-          "**Mirror**: opaque, full reflection. The tool's classic behaviour.",
-          "**Floor**: polished porcelain, marble countertops, lacquered tables. A faint reflection on top: the floor material still drives the look.",
-          "**TV**: a switched-off screen. Opaque and very dark, with the room only hinted at, like a real dark panel.",
-          "**Clear**: clear glass on a shower or a door. Reflects less and lets you see through, without shifting the colour of what it reflects.",
-          "**Bronze** and **Smoked**: the tinted glass of cabinet doors. Semi-transparent: the reflection sits on top and the cabinet interior shows underneath.",
-        ],
-      },
-      { type: "h2", text: "How to use it" },
-      {
-        type: "steps",
-        items: [
-          {
-            title: "Save the scene",
-            text: "Set the viewport to the view you'll render and save it as a scene. The reflection is tied to that scene.",
-          },
-          {
-            title: "Pick the type and click the face",
-            text: "Select the surface type, click **Generate Reflection in Scene** and then the face. It lights up blue. No need to enter the group. Imported TV screens and floors often come split into many pieces: the plugin joins the neighbouring pieces on its own and the whole surface lights up.",
-          },
-          {
-            title: "Surface in separate parts? Use Shift",
-            text: "Panelled mirrors or glass in sheets: hold **Shift** and click the other faces, then press **Enter**. You get one continuous reflection, with no seam between the parts.",
-          },
-          {
-            title: "Tune it without redoing it",
-            text: "Floor and TV have one slider; clear, bronze and smoked have two. **Brightness** and **transparency**. Release the slider and the reflection already in the scene updates instantly, with no need to generate again. Each slider has a reset button.",
-          },
-        ],
-      },
-      {
-        type: "p",
-        text: "The plugin reflects the scene camera across the surface plane, captures what it would really reflect and projects it onto the face, in seconds, **at no credit cost**, since everything happens locally in your SketchUp.",
-      },
-      {
-        type: "warn",
-        text: "The reflection is **saved in the scene** and disappears when you switch scenes. Generate one per scene. If you change the scene's view later, redo the reflection before rendering. The **Delete all reflections** button clears everything the tool created in the model at once.",
-      },
-      {
-        type: "tip",
-        text: "With tinted glass, the cabinet interior only shows if the door material is transparent in SketchUp. And do combine them: a mirror in the bathroom, smoked glass on the closet doors, a polished floor in the living room. The set is what makes the render look like a photograph.",
-      },
-      { type: "cost", text: "Free: processed locally, no credits" },
-    ],
-  },
 
-  "luz-fake": {
-    title: "Fake Light: LED strips and spotlights right in SketchUp",
-    excerpt:
-      "Vizai builds the light as geometry (a strip tracing mirrors and millwork, a spot with a visible beam) so the AI understands your project's lighting.",
-    blocks: [
-      {
-        type: "p",
-        text: "SketchUp doesn't show light. You model the cove, the niche, the mirror, and the scene stays flat, with no hint of what should glow in the render. **Fake Light** (in the Scenes tab, right below Mirror Reflection) solves that by drawing the light: an LED strip running along an edge, or a spot with a visible beam. It isn't real lighting. It's a clear reference so the AI knows where the light is and what color it is.",
-      },
-      {
-        type: "video",
-        src: "/treinamento/ui/luz-fake.mp4",
-        caption: "LED strip behind the mirror, in the millwork and spots on the ceiling, all local, with no credit cost.",
-      },
-      { type: "h2", text: "LED Strip or Spot" },
-      {
-        type: "ul",
-        items: [
-          "**LED Strip**: runs along a line (cove, niche, baseboard) or traces the entire edge of a mirror. Under **Object type** you pick between **Millwork** and **Mirror**.",
-          "**Spot**: the cone of light from a fixture. You click the fixture face and the beam comes out of it.",
-        ],
-      },
-      { type: "h2", text: "How to use it" },
-      {
-        type: "steps",
-        items: [
-          {
-            title: "Pick the mode and set the light",
-            text: "Choose **LED Strip** or **Spot**, the color (the default is a warm white, #ffe76e), the beam direction and the **Reach**, **Intensity** and **Spread** sliders. Each mode keeps its own values.",
-          },
-          {
-            title: "Click Create, then click where the light goes",
-            text: "For a strip on millwork, click the **line** it should run along. Hold **Shift** to add several lines at once. For a strip on a mirror, click the **mirror face** and it traces the whole edge. For a spot, click the **fixture face**. **ESC** exits the tool.",
-          },
-          {
-            title: "Fine-tune without redoing it",
-            text: "With a light selected in SketchUp, the sliders start editing that light. Release the slider and it rebuilds instantly. You can also move the light by hand and the next adjustment respects the new position.",
-          },
-        ],
-      },
-      {
-        type: "p",
-        text: "The strip is one continuous band: corners meet without tearing, and on an upright outline (the mirror) the glow spreads outward following the shape, while on a horizontal one (the cove) it goes down or up. Everything is generated on your computer, in seconds, **with no credits used**.",
-      },
-      {
-        type: "warn",
-        text: "It's **fake** light: it doesn't illuminate the SketchUp scene, it works as a visual reference for the render. The **Clear all lights** button removes everything the tool created in the model at once.",
-      },
-      {
-        type: "tip",
-        text: "The highest-payoff use is the strip behind a mirror. That glow tracing the edge is what makes the AI deliver the backlit mirror you had in mind. Combine it with **Mirror Reflection** in the same scene: one gives you the reflection, the other gives you the light.",
-      },
-      { type: "cost", text: "Free: processed locally, no credits" },
-    ],
-  },
 
   "decorar-ambiente": {
     title: "Stage Room: AI furniture and decor for empty spaces",
@@ -717,298 +700,7 @@ export const enArticles: Record<string, ArticleContent> = {
     ],
   },
 
-  "video-com-ia": {
-    title: "AI Video: animate your renders with cinematic camera work",
-    excerpt:
-      "Turn a render into a 4-to-15-second video with professional camera movement and AI-generated ambient sound. Right from the plugin.",
-    blocks: [
-      {
-        type: "p",
-        text: "The **Video** tab turns any render into a cinematic clip using **Kling 3.0 Pro**, one of the most advanced video engines in the world. Output is **1080p**, with smooth camera movement and, if you want, AI-generated ambient sound.",
-      },
-      {
-        type: "video",
-        src: "/tools/tool-03.mp4",
-        caption: "Video generated from a plugin render.",
-      },
-      { type: "h2", text: "Building the video" },
-      {
-        type: "img",
-        src: "/treinamento/ui/video-{lang}.webp",
-        alt: "Vizai Render Video tab",
-        caption: "The Video tab: frames, aspect ratio, camera and duration.",
-        ui: true,
-      },
-      {
-        type: "steps",
-        items: [
-          {
-            title: "Start frame",
-            text: "The video's starting point: use your latest render, pick from history or upload from your PC.",
-          },
-          {
-            title: "End frame (optional)",
-            text: "Set an arrival image too and the AI creates the transition between them. Great for a “tour” between two angles of the room.",
-          },
-          {
-            title: "Aspect ratio",
-            text: "16:9 landscape, 1:1 square or 9:16 vertical for Reels and Stories.",
-          },
-          {
-            title: "Camera and audio",
-            text: "Choose the movement and the sound in the configuration modal (details below).",
-          },
-          {
-            title: "Duration",
-            text: "4, 6, 8, 10 or 15 seconds: the cost shows on the button before you generate.",
-          },
-        ],
-      },
-      { type: "h2", text: "Camera movements" },
-      {
-        type: "img",
-        src: "/treinamento/ui/modal-camera-{lang}.webp",
-        alt: "Video camera and audio modal",
-        caption: "8 preset movements + free-text movement description.",
-        ui: true,
-      },
-      {
-        type: "ul",
-        items: [
-          "**Automatic**: natural movement chosen by the AI (recommended).",
-          "**Zoom In / Zoom Out**: smooth approach or pull-back.",
-          "**Pan left / right**: lateral glide.",
-          "**Tilt Up / Tilt Down**: upward or downward tilt.",
-          "**Orbit (Drone)**: smooth sweep around the project.",
-        ],
-      },
-      {
-        type: "p",
-        text: "Prefer to direct the scene? Describe the movement freely (“camera slowly moves through the living room revealing the balcony”) and use **Notes** to ask for focus on an element. For audio, choose **AI Ambient Sound** (wind, footsteps, urban sounds, free) or a silent video for later editing.",
-      },
-      {
-        type: "table",
-        head: ["Duration", "Cost"],
-        rows: [
-          ["4 seconds", "22 credits"],
-          ["6 seconds", "33 credits"],
-          ["8 seconds", "44 credits"],
-          ["10 seconds", "55 credits"],
-          ["15 seconds", "83 credits"],
-        ],
-      },
-      {
-        type: "tip",
-        text: "4–6 second videos with Automatic or Zoom In movement convert best on social media, and they're the cheapest. Start there.",
-      },
-    ],
-  },
 
-  "panorama-360": {
-    title: "360° Panorama: immersive presentations your client can explore",
-    excerpt:
-      "Mark the wall and where you stand: SketchUp captures the whole room and the AI returns a spherical panorama your client explores through a link, with nothing to install.",
-    blocks: [
-      {
-        type: "p",
-        text: "The **360** tab turns your space into an **interactive spherical panorama** straight from the model, with nothing rendered beforehand. You mark where the camera goes and the plugin handles the rest. Your client gets a link, opens it in the browser (desktop or phone) and explores the space by dragging the image.",
-      },
-      {
-        type: "img",
-        src: "/demo/360/pano-result.webp",
-        alt: "360 panorama generated by Vizai Render",
-        caption: "The generated panorama: ready for the interactive viewer.",
-      },
-      { type: "h2", text: "How to generate" },
-      {
-        type: "img",
-        src: "/treinamento/ui/pano-{lang}.webp",
-        alt: "Vizai Render 360 tab",
-        caption: "The 360 tab: mark the wall, then where the viewer stands.",
-        ui: true,
-      },
-      {
-        type: "p",
-        text: "You don't need to render anything first. **Click the wall** that will sit at the center of the panorama, then **click where you stand**. SketchUp captures the whole room on its own, in every direction, and assembles the spherical image. The AI turns that capture into a realistic photo.",
-      },
-      {
-        type: "steps",
-        items: [
-          {
-            title: "Pick the wall in front",
-            text: "It sits at the center of the panorama. The seam falls on the opposite wall, so keep your best wall in front.",
-          },
-          {
-            title: "Mark where you stand",
-            text: "Click the floor, at the spot your client will look from. Eye height comes preset at 1.60 m and you can change it.",
-          },
-          {
-            title: "Check the preview",
-            text: "The plugin shows the captured room before spending any credit. If the viewer landed inside a cabinet, just redo it. The preview is free.",
-          },
-          {
-            title: "Generate and share",
-            text: "5 credits. Then: view it in the plugin, download the image, copy the link or send it straight via WhatsApp.",
-          },
-        ],
-      },
-      {
-        type: "tip",
-        text: "Pick a wall with no furniture pressed against it, and a viewpoint with some room around it. A viewer squeezed into a corner flattens the space; from the middle of the room, the panorama breathes.",
-      },
-      { type: "cost", text: "5 credits per panorama · sharing link is free" },
-    ],
-  },
-  "blocos-3d": {
-    title: "3D Blocks: turn any photo into a SketchUp model",
-    excerpt:
-      "Found the perfect chair in a reference image? The Blocks tab converts the photo into a textured 3D model and imports it straight into your scene.",
-    blocks: [
-      {
-        type: "p",
-        text: "The **Blocks** tab solves a classic: the client wants a specific furniture piece that doesn't exist in the 3D Warehouse. Send a reference photo and the AI rebuilds the object in 3D, textured, ready to import into the scene at the right scale.",
-      },
-      {
-        type: "img",
-        src: "/tools/tool-05.webp",
-        alt: "3D block generated from a photo",
-        caption: "From reference photo to a 3D block in the scene.",
-      },
-      { type: "h2", text: "How to generate" },
-      {
-        type: "img",
-        src: "/treinamento/ui/blocos-{lang}.webp",
-        alt: "Vizai Render Blocks tab",
-        caption: "The Blocks tab: photo, mesh density and texture.",
-        ui: true,
-      },
-      {
-        type: "steps",
-        items: [
-          {
-            title: "Add the reference photo",
-            text: "Drag or click to upload. Works best with the whole object visible, well lit and on a clean background.",
-          },
-          {
-            title: "Name the block",
-            text: "The name keeps the component organized in your model (e.g. “Wooden Chair”).",
-          },
-          {
-            title: "Choose the polygon density",
-            text: "Light, Recommended, Heavy or Ultra. For SketchUp, Light or Recommended keep the file snappy.",
-          },
-          {
-            title: "Texture",
-            text: "With PBR texture (the photo's colors and materials) or geometry only, to apply your own materials.",
-          },
-          {
-            title: "Import or download",
-            text: "Import into scene drops the block straight into the model; or download the .GLB to use in any software.",
-          },
-        ],
-      },
-      {
-        type: "warn",
-        text: "Heavy/Ultra density blocks can slow down large files. If you overdo it, the Tools window (Component Impact) shows which blocks are weighing things down, and the Optimize File guide fixes it.",
-      },
-      { type: "cost", text: "28 credits per generated block" },
-    ],
-  },
 
-  "otimizar-arquivo": {
-    title: "Optimize File (Tools): get your .skp lightweight for free",
-    excerpt:
-      "Smart purge, duplicate materials, texture downscaling and a component impact report. The full file cleanup, 100% local and free.",
-    blocks: [
-      {
-        type: "p",
-        text: "File lagging, choppy orbit, .skp in the hundreds of MB? The **Tools** window (green side tab on the panel) includes **Optimize File**: a set of cleanups that runs 100% on your computer, **at no credit cost**. The file size shows at the top, before and after. You see the result instantly.",
-      },
-      {
-        type: "img",
-        src: "/treinamento/ui/tools-otimizar-{lang}.webp",
-        alt: "Tools window with the Optimize File tab",
-        caption: "Optimize File: Cleanup, Textures and Impact tabs.",
-        ui: true,
-      },
-      { type: "h2", text: "Cleanup" },
-      {
-        type: "ul",
-        items: [
-          "**Purge**: removes materials, components and styles that aren't used anywhere in the project. It's the cleanup that shrinks files that have been through many revisions the most.",
-          "**Duplicate Materials**: merges materials that use the same texture under different names (Wood, Wood1, Wood-copy…), common in models assembled from blocks of mixed origins.",
-        ],
-      },
-      { type: "h2", text: "Textures" },
-      {
-        type: "p",
-        text: "The **Texture Manager** lists every image in the model with its dimensions. 4K textures on a drawer handle are dead weight: select the oversized ones and downscale them to a target resolution in one click. The viewport look barely changes. The file size does.",
-      },
-      { type: "h2", text: "Impact" },
-      {
-        type: "p",
-        text: "The **Component Impact** report shows which blocks carry the most geometry (faces) and how many instances exist of each. It's how you find out that a tree downloaded from the Warehouse has 800k faces, and that it's repeated 12 times. The View button locates the component in the model so you can decide what to do.",
-      },
-      {
-        type: "tip",
-        text: "Run Optimize File before rendering big projects: a light model means a fluid viewport and faster captures. And back up the first time you run heavy cleanups on an important file.",
-      },
-      { type: "cost", text: "Free: processed locally, no credits" },
-    ],
-  },
 
-  "pisos-seamless": {
-    title: "Seamless Floors (Tools): professional floor tiling in seconds",
-    excerpt:
-      "Create tileable floor textures from any image: porcelain, wood with variations, configurable grout and direct application to faces.",
-    blocks: [
-      {
-        type: "p",
-        text: "The second tool in the **Tools** window builds **seamless floor textures** from standalone images. That porcelain photo from the supplier's website becomes a tiled floor, with grout and the tile's real dimensions. Also local and free.",
-      },
-      {
-        type: "img",
-        src: "/treinamento/ui/tools-pisos-{lang}.webp",
-        alt: "Seamless Floors tab in the Tools window",
-        caption: "Live tiling preview, with grout and real dimensions.",
-        ui: true,
-      },
-      { type: "h2", text: "Building the floor" },
-      {
-        type: "steps",
-        items: [
-          {
-            title: "Base texture",
-            text: "Upload the tile image (a photo of the porcelain, wood or tile).",
-          },
-          {
-            title: "Variations (optional)",
-            text: "Add up to 3 alternative images from the same line. The plugin alternates the pieces and kills the repetition effect, essential for wood.",
-          },
-          {
-            title: "Layout and rotation",
-            text: "Straight Grid (aligned), 50% Offset or 1/3 Offset, and rotate the tile if needed (vertical planks, for example).",
-          },
-          {
-            title: "Real dimensions",
-            text: "Tile width and height in centimeters (90×90, 20×120…). The texture lands in SketchUp already at the correct scale.",
-          },
-          {
-            title: "Grout",
-            text: "Thickness in millimeters and color: gray, beige, black or matching the tile.",
-          },
-        ],
-      },
-      { type: "h2", text: "Applying to the model" },
-      {
-        type: "p",
-        text: "The preview shows the tiling in real time. To apply: **select the floor faces** in SketchUp before clicking Apply Texture. The material is created and mapped straight onto them. With nothing selected, the plugin activates the paint bucket so you click wherever you want.",
-      },
-      {
-        type: "tip",
-        text: "Floors with correct tiling and grout raise the render's realism: the AI respects the floor pattern it sees in the scene. Build the floor here before rendering in the Studio.",
-      },
-      { type: "cost", text: "Free: processed locally, no credits" },
-    ],
-  },
 };
