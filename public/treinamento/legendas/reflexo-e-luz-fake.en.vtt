@@ -1,0 +1,137 @@
+WEBVTT
+
+00:00:00.180 --> 00:00:01.095 line:86%
+Hey everyone,
+
+00:00:01.135 --> 00:00:03.374 line:86%
+in this video I'll show you how
+
+00:00:03.414 --> 00:00:04.590 line:86%
+to create mirror
+
+00:00:04.640 --> 00:00:06.072 line:86%
+reflections inside Vizai,
+
+00:00:06.112 --> 00:00:07.838 line:86%
+and also how to add fake light
+
+00:00:07.878 --> 00:00:08.820 line:86%
+to your project.
+
+00:00:09.100 --> 00:00:11.435 line:86%
+First step is to set up and save
+
+00:00:11.475 --> 00:00:12.622 line:86%
+all your scenes.
+
+00:00:12.662 --> 00:00:14.319 line:86%
+Always save them first,
+
+00:00:14.359 --> 00:00:16.043 line:86%
+because each reflection
+
+00:00:16.083 --> 00:00:18.145 line:86%
+is stored inside the scene,
+
+00:00:18.185 --> 00:00:18.950 line:86%
+so you can
+
+00:00:19.000 --> 00:00:20.149 line:86%
+switch between them and change
+
+00:00:20.189 --> 00:00:21.578 line:86%
+the reflections together.
+
+00:00:45.510 --> 00:00:47.390 line:86%
+With the first reflection done,
+
+00:00:47.430 --> 00:00:49.660 line:86%
+move on to the next scene and repeat
+
+00:00:49.710 --> 00:00:50.910 line:86%
+the same process.
+
+00:00:58.410 --> 00:01:01.149 line:86%
+A tip: whenever there are two faces
+
+00:01:01.189 --> 00:01:02.012 line:86%
+to select,
+
+00:01:02.052 --> 00:01:02.880 line:86%
+hold Shift
+
+00:01:02.930 --> 00:01:04.122 line:86%
+on your keyboard,
+
+00:01:04.162 --> 00:01:06.190 line:86%
+then press Enter to confirm.
+
+00:01:06.330 --> 00:01:08.374 line:86%
+And whenever you are unsure how
+
+00:01:08.414 --> 00:01:09.315 line:86%
+to use a tool,
+
+00:01:09.355 --> 00:01:10.700 line:86%
+just read the orange
+
+00:01:10.750 --> 00:01:12.630 line:86%
+field in the plugin.
+
+00:01:53.330 --> 00:01:54.350 line:86%
+As you can see,
+
+00:01:54.390 --> 00:01:56.293 line:86%
+you can also add reflections
+
+00:01:56.333 --> 00:01:57.241 line:86%
+to some types
+
+00:01:57.281 --> 00:01:58.507 line:86%
+of glass: bronze,
+
+00:01:58.547 --> 00:02:00.310 line:86%
+tinted and plain glass.
+
+00:02:41.400 --> 00:02:43.751 line:86%
+Creating fake light is very simple:
+
+00:02:43.791 --> 00:02:45.690 line:86%
+just pick the LED strip and
+
+00:02:45.740 --> 00:02:48.740 line:86%
+choose a line where it will be placed.
+
+00:02:53.200 --> 00:02:55.241 line:86%
+With these sliders you adjust
+
+00:02:55.281 --> 00:02:57.071 line:86%
+the intensity and the size
+
+00:02:57.111 --> 00:02:58.080 line:86%
+of the strip.
+
+00:04:07.040 --> 00:04:08.448 line:86%
+One important tip:
+
+00:04:08.488 --> 00:04:10.424 line:86%
+always paint yellow where
+
+00:04:10.464 --> 00:04:12.830 line:86%
+the ceiling light will be, so
+
+00:04:12.880 --> 00:04:13.825 line:86%
+the AI understands your lighting
+
+00:04:13.865 --> 00:04:14.565 line:86%
+better.
+
+00:04:15.640 --> 00:04:17.296 line:86%
+Now put all these tips into
+
+00:04:17.336 --> 00:04:18.427 line:86%
+practice in Vizai.
+
+00:04:18.467 --> 00:04:20.100 line:86%
+See you in the next video.
+

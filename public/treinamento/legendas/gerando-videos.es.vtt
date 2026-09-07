@@ -1,0 +1,131 @@
+WEBVTT
+
+00:00:00.880 --> 00:00:02.153 line:86%
+Ahora la pestaña Video,
+
+00:00:02.193 --> 00:00:03.220 line:86%
+que es muy simple.
+
+00:00:03.760 --> 00:00:05.423 line:86%
+Primero vas a necesitar una
+
+00:00:05.463 --> 00:00:07.354 line:86%
+o dos imágenes ya renderizadas
+
+00:00:07.394 --> 00:00:08.400 line:86%
+de tu proyecto.
+
+00:00:08.440 --> 00:00:10.140 line:86%
+Voy a usar este proyecto como
+
+00:00:10.180 --> 00:00:10.880 line:86%
+ejemplo.
+
+00:00:12.480 --> 00:00:14.376 line:86%
+Aquí dentro tenemos dos campos,
+
+00:00:14.416 --> 00:00:16.540 line:86%
+el Frame Inicial y el Frame Final.
+
+00:00:16.620 --> 00:00:18.759 line:86%
+Puedes cargar dos imágenes a la vez,
+
+00:00:18.799 --> 00:00:20.480 line:86%
+o solo una imagen en el Frame
+
+00:00:20.520 --> 00:00:21.200 line:86%
+Inicial.
+
+00:00:21.240 --> 00:00:22.269 line:86%
+Y si quieres,
+
+00:00:22.309 --> 00:00:24.736 line:86%
+en esta opción eliges el video
+
+00:00:24.776 --> 00:00:25.443 line:86%
+con audio
+
+00:00:25.483 --> 00:00:26.360 line:86%
+o sin audio.
+
+00:00:26.400 --> 00:00:27.749 line:86%
+También puedes elegir algunas
+
+00:00:27.789 --> 00:00:29.090 line:86%
+configuraciones predefinidas
+
+00:00:29.130 --> 00:00:29.908 line:86%
+para tu video.
+
+00:00:30.880 --> 00:00:32.348 line:86%
+Si quieres hacer una transición
+
+00:00:32.388 --> 00:00:33.370 line:86%
+de una imagen a otra,
+
+00:00:33.410 --> 00:00:34.100 line:86%
+vas a necesitar
+
+00:00:34.140 --> 00:00:35.681 line:86%
+cargar las dos imágenes. Ahora,
+
+00:00:35.721 --> 00:00:37.394 line:86%
+si solo quieres crear movimiento,
+
+00:00:37.434 --> 00:00:38.892 line:86%
+carga una imagen en el Frame
+
+00:00:38.932 --> 00:00:39.632 line:86%
+Inicial.
+
+00:00:39.920 --> 00:00:41.653 line:86%
+En este ejemplo usaremos
+
+00:00:41.693 --> 00:00:44.210 line:86%
+una imagen de día y otra de noche,
+
+00:00:44.250 --> 00:00:45.605 line:86%
+y le pediremos a la herramienta
+
+00:00:45.645 --> 00:00:46.868 line:86%
+que cree un timelapse.
+
+00:00:47.460 --> 00:00:48.678 line:86%
+Es importante escribir en
+
+00:00:48.718 --> 00:00:50.266 line:86%
+el campo de texto lo que estás
+
+00:00:50.306 --> 00:00:51.695 line:86%
+imaginando para tu video.
+
+00:00:51.820 --> 00:00:52.846 line:86%
+Si lo dejas en blanco,
+
+00:00:52.886 --> 00:00:53.961 line:86%
+la IA puede no entender
+
+00:00:54.001 --> 00:00:55.834 line:86%
+exactamente lo que quieres crear.
+
+00:01:30.590 --> 00:01:31.852 line:86%
+Ahora en este ejemplo,
+
+00:01:31.892 --> 00:01:33.746 line:86%
+te muestro cómo generar un video
+
+00:01:33.786 --> 00:01:35.497 line:86%
+usando solo el Frame Inicial.
+
+00:01:35.537 --> 00:01:37.375 line:86%
+Aquí puedes pedirle a la IA
+
+00:01:37.415 --> 00:01:39.890 line:86%
+que cree algún movimiento, o incluso
+
+00:01:39.930 --> 00:01:41.233 line:86%
+agregar elementos ocurriendo
+
+00:01:41.273 --> 00:01:42.157 line:86%
+en tu escena.
+

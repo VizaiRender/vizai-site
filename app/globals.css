@@ -163,3 +163,12 @@ a[href] {
 }
 
 .mid-cta-secondary:hover { background-color: rgba(9, 64, 210, 0.06); }
+
+/* Trilha de miniaturas das aulas: as setas já indicam que há mais conteúdo,
+   então a barra de rolagem só polui. */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}

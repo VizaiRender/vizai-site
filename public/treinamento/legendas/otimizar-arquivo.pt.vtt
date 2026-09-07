@@ -1,0 +1,98 @@
+WEBVTT
+
+00:00:01.040 --> 00:00:02.500 line:86%
+No Vizai, nós temos
+
+00:00:02.540 --> 00:00:03.460 line:86%
+uma aba de ferramentas
+
+00:00:03.500 --> 00:00:05.310 line:86%
+com várias funcionalidades legais,
+
+00:00:05.350 --> 00:00:06.580 line:86%
+a primeira que vou te mostrar
+
+00:00:06.620 --> 00:00:07.980 line:86%
+é uma para otimizar o tamanho
+
+00:00:08.020 --> 00:00:09.300 line:86%
+e peso do seu arquivo,
+
+00:00:09.340 --> 00:00:11.081 line:86%
+nela você consegue remover
+
+00:00:11.121 --> 00:00:12.451 line:86%
+texturas duplicadas,
+
+00:00:12.491 --> 00:00:14.780 line:86%
+reduzir o tamanho daquelas texturas
+
+00:00:14.820 --> 00:00:16.460 line:86%
+que você importa em tamanhos
+
+00:00:16.500 --> 00:00:18.060 line:86%
+exagerados e também usar
+
+00:00:18.100 --> 00:00:19.640 line:86%
+uma função chamada impacto,
+
+00:00:20.020 --> 00:00:21.267 line:86%
+com ela você consegue
+
+00:00:21.307 --> 00:00:23.106 line:86%
+identificar quais blocos estão
+
+00:00:23.146 --> 00:00:24.700 line:86%
+com mais polígonos e assim
+
+00:00:24.740 --> 00:00:26.360 line:86%
+analisar se realmente vale
+
+00:00:26.400 --> 00:00:28.360 line:86%
+a pena trocar eles ou não.
+
+00:00:42.820 --> 00:00:44.016 line:86%
+Como vocês podem ver,
+
+00:00:44.056 --> 00:00:45.780 line:86%
+essas são todas as texturas
+
+00:00:45.820 --> 00:00:47.840 line:86%
+que existem dentro do projeto, e agora
+
+00:00:47.880 --> 00:00:49.720 line:86%
+a gente vai otimizar todas elas
+
+00:00:49.760 --> 00:00:50.760 line:86%
+em poucos cliques.
+
+00:01:01.010 --> 00:01:02.925 line:86%
+Depois da otimização é só salvar,
+
+00:01:02.965 --> 00:01:04.819 line:86%
+lá em cima o tamanho do arquivo
+
+00:01:04.859 --> 00:01:06.010 line:86%
+já vai ser atualizado
+
+00:01:06.050 --> 00:01:07.248 line:86%
+para um novo tamanho.
+
+00:01:11.880 --> 00:01:13.560 line:86%
+Aqui você consegue ver todos
+
+00:01:13.600 --> 00:01:15.080 line:86%
+os blocos que estão inseridos
+
+00:01:15.120 --> 00:01:16.540 line:86%
+na sua cena, assim você
+
+00:01:16.580 --> 00:01:18.000 line:86%
+consegue analisar quais estão
+
+00:01:18.040 --> 00:01:19.380 line:86%
+pesando mais e decidir
+
+00:01:19.420 --> 00:01:21.476 line:86%
+se realmente vale a pena manter eles.
+

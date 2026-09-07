@@ -1,0 +1,413 @@
+WEBVTT
+
+00:00:00.720 --> 00:00:01.323 line:86%
+Hi everyone,
+
+00:00:01.363 --> 00:00:02.984 line:86%
+my name is Ramon and today I'll
+
+00:00:03.024 --> 00:00:04.291 line:86%
+show you everything about
+
+00:00:04.331 --> 00:00:05.320 line:86%
+Vizai Render.
+
+00:00:05.360 --> 00:00:07.092 line:86%
+I'll start with the whole
+
+00:00:07.132 --> 00:00:09.360 line:86%
+interface and what each function
+
+00:00:09.400 --> 00:00:11.030 line:86%
+does in your project.
+
+00:00:11.080 --> 00:00:12.078 line:86%
+Right after that,
+
+00:00:12.118 --> 00:00:13.811 line:86%
+we'll generate some images of
+
+00:00:13.851 --> 00:00:15.660 line:86%
+a residential facade project,
+
+00:00:15.740 --> 00:00:17.814 line:86%
+where I'll walk you step by step
+
+00:00:17.854 --> 00:00:19.466 line:86%
+through your first render
+
+00:00:19.506 --> 00:00:21.596 line:86%
+and explain how to create new image
+
+00:00:21.636 --> 00:00:22.336 line:86%
+variations.
+
+00:00:22.680 --> 00:00:23.353 line:86%
+To start,
+
+00:00:23.393 --> 00:00:25.888 line:86%
+I'll open Vizai and show you all
+
+00:00:25.928 --> 00:00:27.393 line:86%
+6 tabs available in
+
+00:00:27.433 --> 00:00:28.731 line:86%
+the plugin interface,
+
+00:00:28.771 --> 00:00:30.446 line:86%
+each one for a different stage
+
+00:00:30.486 --> 00:00:31.400 line:86%
+of your project.
+
+00:00:31.660 --> 00:00:33.461 line:86%
+We have the Scenes,
+
+00:00:33.501 --> 00:00:34.139 line:86%
+Studio,
+
+00:00:34.179 --> 00:00:36.020 line:86%
+Video and 360 tabs,
+
+00:00:37.040 --> 00:00:39.259 line:86%
+Blocks, and the History tab with every
+
+00:00:39.299 --> 00:00:40.520 line:86%
+image you generated.
+
+00:00:41.140 --> 00:00:43.542 line:86%
+There's also your profile tab,
+
+00:00:43.582 --> 00:00:45.219 line:86%
+where you can see all
+
+00:00:45.259 --> 00:00:46.430 line:86%
+your available
+
+00:00:46.480 --> 00:00:47.135 line:86%
+credits,
+
+00:00:47.175 --> 00:00:49.483 line:86%
+and the subscription button
+
+00:00:49.523 --> 00:00:51.870 line:86%
+where you can buy a plan or
+
+00:00:51.920 --> 00:00:53.550 line:86%
+buy extra credits without
+
+00:00:53.590 --> 00:00:54.860 line:86%
+leaving the plugin.
+
+00:00:59.460 --> 00:01:01.510 line:86%
+Let me start with the Scenes tab.
+
+00:01:01.560 --> 00:01:03.218 line:86%
+It's where you set up all
+
+00:01:03.258 --> 00:01:06.060 line:86%
+your scenes before generating any image.
+
+00:01:06.240 --> 00:01:09.240 line:86%
+Here you choose scene lighting,
+
+00:01:09.531 --> 00:01:10.340 line:86%
+framing,
+
+00:01:10.380 --> 00:01:11.760 line:86%
+focal length,
+
+00:01:12.140 --> 00:01:14.230 line:86%
+rule of thirds and two-point
+
+00:01:14.270 --> 00:01:15.143 line:86%
+perspective,
+
+00:01:15.183 --> 00:01:17.390 line:86%
+then save your scene with all
+
+00:01:17.440 --> 00:01:18.940 line:86%
+the settings you picked.
+
+00:01:37.920 --> 00:01:39.965 line:86%
+This tab has two options I'll
+
+00:01:40.005 --> 00:01:41.835 line:86%
+cover in a separate video,
+
+00:01:41.875 --> 00:01:42.482 line:86%
+which are
+
+00:01:42.522 --> 00:01:44.912 line:86%
+the mirror reflection and fake light
+
+00:01:44.952 --> 00:01:45.652 line:86%
+features.
+
+00:01:45.800 --> 00:01:48.160 line:86%
+Now let's open a reference project,
+
+00:01:48.200 --> 00:01:50.122 line:86%
+so I can show you the Studio tab
+
+00:01:50.162 --> 00:01:51.940 line:86%
+and start rendering for real.
+
+00:01:54.380 --> 00:01:55.759 line:86%
+With the project open,
+
+00:01:55.799 --> 00:01:57.400 line:86%
+I'll adjust a few settings
+
+00:01:57.440 --> 00:01:58.700 line:86%
+and save our scene.
+
+00:01:58.900 --> 00:02:01.206 line:86%
+Then I'll set up the Studio tab
+
+00:02:01.246 --> 00:02:03.440 line:86%
+and generate our first image.
+
+00:03:27.120 --> 00:03:28.570 line:86%
+When the render is done,
+
+00:03:28.610 --> 00:03:30.493 line:86%
+click Enlarge and a bigger view
+
+00:03:30.533 --> 00:03:32.586 line:86%
+opens so you can compare the before
+
+00:03:32.626 --> 00:03:34.120 line:86%
+and after of your image.
+
+00:03:46.140 --> 00:03:47.839 line:86%
+With the image finished,
+
+00:03:47.879 --> 00:03:49.980 line:86%
+let me show you the Edit tab.
+
+00:03:50.080 --> 00:03:51.797 line:86%
+There you can create variations
+
+00:03:51.837 --> 00:03:52.630 line:86%
+of your image.
+
+00:03:52.680 --> 00:03:54.664 line:86%
+You can use the selection brush
+
+00:03:54.704 --> 00:03:56.687 line:86%
+to add or remove an object from
+
+00:03:56.727 --> 00:03:57.427 line:86%
+the scene.
+
+00:03:57.600 --> 00:03:59.857 line:86%
+You can also crop the image or
+
+00:03:59.897 --> 00:04:02.270 line:86%
+make small adjustments to white
+
+00:04:02.320 --> 00:04:03.450 line:86%
+balance and color.
+
+00:04:03.500 --> 00:04:04.893 line:86%
+Now I'll generate a few
+
+00:04:04.933 --> 00:04:06.887 line:86%
+variations and make small tweaks
+
+00:04:06.927 --> 00:04:07.560 line:86%
+so you can
+
+00:04:07.600 --> 00:04:08.800 line:86%
+see how it works.
+
+00:04:55.140 --> 00:04:56.568 line:86%
+Every image you generate shows
+
+00:04:56.608 --> 00:04:57.546 line:86%
+up here on the side,
+
+00:04:57.586 --> 00:04:58.419 line:86%
+in the History.
+
+00:04:58.660 --> 00:05:00.198 line:86%
+From there just save them
+
+00:05:00.238 --> 00:05:02.080 line:86%
+to your computer one by one.
+
+00:05:02.480 --> 00:05:04.424 line:86%
+Careful not to forget to save them.
+
+00:05:04.960 --> 00:05:05.780 line:86%
+Oh, one more thing.
+
+00:05:05.820 --> 00:05:07.932 line:86%
+In the Edit tab you can create
+
+00:05:07.972 --> 00:05:10.155 line:86%
+new views of your project based
+
+00:05:10.195 --> 00:05:12.160 line:86%
+on that first image you generated.
+
+00:05:12.200 --> 00:05:13.590 line:86%
+That way it keeps the same
+
+00:05:13.630 --> 00:05:14.745 line:86%
+lighting and the same
+
+00:05:14.785 --> 00:05:15.507 line:86%
+surroundings.
+
+00:05:15.640 --> 00:05:17.266 line:86%
+But if you want a much more
+
+00:05:17.306 --> 00:05:18.192 line:86%
+specific image,
+
+00:05:18.232 --> 00:05:20.105 line:86%
+you'll have to change the scene
+
+00:05:20.145 --> 00:05:23.145 line:86%
+in SketchUp and render another image.
+
+00:06:05.030 --> 00:06:07.114 line:86%
+And for closer shots of details,
+
+00:06:07.154 --> 00:06:08.641 line:86%
+just type close-up like
+
+00:06:08.681 --> 00:06:10.130 line:86%
+in this example.
+
+00:07:37.190 --> 00:07:38.993 line:86%
+And here are all the images we
+
+00:07:39.033 --> 00:07:40.200 line:86%
+generated together.
+
+00:07:40.250 --> 00:07:42.076 line:86%
+Now I'll open another project
+
+00:07:42.116 --> 00:07:44.710 line:86%
+to show how it works for interiors too.
+
+00:07:44.930 --> 00:07:45.597 line:86%
+As you saw,
+
+00:07:45.637 --> 00:07:46.730 line:86%
+it's really fast.
+
+00:07:46.910 --> 00:07:48.962 line:86%
+Imagine making all these images
+
+00:07:49.002 --> 00:07:49.702 line:86%
+in V-Ray.
+
+00:07:56.230 --> 00:07:57.888 line:86%
+With the interior project it's
+
+00:07:57.928 --> 00:07:58.890 line:86%
+the same process.
+
+00:07:59.490 --> 00:08:00.685 line:86%
+Adjust the scene,
+
+00:08:00.725 --> 00:08:03.050 line:86%
+set the project type and render.
+
+00:08:03.210 --> 00:08:04.661 line:86%
+Then just create the image
+
+00:08:04.701 --> 00:08:06.250 line:86%
+variations in the Edit tab.
+
+00:08:06.670 --> 00:08:08.384 line:86%
+And it's very important to check
+
+00:08:08.424 --> 00:08:09.424 line:86%
+this first option.
+
+00:08:09.570 --> 00:08:10.200 line:86%
+With it on,
+
+00:08:10.240 --> 00:08:12.090 line:86%
+all the materials in your scene
+
+00:08:12.130 --> 00:08:13.370 line:86%
+stay clearly visible,
+
+00:08:13.410 --> 00:08:14.090 line:86%
+which helps
+
+00:08:14.130 --> 00:08:16.210 line:86%
+the AI understand them better.
+
+00:09:26.980 --> 00:09:28.766 line:86%
+Remember that the new views
+
+00:09:28.806 --> 00:09:30.660 line:86%
+created here in the Edit tab
+
+00:09:30.700 --> 00:09:33.220 line:86%
+are built from a reference image.
+
+00:09:33.380 --> 00:09:34.462 line:86%
+Like in this example,
+
+00:09:34.502 --> 00:09:36.011 line:86%
+the first image we generated,
+
+00:09:36.051 --> 00:09:37.162 line:86%
+here in the History.
+
+00:09:37.640 --> 00:09:39.745 line:86%
+Now if you want a new side view
+
+00:09:39.785 --> 00:09:41.930 line:86%
+that isn't visible here, you'll
+
+00:09:41.980 --> 00:09:44.083 line:86%
+have to move the camera inside
+
+00:09:44.123 --> 00:09:45.980 line:86%
+SketchUp and render again.
+
+00:09:46.360 --> 00:09:47.661 line:86%
+Because the AI can't see
+
+00:09:47.701 --> 00:09:48.782 line:86%
+your whole project,
+
+00:09:48.822 --> 00:09:50.310 line:86%
+only what has already been
+
+00:09:50.360 --> 00:09:51.560 line:86%
+rendered.
+
+00:11:48.730 --> 00:11:49.910 line:86%
+Now take a look at all
+
+00:11:49.950 --> 00:11:51.980 line:86%
+the images generated here in Vizai.
+
+00:11:52.030 --> 00:11:53.455 line:86%
+In the next video I'll show
+
+00:11:53.495 --> 00:11:55.005 line:86%
+you how to create every kind
+
+00:11:55.045 --> 00:11:56.640 line:86%
+of mirror reflection and how
+
+00:11:56.690 --> 00:11:58.253 line:86%
+to make fake light inside
+
+00:11:58.293 --> 00:11:58.990 line:86%
+SketchUp.
+
+00:11:59.030 --> 00:12:00.570 line:86%
+See you in the next video.
+

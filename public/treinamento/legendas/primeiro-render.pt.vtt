@@ -1,0 +1,467 @@
+WEBVTT
+
+00:00:00.720 --> 00:00:01.500 line:86%
+Olá pessoal,
+
+00:00:01.600 --> 00:00:02.900 line:86%
+me chamo Ramon e hoje vou
+
+00:00:02.940 --> 00:00:03.900 line:86%
+mostrar tudo sobre
+
+00:00:03.940 --> 00:00:05.320 line:86%
+o Vizai Render para vocês.
+
+00:00:05.360 --> 00:00:06.920 line:86%
+Vou começar apresentando toda
+
+00:00:06.960 --> 00:00:09.130 line:86%
+a interface e o que cada função
+
+00:00:09.170 --> 00:00:10.250 line:86%
+faz dentro do seu
+
+00:00:10.300 --> 00:00:11.030 line:86%
+projeto.
+
+00:00:11.080 --> 00:00:12.140 line:86%
+Logo em seguida,
+
+00:00:12.180 --> 00:00:13.840 line:86%
+vamos gerar algumas imagens
+
+00:00:13.880 --> 00:00:15.000 line:86%
+de um projeto de fachada
+
+00:00:15.040 --> 00:00:15.700 line:86%
+residencial,
+
+00:00:15.740 --> 00:00:17.220 line:86%
+onde vou te ensinar o passo
+
+00:00:17.260 --> 00:00:18.641 line:86%
+a passo de como gerar o seu
+
+00:00:18.681 --> 00:00:19.780 line:86%
+primeiro render e te
+
+00:00:19.820 --> 00:00:21.340 line:86%
+explicar como fazer novas
+
+00:00:21.380 --> 00:00:22.491 line:86%
+variações de imagem.
+
+00:00:22.680 --> 00:00:23.543 line:86%
+Para começar,
+
+00:00:23.583 --> 00:00:25.626 line:86%
+vou abrir o Vizai e te mostrar
+
+00:00:25.666 --> 00:00:27.520 line:86%
+todas as 6 abas disponíveis
+
+00:00:27.560 --> 00:00:28.680 line:86%
+na interface do plugin,
+
+00:00:28.720 --> 00:00:30.340 line:86%
+cada uma para uma etapa
+
+00:00:30.380 --> 00:00:31.620 line:86%
+diferente do seu projeto.
+
+00:00:31.660 --> 00:00:33.060 line:86%
+Temos a aba cenas,
+
+00:00:33.180 --> 00:00:33.920 line:86%
+estúdio,
+
+00:00:34.000 --> 00:00:34.700 line:86%
+vídeo,
+
+00:00:34.820 --> 00:00:36.020 line:86%
+imagem 360,
+
+00:00:37.040 --> 00:00:38.840 line:86%
+blocos e a aba de histórico
+
+00:00:38.880 --> 00:00:40.520 line:86%
+de todas as imagens geradas.
+
+00:00:41.140 --> 00:00:43.406 line:86%
+E também temos a aba do seu perfil,
+
+00:00:43.446 --> 00:00:45.508 line:86%
+onde você consegue ver todos
+
+00:00:45.548 --> 00:00:46.437 line:86%
+os seus créditos
+
+00:00:46.480 --> 00:00:48.240 line:86%
+disponíveis e o botão
+
+00:00:48.280 --> 00:00:49.720 line:86%
+de assinaturas onde você consegue
+
+00:00:49.760 --> 00:00:51.380 line:86%
+comprar uma assinatura
+
+00:00:51.420 --> 00:00:53.720 line:86%
+ou comprar créditos avulsos sem
+
+00:00:53.760 --> 00:00:55.093 line:86%
+precisar sair do plugin.
+
+00:00:59.460 --> 00:01:01.516 line:86%
+Vou começar a te mostrar a aba cenas.
+
+00:01:01.560 --> 00:01:03.560 line:86%
+É onde você vai configurar todas
+
+00:01:03.600 --> 00:01:05.320 line:86%
+as suas cenas antes de gerar
+
+00:01:05.360 --> 00:01:06.200 line:86%
+qualquer imagem.
+
+00:01:06.240 --> 00:01:08.520 line:86%
+Aqui você vai escolher a opção
+
+00:01:08.560 --> 00:01:09.780 line:86%
+iluminação de cena,
+
+00:01:09.960 --> 00:01:10.760 line:86%
+enquadramento,
+
+00:01:11.060 --> 00:01:11.949 line:86%
+distância focal,
+
+00:01:12.140 --> 00:01:13.202 line:86%
+regra dos terços,
+
+00:01:13.242 --> 00:01:15.081 line:86%
+dois pontos de fuga e logo
+
+00:01:15.121 --> 00:01:17.390 line:86%
+em seguida salvar a sua cena com todas
+
+00:01:17.440 --> 00:01:18.996 line:86%
+as configurações escolhidas.
+
+00:01:37.920 --> 00:01:39.760 line:86%
+Temos nessa aba duas opções
+
+00:01:39.800 --> 00:01:41.470 line:86%
+que serão mostradas em um vídeo
+
+00:01:41.510 --> 00:01:42.720 line:86%
+específico, que são
+
+00:01:42.760 --> 00:01:44.640 line:86%
+as funções de reflexo de espelho
+
+00:01:44.680 --> 00:01:45.680 line:86%
+e luz fake.
+
+00:01:45.800 --> 00:01:47.340 line:86%
+Agora vamos abrir um projeto
+
+00:01:47.380 --> 00:01:48.160 line:86%
+de referência,
+
+00:01:48.200 --> 00:01:49.560 line:86%
+para eu te apresentar a aba
+
+00:01:49.600 --> 00:01:51.460 line:86%
+estúdio e começar a renderizar
+
+00:01:51.500 --> 00:01:52.200 line:86%
+de verdade.
+
+00:01:54.380 --> 00:01:55.940 line:86%
+Agora com o projeto aberto,
+
+00:01:55.980 --> 00:01:57.480 line:86%
+vou fazer algumas configurações
+
+00:01:57.520 --> 00:01:58.742 line:86%
+e salvar a nossa cena.
+
+00:01:58.900 --> 00:02:00.563 line:86%
+E em seguida vou ajustar a aba
+
+00:02:00.603 --> 00:02:02.152 line:86%
+estúdio e pedir para gerar
+
+00:02:02.192 --> 00:02:03.525 line:86%
+a nossa primeira imagem.
+
+00:03:27.120 --> 00:03:28.094 line:86%
+Finalizando o render,
+
+00:03:28.134 --> 00:03:29.320 line:86%
+podemos clicar em ampliar
+
+00:03:29.360 --> 00:03:30.800 line:86%
+que vai aparecer uma aba maior
+
+00:03:30.840 --> 00:03:32.980 line:86%
+para você conferir como ficou o antes
+
+00:03:33.020 --> 00:03:34.298 line:86%
+e depois da sua imagem.
+
+00:03:46.140 --> 00:03:48.020 line:86%
+Agora com a imagem finalizada,
+
+00:03:48.120 --> 00:03:49.980 line:86%
+vou te apresentar a aba editar.
+
+00:03:50.080 --> 00:03:51.315 line:86%
+Nela você consegue fazer
+
+00:03:51.355 --> 00:03:52.640 line:86%
+variações da sua imagem.
+
+00:03:52.680 --> 00:03:54.200 line:86%
+Você pode usar o pincel
+
+00:03:54.240 --> 00:03:55.500 line:86%
+de seleção para acrescentar
+
+00:03:55.540 --> 00:03:57.380 line:86%
+ou remover algum objeto da cena.
+
+00:03:57.600 --> 00:03:59.059 line:86%
+Também consegue recortar
+
+00:03:59.099 --> 00:04:00.500 line:86%
+a imagem ou até mesmo fazer
+
+00:04:00.540 --> 00:04:01.680 line:86%
+pequenos ajustes de balanço
+
+00:04:01.720 --> 00:04:03.450 line:86%
+de branco e de cor.
+
+00:04:03.500 --> 00:04:04.654 line:86%
+Agora vou gerar algumas
+
+00:04:04.694 --> 00:04:06.108 line:86%
+variações de imagens e fazer
+
+00:04:06.148 --> 00:04:07.560 line:86%
+pequenos ajustes para vocês
+
+00:04:07.600 --> 00:04:08.800 line:86%
+verem como funciona.
+
+00:04:55.140 --> 00:04:56.640 line:86%
+Cada imagem gerada vai
+
+00:04:56.680 --> 00:04:57.600 line:86%
+aparecendo aqui do lado
+
+00:04:57.640 --> 00:04:58.540 line:86%
+no histórico.
+
+00:04:58.660 --> 00:05:00.720 line:86%
+Daí é só você ir salvando no seu
+
+00:05:00.760 --> 00:05:02.080 line:86%
+computador uma por uma.
+
+00:05:02.480 --> 00:05:03.580 line:86%
+Cuidado para não esquecer
+
+00:05:03.620 --> 00:05:05.780 line:86%
+de salvar, hein? Ah, mais uma coisa.
+
+00:05:05.820 --> 00:05:07.531 line:86%
+Pela aba editar você consegue
+
+00:05:07.571 --> 00:05:09.404 line:86%
+fazer essas novas vistas do seu
+
+00:05:09.444 --> 00:05:10.410 line:86%
+projeto com base
+
+00:05:10.460 --> 00:05:11.740 line:86%
+naquela primeira imagem que você
+
+00:05:11.780 --> 00:05:13.700 line:86%
+gerou. Assim ele mantém a mesma
+
+00:05:13.740 --> 00:05:15.500 line:86%
+iluminação e o mesmo entorno.
+
+00:05:15.640 --> 00:05:17.279 line:86%
+Mas se você quiser uma imagem
+
+00:05:17.319 --> 00:05:18.437 line:86%
+bem mais específica,
+
+00:05:18.477 --> 00:05:20.200 line:86%
+você terá que mudar a cena lá
+
+00:05:20.240 --> 00:05:21.720 line:86%
+no seu SketchUp e pedir
+
+00:05:21.760 --> 00:05:24.260 line:86%
+para renderizar novamente outra imagem.
+
+00:06:05.030 --> 00:06:06.434 line:86%
+E para você fazer imagens mais
+
+00:06:06.474 --> 00:06:07.589 line:86%
+aproximadas de detalhes,
+
+00:06:07.629 --> 00:06:08.890 line:86%
+é só digitar close-up como
+
+00:06:08.930 --> 00:06:10.130 line:86%
+nesse exemplo.
+
+00:07:37.190 --> 00:07:39.039 line:86%
+E assim ficaram todas as imagens
+
+00:07:39.079 --> 00:07:40.200 line:86%
+que geramos juntos.
+
+00:07:40.250 --> 00:07:42.030 line:86%
+Agora vou abrir um outro projeto
+
+00:07:42.070 --> 00:07:43.410 line:86%
+para mostrar como também
+
+00:07:43.450 --> 00:07:44.839 line:86%
+funciona para interiores.
+
+00:07:44.930 --> 00:07:46.730 line:86%
+Como você viu é bem rápido.
+
+00:07:46.910 --> 00:07:48.230 line:86%
+Imagina fazer todas essas
+
+00:07:48.270 --> 00:07:49.610 line:86%
+imagens no V-Ray, né?
+
+00:07:56.230 --> 00:07:57.390 line:86%
+Agora com o projeto
+
+00:07:57.430 --> 00:07:58.510 line:86%
+de interiores vai ser o mesmo
+
+00:07:58.550 --> 00:07:59.250 line:86%
+processo.
+
+00:07:59.490 --> 00:08:00.270 line:86%
+Ajusta a cena,
+
+00:08:00.450 --> 00:08:01.950 line:86%
+configura o tipo de projeto
+
+00:08:01.990 --> 00:08:03.170 line:86%
+e procura renderizar.
+
+00:08:03.210 --> 00:08:04.630 line:86%
+Depois é só fazer as variações
+
+00:08:04.670 --> 00:08:06.250 line:86%
+das imagens na aba editar.
+
+00:08:06.670 --> 00:08:08.690 line:86%
+E é muito importante marcar essa
+
+00:08:08.730 --> 00:08:09.530 line:86%
+primeira opção.
+
+00:08:09.570 --> 00:08:10.410 line:86%
+Com ela ativada,
+
+00:08:10.450 --> 00:08:12.060 line:86%
+todos os materiais da sua cena
+
+00:08:12.100 --> 00:08:14.090 line:86%
+estarão bem visíveis e assim fazendo
+
+00:08:14.130 --> 00:08:15.730 line:86%
+com que a IA tenha um bom
+
+00:08:15.770 --> 00:08:16.492 line:86%
+entendimento.
+
+00:09:26.980 --> 00:09:28.665 line:86%
+Lembrando que essas novas vistas
+
+00:09:28.705 --> 00:09:30.499 line:86%
+que são criadas aqui na aba editar,
+
+00:09:30.539 --> 00:09:32.400 line:86%
+elas são criadas a partir de uma imagem
+
+00:09:32.440 --> 00:09:33.220 line:86%
+de referência.
+
+00:09:33.380 --> 00:09:34.660 line:86%
+Como nesse exemplo,
+
+00:09:34.740 --> 00:09:36.240 line:86%
+a primeira imagem que geramos
+
+00:09:36.280 --> 00:09:37.280 line:86%
+aqui do histórico.
+
+00:09:37.640 --> 00:09:38.980 line:86%
+Agora se você quiser criar
+
+00:09:39.020 --> 00:09:40.480 line:86%
+uma nova imagem lateral que não
+
+00:09:40.520 --> 00:09:41.940 line:86%
+é possível ver aqui, você
+
+00:09:41.980 --> 00:09:43.440 line:86%
+terá que mover a câmera dentro
+
+00:09:43.480 --> 00:09:44.920 line:86%
+do SketchUp e pedir
+
+00:09:44.960 --> 00:09:46.320 line:86%
+para renderizar novamente.
+
+00:09:46.360 --> 00:09:48.220 line:86%
+Pois a IA não consegue enxergar
+
+00:09:48.260 --> 00:09:49.460 line:86%
+o seu projeto por completo,
+
+00:09:49.500 --> 00:09:50.320 line:86%
+só o que já foi
+
+00:09:50.360 --> 00:09:51.560 line:86%
+renderizado.
+
+00:11:48.730 --> 00:11:50.315 line:86%
+Agora fique com todas as imagens
+
+00:11:50.355 --> 00:11:51.990 line:86%
+que foram geradas aqui no Vizai.
+
+00:11:52.030 --> 00:11:53.530 line:86%
+No próximo vídeo eu vou te
+
+00:11:53.570 --> 00:11:54.910 line:86%
+ensinar como gerar todo tipo
+
+00:11:54.950 --> 00:11:56.650 line:86%
+de reflexo de espelho e como
+
+00:11:56.690 --> 00:11:58.190 line:86%
+fazer luz fake aqui dentro
+
+00:11:58.230 --> 00:11:58.990 line:86%
+do SketchUp.
+
+00:11:59.030 --> 00:12:00.586 line:86%
+Até o próximo vídeo pessoal.
+

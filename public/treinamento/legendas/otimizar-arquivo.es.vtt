@@ -1,0 +1,95 @@
+WEBVTT
+
+00:00:01.040 --> 00:00:02.689 line:86%
+En Vizai tenemos una pestaña
+
+00:00:02.729 --> 00:00:04.328 line:86%
+de herramientas con varias
+
+00:00:04.368 --> 00:00:05.341 line:86%
+funciones útiles.
+
+00:00:05.381 --> 00:00:06.908 line:86%
+La primera que te muestro sirve
+
+00:00:06.948 --> 00:00:08.125 line:86%
+para optimizar el tamaño y
+
+00:00:08.165 --> 00:00:09.300 line:86%
+el peso de tu archivo.
+
+00:00:09.340 --> 00:00:11.431 line:86%
+Ahí puedes eliminar texturas
+
+00:00:11.471 --> 00:00:12.268 line:86%
+duplicadas,
+
+00:00:12.308 --> 00:00:14.780 line:86%
+reducir el tamaño de esas texturas
+
+00:00:14.820 --> 00:00:16.239 line:86%
+que importas en tamaños
+
+00:00:16.279 --> 00:00:16.936 line:86%
+exagerados,
+
+00:00:16.976 --> 00:00:18.585 line:86%
+y también usar una función
+
+00:00:18.625 --> 00:00:19.640 line:86%
+llamada Impacto.
+
+00:00:20.020 --> 00:00:22.584 line:86%
+Con ella identificas qué bloques
+
+00:00:22.624 --> 00:00:24.700 line:86%
+tienen más polígonos y así
+
+00:00:24.740 --> 00:00:26.547 line:86%
+analizar si de verdad vale
+
+00:00:26.587 --> 00:00:28.360 line:86%
+la pena cambiarlos o no.
+
+00:00:42.820 --> 00:00:44.026 line:86%
+Como puedes ver,
+
+00:00:44.066 --> 00:00:46.171 line:86%
+estas son todas las texturas
+
+00:00:46.211 --> 00:00:47.840 line:86%
+del proyecto, y ahora
+
+00:00:47.880 --> 00:00:49.554 line:86%
+vamos a optimizarlas todas
+
+00:00:49.594 --> 00:00:50.640 line:86%
+en pocos clics.
+
+00:01:01.010 --> 00:01:03.069 line:86%
+Después de optimizar solo guarda,
+
+00:01:03.109 --> 00:01:05.430 line:86%
+y arriba el tamaño del archivo ya se
+
+00:01:05.470 --> 00:01:06.914 line:86%
+actualiza al nuevo tamaño.
+
+00:01:11.880 --> 00:01:13.877 line:86%
+Aquí ves todos los bloques
+
+00:01:13.917 --> 00:01:15.757 line:86%
+insertados en tu escena,
+
+00:01:15.797 --> 00:01:16.540 line:86%
+así puedes
+
+00:01:16.580 --> 00:01:18.031 line:86%
+analizar cuáles pesan más
+
+00:01:18.071 --> 00:01:19.678 line:86%
+y decidir si de verdad vale
+
+00:01:19.718 --> 00:01:20.980 line:86%
+la pena mantenerlos.
+

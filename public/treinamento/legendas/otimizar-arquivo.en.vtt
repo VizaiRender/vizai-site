@@ -1,0 +1,89 @@
+WEBVTT
+
+00:00:01.040 --> 00:00:03.128 line:86%
+In Vizai we have a tools tab
+
+00:00:03.168 --> 00:00:05.221 line:86%
+with several handy features.
+
+00:00:05.261 --> 00:00:06.579 line:86%
+The first one I'll show
+
+00:00:06.619 --> 00:00:08.447 line:86%
+you optimizes the size and weight
+
+00:00:08.487 --> 00:00:09.300 line:86%
+of your file.
+
+00:00:09.340 --> 00:00:12.085 line:86%
+In it you can remove duplicated
+
+00:00:12.125 --> 00:00:12.893 line:86%
+textures,
+
+00:00:12.933 --> 00:00:14.780 line:86%
+shrink those textures
+
+00:00:14.820 --> 00:00:16.724 line:86%
+you import way too large,
+
+00:00:16.764 --> 00:00:19.640 line:86%
+and also use a feature called Impact.
+
+00:00:20.020 --> 00:00:21.928 line:86%
+With it you can spot which
+
+00:00:21.968 --> 00:00:24.700 line:86%
+blocks have the most polygons and then
+
+00:00:24.740 --> 00:00:27.165 line:86%
+decide whether it's really worth
+
+00:00:27.205 --> 00:00:28.360 line:86%
+replacing them.
+
+00:00:42.820 --> 00:00:43.896 line:86%
+As you can see,
+
+00:00:43.936 --> 00:00:45.831 line:86%
+these are all the textures
+
+00:00:45.871 --> 00:00:47.840 line:86%
+inside the project, and now
+
+00:00:47.880 --> 00:00:49.708 line:86%
+we'll optimize all of them in
+
+00:00:49.748 --> 00:00:50.640 line:86%
+a few clicks.
+
+00:01:01.010 --> 00:01:02.193 line:86%
+After optimizing,
+
+00:01:02.233 --> 00:01:02.912 line:86%
+just save,
+
+00:01:02.952 --> 00:01:05.430 line:86%
+and up top the file size is already
+
+00:01:05.470 --> 00:01:06.810 line:86%
+updated to the new size.
+
+00:01:11.880 --> 00:01:14.489 line:86%
+Here you see every block placed
+
+00:01:14.529 --> 00:01:15.685 line:86%
+in your scene,
+
+00:01:15.725 --> 00:01:16.540 line:86%
+so you can
+
+00:01:16.580 --> 00:01:18.383 line:86%
+check which ones weigh the most
+
+00:01:18.423 --> 00:01:20.108 line:86%
+and decide if they are really
+
+00:01:20.148 --> 00:01:20.980 line:86%
+worth keeping.
+

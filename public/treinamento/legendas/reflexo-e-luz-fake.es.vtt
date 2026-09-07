@@ -1,0 +1,143 @@
+WEBVTT
+
+00:00:00.180 --> 00:00:01.080 line:86%
+Hola a todos,
+
+00:00:01.120 --> 00:00:03.176 line:86%
+en este video te muestro cómo
+
+00:00:03.216 --> 00:00:04.333 line:86%
+generar reflejos
+
+00:00:04.373 --> 00:00:06.035 line:86%
+de espejo dentro de Vizai,
+
+00:00:06.075 --> 00:00:07.808 line:86%
+y también cómo poner luz fake
+
+00:00:07.848 --> 00:00:08.820 line:86%
+en tu proyecto.
+
+00:00:09.100 --> 00:00:10.870 line:86%
+El primer paso es configurar
+
+00:00:10.910 --> 00:00:12.688 line:86%
+y guardar todas las vistas.
+
+00:00:12.728 --> 00:00:14.248 line:86%
+Guárdalas siempre antes,
+
+00:00:14.288 --> 00:00:16.061 line:86%
+porque cada reflejo generado
+
+00:00:16.101 --> 00:00:17.579 line:86%
+queda guardado dentro de
+
+00:00:17.619 --> 00:00:18.263 line:86%
+la escena,
+
+00:00:18.303 --> 00:00:18.960 line:86%
+así puedes
+
+00:00:19.000 --> 00:00:20.738 line:86%
+alternar y cambiar los reflejos
+
+00:00:20.778 --> 00:00:21.478 line:86%
+juntos.
+
+00:00:45.510 --> 00:00:47.449 line:86%
+Con el primer reflejo generado,
+
+00:00:47.489 --> 00:00:49.660 line:86%
+pasa a la siguiente vista y repite
+
+00:00:49.710 --> 00:00:50.910 line:86%
+el mismo proceso.
+
+00:00:58.410 --> 00:00:59.176 line:86%
+Un consejo:
+
+00:00:59.216 --> 00:01:00.682 line:86%
+cuando haya dos caras
+
+00:01:00.722 --> 00:01:01.961 line:86%
+para seleccionar,
+
+00:01:02.001 --> 00:01:02.880 line:86%
+mantén Shift
+
+00:01:02.930 --> 00:01:04.724 line:86%
+en el teclado y luego pulsa
+
+00:01:04.764 --> 00:01:06.190 line:86%
+Enter para confirmar.
+
+00:01:06.330 --> 00:01:08.288 line:86%
+Y siempre que tengas dudas sobre
+
+00:01:08.328 --> 00:01:09.911 line:86%
+cómo usar una herramienta,
+
+00:01:09.951 --> 00:01:10.700 line:86%
+lee el campo
+
+00:01:10.750 --> 00:01:12.630 line:86%
+naranja del plugin.
+
+00:01:53.330 --> 00:01:54.257 line:86%
+Como puedes ver,
+
+00:01:54.297 --> 00:01:55.768 line:86%
+también se pueden agregar
+
+00:01:55.808 --> 00:01:57.279 line:86%
+reflejos en algunos tipos
+
+00:01:57.319 --> 00:01:58.527 line:86%
+de vidrio: bronce,
+
+00:01:58.567 --> 00:02:00.310 line:86%
+ahumado y vidrio normal.
+
+00:02:41.400 --> 00:02:43.653 line:86%
+Y crear luz fake es muy simple:
+
+00:02:43.693 --> 00:02:45.502 line:86%
+selecciona la tira de LED
+
+00:02:45.542 --> 00:02:48.494 line:86%
+y elige una línea donde se va
+
+00:02:48.534 --> 00:02:51.534 line:86%
+a insertar.
+
+00:02:53.200 --> 00:02:55.138 line:86%
+Con estos sliders aumentas
+
+00:02:55.178 --> 00:02:58.080 line:86%
+la intensidad y el tamaño de la tira.
+
+00:04:07.040 --> 00:04:08.794 line:86%
+Un consejo importante:
+
+00:04:08.834 --> 00:04:11.159 line:86%
+pinta de amarillo donde habrá
+
+00:04:11.199 --> 00:04:12.830 line:86%
+luz en el techo, así
+
+00:04:12.880 --> 00:04:13.505 line:86%
+la IA entenderá mejor
+
+00:04:13.545 --> 00:04:14.380 line:86%
+tu iluminación.
+
+00:04:15.640 --> 00:04:17.087 line:86%
+Ahora pon en práctica todos
+
+00:04:17.127 --> 00:04:18.408 line:86%
+estos consejos en Vizai.
+
+00:04:18.448 --> 00:04:20.115 line:86%
+Nos vemos en el próximo video.
+

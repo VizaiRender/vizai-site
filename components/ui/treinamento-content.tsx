@@ -6,6 +6,7 @@ import Image from "next/image";
 import { ArrowRight, Clock } from "lucide-react";
 import GradientBordersButton from "@/components/ui/gradient-borders-button";
 import { useLang, useHref } from "@/app/components/LanguageProvider";
+import { AulasPlayer } from "@/components/ui/aulas-player";
 import {
   ARTICLES,
   CATEGORY_ORDER,
@@ -148,6 +149,9 @@ export function TreinamentoContent() {
           </div>
         )}
       </div>
+
+      {/* As 8 aulas em vídeo, com player grande e trilha de miniaturas. */}
+      <AulasPlayer />
 
       {/* Seções por categoria (a categoria "start" já foi exibida acima) */}
       {CATEGORY_ORDER.map((cat) => {
