@@ -200,6 +200,10 @@ Quatro coisas que custaram bug e não são óbvias:
   ignora.
 - **A proporção do container é a do arquivo** (1920x1068), não 16:9, senão sobra
   faixa preta em cima e embaixo.
+- **`uploadDate` do VideoObject precisa de hora E fuso** (`2026-09-06T21:00:00-03:00`).
+  Só a data dispara dois avisos no Search Console: "invalid datetime value" e
+  "missing a time zone". São não críticos, mas cada um exige validação separada
+  no painel depois da correção.
 
 As legendas `.vtt` ficam em `public/treinamento/legendas/<slug>.<lang>.vtt` e as
 capas em `public/treinamento/capas/`. Elas são leves e cabem no deploy. Os
