@@ -112,7 +112,7 @@ function articleJsonLd(
               description,
               thumbnailUrl: `${SITE_URL}/treinamento/capas/${aula}.jpg`,
               contentUrl: `https://cdn.vizairender.com/treinamento/${aula}.mp4`,
-              uploadDate: "2026-09-06",
+              uploadDate: AULA_UPLOAD_DATE,
               duration: AULA_ISO[aula] ?? undefined,
               inLanguage: lang,
             },
@@ -121,6 +121,10 @@ function articleJsonLd(
     ],
   };
 }
+
+/** Publicação das aulas, em ISO 8601 COM fuso: o Search Console reclama de
+ *  "invalid datetime" e de "missing a time zone" quando vai só a data. */
+const AULA_UPLOAD_DATE = "2026-09-06T21:00:00-03:00";
 
 /** Duração de cada aula no formato que o schema.org pede. */
 const AULA_ISO: Record<string, string> = {
