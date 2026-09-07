@@ -182,7 +182,7 @@ por arquivo e o maior vídeo tem 181 MB, mesmo depois de comprimido.
 em `lib/treinamento/`, com conteúdo por idioma (`pt.ts`, `en.ts`, `es.ts`) e
 índice em `index.ts`. Os outros 10 viraram vídeo e o texto deles foi apagado.
 
-**Páginas de aula:** duas aulas têm página própria, com o vídeo no topo e o guia
+**Páginas de aula:** as 8 aulas têm página própria, com o vídeo no topo e o guia
 escrito embaixo, marcadas por `aula` no `ArticleMeta` e pela categoria `aulas`,
 que **não está em `CATEGORY_ORDER`** de propósito: elas geram página e entram no
 sitemap, mas não voltam a virar grade de cards na página de Treinamento.
@@ -213,7 +213,9 @@ da categoria. Os guias entram no sitemap automaticamente.
 idiomas, em `next.config.ts`. Essas URLs estão indexadas: sem o redirect, viram
 404 e o Google reclama. Quando o assunto vira aula, **prefira reaproveitar a URL
 antiga** para a página da aula em vez de criar uma nova: ela já tem histórico no
-índice.
+índice. Foi o que se fez com 7 dos 10 guias; só os 3 absorvidos por outra aula
+(preparar a cena, editor e luz fake) seguem de 301. A aula do Histórico é a
+única com texto escrito do zero, porque não existia guia do assunto.
 
 ---
 
@@ -276,8 +278,8 @@ metadata. `app/sitemap.ts` gera as URLs a partir de `LANGS` e `ARTICLES`, com
 completa.
 
 O total sai de uma conta simples: 5 páginas fixas mais os guias e as páginas de
-aula, vezes 3 idiomas. Depois da reforma de set/2026 são **36 URLs** (eram 60
-com os 15 guias). Auditado em produção com hreflang correto entre as três
+aula, vezes 3 idiomas. Depois da reforma de set/2026 são **54 URLs**: 5 páginas
+fixas, 5 guias e 8 páginas de aula, em três idiomas. Auditado em produção com hreflang correto entre as três
 línguas. O tráfego é predominantemente de marca.
 
 **O rodapé é parte do SEO, não decoração.** Ele leva a todas as páginas

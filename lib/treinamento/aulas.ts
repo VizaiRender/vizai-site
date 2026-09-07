@@ -26,12 +26,12 @@ export type Aula = {
 export const AULAS: Aula[] = [
   { id: 1, slug: "primeiro-render",    src: "https://cdn.vizairender.com/treinamento/primeiro-render.mp4", poster: "/treinamento/capas/primeiro-render.jpg", duration: "12:21", pagina: "primeiro-render" },
   { id: 2, slug: "reflexo-e-luz-fake", src: "https://cdn.vizairender.com/treinamento/reflexo-e-luz-fake.mp4", poster: "/treinamento/capas/reflexo-e-luz-fake.jpg", duration: "4:28", pagina: "reflexo-espelho" },
-  { id: 3, slug: "otimizar-arquivo",   src: "https://cdn.vizairender.com/treinamento/otimizar-arquivo.mp4", poster: "/treinamento/capas/otimizar-arquivo.jpg", duration: "1:40" },
-  { id: 4, slug: "texturas-seamless",  src: "https://cdn.vizairender.com/treinamento/texturas-seamless.mp4", poster: "/treinamento/capas/texturas-seamless.jpg", duration: "1:49" },
-  { id: 5, slug: "gerando-videos",     src: "https://cdn.vizairender.com/treinamento/gerando-videos.mp4", poster: "/treinamento/capas/gerando-videos.jpg", duration: "2:25" },
-  { id: 6, slug: "imagem-360",         src: "https://cdn.vizairender.com/treinamento/imagem-360.mp4", poster: "/treinamento/capas/imagem-360.jpg", duration: "1:25" },
-  { id: 7, slug: "gerando-blocos",     src: "https://cdn.vizairender.com/treinamento/gerando-blocos.mp4", poster: "/treinamento/capas/gerando-blocos.jpg", duration: "2:09" },
-  { id: 8, slug: "historico",          src: "https://cdn.vizairender.com/treinamento/historico.mp4", poster: "/treinamento/capas/historico.jpg", duration: "0:39" },
+  { id: 3, slug: "otimizar-arquivo",   src: "https://cdn.vizairender.com/treinamento/otimizar-arquivo.mp4", poster: "/treinamento/capas/otimizar-arquivo.jpg", pagina: "otimizar-arquivo", duration: "1:40" },
+  { id: 4, slug: "texturas-seamless",  src: "https://cdn.vizairender.com/treinamento/texturas-seamless.mp4", poster: "/treinamento/capas/texturas-seamless.jpg", pagina: "pisos-seamless", duration: "1:49" },
+  { id: 5, slug: "gerando-videos",     src: "https://cdn.vizairender.com/treinamento/gerando-videos.mp4", poster: "/treinamento/capas/gerando-videos.jpg", pagina: "video-com-ia", duration: "2:25" },
+  { id: 6, slug: "imagem-360",         src: "https://cdn.vizairender.com/treinamento/imagem-360.mp4", poster: "/treinamento/capas/imagem-360.jpg", pagina: "panorama-360", duration: "1:25" },
+  { id: 7, slug: "gerando-blocos",     src: "https://cdn.vizairender.com/treinamento/gerando-blocos.mp4", poster: "/treinamento/capas/gerando-blocos.jpg", pagina: "blocos-3d", duration: "2:09" },
+  { id: 8, slug: "historico",          src: "https://cdn.vizairender.com/treinamento/historico.mp4", poster: "/treinamento/capas/historico.jpg", pagina: "historico", duration: "0:39" },
 ];
 
 /** Caminho das legendas de uma aula, no idioma pedido. */

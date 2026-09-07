@@ -203,20 +203,9 @@ const nextConfig: NextConfig = {
       { source: "/treinamento/como-funciona-creditos", destination: "/treinamento/primeiros-passos", permanent: true },
       { source: "/en/treinamento/como-funciona-creditos", destination: "/en/treinamento/primeiros-passos", permanent: true },
       { source: "/es/treinamento/como-funciona-creditos", destination: "/es/treinamento/primeiros-passos", permanent: true },
-      // Os 10 guias de Render, Apresentação e Ferramentas grátis viraram as 8
-      // aulas em vídeo (set/2026). As URLs estavam indexadas, então vão de 301
-      // para o índice do Treinamento, onde o assunto de cada uma agora vive.
-      ...[
-        "video-com-ia",
-        "panorama-360",
-        "blocos-3d",
-        "otimizar-arquivo",
-        "pisos-seamless",
-      ].flatMap((slug) => [
-        { source: `/treinamento/${slug}`, destination: "/treinamento", permanent: true },
-        { source: `/en/treinamento/${slug}`, destination: "/en/treinamento", permanent: true },
-        { source: `/es/treinamento/${slug}`, destination: "/es/treinamento", permanent: true },
-      ]),
+      // Dos 10 guias que viraram aula em vídeo, 7 mantiveram a própria URL (agora
+      // com o vídeo no topo e o texto embaixo). Os 3 que foram absorvidos por
+      // outra aula redirecionam, porque as URLs estavam indexadas.
       // Guias absorvidos pelas aulas 1 e 2: vão para a página da aula que os cobre.
       ...[
         ["preparando-a-cena", "primeiro-render"],

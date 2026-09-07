@@ -27,6 +27,316 @@ export const ptUi: TreinoUiStrings = {
 };
 
 export const ptArticles: Record<string, ArticleContent> = {
+  "historico": {
+    title: "Aba Histórico: recupere o que você esqueceu de salvar",
+    excerpt:
+      "As últimas 10 imagens e blocos que você gerou ficam guardados no seu computador, com o custo em créditos de cada um. Veja como baixar de novo e quando o limpar apaga para sempre.",
+    blocks: [
+      { type: "p", text: "Toda geração feita no plugin entra no Histórico: renders, edições, closeups, panoramas 360 e blocos 3D. É a rede de segurança para o caso mais comum de todos, que é fechar a janela antes de salvar a imagem no computador." },
+      { type: "h2", text: "O que fica guardado" },
+      { type: "p", text: "O Histórico guarda os 10 itens mais recentes, de todos os projetos, e não só do arquivo aberto. Cada linha mostra a miniatura, o tipo de geração, a data, o projeto de onde veio e quantos créditos aquele item custou." },
+      { type: "p", text: "A lista é única de propósito: você troca de arquivo do SketchUp e continua enxergando o que gerou antes. No rodapé aparece a soma de créditos dos itens que estão ali, que é uma forma rápida de ver quanto consumiu recentemente." },
+      { type: "tip", text: "O Histórico é persistente: ele sobrevive a fechar e reabrir o SketchUp. O que não sobrevive é passar do limite, porque o item mais antigo sai quando o décimo primeiro entra." },
+      { type: "h2", text: "Baixar de novo" },
+      { type: "p", text: "No botão de download de cada linha, a imagem cheia é salva no computador de novo, na resolução original. É por isso que o Histórico existe: não é uma galeria bonita, é a chance de recuperar o que passou." },
+      { type: "warn", text: "Bloco 3D tem prazo. O arquivo do modelo fica hospedado temporariamente, então baixe o bloco no dia em que gerar. A imagem do render não tem esse limite." },
+      { type: "h2", text: "Limpar tudo, e por que pensar duas vezes" },
+      { type: "p", text: "O botão vermelho apaga a lista inteira e também as imagens guardadas na pasta do plugin no seu computador. Não há como desfazer, e o plugin avisa isso antes de executar." },
+      { type: "p", text: "Só use quando quiser mesmo liberar espaço. Se a intenção é apenas organizar, não precisa: o próprio Histórico se limita a 10 itens e a 60 MB de imagens, descartando o mais antigo sozinho." },
+      { type: "cost", text: "O Histórico não custa crédito nenhum. Ver, baixar de novo e limpar são operações locais, feitas no seu computador." },
+    ],
+  },
+  "otimizar-arquivo": {
+    title: "Otimizar Arquivo (Tools): deixe seu .skp leve de graça",
+    excerpt:
+      "Purge inteligente, materiais duplicados, redução de texturas e relatório de impacto dos componentes. A faxina completa do arquivo, 100% local e gratuita.",
+    blocks: [
+      {
+        type: "p",
+        text: "Arquivo travando, órbita engasgada, .skp com centenas de MB? A janela **Tools** (aba lateral verde do painel) inclui o **Otimizar Arquivo**: um conjunto de limpezas que roda 100% no seu computador, **sem custar créditos**. O tamanho do arquivo aparece no topo, antes e depois. Você vê o resultado na hora.",
+      },
+      {
+        type: "img",
+        src: "/treinamento/ui/tools-otimizar-{lang}.webp",
+        alt: "Janela Tools com a aba Otimizar Arquivo",
+        caption: "Otimizar Arquivo: Limpeza, Texturas e Impacto.",
+        ui: true,
+      },
+      { type: "h2", text: "Limpeza" },
+      {
+        type: "ul",
+        items: [
+          "**Purge**: elimina materiais, componentes e estilos que não estão sendo usados em nada no projeto. É a limpeza que mais reduz arquivos que passaram por muitas versões.",
+          "**Materiais Duplicados**: une materiais que usam a mesma textura com nomes diferentes (Madeira, Madeira1, Madeira-copy…), comum em modelos montados com blocos de origens variadas.",
+        ],
+      },
+      { type: "h2", text: "Texturas" },
+      {
+        type: "p",
+        text: "O **Gerenciador de Texturas** lista todas as imagens do modelo com suas dimensões. Texturas de 4K em um puxador de gaveta são peso morto: selecione as exageradas e reduza para a resolução alvo em um clique. O visual na viewport praticamente não muda. O tamanho do arquivo, sim.",
+      },
+      { type: "h2", text: "Impacto" },
+      {
+        type: "p",
+        text: "O relatório de **Impacto dos Componentes** mostra quais blocos têm mais geometria (faces) e quantas instâncias existem de cada um. É como descobrir que uma árvore baixada do Warehouse tem 800 mil faces, e que ela está repetida 12 vezes. O botão Ver localiza o componente no modelo para você decidir o que fazer.",
+      },
+      {
+        type: "tip",
+        text: "Rode o Otimizar Arquivo antes de renderizar projetos grandes: modelo leve = viewport fluida = captura mais rápida. E faça backup na primeira vez que rodar limpezas pesadas num arquivo importante.",
+      },
+      { type: "cost", text: "Grátis: processado localmente, sem créditos" },
+    ],
+  },
+  "pisos-seamless": {
+    title: "Pisos Seamless (Tools): paginação de piso profissional em segundos",
+    excerpt:
+      "Crie texturas de piso pagináveis a partir de qualquer imagem: porcelanato, madeira com variações, rejunte configurável e aplicação direta nas faces.",
+    blocks: [
+      {
+        type: "p",
+        text: "A segunda ferramenta da janela **Tools** monta **texturas de piso seamless** a partir de imagens soltas. Aquela foto de porcelanato do site do fornecedor vira um piso paginado, com rejunte e na dimensão real da peça. Também é local e gratuita.",
+      },
+      {
+        type: "img",
+        src: "/treinamento/ui/tools-pisos-{lang}.webp",
+        alt: "Aba Pisos Seamless da janela Tools",
+        caption: "Preview ao vivo da paginação, com rejunte e dimensões reais.",
+        ui: true,
+      },
+      { type: "h2", text: "Montando o piso" },
+      {
+        type: "steps",
+        items: [
+          {
+            title: "Textura base",
+            text: "Carregue a imagem da peça (foto do porcelanato, da madeira, do ladrilho).",
+          },
+          {
+            title: "Variações (opcional)",
+            text: "Adicione até 3 imagens alternativas da mesma linha. O plugin intercala as peças e elimina o efeito de repetição, essencial em madeiras.",
+          },
+          {
+            title: "Paginação e rotação",
+            text: "Grid Reto (alinhado), Transpassado 50% ou Transpassado 1/3. Gire a peça se precisar (réguas na vertical, por exemplo).",
+          },
+          {
+            title: "Dimensões reais",
+            text: "Largura e altura da peça em centímetros (90×90, 20×120…). A textura entra no SketchUp já na escala correta.",
+          },
+          {
+            title: "Rejunte",
+            text: "Espessura em milímetros e cor: rejunte cinza, bege, preto ou combinando com a peça.",
+          },
+        ],
+      },
+      { type: "h2", text: "Aplicando no modelo" },
+      {
+        type: "p",
+        text: "O preview mostra a paginação em tempo real. Para aplicar: **selecione as faces do piso** no SketchUp antes de clicar em Aplicar Textura. O material é criado e mapeado direto nelas. Sem seleção, o plugin ativa o balde de tinta para você clicar onde quiser.",
+      },
+      {
+        type: "tip",
+        text: "Pisos com paginação e rejunte corretos elevam o realismo do render: a IA respeita o desenho do piso que enxerga na cena. Monte o piso aqui antes de renderizar no Estúdio.",
+      },
+      { type: "cost", text: "Grátis: processado localmente, sem créditos" },
+    ],
+  },
+  "video-com-ia": {
+    title: "Vídeo com IA: anime seus renders com câmera cinematográfica",
+    excerpt:
+      "Transforme um render em vídeo de 4 a 15 segundos com movimento de câmera profissional e som ambiente gerado por IA, direto do plugin.",
+    blocks: [
+      {
+        type: "p",
+        text: "A aba **Vídeo** transforma qualquer render em um clipe cinematográfico usando o **Kling 3.0 Pro**, um dos motores de vídeo mais avançados do mundo. O resultado sai em **1080p**, com movimento de câmera suave e, se quiser, som ambiente gerado por IA.",
+      },
+      {
+        type: "video",
+        src: "/tools/tool-03.mp4",
+        caption: "Vídeo gerado a partir de um render do plugin.",
+      },
+      { type: "h2", text: "Montando o vídeo" },
+      {
+        type: "img",
+        src: "/treinamento/ui/video-{lang}.webp",
+        alt: "Aba Vídeo do Vizai Render",
+        caption: "A aba Vídeo: frames, proporção, câmera e duração.",
+        ui: true,
+      },
+      {
+        type: "steps",
+        items: [
+          {
+            title: "Frame inicial",
+            text: "O ponto de partida do vídeo: use o último render, escolha do histórico ou faça upload do PC.",
+          },
+          {
+            title: "Frame final (opcional)",
+            text: "Defina também a imagem de chegada e a IA cria a transição entre as duas, ótimo para “tour” entre dois ângulos do ambiente.",
+          },
+          {
+            title: "Proporção",
+            text: "16:9 paisagem, 1:1 quadrado ou 9:16 vertical para Reels e Stories.",
+          },
+          {
+            title: "Câmera e áudio",
+            text: "Escolha o movimento e o som no modal de configuração (detalhes abaixo).",
+          },
+          {
+            title: "Duração",
+            text: "4, 6, 8, 10 ou 15 segundos: o custo aparece no botão antes de gerar.",
+          },
+        ],
+      },
+      { type: "h2", text: "Movimentos de câmera" },
+      {
+        type: "img",
+        src: "/treinamento/ui/modal-camera-{lang}.webp",
+        alt: "Modal de câmera e áudio do vídeo",
+        caption: "8 movimentos prontos + descrição livre do movimento.",
+        ui: true,
+      },
+      {
+        type: "ul",
+        items: [
+          "**Automático**: movimento natural escolhido pela IA (recomendado).",
+          "**Zoom In / Zoom Out**: aproximação ou afastamento suave.",
+          "**Panorâmica esquerda / direita**: deslizamento lateral.",
+          "**Tilt Up / Tilt Down**: inclinação para cima ou para baixo.",
+          "**Órbita (Drone)**: giro suave ao redor do projeto.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Prefere dirigir a cena? Descreva o movimento livremente (“câmera avança devagar pela sala revelando a varanda”) e use as **Observações** para pedir foco em algum elemento. No áudio, escolha **Som Ambiente por IA** (vento, passos, sons urbanos, grátis) ou vídeo mudo para editar depois.",
+      },
+      {
+        type: "table",
+        head: ["Duração", "Custo"],
+        rows: [
+          ["4 segundos", "22 créditos"],
+          ["6 segundos", "33 créditos"],
+          ["8 segundos", "44 créditos"],
+          ["10 segundos", "55 créditos"],
+          ["15 segundos", "83 créditos"],
+        ],
+      },
+      {
+        type: "tip",
+        text: "Vídeos de 4–6 segundos com movimento Automático ou Zoom In são os que mais convertem em redes sociais, e os mais baratos. Comece por eles.",
+      },
+    ],
+  },
+  "panorama-360": {
+    title: "Panorama 360°: apresentações imersivas que o cliente explora",
+    excerpt:
+      "Marque a parede e onde você fica de pé: o SketchUp captura o ambiente inteiro e a IA devolve um panorama esférico que o cliente explora pelo link, sem instalar nada.",
+    blocks: [
+      {
+        type: "p",
+        text: "A aba **360** transforma o seu ambiente em um **panorama esférico interativo** direto do modelo, sem renderizar nada antes. Você marca onde a câmera fica e o plugin cuida do resto. O cliente recebe um link, abre no navegador (computador ou celular) e explora o espaço girando a imagem.",
+      },
+      {
+        type: "img",
+        src: "/demo/360/pano-result.webp",
+        alt: "Panorama 360 gerado pelo Vizai Render",
+        caption: "O panorama gerado: pronto para o visualizador interativo.",
+      },
+      { type: "h2", text: "Como gerar" },
+      {
+        type: "img",
+        src: "/treinamento/ui/pano-{lang}.webp",
+        alt: "Aba 360 do Vizai Render",
+        caption: "A aba 360: marque a parede e depois onde o observador fica de pé.",
+        ui: true,
+      },
+      {
+        type: "p",
+        text: "Você não precisa renderizar nada antes. **Clique na parede** que vai ficar no centro do panorama e depois **onde você fica de pé**. O SketchUp captura o ambiente inteiro sozinho, em todas as direções, e monta a imagem esférica. A IA transforma essa captura em uma foto realista.",
+      },
+      {
+        type: "steps",
+        items: [
+          {
+            title: "Escolha a parede de frente",
+            text: "Ela fica no centro do panorama. A emenda cai na parede oposta, então deixe a mais bonita à frente.",
+          },
+          {
+            title: "Marque onde você fica de pé",
+            text: "Clique no chão, no ponto de onde o cliente vai olhar. A altura do olho já vem em 1,60 m e você pode mudar.",
+          },
+          {
+            title: "Confira a prévia",
+            text: "O plugin mostra o ambiente capturado antes de gastar crédito. Se o observador caiu dentro de um móvel, é só refazer. A prévia é grátis.",
+          },
+          {
+            title: "Gere e compartilhe",
+            text: "5 créditos. Depois: visualize no plugin, baixe a imagem, copie o link ou envie direto pelo WhatsApp.",
+          },
+        ],
+      },
+      {
+        type: "tip",
+        text: "Escolha uma parede sem móveis colados e um ponto de vista com espaço em volta. Observador espremido num canto achata o ambiente; do meio do cômodo, o panorama respira.",
+      },
+      { type: "cost", text: "5 créditos por panorama · link de compartilhamento grátis" },
+    ],
+  },
+  "blocos-3d": {
+    title: "Blocos 3D: transforme qualquer foto em modelo para o SketchUp",
+    excerpt:
+      "Viu uma cadeira perfeita numa referência? A aba Blocos converte a foto em um modelo 3D texturizado e importa direto na sua cena.",
+    blocks: [
+      {
+        type: "p",
+        text: "A aba **Blocos** resolve aquele clássico: o cliente quer um móvel específico que não existe no 3D Warehouse. Envie uma foto de referência e a IA reconstrói o objeto em 3D, com textura, pronto para importar na cena na escala certa.",
+      },
+      {
+        type: "img",
+        src: "/tools/tool-05.webp",
+        alt: "Bloco 3D gerado a partir de foto",
+        caption: "Da foto de referência ao bloco 3D na cena.",
+      },
+      { type: "h2", text: "Como gerar" },
+      {
+        type: "img",
+        src: "/treinamento/ui/blocos-{lang}.webp",
+        alt: "Aba Blocos do Vizai Render",
+        caption: "A aba Blocos: foto, densidade de malha e textura.",
+        ui: true,
+      },
+      {
+        type: "steps",
+        items: [
+          {
+            title: "Adicione a foto de referência",
+            text: "Arraste ou clique para carregar. Funciona melhor com o objeto inteiro visível, bem iluminado e com fundo limpo.",
+          },
+          {
+            title: "Nomeie o bloco",
+            text: "O nome organiza o componente no seu modelo (ex.: “Cadeira de Madeira”).",
+          },
+          {
+            title: "Escolha a densidade de polígonos",
+            text: "Leve, Recomendado, Pesado ou Ultra. Para SketchUp, Leve ou Recomendado mantêm o arquivo ágil.",
+          },
+          {
+            title: "Textura",
+            text: "Com textura PBR (cores e materiais da foto) ou só geometria, para aplicar seus próprios materiais.",
+          },
+          {
+            title: "Importe ou baixe",
+            text: "Importar na cena coloca o bloco direto no modelo; ou baixe o .GLB para usar em qualquer software.",
+          },
+        ],
+      },
+      {
+        type: "warn",
+        text: "Blocos com densidade Pesado/Ultra podem deixar o arquivo lento em modelos grandes. Se exagerar, a janela Tools (Impacto dos Componentes) mostra quais blocos estão pesando, e o guia de Otimizar Arquivo resolve.",
+      },
+      { type: "cost", text: "28 créditos por bloco gerado" },
+    ],
+  },
   "primeiro-render": {
     title: "Seu primeiro render fotorrealista no SketchUp, do enquadramento ao resultado",
     excerpt:

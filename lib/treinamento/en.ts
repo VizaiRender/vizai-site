@@ -27,6 +27,316 @@ export const enUi: TreinoUiStrings = {
 };
 
 export const enArticles: Record<string, ArticleContent> = {
+  "historico": {
+    title: "History tab: get back what you forgot to save",
+    excerpt:
+      "The last 10 images and blocks you generated are kept on your computer, with the credit cost of each one. Here is how to download them again, and when clearing wipes them for good.",
+    blocks: [
+      { type: "p", text: "Every generation made in the plugin lands in History: renders, edits, closeups, 360 panoramas and 3D blocks. It is the safety net for the most common mistake of all, which is closing the window before saving the image to your computer." },
+      { type: "h2", text: "What is kept" },
+      { type: "p", text: "History keeps the 10 most recent items, from every project, not only from the file you have open. Each row shows the thumbnail, the type of generation, the date, the project it came from and how many credits that item cost." },
+      { type: "p", text: "The list is shared on purpose: you switch SketchUp files and still see what you generated before. The footer shows the credit total for the items listed, a quick way to see your recent usage." },
+      { type: "tip", text: "History is persistent: it survives closing and reopening SketchUp. What it does not survive is the limit, because the oldest item drops out when the eleventh comes in." },
+      { type: "h2", text: "Download again" },
+      { type: "p", text: "The download button on each row saves the full image to your computer again, at the original resolution. That is why History exists: it is not a pretty gallery, it is the chance to recover what went by." },
+      { type: "warn", text: "3D blocks expire. The model file is hosted temporarily, so download the block the same day you generate it. Render images have no such limit." },
+      { type: "h2", text: "Clear all, and why to think twice" },
+      { type: "p", text: "The red button erases the whole list and also the images stored in the plugin folder on your computer. There is no undo, and the plugin warns you before doing it." },
+      { type: "p", text: "Only use it when you really want to free up space. If you just want tidiness, you do not need to: History already caps itself at 10 items and 60 MB of images, dropping the oldest on its own." },
+      { type: "cost", text: "History costs no credits. Viewing, downloading again and clearing are local operations, done on your computer." },
+    ],
+  },
+  "otimizar-arquivo": {
+    title: "Optimize File (Tools): get your .skp lightweight for free",
+    excerpt:
+      "Smart purge, duplicate materials, texture downscaling and a component impact report. The full file cleanup, 100% local and free.",
+    blocks: [
+      {
+        type: "p",
+        text: "File lagging, choppy orbit, .skp in the hundreds of MB? The **Tools** window (green side tab on the panel) includes **Optimize File**: a set of cleanups that runs 100% on your computer, **at no credit cost**. The file size shows at the top, before and after. You see the result instantly.",
+      },
+      {
+        type: "img",
+        src: "/treinamento/ui/tools-otimizar-{lang}.webp",
+        alt: "Tools window with the Optimize File tab",
+        caption: "Optimize File: Cleanup, Textures and Impact tabs.",
+        ui: true,
+      },
+      { type: "h2", text: "Cleanup" },
+      {
+        type: "ul",
+        items: [
+          "**Purge**: removes materials, components and styles that aren't used anywhere in the project. It's the cleanup that shrinks files that have been through many revisions the most.",
+          "**Duplicate Materials**: merges materials that use the same texture under different names (Wood, Wood1, Wood-copy…), common in models assembled from blocks of mixed origins.",
+        ],
+      },
+      { type: "h2", text: "Textures" },
+      {
+        type: "p",
+        text: "The **Texture Manager** lists every image in the model with its dimensions. 4K textures on a drawer handle are dead weight: select the oversized ones and downscale them to a target resolution in one click. The viewport look barely changes. The file size does.",
+      },
+      { type: "h2", text: "Impact" },
+      {
+        type: "p",
+        text: "The **Component Impact** report shows which blocks carry the most geometry (faces) and how many instances exist of each. It's how you find out that a tree downloaded from the Warehouse has 800k faces, and that it's repeated 12 times. The View button locates the component in the model so you can decide what to do.",
+      },
+      {
+        type: "tip",
+        text: "Run Optimize File before rendering big projects: a light model means a fluid viewport and faster captures. And back up the first time you run heavy cleanups on an important file.",
+      },
+      { type: "cost", text: "Free: processed locally, no credits" },
+    ],
+  },
+  "pisos-seamless": {
+    title: "Seamless Floors (Tools): professional floor tiling in seconds",
+    excerpt:
+      "Create tileable floor textures from any image: porcelain, wood with variations, configurable grout and direct application to faces.",
+    blocks: [
+      {
+        type: "p",
+        text: "The second tool in the **Tools** window builds **seamless floor textures** from standalone images. That porcelain photo from the supplier's website becomes a tiled floor, with grout and the tile's real dimensions. Also local and free.",
+      },
+      {
+        type: "img",
+        src: "/treinamento/ui/tools-pisos-{lang}.webp",
+        alt: "Seamless Floors tab in the Tools window",
+        caption: "Live tiling preview, with grout and real dimensions.",
+        ui: true,
+      },
+      { type: "h2", text: "Building the floor" },
+      {
+        type: "steps",
+        items: [
+          {
+            title: "Base texture",
+            text: "Upload the tile image (a photo of the porcelain, wood or tile).",
+          },
+          {
+            title: "Variations (optional)",
+            text: "Add up to 3 alternative images from the same line. The plugin alternates the pieces and kills the repetition effect, essential for wood.",
+          },
+          {
+            title: "Layout and rotation",
+            text: "Straight Grid (aligned), 50% Offset or 1/3 Offset, and rotate the tile if needed (vertical planks, for example).",
+          },
+          {
+            title: "Real dimensions",
+            text: "Tile width and height in centimeters (90×90, 20×120…). The texture lands in SketchUp already at the correct scale.",
+          },
+          {
+            title: "Grout",
+            text: "Thickness in millimeters and color: gray, beige, black or matching the tile.",
+          },
+        ],
+      },
+      { type: "h2", text: "Applying to the model" },
+      {
+        type: "p",
+        text: "The preview shows the tiling in real time. To apply: **select the floor faces** in SketchUp before clicking Apply Texture. The material is created and mapped straight onto them. With nothing selected, the plugin activates the paint bucket so you click wherever you want.",
+      },
+      {
+        type: "tip",
+        text: "Floors with correct tiling and grout raise the render's realism: the AI respects the floor pattern it sees in the scene. Build the floor here before rendering in the Studio.",
+      },
+      { type: "cost", text: "Free: processed locally, no credits" },
+    ],
+  },
+  "video-com-ia": {
+    title: "AI Video: animate your renders with cinematic camera work",
+    excerpt:
+      "Turn a render into a 4-to-15-second video with professional camera movement and AI-generated ambient sound. Right from the plugin.",
+    blocks: [
+      {
+        type: "p",
+        text: "The **Video** tab turns any render into a cinematic clip using **Kling 3.0 Pro**, one of the most advanced video engines in the world. Output is **1080p**, with smooth camera movement and, if you want, AI-generated ambient sound.",
+      },
+      {
+        type: "video",
+        src: "/tools/tool-03.mp4",
+        caption: "Video generated from a plugin render.",
+      },
+      { type: "h2", text: "Building the video" },
+      {
+        type: "img",
+        src: "/treinamento/ui/video-{lang}.webp",
+        alt: "Vizai Render Video tab",
+        caption: "The Video tab: frames, aspect ratio, camera and duration.",
+        ui: true,
+      },
+      {
+        type: "steps",
+        items: [
+          {
+            title: "Start frame",
+            text: "The video's starting point: use your latest render, pick from history or upload from your PC.",
+          },
+          {
+            title: "End frame (optional)",
+            text: "Set an arrival image too and the AI creates the transition between them. Great for a “tour” between two angles of the room.",
+          },
+          {
+            title: "Aspect ratio",
+            text: "16:9 landscape, 1:1 square or 9:16 vertical for Reels and Stories.",
+          },
+          {
+            title: "Camera and audio",
+            text: "Choose the movement and the sound in the configuration modal (details below).",
+          },
+          {
+            title: "Duration",
+            text: "4, 6, 8, 10 or 15 seconds: the cost shows on the button before you generate.",
+          },
+        ],
+      },
+      { type: "h2", text: "Camera movements" },
+      {
+        type: "img",
+        src: "/treinamento/ui/modal-camera-{lang}.webp",
+        alt: "Video camera and audio modal",
+        caption: "8 preset movements + free-text movement description.",
+        ui: true,
+      },
+      {
+        type: "ul",
+        items: [
+          "**Automatic**: natural movement chosen by the AI (recommended).",
+          "**Zoom In / Zoom Out**: smooth approach or pull-back.",
+          "**Pan left / right**: lateral glide.",
+          "**Tilt Up / Tilt Down**: upward or downward tilt.",
+          "**Orbit (Drone)**: smooth sweep around the project.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Prefer to direct the scene? Describe the movement freely (“camera slowly moves through the living room revealing the balcony”) and use **Notes** to ask for focus on an element. For audio, choose **AI Ambient Sound** (wind, footsteps, urban sounds, free) or a silent video for later editing.",
+      },
+      {
+        type: "table",
+        head: ["Duration", "Cost"],
+        rows: [
+          ["4 seconds", "22 credits"],
+          ["6 seconds", "33 credits"],
+          ["8 seconds", "44 credits"],
+          ["10 seconds", "55 credits"],
+          ["15 seconds", "83 credits"],
+        ],
+      },
+      {
+        type: "tip",
+        text: "4–6 second videos with Automatic or Zoom In movement convert best on social media, and they're the cheapest. Start there.",
+      },
+    ],
+  },
+  "panorama-360": {
+    title: "360° Panorama: immersive presentations your client can explore",
+    excerpt:
+      "Mark the wall and where you stand: SketchUp captures the whole room and the AI returns a spherical panorama your client explores through a link, with nothing to install.",
+    blocks: [
+      {
+        type: "p",
+        text: "The **360** tab turns your space into an **interactive spherical panorama** straight from the model, with nothing rendered beforehand. You mark where the camera goes and the plugin handles the rest. Your client gets a link, opens it in the browser (desktop or phone) and explores the space by dragging the image.",
+      },
+      {
+        type: "img",
+        src: "/demo/360/pano-result.webp",
+        alt: "360 panorama generated by Vizai Render",
+        caption: "The generated panorama: ready for the interactive viewer.",
+      },
+      { type: "h2", text: "How to generate" },
+      {
+        type: "img",
+        src: "/treinamento/ui/pano-{lang}.webp",
+        alt: "Vizai Render 360 tab",
+        caption: "The 360 tab: mark the wall, then where the viewer stands.",
+        ui: true,
+      },
+      {
+        type: "p",
+        text: "You don't need to render anything first. **Click the wall** that will sit at the center of the panorama, then **click where you stand**. SketchUp captures the whole room on its own, in every direction, and assembles the spherical image. The AI turns that capture into a realistic photo.",
+      },
+      {
+        type: "steps",
+        items: [
+          {
+            title: "Pick the wall in front",
+            text: "It sits at the center of the panorama. The seam falls on the opposite wall, so keep your best wall in front.",
+          },
+          {
+            title: "Mark where you stand",
+            text: "Click the floor, at the spot your client will look from. Eye height comes preset at 1.60 m and you can change it.",
+          },
+          {
+            title: "Check the preview",
+            text: "The plugin shows the captured room before spending any credit. If the viewer landed inside a cabinet, just redo it. The preview is free.",
+          },
+          {
+            title: "Generate and share",
+            text: "5 credits. Then: view it in the plugin, download the image, copy the link or send it straight via WhatsApp.",
+          },
+        ],
+      },
+      {
+        type: "tip",
+        text: "Pick a wall with no furniture pressed against it, and a viewpoint with some room around it. A viewer squeezed into a corner flattens the space; from the middle of the room, the panorama breathes.",
+      },
+      { type: "cost", text: "5 credits per panorama · sharing link is free" },
+    ],
+  },
+  "blocos-3d": {
+    title: "3D Blocks: turn any photo into a SketchUp model",
+    excerpt:
+      "Found the perfect chair in a reference image? The Blocks tab converts the photo into a textured 3D model and imports it straight into your scene.",
+    blocks: [
+      {
+        type: "p",
+        text: "The **Blocks** tab solves a classic: the client wants a specific furniture piece that doesn't exist in the 3D Warehouse. Send a reference photo and the AI rebuilds the object in 3D, textured, ready to import into the scene at the right scale.",
+      },
+      {
+        type: "img",
+        src: "/tools/tool-05.webp",
+        alt: "3D block generated from a photo",
+        caption: "From reference photo to a 3D block in the scene.",
+      },
+      { type: "h2", text: "How to generate" },
+      {
+        type: "img",
+        src: "/treinamento/ui/blocos-{lang}.webp",
+        alt: "Vizai Render Blocks tab",
+        caption: "The Blocks tab: photo, mesh density and texture.",
+        ui: true,
+      },
+      {
+        type: "steps",
+        items: [
+          {
+            title: "Add the reference photo",
+            text: "Drag or click to upload. Works best with the whole object visible, well lit and on a clean background.",
+          },
+          {
+            title: "Name the block",
+            text: "The name keeps the component organized in your model (e.g. “Wooden Chair”).",
+          },
+          {
+            title: "Choose the polygon density",
+            text: "Light, Recommended, Heavy or Ultra. For SketchUp, Light or Recommended keep the file snappy.",
+          },
+          {
+            title: "Texture",
+            text: "With PBR texture (the photo's colors and materials) or geometry only, to apply your own materials.",
+          },
+          {
+            title: "Import or download",
+            text: "Import into scene drops the block straight into the model; or download the .GLB to use in any software.",
+          },
+        ],
+      },
+      {
+        type: "warn",
+        text: "Heavy/Ultra density blocks can slow down large files. If you overdo it, the Tools window (Component Impact) shows which blocks are weighing things down, and the Optimize File guide fixes it.",
+      },
+      { type: "cost", text: "28 credits per generated block" },
+    ],
+  },
   "primeiro-render": {
     title: "Your first photorealistic render in SketchUp, from framing to final image",
     excerpt:

@@ -19,6 +19,12 @@ export const ARTICLES: ArticleMeta[] = [
   // Treinamento mostra o player, e é de lá que se chega nestas páginas).
   { slug: "primeiro-render", category: "aulas", cover: "/treinamento/capas/primeiro-render.jpg", minutes: 12, aula: "primeiro-render" },
   { slug: "reflexo-espelho", category: "aulas", cover: "/treinamento/capas/reflexo-e-luz-fake.jpg", minutes: 8, aula: "reflexo-e-luz-fake" },
+  { slug: "otimizar-arquivo", category: "aulas", cover: "/treinamento/capas/otimizar-arquivo.jpg", minutes: 5, aula: "otimizar-arquivo" },
+  { slug: "pisos-seamless", category: "aulas", cover: "/treinamento/capas/texturas-seamless.jpg", minutes: 4, aula: "texturas-seamless" },
+  { slug: "video-com-ia", category: "aulas", cover: "/treinamento/capas/gerando-videos.jpg", minutes: 6, aula: "gerando-videos" },
+  { slug: "panorama-360", category: "aulas", cover: "/treinamento/capas/imagem-360.jpg", minutes: 5, aula: "imagem-360" },
+  { slug: "blocos-3d", category: "aulas", cover: "/treinamento/capas/gerando-blocos.jpg", minutes: 4, aula: "gerando-blocos" },
+  { slug: "historico", category: "aulas", cover: "/treinamento/capas/historico.jpg", minutes: 4, aula: "historico" },
   // IA Criativa
   { slug: "decorar-ambiente", category: "creative", cover: "/tools/tool-07.jpg", minutes: 4 },
   { slug: "planta-humanizada", category: "creative", cover: "/tools/tool-08.jpg", minutes: 4 },
