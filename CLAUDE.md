@@ -3,7 +3,7 @@
 # Vizai (site)
 
 Contexto completo do site, para qualquer agente de IA que trabalhe aqui.
-Última verificação contra o código: **2026-09-05**.
+Última verificação contra o código: **2026-09-06**.
 
 O produto inteiro (plugin de SketchUp, servidor de API, créditos, planos,
 Supabase, Stripe) está descrito no `CLAUDE.md` do repositório
@@ -170,16 +170,50 @@ O manifest traz `latest`, `url`, `sha256`, `releasedAt` e `sizeBytes`.
 
 ## 8. Treinamento
 
-15 guias em `lib/treinamento/`, com o conteúdo separado por idioma (`pt.ts`,
-`en.ts`, `es.ts`) e o índice em `index.ts`. Cinco categorias: `start` (1),
-`render` (5), `creative` (4), `present` (3) e `free` (2).
+A página **/treinamento** tem duas metades desde 2026-09-06:
+
+**As 8 aulas em vídeo** (`lib/treinamento/aulas.ts`), num player grande com trilha
+de miniaturas (`components/ui/aulas-player.tsx`). Os arquivos ficam no bucket R2
+`vizai-videos`, chave `treinamento/<slug>.mp4`, servidos por
+**cdn.vizairender.com**. Não podem ir em `public/`: o Workers tem teto de 25 MB
+por arquivo e o maior vídeo tem 181 MB, mesmo depois de comprimido.
+
+**Os 5 guias em texto** que sobraram (`primeiros-passos` e os 4 de IA Criativa),
+em `lib/treinamento/`, com conteúdo por idioma (`pt.ts`, `en.ts`, `es.ts`) e
+índice em `index.ts`. Os outros 10 viraram vídeo e o texto deles foi apagado.
+
+**Páginas de aula:** duas aulas têm página própria, com o vídeo no topo e o guia
+escrito embaixo, marcadas por `aula` no `ArticleMeta` e pela categoria `aulas`,
+que **não está em `CATEGORY_ORDER`** de propósito: elas geram página e entram no
+sitemap, mas não voltam a virar grade de cards na página de Treinamento.
+
+Quatro coisas que custaram bug e não são óbvias:
+
+- **CSP precisa de `media-src`.** Sem a diretiva, mídia cai no `default-src
+  'self'` e o vídeo do CDN é bloqueado **sem erro visível na página**: aparece só
+  o ícone de play riscado.
+- **A tag `<video>` tem que existir no primeiro render**, com `preload="none"`.
+  Montar o player só depois do clique economiza o mesmo download, mas o robô do
+  Google não clica: o Search Console acusa "No video indexed".
+- **A legenda do idioma é ligada por código**, percorrendo `textTracks` no
+  `onLoadedMetadata`. O atributo `default` do `<track>` não basta, o Safari
+  ignora.
+- **A proporção do container é a do arquivo** (1920x1068), não 16:9, senão sobra
+  faixa preta em cima e embaixo.
+
+As legendas `.vtt` ficam em `public/treinamento/legendas/<slug>.<lang>.vtt` e as
+capas em `public/treinamento/capas/`. Elas são leves e cabem no deploy. Os
+`.vtt` do site levam `line:86%` em cada bloco, porque no rodapé das gravações
+aparece a barra de status do SketchUp e a legenda no padrão caía em cima dela.
 
 A ordem em `ARTICLES` define a navegação anterior/próximo e a listagem dentro
 da categoria. Os guias entram no sitemap automaticamente.
 
 **Ao remover ou fundir um guia, o redirect 301 é obrigatório**, nos três
 idiomas, em `next.config.ts`. Essas URLs estão indexadas: sem o redirect, viram
-404 e o Google reclama.
+404 e o Google reclama. Quando o assunto vira aula, **prefira reaproveitar a URL
+antiga** para a página da aula em vez de criar uma nova: ela já tem histórico no
+índice.
 
 ---
 
@@ -241,9 +275,32 @@ metadata. `app/sitemap.ts` gera as URLs a partir de `LANGS` e `ARTICLES`, com
 `lastModified`, `changeFrequency` e `priority` por tipo de página. `robots.ts`
 completa.
 
-O total sai de uma conta simples: 5 páginas fixas mais os guias, vezes 3
-idiomas. Com 15 guias, são **60 URLs**. Auditado em produção com hreflang
-correto entre as três línguas. O tráfego é predominantemente de marca.
+O total sai de uma conta simples: 5 páginas fixas mais os guias e as páginas de
+aula, vezes 3 idiomas. Depois da reforma de set/2026 são **36 URLs** (eram 60
+com os 15 guias). Auditado em produção com hreflang correto entre as três
+línguas. O tráfego é predominantemente de marca.
+
+**O rodapé é parte do SEO, não decoração.** Ele leva a todas as páginas
+indexáveis a partir de qualquer lugar do site: página sem link interno é página
+que o robô custa a achar. Três regras aprendidas ao montá-lo:
+
+- **Não põe link para página `noindex`** (login, signup). O Google segue, esbarra
+  na proibição e reporta, em toda página do site.
+- **Texto no rodapé não ajuda ranqueamento.** O que se repete em todas as páginas
+  é tratado como moldura; parágrafo com palavra-chave ali é ruído, e em excesso é
+  padrão de spam.
+- **Rodapé com trinta links não distribui melhor que um com nove**, só dilui.
+
+`sameAs` na Organization (em `app/layout.tsx`) é o que liga os perfis sociais à
+marca. Os links do rodapé sozinhos não fazem isso.
+
+As páginas de aula declaram **VideoObject** com duração, capa e `contentUrl` do
+CDN, o que as torna elegíveis a aparecer com miniatura no resultado e na aba de
+vídeos.
+
+**Transcrição crua não vira página.** É fala, e o Google trata como conteúdo
+raso. O texto das páginas de aula são os guias já escritos e revisados,
+remontados com parágrafos de transição.
 
 Bots inflaram as métricas até 02/09/2026, quando o Bot Fight Mode foi ligado.
 `curl` chegou a ser o "navegador" número 1 no GA4. **Números anteriores a essa
@@ -274,7 +331,7 @@ aqui**: são do servidor, no Secret Manager do GCP.
 | Sistema | Papel no site |
 |---|---|
 | **Cloudflare Workers** | hospedagem, via OpenNext |
-| **Cloudflare R2** | `vizai-site-cache` (páginas) e `vizai-downloads` (instalador) |
+| **Cloudflare R2** | `vizai-site-cache` (páginas), `vizai-downloads` (instalador) e `vizai-videos` (aulas, via cdn.vizairender.com) |
 | **Supabase** | login com Google e sessão |
 | **Stripe** | checkout hospedado e Customer Portal |
 | **API do Vizai** | saldo, assinatura, criação de checkout |
