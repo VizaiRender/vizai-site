@@ -287,12 +287,28 @@ const pt = {
     ],
   },
   auth: {
+    panel: {
+      title: "Renderize 10x mais rápido com IA",
+      stats: [
+        { value: "8 créditos", label: "grátis ao criar a conta, sem cartão" },
+        { value: "12 ferramentas", label: "render, vídeo, 360°, blocos e mais" },
+      ],
+      features: [
+        { icon: "ruler", title: "Fiel ao seu projeto", body: "As proporções, as aberturas e os materiais do render são os que você desenhou. A IA não reinventa o que já está pronto." },
+        { icon: "camera", title: "Acabamento de fotografia", body: "Luz, reflexos e profundidade se comportam como em foto de arquitetura, não como um efeito aplicado por cima." },
+        { icon: "building", title: "Feita para arquitetura", body: "Entende materiais, escalas e iluminação de projeto. Cada tipo de cena tem um tratamento próprio, não um filtro único." },
+        { icon: "workflow", title: "Sem exportar nada", body: "Do modelo à imagem final sem sair do SketchUp. Nenhum arquivo intermediário, nenhum retrabalho." },
+        { icon: "training", title: "Treinamento incluído", body: "Oito aulas em vídeo e guias em português levam você do modelo cru até a imagem que vai pro cliente." },
+      ],
+    },
     login: {
       title: "Bem-vindo de volta",
       subtitle: "Entre para continuar criando",
       button: "Entrar com Google",
       redirecting: "Redirecionando...",
       terms: "Ao entrar, você concorda com os Termos de Uso e a Política de Privacidade.",
+      switch: "Não tem uma conta?",
+      switchCta: "Criar conta",
     },
     signup: {
       title: "Crie sua conta",
@@ -300,6 +316,8 @@ const pt = {
       button: "Continuar com Google",
       redirecting: "Redirecionando...",
       terms: "Ao criar sua conta, você concorda com os Termos de Uso e a Política de Privacidade.",
+      switch: "Já tem uma conta?",
+      switchCta: "Entrar",
     },
   },
   download: {
@@ -697,12 +715,28 @@ const en: Dict = {
     ],
   },
   auth: {
+    panel: {
+      title: "Render 10x faster with AI",
+      stats: [
+        { value: "8 credits", label: "free when you create your account, no card" },
+        { value: "12 tools", label: "render, video, 360°, blocks and more" },
+      ],
+      features: [
+        { icon: "ruler", title: "True to your project", body: "The proportions, the openings and the materials in the render are the ones you drew. The AI does not reinvent what is already done." },
+        { icon: "camera", title: "A photographic finish", body: "Light, reflections and depth behave like architectural photography, not like an effect layered on top." },
+        { icon: "building", title: "Made for architecture", body: "It understands materials, scale and project lighting. Each kind of scene gets its own treatment, not a single filter." },
+        { icon: "workflow", title: "Nothing to export", body: "From model to final image without leaving SketchUp. No intermediate files, no rework." },
+        { icon: "training", title: "Training included", body: "Eight video lessons and written guides take you from the raw model to the image your client sees." },
+      ],
+    },
     login: {
       title: "Welcome back",
       subtitle: "Log in to keep creating",
       button: "Sign in with Google",
       redirecting: "Redirecting...",
       terms: "By signing in, you agree to the Terms of Use and the Privacy Policy.",
+      switch: "Don't have an account?",
+      switchCta: "Create account",
     },
     signup: {
       title: "Create your account",
@@ -710,6 +744,8 @@ const en: Dict = {
       button: "Continue with Google",
       redirecting: "Redirecting...",
       terms: "By creating your account, you agree to the Terms of Use and the Privacy Policy.",
+      switch: "Already have an account?",
+      switchCta: "Sign in",
     },
   },
   download: {
@@ -1102,12 +1138,28 @@ const es: Dict = {
     ],
   },
   auth: {
+    panel: {
+      title: "Renderiza 10x más rápido con IA",
+      stats: [
+        { value: "8 créditos", label: "gratis al crear tu cuenta, sin tarjeta" },
+        { value: "12 herramientas", label: "render, video, 360°, bloques y más" },
+      ],
+      features: [
+        { icon: "ruler", title: "Fiel a tu proyecto", body: "Las proporciones, los vanos y los materiales del render son los que dibujaste. La IA no reinventa lo que ya está listo." },
+        { icon: "camera", title: "Acabado de fotografía", body: "Luz, reflejos y profundidad se comportan como en foto de arquitectura, no como un efecto aplicado encima." },
+        { icon: "building", title: "Hecha para arquitectura", body: "Entiende materiales, escalas e iluminación de proyecto. Cada tipo de escena recibe un trato propio, no un filtro único." },
+        { icon: "workflow", title: "Sin exportar nada", body: "Del modelo a la imagen final sin salir de SketchUp. Ningún archivo intermedio, ningún retrabajo." },
+        { icon: "training", title: "Formación incluida", body: "Ocho clases en video y guías te llevan del modelo crudo hasta la imagen que ve tu cliente." },
+      ],
+    },
     login: {
       title: "Bienvenido de nuevo",
       subtitle: "Inicia sesión para seguir creando",
       button: "Entrar con Google",
       redirecting: "Redirigiendo...",
       terms: "Al iniciar sesión, aceptas los Términos de Uso y la Política de Privacidad.",
+      switch: "¿No tienes cuenta?",
+      switchCta: "Crear cuenta",
     },
     signup: {
       title: "Crea tu cuenta",
@@ -1115,6 +1167,8 @@ const es: Dict = {
       button: "Continuar con Google",
       redirecting: "Redirigiendo...",
       terms: "Al crear tu cuenta, aceptas los Términos de Uso y la Política de Privacidad.",
+      switch: "¿Ya tienes una cuenta?",
+      switchCta: "Entrar",
     },
   },
   download: {
