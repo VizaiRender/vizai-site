@@ -257,9 +257,9 @@ export function HomePage() {
               <GoogleMark />
               {t.home.heroCta}
             </Link>
-            <p className="text-xs text-center flex items-center justify-center gap-1" style={{ color: "var(--foreground-muted)" }}>
+            <p className="text-sm text-center flex items-center justify-center gap-1.5 flex-wrap" style={{ color: "var(--foreground-muted)" }}>
               {t.home.heroFree}
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="#0940D2">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#0940D2">
                 <path d="M13 2L4.09 12.96A1 1 0 005 14.5h6.5L10 22l9.91-10.96A1 1 0 0019 10H12.5L13 2z" />
               </svg>
               {t.home.heroCredits}

@@ -46,7 +46,7 @@ export function MidCtaSection() {
                       {t.midCta.primary}
                     </Link>
                   </Button>
-                  <p className="text-xs text-center mid-cta-muted">
+                  <p className="text-sm text-center mid-cta-muted">
                     {t.midCta.note}
                   </p>
                 </div>
