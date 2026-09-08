@@ -145,6 +145,25 @@ export default function Navbar({ forceDark = false }: { forceDark?: boolean }) {
   const pathname = usePathname();
   const naPaginaDeDownload = /\/download\/?$/.test(pathname);
 
+  /**
+   * Mesmo engodo do de cima, na página de treinamento. Medido no Clarity de
+   * 05 a 08/09/2026: 19 cliques mortos em /treinamento, em 16 sessões, a pior
+   * marca do site por sessão (a de /download, já corrigida, era 0,68).
+   *
+   * Ficou de fora da correção acima porque a página de aulas em vídeo é de
+   * 06/09, nasceu depois dela.
+   *
+   * Só o ÍNDICE. Nos artigos (/treinamento/<slug>) o item continua, porque ali
+   * é ele que leva de volta pra lista. A regex casa só o fim do caminho, então
+   * pega /treinamento, /en/treinamento e /es/treinamento e deixa os artigos
+   * de fora.
+   *
+   * E "Planos" fica FORA desta regra de propósito: ele aponta pra /#pricing e
+   * na home rola até a seção, ou seja funciona. Esconder por apontar pra
+   * página atual mataria justamente o item que está certo.
+   */
+  const naPaginaDeTreinamento = /\/treinamento\/?$/.test(pathname);
+
   useEffect(() => {
     setMounted(true);
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -346,9 +365,11 @@ export default function Navbar({ forceDark = false }: { forceDark?: boolean }) {
                 <Link href={href("/#pricing")} className={`text-sm transition-colors ${d ? "text-white/70 hover:text-white" : "text-black/60 hover:text-black"}`}>
                   {t.nav.plans}
                 </Link>
-                <Link href={href("/treinamento")} className={`text-sm transition-colors ${d ? "text-white/70 hover:text-white" : "text-black/60 hover:text-black"}`}>
-                  {t.nav.training}
-                </Link>
+                {!naPaginaDeTreinamento && (
+                  <Link href={href("/treinamento")} className={`text-sm transition-colors ${d ? "text-white/70 hover:text-white" : "text-black/60 hover:text-black"}`}>
+                    {t.nav.training}
+                  </Link>
+                )}
                 {!naPaginaDeDownload && (
                   <Link
                     href={href("/download")}
@@ -466,7 +487,10 @@ export default function Navbar({ forceDark = false }: { forceDark?: boolean }) {
             <nav className="flex flex-col px-8 pt-6 gap-1">
               {[
                 { href: "/#pricing", label: t.nav.plans },
-                { href: "/treinamento", label: t.nav.training },
+                // Mesmo motivo do menu de desktop, ver o comentário lá em cima.
+                ...(naPaginaDeTreinamento
+                  ? []
+                  : [{ href: "/treinamento", label: t.nav.training }]),
                 // Mesmo motivo do menu de desktop: na página de download este
                 // item não leva a lugar nenhum.
                 ...(naPaginaDeDownload
