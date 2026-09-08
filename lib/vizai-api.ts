@@ -76,6 +76,34 @@ export async function fetchSubscription(
 }
 
 /**
+ * Avisa o servidor que alguém acabou de entrar pelo SITE.
+ *
+ * O servidor é quem decide se é a primeira vez (olhando se a pessoa já existe no
+ * Resend) e quem abre a régua de "criou conta e ainda não instalou o plugin".
+ * Daqui sai só o aviso: o email nunca viaja no corpo, vem do próprio token.
+ *
+ * NUNCA lança e nunca atrasa o login. Roda dentro de um `after()`, ou seja
+ * depois de a pessoa já ter sido redirecionada, e ainda assim tem prazo: se a
+ * API estiver fora, perder um email de onboarding é irrelevante perto de segurar
+ * o processo de login de pé.
+ */
+export async function notifySiteLogin(
+  accessToken: string,
+  lang: string
+): Promise<void> {
+  try {
+    await authedFetch("/api/site-first-login", accessToken, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ lang }),
+      signal: AbortSignal.timeout(5000),
+    });
+  } catch {
+    // silêncio proposital: onboarding não pode derrubar autenticação
+  }
+}
+
+/**
  * Identificadores de anúncio que viajam junto com o checkout.
  *
  * Servem pro Purchase de boleto/Pix, que nasce num webhook da Stripe: lá não há
