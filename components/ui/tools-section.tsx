@@ -98,6 +98,7 @@ export function ToolsSection() {
                 <>
                   {isVideo(tool.mediaSrc) ? (
                     <AutoVideo
+                      lazy
                       src={tool.mediaSrc}
                       autoPlay
                       loop

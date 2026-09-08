@@ -66,16 +66,46 @@ export function Compare({
 
   useEffect(() => {
     if (!autoplay) return;
+    const el = containerRef.current;
+    if (!el) return;
+
     let dir = 1;
-    const interval = setInterval(() => {
-      setPosition((prev) => {
-        const next = prev + dir * 0.4;
-        if (next >= 95) dir = -1;
-        if (next <= 5) dir = 1;
-        return next;
-      });
-    }, 16);
-    return () => clearInterval(interval);
+    let onScreen = false;
+    let interval: ReturnType<typeof setInterval> | undefined;
+    const stop = () => {
+      clearInterval(interval);
+      interval = undefined;
+    };
+    const update = () => {
+      if (!onScreen || document.hidden) {
+        stop();
+        return;
+      }
+      if (interval !== undefined) return;
+      interval = setInterval(() => {
+        if (dragging.current) return;
+        setPosition((prev) => {
+          const next = prev + dir * 0.4;
+          if (next >= 95) dir = -1;
+          if (next <= 5) dir = 1;
+          return next;
+        });
+      }, 16);
+    };
+
+    // Os oito comparadores atualizavam 500 vezes por segundo mesmo abaixo
+    // da dobra. Fora da tela não basta esconder: o timer precisa parar.
+    const io = new IntersectionObserver(([entry]) => {
+      onScreen = entry.isIntersecting;
+      update();
+    });
+    io.observe(el);
+    document.addEventListener("visibilitychange", update);
+    return () => {
+      stop();
+      io.disconnect();
+      document.removeEventListener("visibilitychange", update);
+    };
   }, [autoplay]);
 
   return (

@@ -1,6 +1,11 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+
+type AutoVideoProps = React.ComponentProps<"video"> & {
+  /** Adia o download até perto da tela. O container deve reservar a altura. */
+  lazy?: boolean;
+};
 
 /**
  * Vídeo decorativo que só toca enquanto está na tela.
@@ -16,12 +21,34 @@ import { useEffect, useRef } from "react";
  * `visibilitychange` cobre a aba em segundo plano (vídeo mudo em aba oculta
  * continua decodificando sozinho). Visualmente idêntico ao `<video autoPlay>`.
  */
-export function AutoVideo(props: React.ComponentProps<"video">) {
+export function AutoVideo({ lazy = false, src, preload, ...props }: AutoVideoProps) {
   const ref = useRef<HTMLVideoElement>(null);
+  const [loadedSrc, setLoadedSrc] = useState<AutoVideoProps["src"]>();
+  const videoSrc = lazy && loadedSrc !== src ? undefined : src;
 
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
+    if (!el || !lazy || loadedSrc === src) return;
+
+    let nearScreen = false;
+    const load = () => {
+      if (nearScreen && !document.hidden) setLoadedSrc(src);
+    };
+    const io = new IntersectionObserver(([entry]) => {
+      nearScreen = entry.isIntersecting;
+      load();
+    }, { rootMargin: "300px" });
+    io.observe(el);
+    document.addEventListener("visibilitychange", load);
+    return () => {
+      io.disconnect();
+      document.removeEventListener("visibilitychange", load);
+    };
+  }, [lazy, src, loadedSrc]);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || !videoSrc) return;
 
     let onScreen = false;
 
@@ -49,8 +76,20 @@ export function AutoVideo(props: React.ComponentProps<"video">) {
     return () => {
       io.disconnect();
       document.removeEventListener("visibilitychange", update);
+      el.pause();
     };
-  }, []);
+  }, [videoSrc]);
 
-  return <video ref={ref} {...props} />;
+  // autoPlay no HTML inicia o download antes de o observer poder pausar.
+  // Só o observer dá play. Nos cards, nem o src existe antes da aproximação;
+  // depois ele permanece para preservar o buffer e a posição ao voltar.
+  return (
+    <video
+      ref={ref}
+      {...props}
+      src={videoSrc}
+      autoPlay={false}
+      preload={lazy ? (videoSrc ? "auto" : "none") : preload}
+    />
+  );
 }
