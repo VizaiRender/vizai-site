@@ -3,7 +3,7 @@
 # Vizai (site)
 
 Contexto completo do site, para qualquer agente de IA que trabalhe aqui.
-Última verificação contra o código: **2026-09-06**.
+Última verificação contra o código: **2026-09-08**.
 
 O produto inteiro (plugin de SketchUp, servidor de API, créditos, planos,
 Supabase, Stripe) está descrito no `CLAUDE.md` do repositório
@@ -67,7 +67,7 @@ app/
     conta/                   dados da conta
     portal/route.ts          [API] abre o Customer Portal da Stripe
   auth/
-    callback/route.ts        [API] troca o code do OAuth por sessão
+    callback/route.ts        [API] troca o code do OAuth por sessão e avisa a régua de emails
     signout/route.ts         [API] encerra a sessão
   checkout/                  ponte para o Checkout hospedado da Stripe
   login/  signup/  obrigado/
@@ -140,6 +140,31 @@ Duas armadilhas que já custaram sessão de usuário:
 `app/app/` mostra saldo, plano e período, lendo de `lib/vizai-api.ts`, que chama
 `api.vizairender.com` com o JWT da sessão. O saldo tem duas partes: mensal (que
 expira na renovação) e perpétuo (que não expira).
+
+### O callback do Google também abre uma régua de emails
+
+Desde 08/09/2026, `app/auth/callback/route.ts` chama
+`POST /api/site-first-login` no servidor. É o que faz quem cria conta aqui e
+nunca instala o plugin receber a régua "falta um passo" (Fluxo 3, em pt, en e
+es). Antes disso, essa pessoa não recebia nada: medido de 01 a 08/09, eram **19
+contas contra 31 que entraram pelo plugin**, ou seja 38% de tudo que chegava.
+
+Três coisas para não desfazer sem entender:
+
+- **Roda em TODO login, não só no primeiro.** Quem decide se é a primeira vez é
+  o servidor, olhando se a pessoa já existe no Resend. Fazer essa checagem aqui
+  exigiria um marcador no banco que não existe, e criar um é DDL, que é passo
+  manual do Ramon.
+- **Vai dentro de `after()`**, ou seja depois de a pessoa já ter sido
+  redirecionada, e com timeout. Email de onboarding não pode segurar login.
+  `notifySiteLogin` nunca lança, de propósito.
+- **O idioma sai do prefixo do `next`** (`/en`, `/es`) e cai no cookie
+  `vizai-lang` como reserva. Sem os dois, português, que é o idioma base da
+  régua. Idioma sem automação correspondente viraria evento órfão no Resend, e
+  evento órfão é email que some sem erro nenhum.
+
+O texto dos emails vive nas Automations do Resend, não neste repo: mudar copy
+não exige deploy. O desenho completo está no `CLAUDE.md` do repo do plugin.
 
 `app/app/portal/route.ts` abre o Customer Portal da Stripe para o usuário
 trocar cartão, ver faturas ou cancelar.
