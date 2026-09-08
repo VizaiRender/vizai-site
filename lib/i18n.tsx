@@ -288,7 +288,7 @@ const pt = {
   },
   auth: {
     panel: {
-      title: "Renderize 10x mais rápido com IA",
+      title: "Renderize 10x mais rápido com o Vizai Render",
       stats: [
         { value: "8 créditos", label: "grátis ao criar a conta, sem cartão" },
         { value: "12 ferramentas", label: "render, vídeo, 360°, blocos e mais" },
@@ -716,7 +716,7 @@ const en: Dict = {
   },
   auth: {
     panel: {
-      title: "Render 10x faster with AI",
+      title: "Render 10x faster with Vizai Render",
       stats: [
         { value: "8 credits", label: "free when you create your account, no card" },
         { value: "12 tools", label: "render, video, 360°, blocks and more" },
@@ -1139,7 +1139,7 @@ const es: Dict = {
   },
   auth: {
     panel: {
-      title: "Renderiza 10x más rápido con IA",
+      title: "Renderiza 10x más rápido con Vizai Render",
       stats: [
         { value: "8 créditos", label: "gratis al crear tu cuenta, sin tarjeta" },
         { value: "12 herramientas", label: "render, video, 360°, bloques y más" },
