@@ -249,10 +249,16 @@ const nextConfig: NextConfig = {
       { pathname: "/**", search: "?v=4" },
       { pathname: "/**", search: "?v=5" },
     ],
+    // Só host que o site usa de fato num <Image>. Cada host aqui vira proxy de
+    // imagem no nosso domínio: qualquer um pode pedir /_next/image com uma URL
+    // dele e gastar a nossa CPU e a cota de conversão da Cloudflare. Por isso
+    // saíram em 10/09/2026 o i.ibb.co (hospedagem pública, onde qualquer pessoa
+    // sobe arquivo, e que nenhum componente usava) e o lh3.googleusercontent.com
+    // (a foto do Google na barra do topo é <img> comum e não passa por aqui; ela
+    // continua liberada no img-src do CSP, que é outra lista). O i.pravatar.cc
+    // fica enquanto a seção de depoimentos usar as fotos de lá.
     remotePatterns: [
       { protocol: "https", hostname: "i.pravatar.cc" },
-      { protocol: "https", hostname: "lh3.googleusercontent.com" },
-      { protocol: "https", hostname: "i.ibb.co" },
       { protocol: "https", hostname: "downloads.vizairender.com" },
     ],
   },
