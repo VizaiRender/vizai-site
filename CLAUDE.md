@@ -260,7 +260,17 @@ Três camadas, e cada uma já foi motivo de bug:
    casa com dois padrões recebe os dois valores no mesmo cabeçalho. Por isso
    nada de curinga por extensão, só pasta ou caminho exato. O `immutable` é o
    que de fato dá cache: tirar quebra a performance em silêncio.
-3. **Otimizador de imagem** do Worker.
+3. **Otimizador de imagem** do Worker, com cache de borda na frente desde
+   10/09/2026: `cloudflare-worker.mjs` virou o `main` do `wrangler.jsonc` e
+   envolve o worker gerado pelo OpenNext. Só guarda resposta 200 marcada
+   `immutable`, e a chave leva o id da versão publicada (binding
+   `CF_VERSION_METADATA`): todo deploy começa com a borda vazia, senão imagem
+   apagada ou retirada ficaria até 10 anos no ar. Para conferir em produção, o
+   cabeçalho `x-vizai-img-cache` responde `MISS` e depois `HIT`. Motivo: essa
+   rota era 57% das invocações do Worker e foi onde o limite de 10 ms de CPU do
+   plano Free estourou, em 06/09 e 10/09.
+   **Só entra no `remotePatterns` host que o site usa de verdade**: cada host ali
+   é um proxy de imagem aberto no nosso domínio.
 
 Armadilhas medidas:
 
@@ -380,6 +390,9 @@ aqui**: são do servidor, no Secret Manager do GCP.
 - **Push não publica.** O build automático está desconectado desde 31/08.
 - **Não redirecione o Googlebot por idioma.** Ver a seção 4.
 - **Guia removido precisa de 301** nos três idiomas.
+- **Endereço inexistente é 404 pronta, sem montar página** (`dynamicParams =
+  false` nas 8 rotas com parâmetro, desde 10/09/2026). Página só existe se estiver
+  no `generateStaticParams`. A opção some se o `cacheComponents` for ligado.
 - **A galeria antes/depois precisa de número par de cards**, e a IA reenquadra a
   imagem, então todo par tem que ser alinhado antes de entrar.
 - **Os depoimentos da home não são de clientes reais.**
