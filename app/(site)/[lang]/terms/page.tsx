@@ -7,6 +7,9 @@ export function generateStaticParams() {
   return PREFIXED_LANGS.map((lang) => ({ lang }));
 }
 
+// Idioma fora da lista vira 404 pronta. Ver o comentário em [lang]/layout.tsx.
+export const dynamicParams = false;
+
 export async function generateMetadata({
   params,
 }: {

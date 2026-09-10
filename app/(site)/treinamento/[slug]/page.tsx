@@ -5,6 +5,11 @@ export function generateStaticParams() {
   return ARTICLES.map((a) => ({ slug: a.slug }));
 }
 
+// Aula ou guia fora de ARTICLES vira 404 pronta, sem montar a página. Ver o
+// comentário em [lang]/layout.tsx. Guia removido continua precisando do 301 no
+// next.config.
+export const dynamicParams = false;
+
 export async function generateMetadata({
   params,
 }: {

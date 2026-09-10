@@ -9,6 +9,10 @@ export function generateStaticParams() {
   );
 }
 
+// Idioma ou aula fora da lista vira 404 pronta. Ver o comentário em
+// [lang]/layout.tsx. Guia removido continua precisando do 301 no next.config.
+export const dynamicParams = false;
+
 export async function generateMetadata({
   params,
 }: {
