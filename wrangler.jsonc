@@ -1,6 +1,8 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "main": ".open-next/worker.js",
+  // Entrada própria que envolve o .open-next/worker.js com o cache de imagem.
+  // Ver o comentário no topo do arquivo antes de voltar pro worker gerado.
+  "main": "cloudflare-worker.mjs",
   "name": "vizai-site",
   "compatibility_date": "2026-05-23",
   "compatibility_flags": [
@@ -18,6 +20,11 @@
   ],
   "images": {
     "binding": "IMAGES"
+  },
+  // Id da versão publicada. Entra na chave do cache de imagem do
+  // cloudflare-worker.mjs, pra que nenhuma imagem guardada sobreviva a um deploy.
+  "version_metadata": {
+    "binding": "CF_VERSION_METADATA"
   },
   "r2_buckets": [
     {
