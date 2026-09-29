@@ -21,7 +21,7 @@ export const SUPPORT_EMAIL = "suporte@vizairender.com";
 
 const privacyPt: LegalDoc = {
   title: "Política de Privacidade",
-  lastUpdated: "Última atualização: 25 de agosto de 2026",
+  lastUpdated: "Última atualização: 29 de setembro de 2026",
   sections: [
     {
       heading: "1. Introdução",
@@ -59,7 +59,7 @@ const privacyPt: LegalDoc = {
         {
           type: "ul",
           items: [
-            { text: "Processar suas cenas 3D através de modelos de IA (Google Gemini para análise e enriquecimento de cena; Google Imagen / Vertex AI para geração de imagem; Fal.ai / Kling para geração de vídeo) e entregar o resultado final no plugin." },
+            { text: "Processar suas cenas 3D através de modelos de IA (Google Gemini para análise de cena e geração de imagem; Fal.ai para vídeo, blocos 3D, upscale 4K e imagem 360°) e entregar o resultado final no plugin." },
             { text: "Gerenciar sua conta, autenticar seu acesso, processar pagamentos e administrar seu saldo de créditos." },
             { text: "Detectar e prevenir uso abusivo (ex.: criação de múltiplas contas para acumular créditos gratuitos) por meio de identificadores de dispositivo." },
             { text: "Enviar comunicados administrativos e fornecer suporte técnico." },
@@ -76,7 +76,7 @@ const privacyPt: LegalDoc = {
         {
           type: "ul",
           items: [
-            { lead: "Provedores de IA:", text: "Google Cloud (Vertex AI / Gemini / Imagen) para processamento de imagens e Fal.ai (Kling) para geração de vídeo. Suas imagens são enviadas a esses provedores somente para executar a renderização solicitada, conforme suas respectivas políticas de privacidade." },
+            { lead: "Provedores de IA:", text: "Google Cloud (Vertex AI / Gemini) para análise de cena e geração e edição de imagens, e Fal.ai para vídeo (modelo Kling), blocos 3D (modelo Meshy), upscale 4K (modelo Clarity) e imagem 360° (modelo GPT Image, da OpenAI). Suas imagens são enviadas a esses provedores somente para executar a renderização solicitada, conforme suas respectivas políticas de privacidade." },
             { lead: "Infraestrutura:", text: "Google Cloud Run (hospedagem do servidor), Supabase (banco de dados e autenticação) e Stripe (pagamentos), todos obrigados por contrato a proteger seus dados." },
             { lead: "Medição e Publicidade:", text: "Meta Platforms (Pixel e Conversions API), Google (Google Analytics 4 e Google Tag Manager), e Stape (servidor de etiquetas que intermedia esses envios). Compartilhamos com essas empresas dados de navegação e identificadores. Nunca compartilhamos o conteúdo das suas cenas 3D ou das imagens geradas. A seção 5 explica em detalhe o que é enviado e como recusar." },
             { lead: "Obrigação Legal:", text: "Se exigido por lei, regulação ou em resposta a processos legais válidos." },
@@ -140,7 +140,7 @@ const privacyPt: LegalDoc = {
 
 const privacyEn: LegalDoc = {
   title: "Privacy Policy",
-  lastUpdated: "Last updated: August 25, 2026",
+  lastUpdated: "Last updated: September 29, 2026",
   sections: [
     {
       heading: "1. Introduction",
@@ -178,7 +178,7 @@ const privacyEn: LegalDoc = {
         {
           type: "ul",
           items: [
-            { text: "Process your 3D scenes through AI models (Google Gemini for scene analysis and enrichment; Google Imagen / Vertex AI for image generation; Fal.ai / Kling for video generation) and deliver the final result in the plugin." },
+            { text: "Process your 3D scenes through AI models (Google Gemini for scene analysis and image generation; Fal.ai for video, 3D blocks, 4K upscale and 360° images) and deliver the final result in the plugin." },
             { text: "Manage your account, authenticate your access, process payments and administer your credit balance." },
             { text: "Detect and prevent abusive use (e.g., creating multiple accounts to accumulate free credits) by means of device identifiers." },
             { text: "Send administrative communications and provide technical support." },
@@ -195,7 +195,7 @@ const privacyEn: LegalDoc = {
         {
           type: "ul",
           items: [
-            { lead: "AI Providers:", text: "Google Cloud (Vertex AI / Gemini / Imagen) for image processing and Fal.ai (Kling) for video generation. Your images are sent to these providers only to perform the requested rendering, in accordance with their respective privacy policies." },
+            { lead: "AI Providers:", text: "Google Cloud (Vertex AI / Gemini) for scene analysis and image generation and editing, and Fal.ai for video (Kling model), 3D blocks (Meshy model), 4K upscale (Clarity model) and 360° images (GPT Image model, by OpenAI). Your images are sent to these providers only to perform the requested rendering, in accordance with their respective privacy policies." },
             { lead: "Infrastructure:", text: "Google Cloud Run (server hosting), Supabase (database and authentication) and Stripe (payments), all contractually obligated to protect your data." },
             { lead: "Measurement and Advertising:", text: "Meta Platforms (Pixel and Conversions API), Google (Google Analytics 4 and Google Tag Manager), and Stape (the tagging server that relays these transmissions). We share browsing data and identifiers with these companies. We never share the content of your 3D scenes or generated images. Section 5 explains in detail what is sent and how to opt out." },
             { lead: "Legal Obligation:", text: "If required by law, regulation or in response to valid legal proceedings." },
@@ -259,7 +259,7 @@ const privacyEn: LegalDoc = {
 
 const privacyEs: LegalDoc = {
   title: "Política de Privacidad",
-  lastUpdated: "Última actualización: 25 de agosto de 2026",
+  lastUpdated: "Última actualización: 29 de septiembre de 2026",
   sections: [
     {
       heading: "1. Introducción",
@@ -297,7 +297,7 @@ const privacyEs: LegalDoc = {
         {
           type: "ul",
           items: [
-            { text: "Procesar tus escenas 3D mediante modelos de IA (Google Gemini para análisis y enriquecimiento de escena; Google Imagen / Vertex AI para generación de imagen; Fal.ai / Kling para generación de video) y entregar el resultado final en el plugin." },
+            { text: "Procesar tus escenas 3D mediante modelos de IA (Google Gemini para análisis de escena y generación de imagen; Fal.ai para video, bloques 3D, upscale 4K e imagen 360°) y entregar el resultado final en el plugin." },
             { text: "Gestionar tu cuenta, autenticar tu acceso, procesar pagos y administrar tu saldo de créditos." },
             { text: "Detectar y prevenir uso abusivo (p. ej.: creación de múltiples cuentas para acumular créditos gratuitos) mediante identificadores de dispositivo." },
             { text: "Enviar comunicados administrativos y brindar soporte técnico." },
@@ -314,7 +314,7 @@ const privacyEs: LegalDoc = {
         {
           type: "ul",
           items: [
-            { lead: "Proveedores de IA:", text: "Google Cloud (Vertex AI / Gemini / Imagen) para procesamiento de imágenes y Fal.ai (Kling) para generación de video. Tus imágenes se envían a estos proveedores únicamente para ejecutar el renderizado solicitado, conforme a sus respectivas políticas de privacidad." },
+            { lead: "Proveedores de IA:", text: "Google Cloud (Vertex AI / Gemini) para análisis de escena y generación y edición de imágenes, y Fal.ai para video (modelo Kling), bloques 3D (modelo Meshy), upscale 4K (modelo Clarity) e imagen 360° (modelo GPT Image, de OpenAI). Tus imágenes se envían a estos proveedores únicamente para ejecutar el renderizado solicitado, conforme a sus respectivas políticas de privacidad." },
             { lead: "Infraestructura:", text: "Google Cloud Run (alojamiento del servidor), Supabase (base de datos y autenticación) y Stripe (pagos), todos obligados por contrato a proteger tus datos." },
             { lead: "Medición y Publicidad:", text: "Meta Platforms (Pixel y Conversions API), Google (Google Analytics 4 y Google Tag Manager), y Stape (servidor de etiquetas que intermedia estos envíos). Compartimos con estas empresas datos de navegación e identificadores. Nunca compartimos el contenido de tus escenas 3D ni de las imágenes generadas. La sección 5 explica en detalle qué se envía y cómo rechazarlo." },
             { lead: "Obligación Legal:", text: "Si lo exige la ley, una regulación o en respuesta a procesos legales válidos." },

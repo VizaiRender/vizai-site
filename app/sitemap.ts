@@ -14,7 +14,7 @@ const UPDATED = {
   home: '2026-08-19',
   download: '2026-06-11',
   treinamento: '2026-08-20',
-  legal: '2026-08-16',
+  legal: '2026-09-29',
 } as const
 
 type Entry = {
