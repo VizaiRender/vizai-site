@@ -3,7 +3,8 @@
 # Vizai (site)
 
 Contexto completo do site, para qualquer agente de IA que trabalhe aqui.
-Última verificação contra o código: **2026-09-08**.
+Última verificação contra o código: **2026-09-08**. Estado da seção 16
+atualizado em **2026-09-30**.
 
 O produto inteiro (plugin de SketchUp, servidor de API, créditos, planos,
 Supabase, Stripe) está descrito no `CLAUDE.md` do repositório
@@ -30,8 +31,9 @@ máquina, que o navegador não fornece.
 
 ## 2. Stack e deploy
 
-Next.js 16.3 (App Router), React, Tailwind, TypeScript. Supabase para
-autenticação, Stripe para pagamento.
+Next.js 16.3.7 (App Router), React, Tailwind, TypeScript. Supabase para
+autenticação, Stripe para pagamento. O OpenNext (`@opennextjs/cloudflare`
+1.20) exige Next 16.3.6 ou mais: os dois sobem juntos.
 
 **O deploy é Cloudflare Workers via OpenNext, não Vercel.**
 
@@ -173,6 +175,14 @@ trocar cartão, ver faturas ou cancelar.
 encaminhar: `starter_monthly`, `pro_monthly`, `business_monthly`, os três
 `_annual`, e os pacotes `pack_mini`, `pack_basico`, `pack_pro`, `pack_empresa`.
 Quem cria a sessão de checkout é o servidor, não o site.
+
+`app/obrigado/` é o retorno do checkout. Lê o `plan` da URL e diz o que foi
+comprado: pacote ("Você comprou o Pacote Mini · 50 créditos sem expiração") ou
+plano ("Você assinou o Plano Starter · 250 créditos/mês"). Valor fora das
+listas esconde a linha. Até 30/09 ela só conhecia plano e mostrava "Você
+assinou o Plano Plano ativo" em toda compra de pacote. A tela de espera
+("Boleto gerado!") é do tempo do boleto, desligado em 30/09: o Pix chega pago e
+não passa por ela.
 
 **O número de créditos de cada plano aparece em quatro lugares deste repo**
 (`lib/i18n.tsx`, `sucesso-content.tsx`, `treinamento/*.ts` e `demo/index.html`)
@@ -411,13 +421,22 @@ aqui**: são do servidor, no Secret Manager do GCP.
 
 ---
 
-## 16. Estado em 2026-09-05
+## 16. Estado em 2026-09-30
 
-- Site no ar na Cloudflare, com i18n nas três línguas auditado em produção.
-- Página de download servindo o plugin **1.0.32**.
-- **Não publicado ainda:** a fusão do guia de créditos dentro do
-  primeiros-passos, com os 301 nos três idiomas. Está versionado, aguardando o
-  `npm run deploy`, que sai junto com a gravação das aulas em vídeo.
+- Site no ar na Cloudflare, versão `b62d58fa` de 30/09: Next.js 16.3.7,
+  OpenNext 1.20.7, wrangler 4.145 e `npm audit` em zero. Rollback é a
+  `64609844-2098-47f0-97ee-2dc14bb3ea86`, do mesmo dia, que tem a correção da
+  página de obrigado e ainda as versões antigas (`npx wrangler rollback <id>`).
+- Conferência usada antes e depois desse deploy: status de 20 rotas-chave
+  (home e download nos 3 idiomas, treinamento, login, obrigado, imagem
+  otimizada, redirecionamentos e 404), iguais antes e depois.
+- Página de obrigado conhece pacote e plano desde 30/09 (seção 6).
+- i18n nas três línguas auditado em produção (05/09).
+- Página de download servindo o plugin **1.0.34**, lido do manifest.
+- A fusão do guia de créditos dentro do primeiros-passos está publicada, com
+  redirecionamento nos três idiomas (conferido em 30/09).
+- `npx eslint .` aborta por falta de memória, antes e depois da atualização de
+  30/09. Causa não investigada. Não afeta build nem deploy.
 - **Banner de cookies: fica como está, por decisão de 05/09.** Ele desliga o
   Clarity e os eventos de comportamento, mas não o GTM nem o Pixel. A Política
   de Privacidade descreve isso com precisão. Não tratar como pendência.
