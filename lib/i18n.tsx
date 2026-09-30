@@ -424,6 +424,16 @@ const pt = {
     planPrefix: "Plano",
     creditsPerMonth: "{n} créditos/mês",
     creditsPerYear: "{n} créditos/ano",
+    // Pacote avulso. Sem isto a página só conhecia plano e mostrava "Você
+    // assinou o Plano Plano ativo" pra quem comprou pacote.
+    youBought: "Você comprou o",
+    creditsNoExpiry: "{n} créditos sem expiração",
+    packs: {
+      pack_mini: { name: "Pacote Mini", credits: "50" },
+      pack_basico: { name: "Pacote Básico", credits: "200" },
+      pack_pro: { name: "Pacote PRO", credits: "700" },
+      pack_empresa: { name: "Pacote Empresa", credits: "1.750" },
+    },
     nextSteps: "Próximos passos",
     steps: [
       "Baixe o plugin Vizai Render para SketchUp",
@@ -849,6 +859,14 @@ const en: Dict = {
     planPrefix: "Plan",
     creditsPerMonth: "{n} credits/mo",
     creditsPerYear: "{n} credits/yr",
+    youBought: "You bought the",
+    creditsNoExpiry: "{n} credits with no expiration",
+    packs: {
+      pack_mini: { name: "Mini Pack", credits: "50" },
+      pack_basico: { name: "Basic Pack", credits: "200" },
+      pack_pro: { name: "PRO Pack", credits: "700" },
+      pack_empresa: { name: "Enterprise Pack", credits: "1,750" },
+    },
     nextSteps: "Next steps",
     steps: [
       "Download the Vizai Render plugin for SketchUp",
@@ -1272,6 +1290,14 @@ const es: Dict = {
     planPrefix: "Plan",
     creditsPerMonth: "{n} créditos/mes",
     creditsPerYear: "{n} créditos/año",
+    youBought: "Compraste el",
+    creditsNoExpiry: "{n} créditos sin expiración",
+    packs: {
+      pack_mini: { name: "Paquete Mini", credits: "50" },
+      pack_basico: { name: "Paquete Básico", credits: "200" },
+      pack_pro: { name: "Paquete PRO", credits: "700" },
+      pack_empresa: { name: "Paquete Empresa", credits: "1.750" },
+    },
     nextSteps: "Próximos pasos",
     steps: [
       "Descarga el plugin Vizai Render para SketchUp",

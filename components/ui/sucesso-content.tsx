@@ -27,10 +27,30 @@ export function SucessoContent({
 }) {
   const t = useT();
   const href = useHref();
-  const planName = t.planLabels[plan as keyof typeof t.planLabels] ?? t.planLabels.unknown;
-  const creditsN = plan ? PLAN_CREDITS_N[plan] : null;
+  // O `plan` vem da URL, então é texto de quem abriu o link: só vale o que está
+  // nas listas, conferido com hasOwn (`plan=toString` não pode achar nada). Fora
+  // delas a linha do plano some; antes caía em "Plano ativo" e a página dizia
+  // "Você assinou o Plano Plano ativo", inclusive pra quem comprou pacote.
+  const pack = plan && Object.hasOwn(t.sucesso.packs, plan)
+    ? t.sucesso.packs[plan as keyof typeof t.sucesso.packs]
+    : null;
+  const isPlan = !!plan && Object.hasOwn(PLAN_CREDITS_N, plan) && Object.hasOwn(t.planLabels, plan);
   const isAnnual = !!plan && plan.endsWith("_annual");
-  const credits = creditsN ? (isAnnual ? t.sucesso.creditsPerYear : t.sucesso.creditsPerMonth).replace("{n}", creditsN) : null;
+
+  let badge: { lead: string; name: string; credits: string } | null = null;
+  if (pack) {
+    badge = {
+      lead: t.sucesso.youBought,
+      name: pack.name,
+      credits: t.sucesso.creditsNoExpiry.replace("{n}", pack.credits),
+    };
+  } else if (isPlan) {
+    badge = {
+      lead: t.sucesso.youSubscribed,
+      name: `${t.sucesso.planPrefix} ${t.planLabels[plan as keyof typeof t.planLabels]}`,
+      credits: (isAnnual ? t.sucesso.creditsPerYear : t.sucesso.creditsPerMonth).replace("{n}", PLAN_CREDITS_N[plan]),
+    };
+  }
 
   return (
     <div
@@ -124,35 +144,38 @@ export function SucessoContent({
         </div>
       )}
 
-      {/* Plan badge */}
-      <div
-        style={{
-          display: "inline-flex",
-          alignItems: "center",
-          gap: 6,
-          background: "rgba(255,255,255,0.08)",
-          border: "1px solid rgba(255,255,255,0.15)",
-          borderRadius: 9999,
-          padding: "6px 16px",
-          marginBottom: 32,
-          backdropFilter: "blur(8px)",
-        }}
-      >
-        <span style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.6)" }}>
-          {t.sucesso.youSubscribed}
-        </span>
-        <span style={{ fontSize: "0.875rem", fontWeight: 700, color: "#fff" }}>
-          {t.sucesso.planPrefix} {planName}
-        </span>
-        {credits && (
-          <>
-            <span style={{ color: "rgba(255,255,255,0.3)" }}>·</span>
-            <span style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.5)" }}>
-              {credits}
-            </span>
-          </>
-        )}
-      </div>
+      {/* Plan badge: plano ou pacote. Sem saber o que foi comprado, some e
+          deixa só o espaço, pra não inventar um nome. */}
+      {badge ? (
+        <div
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            gap: 6,
+            background: "rgba(255,255,255,0.08)",
+            border: "1px solid rgba(255,255,255,0.15)",
+            borderRadius: 9999,
+            padding: "6px 16px",
+            marginBottom: 32,
+            backdropFilter: "blur(8px)",
+          }}
+        >
+          <span style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.6)" }}>
+            {badge.lead}
+          </span>
+          <span style={{ fontSize: "0.875rem", fontWeight: 700, color: "#fff" }}>
+            {badge.name}
+          </span>
+          <span style={{ color: "rgba(255,255,255,0.3)" }}>·</span>
+          <span style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.5)" }}>
+            {badge.credits}
+          </span>
+        </div>
+      ) : (
+        <div style={{ height: 20 }} />
+      )}
 
       {/* Steps */}
       <div
