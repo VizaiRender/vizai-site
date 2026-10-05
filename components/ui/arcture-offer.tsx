@@ -8,7 +8,7 @@ import { useLang } from "@/app/components/LanguageProvider";
 import type { Lang } from "@/lib/routes";
 
 // Oferta do Arcture na página de obrigado: a plataforma de gestão de
-// escritório do mesmo criador do Vizai, com 30% no primeiro mês pra quem
+// escritório do mesmo criador do Vizai, com 20% no primeiro mês pra quem
 // acabou de comprar aqui.
 //
 // O cupom é criado e validado na Stripe do ARCTURE, não na nossa. Este código
@@ -22,7 +22,9 @@ import type { Lang } from "@/lib/routes";
 // A página precisa continuar leve (já derrubou o Worker com 1102 quando
 // pesou), então aqui não entra animação nem imagem grande: o logo tem 4 KB.
 
-export const ARCTURE_COUPON = "ARCTURE30";
+// ARCTURE20 desde 05/10/2026, a pedido do Ramon (antes ARCTURE30, que segue
+// ativo na Stripe do Arcture, também por escolha dele).
+export const ARCTURE_COUPON = "ARCTURE20";
 
 // O botão leva pra página inicial do Arcture, e não direto pro cadastro, a
 // pedido do Ramon: quem chega daqui ainda não conhece o produto. Os parâmetros
