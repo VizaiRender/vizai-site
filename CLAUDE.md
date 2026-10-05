@@ -295,8 +295,9 @@ Armadilhas medidas:
 
 ## 10. Tracking
 
-GTM no navegador, Stape como container de servidor (plano PRO), e a CAPI da
-Meta pelo lado servidor. `lib/analytics.ts` e `lib/fbc.ts` carregam o histórico
+GTM no navegador, carregado do Google, e a CAPI da Meta saindo do webhook do
+servidor do plugin. A Stape (contêiner de servidor) saiu em 05/10/2026.
+`lib/analytics.ts` e `lib/fbc.ts` carregam o histórico
 completo em comentário e valem mais que qualquer resumo. O essencial:
 
 - **Este repo não carrega mais a biblioteca do GA4.** Dois `gtag` do mesmo ID
@@ -309,9 +310,15 @@ completo em comentário e valem mais que qualquer resumo. O essencial:
 - **O `_fbc` (clique do anúncio) é gravado pelo middleware.** Um laço que
   apagava o cookie já zerou o parâmetro no Purchase, e o PageView disfarça o
   problema porque lê o `fbclid` direto da URL.
-- **O servidor não envia Purchase de cartão, de propósito**, para não contar
-  duas vezes. Boleto sim, porque ali o navegador não está presente na hora do
-  pagamento.
+- **O servidor envia o Purchase de toda venda desde 05/10**, e a venda conta uma
+  vez só porque a tag de Purchase do Pixel usa como Event ID o `transaction_id`
+  da /obrigado, que é o id da sessão da Stripe, o mesmo do servidor. Se o
+  `transaction_id` do `purchase-tracker` deixar de ser o `sid` da URL, ou alguém
+  trocar o Event ID daquela tag, cada venda passa a contar duas vezes.
+- **Sem a Stape, o GA4 vai direto pro Google.** Por isso a tag GA4 de Purchase
+  não leva mais email nem telefone (antes o contêiner de servidor filtrava), e
+  o `stats.g.doubleclick.net` do Google Signals aparece bloqueado pela CSP no
+  console. É esperado: o Signals segue fora, como já era.
 - **Os números do painel da Meta não batem entre si.** Cruze sempre com o log do
   Cloud Run.
 - A medição de comportamento já travou a rolagem uma vez (1032 leituras de
@@ -386,7 +393,7 @@ aqui**: são do servidor, no Secret Manager do GCP.
 | **Supabase** | login com Google e sessão |
 | **Stripe** | checkout hospedado e Customer Portal |
 | **API do Vizai** | saldo, assinatura, criação de checkout |
-| **GTM + Stape + Meta CAPI** | conversão |
+| **GTM + Meta CAPI** (Stape até 05/10/2026) | conversão |
 | **GA4 + Clarity** | comportamento |
 
 ---
