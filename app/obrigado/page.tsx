@@ -1,6 +1,5 @@
 import { cookies } from "next/headers";
 import { Confetti } from "@/components/ui/confetti";
-import Navbar from "@/app/components/Navbar";
 import { SucessoContent } from "@/components/ui/sucesso-content";
 import { PurchaseTracker } from "@/components/ui/purchase-tracker";
 import { FBC_COOKIE } from "@/lib/fbc";
@@ -79,30 +78,37 @@ export default async function ObrigadoPage({
 
   const shouldTrackPurchase = paid !== false && !isStaleLink;
 
-  // Só tratamos como pendente o que o servidor CONFIRMOU estar em aberto. Se a
-  // verificação falhou (paid undefined), mostramos a tela normal de sucesso —
-  // errar pro lado de "parabéns" é melhor que dizer "aguarde o boleto" pra quem
-  // pagou no cartão e já tem o crédito na conta.
-  const isPending = paid === false;
+  // A tela de "boleto gerado" saiu em 10/2026: o boleto foi desligado em 30/09
+  // e o Pix confirma na hora. Se um Pix ainda chegar aqui sem confirmação
+  // (raro, a Stripe permite), a pessoa vê a tela normal e o crédito entra
+  // segundos depois pelo async_payment_succeeded. A trava acima é que NÃO pode
+  // sair: sem ela, uma venda não paga vai pra Meta como Purchase.
 
   return (
-    <div
-      style={{
-        position: "relative",
-        minHeight: "100vh",
-        background: "#000",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "0 24px",
-        overflow: "hidden",
-      }}
-    >
-      <Navbar forceDark />
-      {/* Sem confete enquanto o boleto não é pago — comemorar aqui foi o que
-          fez cliente achar que a compra estava concluída e abrir suporte. */}
-      {!isPending && <Confetti />}
+    <div className="obrigado-pagina">
+      {/* Sem menu e sem rolagem no computador, a pedido do Ramon: a página é
+          um fim de caminho, só a confirmação e a oferta do Arcture. A trava
+          só vale com tela de pelo menos 768 x 700. No celular, ou numa janela
+          baixa, o cartão não cabe inteiro, e travar esconderia o botão do
+          Arcture; ali a rolagem continua. */}
+      <style>{`
+        .obrigado-pagina {
+          position: relative;
+          min-height: 100dvh;
+          background: #f9f8f5; /* quase branco, levemente quente: não branco puro */
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 40px 24px;
+          overflow: hidden;
+        }
+        @media (min-width: 768px) and (min-height: 700px) {
+          .obrigado-pagina { height: 100dvh; padding: 24px; }
+          html:has(.obrigado-pagina), body:has(.obrigado-pagina) { overflow: hidden; }
+        }
+      `}</style>
+      <Confetti />
       {shouldTrackPurchase && (
         <PurchaseTracker
           value={val}
@@ -114,7 +120,7 @@ export default async function ObrigadoPage({
         />
       )}
 
-      <SucessoContent plan={plan} pending={isPending} />
+      <SucessoContent plan={plan} />
     </div>
   );
 }

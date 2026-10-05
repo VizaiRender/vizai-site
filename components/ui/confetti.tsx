@@ -35,7 +35,9 @@ export function Confetti() {
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden z-50">
+    // Atrás do conteúdo (z-0 contra o zIndex 10 da página de obrigado): na
+    // frente, o confete passava por cima do texto do cartão do Arcture.
+    <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
       {pieces.map((p) => (
         <motion.div
           key={p.id}

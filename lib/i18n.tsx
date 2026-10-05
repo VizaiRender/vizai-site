@@ -413,13 +413,6 @@ const pt = {
   },
   sucesso: {
     title: "Compra realizada com sucesso!",
-    // Boleto: a Stripe redireciona pra cá quando EMITE o boleto, não quando ele
-    // é pago. Sem estes textos a página dizia "compra confirmada" pra quem ainda
-    // não tinha pago — cliente real abriu suporte perguntando cadê o crédito.
-    pendingTitle: "Boleto gerado!",
-    pendingSubtitle: "Falta só o pagamento",
-    pendingNotice:
-      "Seus créditos entram automaticamente assim que o banco confirmar o pagamento do boleto — normalmente em algumas horas, podendo levar até 1 dia útil. Você não precisa fazer mais nada aqui.",
     youSubscribed: "Você assinou o",
     planPrefix: "Plano",
     creditsPerMonth: "{n} créditos/mês",
@@ -434,14 +427,31 @@ const pt = {
       pack_pro: { name: "Pacote PRO", credits: "700" },
       pack_empresa: { name: "Pacote Empresa", credits: "1.750" },
     },
-    nextSteps: "Próximos passos",
-    steps: [
-      "Baixe o plugin Vizai Render para SketchUp",
-      "Abra o SketchUp e instale o arquivo .rbz",
-      "Faça login no plugin e comece a renderizar",
-    ],
-    downloadBtn: "Baixar plugin",
-    goToAccount: "Ir para minha conta",
+    // Cartão do Arcture (components/ui/arcture-offer.tsx). Benefícios curtos de
+    // propósito: são 8 em duas colunas e a página não rola no computador, então
+    // frase longa quebra linha e empurra o botão pra fora da tela.
+    arcture: {
+      eyebrow: "Do mesmo criador do Vizai",
+      title: "Chega de gerir o seu escritório entre WhatsApp, planilhas e Drive.",
+      description: "O Arcture faz o trabalho pesado por você!",
+      benefits: [
+        "Projetos, tarefas e prazos",
+        "Portal do cliente",
+        "Propostas e contratos",
+        "Comparação de PDFs",
+        "Controle de horas",
+        "Financeiro do escritório",
+        "Mobiliário e materiais",
+        "Assistente com IA",
+      ],
+      offerLead: "Como cliente Vizai, você tem",
+      offerStrong: "30% de desconto no primeiro mês.",
+      couponLabel: "Cupom",
+      copy: "Copiar",
+      copied: "Copiado",
+      cta: "Testar 7 dias grátis",
+      note: "Sem cartão no teste. Use o cupom ao escolher o plano.",
+    },
   },
   cookieBanner: {
     message: "Usamos cookies para analytics e anúncios. Ao continuar, você aceita nossa Política de Privacidade.",
@@ -851,10 +861,6 @@ const en: Dict = {
   },
   sucesso: {
     title: "Purchase completed successfully!",
-    pendingTitle: "Boleto generated!",
-    pendingSubtitle: "Just the payment left",
-    pendingNotice:
-      "Your credits are added automatically as soon as the bank confirms the boleto payment — usually within a few hours, and up to 1 business day. There is nothing else you need to do here.",
     youSubscribed: "You subscribed to the",
     planPrefix: "Plan",
     creditsPerMonth: "{n} credits/mo",
@@ -867,14 +873,28 @@ const en: Dict = {
       pack_pro: { name: "PRO Pack", credits: "700" },
       pack_empresa: { name: "Enterprise Pack", credits: "1,750" },
     },
-    nextSteps: "Next steps",
-    steps: [
-      "Download the Vizai Render plugin for SketchUp",
-      "Open SketchUp and install the .rbz file",
-      "Log in to the plugin and start rendering",
-    ],
-    downloadBtn: "Download plugin",
-    goToAccount: "Go to my account",
+    arcture: {
+      eyebrow: "From the creator of Vizai",
+      title: "Stop running your studio across WhatsApp, spreadsheets and Drive.",
+      description: "Arcture does the heavy lifting for you!",
+      benefits: [
+        "Projects and deadlines",
+        "Client portal",
+        "Proposals and contracts",
+        "PDF comparison",
+        "Time tracking",
+        "Studio finances",
+        "Furniture and materials",
+        "AI assistant",
+      ],
+      offerLead: "As a Vizai customer, you get",
+      offerStrong: "30% off your first month.",
+      couponLabel: "Coupon",
+      copy: "Copy",
+      copied: "Copied",
+      cta: "Try it free for 7 days",
+      note: "No card needed for the trial. Use the coupon when you choose a plan.",
+    },
   },
   cookieBanner: {
     message: "We use cookies for analytics and ads. By continuing, you accept our Privacy Policy.",
@@ -1282,10 +1302,6 @@ const es: Dict = {
   },
   sucesso: {
     title: "¡Compra realizada con éxito!",
-    pendingTitle: "¡Boleto generado!",
-    pendingSubtitle: "Solo falta el pago",
-    pendingNotice:
-      "Tus créditos se acreditan automáticamente en cuanto el banco confirme el pago del boleto — normalmente en unas horas, y hasta 1 día hábil. No necesitas hacer nada más aquí.",
     youSubscribed: "Te suscribiste al",
     planPrefix: "Plan",
     creditsPerMonth: "{n} créditos/mes",
@@ -1298,14 +1314,28 @@ const es: Dict = {
       pack_pro: { name: "Paquete PRO", credits: "700" },
       pack_empresa: { name: "Paquete Empresa", credits: "1.750" },
     },
-    nextSteps: "Próximos pasos",
-    steps: [
-      "Descarga el plugin Vizai Render para SketchUp",
-      "Abre SketchUp e instala el archivo .rbz",
-      "Inicia sesión en el plugin y empieza a renderizar",
-    ],
-    downloadBtn: "Descargar plugin",
-    goToAccount: "Ir a mi cuenta",
+    arcture: {
+      eyebrow: "Del mismo creador de Vizai",
+      title: "Deja de gestionar tu estudio entre WhatsApp, hojas de cálculo y Drive.",
+      description: "¡Arcture hace el trabajo pesado por ti!",
+      benefits: [
+        "Proyectos y plazos",
+        "Portal del cliente",
+        "Propuestas y contratos",
+        "Comparación de PDFs",
+        "Control de horas",
+        "Finanzas del estudio",
+        "Mobiliario y materiales",
+        "Asistente con IA",
+      ],
+      offerLead: "Como cliente de Vizai, tienes",
+      offerStrong: "30% de descuento en el primer mes.",
+      couponLabel: "Cupón",
+      copy: "Copiar",
+      copied: "Copiado",
+      cta: "Prueba gratis durante 7 días",
+      note: "Sin tarjeta en la prueba. Usa el cupón al elegir el plan.",
+    },
   },
   cookieBanner: {
     message: "Usamos cookies para análisis y anuncios. Al continuar, aceptas nuestra Política de Privacidad.",
