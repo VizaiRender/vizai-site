@@ -199,9 +199,17 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)]" suppressHydrationWarning>
+        {/*
+          GTM no endereço padrão do Google desde 10/2026. Antes vinha pelo
+          sst.vizairender.com, o carregador da Stape (anti bloqueador e Cookie
+          Keeper do Safari); a Stape saiu e a metade servidor do Purchase passou
+          a sair do nosso webhook, com event_id = id da sessão da Stripe.
+          Cancelar a Stape SEM esta troca no ar matava o GTM inteiro: Pixel,
+          GA4 e Purchase, não só o lado servidor.
+        */}
         <noscript>
           <iframe
-            src="https://sst.vizairender.com/ns.html?id=GTM-N6TPTF3T"
+            src="https://www.googletagmanager.com/ns.html?id=GTM-N6TPTF3T"
             height="0"
             width="0"
             style={{ display: "none", visibility: "hidden" }}
@@ -211,7 +219,7 @@ export default function RootLayout({
           id="gtm"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
-            __html: `(function(){if(!(${JSON.stringify(MEASURED_HOSTS)}.includes(location.hostname)||"${process.env.NEXT_PUBLIC_MEASURE_LOCAL ?? ""}"==="1"))return;!function(){"use strict";function l(e){for(var t=e,r=0,n=document.cookie.split(";");r<n.length;r++){var o=n[r].split("=");if(o[0].trim()===t)return o[1]}}function s(e){return localStorage.getItem(e)}function u(e){return window[e]}function A(e,t){e=document.querySelector(e);return t?null==e?void 0:e.getAttribute(t):null==e?void 0:e.textContent}var e=window,t=document,r="script",n="dataLayer",o="https://sst.vizairender.com",a="",i="2qokirulflj",c="e1woubx=AwhbKyE%2FRCVcODY4M0E9TRxRVEJEVA0FVxoPFhQbGw4ECAMeWxEGBg%3D%3D",g="stapeUserId",v="",E="",d=!1;try{var d=!!g&&(m=navigator.userAgent,!!(m=new RegExp("Version/([0-9._]+)(.*Mobile)?.*Safari.*").exec(m)))&&16.4<=parseFloat(m[1]),f="stapeUserId"===g,I=d&&!f?function(e,t,r){void 0===t&&(t="");var n={cookie:l,localStorage:s,jsVariable:u,cssSelector:A},t=Array.isArray(t)?t:[t];if(e&&n[e])for(var o=n[e],a=0,i=t;a<i.length;a++){var c=i[a],c=r?o(c,r):o(c);if(c)return c}else console.warn("invalid uid source",e)}(g,v,E):void 0;d=d&&(!!I||f)}catch(e){console.error(e)}var m=e,g=(m[n]=m[n]||[],m[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"}),t.getElementsByTagName(r)[0]),v=I?"&bi="+encodeURIComponent(I):"",E=t.createElement(r),f=(d&&(i=8<i.length?i.replace(/([a-z]{8}$)/,"kp$1"):"kp"+i),!d&&a?a:o);E.async=!0,E.src=f+"/"+i+".js?"+c+v,null!=(e=g.parentNode)&&e.insertBefore(E,g)}();})();`,
+            __html: `(function(){if(!(${JSON.stringify(MEASURED_HOSTS)}.includes(location.hostname)||"${process.env.NEXT_PUBLIC_MEASURE_LOCAL ?? ""}"==="1"))return;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-N6TPTF3T');})();`,
           }}
         />
         <ThemeProvider>

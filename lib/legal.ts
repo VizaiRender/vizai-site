@@ -21,7 +21,7 @@ export const SUPPORT_EMAIL = "suporte@vizairender.com";
 
 const privacyPt: LegalDoc = {
   title: "Política de Privacidade",
-  lastUpdated: "Última atualização: 29 de setembro de 2026",
+  lastUpdated: "Última atualização: 5 de outubro de 2026",
   sections: [
     {
       heading: "1. Introdução",
@@ -78,7 +78,7 @@ const privacyPt: LegalDoc = {
           items: [
             { lead: "Provedores de IA:", text: "Google Cloud (Vertex AI / Gemini) para análise de cena e geração e edição de imagens, e Fal.ai para vídeo (modelo Kling), blocos 3D (modelo Meshy), upscale 4K (modelo Clarity) e imagem 360° (modelo GPT Image, da OpenAI). Suas imagens são enviadas a esses provedores somente para executar a renderização solicitada, conforme suas respectivas políticas de privacidade." },
             { lead: "Infraestrutura:", text: "Google Cloud Run (hospedagem do servidor), Supabase (banco de dados e autenticação) e Stripe (pagamentos), todos obrigados por contrato a proteger seus dados." },
-            { lead: "Medição e Publicidade:", text: "Meta Platforms (Pixel e Conversions API), Google (Google Analytics 4 e Google Tag Manager), e Stape (servidor de etiquetas que intermedia esses envios). Compartilhamos com essas empresas dados de navegação e identificadores. Nunca compartilhamos o conteúdo das suas cenas 3D ou das imagens geradas. A seção 5 explica em detalhe o que é enviado e como recusar." },
+            { lead: "Medição e Publicidade:", text: "Meta Platforms (Pixel e Conversions API) e Google (Google Analytics 4 e Google Tag Manager). Compartilhamos com essas empresas dados de navegação e identificadores. Nunca compartilhamos o conteúdo das suas cenas 3D ou das imagens geradas. A seção 5 explica em detalhe o que é enviado e como recusar." },
             { lead: "Obrigação Legal:", text: "Se exigido por lei, regulação ou em resposta a processos legais válidos." },
           ],
         },
@@ -92,7 +92,7 @@ const privacyPt: LegalDoc = {
         {
           type: "ul",
           items: [
-            { lead: "Google Tag Manager:", text: "Organiza o carregamento das demais ferramentas. É carregado através do endereço sst.vizairender.com, que é nosso e é operado pela Stape." },
+            { lead: "Google Tag Manager:", text: "Organiza o carregamento das demais ferramentas. É carregado diretamente dos servidores do Google." },
             { lead: "Google Analytics 4:", text: "Estatísticas de audiência: páginas visitadas, origem da visita, tempo de permanência e interações de interesse, como o clique em um plano. Não enviamos seu nome nem seu e-mail para o Google Analytics." },
             { lead: "Meta Pixel e Conversions API:", text: "Medem quantas pessoas que viram nossos anúncios no Facebook e no Instagram visitaram o site, iniciaram uma compra ou compraram, e permitem exibir anúncios para quem já nos visitou. São enviados endereço IP, informações do navegador, identificadores gravados em cookies, o identificador do clique no anúncio e, quando você está conectado à sua conta, um código derivado do seu e-mail (hash SHA-256). Enviamos esse código, e não o seu e-mail em texto legível." },
           ],
@@ -105,7 +105,7 @@ const privacyPt: LegalDoc = {
             { lead: "Medição e publicidade:", text: "Guardam identificadores do navegador e o identificador do clique no anúncio que trouxe você até aqui. O identificador do clique dura 90 dias. Os demais variam conforme a ferramenta." },
           ],
         },
-        { type: "p", text: "Você pode limitar ou bloquear esses cookies a qualquer momento nas configurações de privacidade e rastreamento do seu navegador, e ajustar as preferências de anúncios diretamente na sua conta do Facebook e do Instagram. Meta, Google e Stape são empresas estrangeiras, portanto os dados descritos nesta seção são tratados fora do Brasil." },
+        { type: "p", text: "Você pode limitar ou bloquear esses cookies a qualquer momento nas configurações de privacidade e rastreamento do seu navegador, e ajustar as preferências de anúncios diretamente na sua conta do Facebook e do Instagram. Meta e Google são empresas estrangeiras, portanto os dados descritos nesta seção são tratados fora do Brasil." },
       ],
     },
     {
@@ -140,7 +140,7 @@ const privacyPt: LegalDoc = {
 
 const privacyEn: LegalDoc = {
   title: "Privacy Policy",
-  lastUpdated: "Last updated: September 29, 2026",
+  lastUpdated: "Last updated: October 5, 2026",
   sections: [
     {
       heading: "1. Introduction",
@@ -197,7 +197,7 @@ const privacyEn: LegalDoc = {
           items: [
             { lead: "AI Providers:", text: "Google Cloud (Vertex AI / Gemini) for scene analysis and image generation and editing, and Fal.ai for video (Kling model), 3D blocks (Meshy model), 4K upscale (Clarity model) and 360° images (GPT Image model, by OpenAI). Your images are sent to these providers only to perform the requested rendering, in accordance with their respective privacy policies." },
             { lead: "Infrastructure:", text: "Google Cloud Run (server hosting), Supabase (database and authentication) and Stripe (payments), all contractually obligated to protect your data." },
-            { lead: "Measurement and Advertising:", text: "Meta Platforms (Pixel and Conversions API), Google (Google Analytics 4 and Google Tag Manager), and Stape (the tagging server that relays these transmissions). We share browsing data and identifiers with these companies. We never share the content of your 3D scenes or generated images. Section 5 explains in detail what is sent and how to opt out." },
+            { lead: "Measurement and Advertising:", text: "Meta Platforms (Pixel and Conversions API) and Google (Google Analytics 4 and Google Tag Manager). We share browsing data and identifiers with these companies. We never share the content of your 3D scenes or generated images. Section 5 explains in detail what is sent and how to opt out." },
             { lead: "Legal Obligation:", text: "If required by law, regulation or in response to valid legal proceedings." },
           ],
         },
@@ -211,7 +211,7 @@ const privacyEn: LegalDoc = {
         {
           type: "ul",
           items: [
-            { lead: "Google Tag Manager:", text: "Orchestrates the loading of the other tools. It is loaded through the address sst.vizairender.com, which is ours and is operated by Stape." },
+            { lead: "Google Tag Manager:", text: "Orchestrates the loading of the other tools. It is loaded directly from Google\u2019s servers." },
             { lead: "Google Analytics 4:", text: "Audience statistics: pages visited, traffic source, time on site and interactions of interest, such as clicking a plan. We do not send your name or your email address to Google Analytics." },
             { lead: "Meta Pixel and Conversions API:", text: "Measure how many people who saw our ads on Facebook and Instagram visited the site, started a purchase or bought, and allow us to show ads to people who have already visited us. We send IP address, browser information, identifiers stored in cookies, the ad click identifier and, when you are signed in to your account, a code derived from your email address (SHA-256 hash). We send that code, not your email address in readable form." },
           ],
@@ -224,7 +224,7 @@ const privacyEn: LegalDoc = {
             { lead: "Measurement and advertising:", text: "Store browser identifiers and the identifier of the ad click that brought you here. The ad click identifier lasts 90 days. The others vary by tool." },
           ],
         },
-        { type: "p", text: "You can limit or block these cookies at any time in your browser\u2019s privacy and tracking settings, and adjust ad preferences directly in your Facebook and Instagram account. Meta, Google and Stape are companies based outside Brazil, so the data described in this section is processed abroad." },
+        { type: "p", text: "You can limit or block these cookies at any time in your browser\u2019s privacy and tracking settings, and adjust ad preferences directly in your Facebook and Instagram account. Meta and Google are companies based outside Brazil, so the data described in this section is processed abroad." },
       ],
     },
     {
@@ -259,7 +259,7 @@ const privacyEn: LegalDoc = {
 
 const privacyEs: LegalDoc = {
   title: "Política de Privacidad",
-  lastUpdated: "Última actualización: 29 de septiembre de 2026",
+  lastUpdated: "Última actualización: 5 de octubre de 2026",
   sections: [
     {
       heading: "1. Introducción",
@@ -316,7 +316,7 @@ const privacyEs: LegalDoc = {
           items: [
             { lead: "Proveedores de IA:", text: "Google Cloud (Vertex AI / Gemini) para análisis de escena y generación y edición de imágenes, y Fal.ai para video (modelo Kling), bloques 3D (modelo Meshy), upscale 4K (modelo Clarity) e imagen 360° (modelo GPT Image, de OpenAI). Tus imágenes se envían a estos proveedores únicamente para ejecutar el renderizado solicitado, conforme a sus respectivas políticas de privacidad." },
             { lead: "Infraestructura:", text: "Google Cloud Run (alojamiento del servidor), Supabase (base de datos y autenticación) y Stripe (pagos), todos obligados por contrato a proteger tus datos." },
-            { lead: "Medición y Publicidad:", text: "Meta Platforms (Pixel y Conversions API), Google (Google Analytics 4 y Google Tag Manager), y Stape (servidor de etiquetas que intermedia estos envíos). Compartimos con estas empresas datos de navegación e identificadores. Nunca compartimos el contenido de tus escenas 3D ni de las imágenes generadas. La sección 5 explica en detalle qué se envía y cómo rechazarlo." },
+            { lead: "Medición y Publicidad:", text: "Meta Platforms (Pixel y Conversions API) y Google (Google Analytics 4 y Google Tag Manager). Compartimos con estas empresas datos de navegación e identificadores. Nunca compartimos el contenido de tus escenas 3D ni de las imágenes generadas. La sección 5 explica en detalle qué se envía y cómo rechazarlo." },
             { lead: "Obligación Legal:", text: "Si lo exige la ley, una regulación o en respuesta a procesos legales válidos." },
           ],
         },
@@ -330,7 +330,7 @@ const privacyEs: LegalDoc = {
         {
           type: "ul",
           items: [
-            { lead: "Google Tag Manager:", text: "Organiza la carga de las demás herramientas. Se carga a través de la dirección sst.vizairender.com, que es nuestra y está operada por Stape." },
+            { lead: "Google Tag Manager:", text: "Organiza la carga de las demás herramientas. Se carga directamente desde los servidores de Google." },
             { lead: "Google Analytics 4:", text: "Estadísticas de audiencia: páginas visitadas, origen de la visita, tiempo de permanencia e interacciones de interés, como el clic en un plan. No enviamos tu nombre ni tu correo electrónico a Google Analytics." },
             { lead: "Meta Pixel y Conversions API:", text: "Miden cuántas personas que vieron nuestros anuncios en Facebook e Instagram visitaron el sitio, iniciaron una compra o compraron, y permiten mostrar anuncios a quienes ya nos visitaron. Se envían dirección IP, información del navegador, identificadores guardados en cookies, el identificador del clic en el anuncio y, cuando has iniciado sesión en tu cuenta, un código derivado de tu correo electrónico (hash SHA-256). Enviamos ese código, no tu correo en texto legible." },
           ],
@@ -343,7 +343,7 @@ const privacyEs: LegalDoc = {
             { lead: "Medición y publicidad:", text: "Guardan identificadores del navegador y el identificador del clic en el anuncio que te trajo hasta aquí. El identificador del clic dura 90 días. Los demás varían según la herramienta." },
           ],
         },
-        { type: "p", text: "Puedes limitar o bloquear estas cookies en cualquier momento en la configuración de privacidad y rastreo de tu navegador, y ajustar las preferencias de anuncios directamente en tu cuenta de Facebook e Instagram. Meta, Google y Stape son empresas extranjeras, por lo que los datos descritos en esta sección se tratan fuera de Brasil." },
+        { type: "p", text: "Puedes limitar o bloquear estas cookies en cualquier momento en la configuración de privacidad y rastreo de tu navegador, y ajustar las preferencias de anuncios directamente en tu cuenta de Facebook e Instagram. Meta y Google son empresas extranjeras, por lo que los datos descritos en esta sección se tratan fuera de Brasil." },
       ],
     },
     {

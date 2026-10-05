@@ -9,6 +9,11 @@
 //
 // COMO ISTO CHEGA NO GA4 (mudou em 24/08/2026, ler antes de mexer):
 //
+// ATUALIZAÇÃO 10/2026: a Stape saiu. O GTM vem do endereço padrão do Google e
+// manda o GA4 direto, sem contêiner servidor no meio. O histórico abaixo fica
+// porque a regra de UMA instância só do gtag continua valendo, e porque mandar
+// daqui `purchase` ou `begin_checkout` ainda dobraria a contagem no GA4.
+//
 // Este arquivo NÃO carrega mais a biblioteca do GA4. Carregava, e isso derrubou
 // o rastreamento do Meta por 14 horas: eram DUAS instâncias do gtag para o
 // MESMO measurement id na mesma página, e a configuração do gtag é por id e
@@ -230,7 +235,7 @@ export function clarityTag(key: string, value: string): void {
  * A divisão de trabalho com o GTM foi medida no site em produção, não suposta:
  *
  * - Carregamento do documento: a tag do GTM manda `en=page_view` pro
- *   `G-6ZWKNPPY5B` através do servidor da Stape. Por isso o gtag daqui sobe com
+ *   `G-6ZWKNPPY5B` (até 10/2026, pelo servidor da Stape). Por isso o gtag daqui sobe com
  *   `send_page_view: false` — se mandasse também, toda visita contaria duas
  *   vezes.
  * - Navegação interna: o GTM não manda NADA. Verificado duas vezes no site ao
@@ -247,6 +252,9 @@ export function clarityTag(key: string, value: string): void {
  * PageView extra pra Conversions API, sem par no navegador e sem deduplicação.
  * A marca existe pra aquele gatilho poder excluir esta navegação. Se ela sair
  * daqui, a contagem da Meta infla calada.
+ * Desde 10/2026 não existe mais contêiner servidor (a Stape saiu) e a marca
+ * ficou sem leitor. Mantida de propósito: custa nada e protege o dia em que
+ * alguém religar um servidor de GTM.
  */
 export function trackPageView(url: string, title?: string): void {
   const win = w();

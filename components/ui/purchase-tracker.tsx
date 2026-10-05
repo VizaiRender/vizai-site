@@ -17,12 +17,13 @@ type Props = {
 };
 
 // Dispara o evento `purchase` no dataLayer (GTM) uma única vez por transação.
-// A deduplicação entre Pixel (browser) e CAPI (servidor) NÃO é feita por este
-// transaction_id: quem gera o event_id é o próprio GTM (variável "Unique Event
-// ID"), e as duas tags disparam no mesmo evento do dataLayer, então recebem o
-// mesmo valor. O transaction_id daqui viaja como order_id. Só a CAPI do boleto
-// (Cloud Run) usa o id da sessão Stripe como event_id, e esse caminho nunca
-// coexiste com o do browser. A trava fica em localStorage, não em sessionStorage:
+// A deduplicação entre Pixel (browser) e CAPI (servidor) É feita por este
+// transaction_id desde 10/2026: a tag de Purchase do GTM web usa ele (o id da
+// sessão da Stripe) como Event ID, e o webhook do nosso servidor manda a metade
+// servidor com o mesmo id. Antes quem mandava essa metade era o contêiner da
+// Stape, e o event_id saía da variável "Unique Event ID" do próprio GTM. Se o
+// valor daqui deixar de ser o `sid` da URL, cada venda conta DUAS vezes na Meta.
+// A trava fica em localStorage, não em sessionStorage:
 // sessionStorage é POR ABA, então reabrir o link numa aba nova (histórico,
 // restauração de sessão) re-disparava a mesma venda. Em localStorage a
 // transação dispara uma vez só naquele navegador, pra sempre.

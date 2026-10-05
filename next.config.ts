@@ -10,7 +10,6 @@ const scriptSrc = [
   "https://js.stripe.com",
   "https://checkout.stripe.com",
   "https://www.googletagmanager.com",
-  "https://sst.vizairender.com",
   "https://connect.facebook.net",
   // Microsoft Clarity (mapa de calor + gravação de sessão). A tag inicial vem
   // do www e ela mesma puxa scripts de subdomínios regionais.
@@ -42,7 +41,6 @@ const imgSrc = [
   "https://downloads.vizairender.com",
   "https://i.pravatar.cc",
   "https://www.googletagmanager.com",
-  "https://sst.vizairender.com",
   "https://www.google-analytics.com",
   // O GA4 cai em pixel de imagem quando o sendBeacon não está disponível.
   // `analytics.google.com` fica FORA de propósito: aquele endereço é o sync do
@@ -60,7 +58,6 @@ const connectSrc = [
   "wss://eobtrpaxupquawgniwfe.supabase.co",
   "https://api.vizairender.com",
   "https://downloads.vizairender.com",
-  "https://sst.vizairender.com",
   "https://www.google-analytics.com",
   "https://analytics.google.com",
   "https://region1.google-analytics.com",
@@ -82,7 +79,6 @@ const frameSrc = [
   "https://js.stripe.com",
   "https://checkout.stripe.com",
   "https://www.googletagmanager.com",
-  "https://sst.vizairender.com",
 ].join(" ");
 
 const fontSrc = ["'self'", "data:", "https://fonts.gstatic.com"].join(" ");
