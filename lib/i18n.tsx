@@ -39,11 +39,12 @@ const pt = {
     demoTitlePost: "merecem",
     demoTitleLine2: "renders à altura",
     demoP1:
-      "Experimente o Vizai Render de forma interativa, explore as ferramentas e descubra um fluxo de renderização rápido, intuitivo e integrado ao seu programa favorito.",
+      "Conheça o painel do Vizai Render: todas as ferramentas num lugar só, num fluxo de renderização rápido, intuitivo e integrado ao seu programa favorito.",
     demoP2:
-      "Tudo o que você vê ao lado é interativo: ajuste a iluminação, escolha o formato e solicite um render para ver o resultado em tempo real.",
+      "Ao lado, o painel como ele aparece no SketchUp: ajuste a iluminação, escolha o formato e a distância focal, e o render fica pronto em segundos.",
     demoP2Mobile:
-      "Tudo o que você vê abaixo é interativo: ajuste a iluminação, escolha o formato e solicite um render para ver o resultado em tempo real.",
+      "Abaixo, o painel como ele aparece no SketchUp: ajuste a iluminação, escolha o formato e a distância focal, e o render fica pronto em segundos.",
+    demoAlt: "Painel do Vizai Render aberto no SketchUp, na aba Cenas",
     compareTitle1: "Máxima fidelidade na renderização",
     compareTitle2: "do seu projeto",
     compareSubtitle:
@@ -492,11 +493,12 @@ const en: Dict = {
     demoTitlePost: "deserve",
     demoTitleLine2: "renders that match",
     demoP1:
-      "Experience Vizai Render interactively, explore the tools and discover a fast, intuitive rendering workflow integrated into your favorite software.",
+      "Meet the Vizai Render panel: every tool in one place, in a fast, intuitive rendering workflow integrated into your favorite software.",
     demoP2:
-      "Everything you see here is interactive: adjust the lighting, choose the format and request a render to see the result in real time.",
+      "Here is the panel as it appears in SketchUp: adjust the lighting, choose the format and focal length, and your render is ready in seconds.",
     demoP2Mobile:
-      "Everything you see below is interactive: adjust the lighting, choose the format and request a render to see the result in real time.",
+      "Below is the panel as it appears in SketchUp: adjust the lighting, choose the format and focal length, and your render is ready in seconds.",
+    demoAlt: "Vizai Render panel open in SketchUp, on the Scenes tab",
     compareTitle1: "Maximum fidelity in the rendering",
     compareTitle2: "of your project",
     compareSubtitle:
@@ -933,11 +935,12 @@ const es: Dict = {
     demoTitlePost: "merecen",
     demoTitleLine2: "renders a la altura",
     demoP1:
-      "Experimenta Vizai Render de forma interactiva, explora las herramientas y descubre un flujo de renderizado rápido, intuitivo e integrado en tu programa favorito.",
+      "Conoce el panel de Vizai Render: todas las herramientas en un solo lugar, en un flujo de renderizado rápido, intuitivo e integrado en tu programa favorito.",
     demoP2:
-      "Todo lo que ves al lado es interactivo: ajusta la iluminación, elige el formato y solicita un render para ver el resultado en tiempo real.",
+      "Al lado, el panel tal como aparece en SketchUp: ajusta la iluminación, elige el formato y la distancia focal, y el render está listo en segundos.",
     demoP2Mobile:
-      "Todo lo que ves abajo es interactivo: ajusta la iluminación, elige el formato y solicita un render para ver el resultado en tiempo real.",
+      "Abajo, el panel tal como aparece en SketchUp: ajusta la iluminación, elige el formato y la distancia focal, y el render está listo en segundos.",
+    demoAlt: "Panel de Vizai Render abierto en SketchUp, en la pestaña Escenas",
     compareTitle1: "Máxima fidelidad en el renderizado",
     compareTitle2: "de tu proyecto",
     compareSubtitle:

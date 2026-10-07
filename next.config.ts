@@ -148,26 +148,6 @@ const securityHeaders = [
   { key: "X-DNS-Prefetch-Control", value: "on" },
 ];
 
-const demoHeaders = [
-  {
-    key: "Content-Security-Policy",
-    value: [
-      "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https://ajax.googleapis.com https://cdn.jsdelivr.net",
-      "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' data: blob: https: http:",
-      "font-src 'self' data:",
-      "connect-src 'self' https: blob:",
-      "worker-src 'self' blob:",
-      "object-src 'none'",
-      "frame-src 'self' https://cdn.pannellum.org",
-      "frame-ancestors 'self'",
-    ].join("; "),
-  },
-  { key: "X-Frame-Options", value: "SAMEORIGIN" },
-  { key: "X-Content-Type-Options", value: "nosniff" },
-];
-
 const nextConfig: NextConfig = {
   async redirects() {
     return [
@@ -212,6 +192,10 @@ const nextConfig: NextConfig = {
         { source: `/en/treinamento/${de}`, destination: `/en/treinamento/${para}`, permanent: true },
         { source: `/es/treinamento/${de}`, destination: `/es/treinamento/${para}`, permanent: true },
       ]),
+      // A demo interativa saiu da home em 07/10/2026 (virou foto do painel).
+      // O endereço dela era público e pode ter sido descoberto pelo Google
+      // através do iframe, então vai para a home em vez de 404.
+      { source: "/demo/:path*", destination: "/", permanent: true },
       // URL "adivinhável" que gente digita ou recebe por anúncio/WhatsApp
       { source: "/planos", destination: "/#pricing", permanent: true },
       { source: "/plans", destination: "/#pricing", permanent: true },
@@ -261,7 +245,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/((?!demo/).*)",
+        source: "/(.*)",
         headers: securityHeaders,
       },
       {
@@ -279,10 +263,6 @@ const nextConfig: NextConfig = {
             value: "public, max-age=31536000, immutable",
           },
         ],
-      },
-      {
-        source: "/demo/:path*",
-        headers: demoHeaders,
       },
     ];
   },

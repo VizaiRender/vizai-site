@@ -238,7 +238,7 @@ export const esArticles: Record<string, ArticleContent> = {
       },
       {
         type: "img",
-        src: "/demo/360/pano-result.webp",
+        src: "/treinamento/ui/pano-360-resultado.webp",
         alt: "Panorama 360 generado por Vizai Render",
         caption: "El panorama generado: listo para el visor interactivo.",
       },
@@ -919,17 +919,17 @@ export const esArticles: Record<string, ArticleContent> = {
         type: "imgrow",
         images: [
           {
-            src: "/demo/assets/diag/tecnico.webp",
+            src: "/treinamento/ui/diagrama-tecnico.webp",
             alt: "Diagrama isométrico técnico",
             caption: "Isométrico Técnico: líneas B&N con entorno urbano.",
           },
           {
-            src: "/demo/assets/diag/destaque.webp",
+            src: "/treinamento/ui/diagrama-destaque.webp",
             alt: "Diagrama con destaque",
             caption: "Con Destaque: proyecto en color, entorno en gris.",
           },
           {
-            src: "/demo/assets/diag/colorido.webp",
+            src: "/treinamento/ui/diagrama-colorido.webp",
             alt: "Diagrama colorido con contexto",
             caption: "Colorido: ilustración acuarelada con entorno.",
           },
@@ -939,12 +939,12 @@ export const esArticles: Record<string, ArticleContent> = {
         type: "imgrow",
         images: [
           {
-            src: "/demo/assets/diag/maquete.webp",
+            src: "/treinamento/ui/diagrama-maquete.webp",
             alt: "Diagrama estilo maqueta física",
             caption: "Maqueta Física: estilo madera balsa.",
           },
           {
-            src: "/demo/assets/diag/int_axo.webp",
+            src: "/treinamento/ui/diagrama-int-axo.webp",
             alt: "Diagrama axonométrico de interiores",
             caption: "Axonométrico: corte isométrico del ambiente interno.",
           },

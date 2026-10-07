@@ -53,25 +53,11 @@
 /logos-ai/*
   Cache-Control: public,max-age=2592000
 
-# A maquete do demo, separada em duas velocidades. O index.html leva 1 dia
-# porque é ele que muda quando a maquete é corrigida, e uma correção não pode
-# ficar um mês invisível pra quem já visitou. As fotos e o modelo 3D levam 30
-# dias: são 1 MB, praticamente nunca mudam, e a 1 dia o navegador rebaixava
-# tudo de novo a cada visita. Trocar uma foto da maquete pede nome novo.
-/demo/
-  Cache-Control: public,max-age=86400
-/demo/index.html
-  Cache-Control: public,max-age=86400
-/demo/*.webp
-  Cache-Control: public,max-age=2592000
-/demo/*.png
-  Cache-Control: public,max-age=2592000
-/demo/*.jpg
-  Cache-Control: public,max-age=2592000
-/demo/*.mp4
-  Cache-Control: public,max-age=2592000
-/demo/*.glb
-  Cache-Control: public,max-age=2592000
+# Foto do painel do plugin na home, uma por idioma. Passa pelo otimizador,
+# então leva `immutable` como as imagens acima. (Até 07/10/2026 aqui ficava a
+# maquete interativa, em /demo/, que saiu do site.)
+/home/*.png
+  Cache-Control: public,max-age=31536000,immutable
 
 # Arquivos soltos na raiz, um a um de propósito (curinga aqui pegaria as pastas
 # acima e duplicaria o cabeçalho).

@@ -19,7 +19,7 @@ import { Footer } from "@/components/ui/footer";
 import { FaqSection } from "@/components/ui/faq-section";
 import { ToolsSection } from "@/components/ui/tools-section";
 import { LocalToolsSection } from "@/components/ui/local-tools-section";
-import { PluginDemo } from "@/components/ui/plugin-demo";
+import { PluginScreenshot } from "@/components/ui/plugin-screenshot";
 import { VideoSection } from "@/components/ui/video-section";
 import AnimatedTextCycle from "@/components/ui/animated-text-cycle";
 import { ComparisonSection } from "@/components/ui/comparison-section";
@@ -274,6 +274,9 @@ export function HomePage() {
     // Vídeo de demonstração, um por idioma.
     video: <VideoSection />,
 
+    // Desde 07/10/2026 não é mais interativa: virou a foto do painel. O nome
+    // ficou o mesmo de propósito, porque é ele que aparece nos relatórios de
+    // comportamento e renomear partiria o histórico da seção em dois.
     "demo-interativa": (
       <section data-track-section="demo-interativa" style={{ padding: "100px 24px 100px", position: "relative" }}>
         <div className="flex flex-col md:flex-row items-center md:justify-center gap-10 md:gap-20" style={{ maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 1 }}>
@@ -300,7 +303,7 @@ export function HomePage() {
           </div>
 
           <div style={{ flexShrink: 0 }}>
-            <PluginDemo />
+            <PluginScreenshot />
           </div>
         </div>
       </section>

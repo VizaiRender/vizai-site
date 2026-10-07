@@ -4,7 +4,7 @@
 
 Contexto completo do site, para qualquer agente de IA que trabalhe aqui.
 Última verificação contra o código: **2026-09-08**. Estado da seção 16
-atualizado em **2026-09-30**.
+atualizado em **2026-10-07**.
 
 O produto inteiro (plugin de SketchUp, servidor de API, créditos, planos,
 Supabase, Stripe) está descrito no `CLAUDE.md` do repositório
@@ -184,9 +184,10 @@ assinou o Plano Plano ativo" em toda compra de pacote. A tela de espera
 ("Boleto gerado!") é do tempo do boleto, desligado em 30/09: o Pix chega pago e
 não passa por ela.
 
-**O número de créditos de cada plano aparece em quatro lugares deste repo**
-(`lib/i18n.tsx`, `sucesso-content.tsx`, `treinamento/*.ts` e `demo/index.html`)
-e em mais dois fora dele. A lista completa dos cinco pontos de atualização está
+**O número de créditos de cada plano aparece em três lugares deste repo**
+(`lib/i18n.tsx`, `sucesso-content.tsx` e `treinamento/*.ts`) e em mais dois
+fora dele. O quarto era a demo interativa (`demo/index.html`), que saiu em
+07/10/2026. A lista completa dos cinco pontos de atualização está
 no `CLAUDE.md` do repo do plugin. Esquecer um faz o cliente ver um número no
 site e receber outro.
 
@@ -287,9 +288,14 @@ Armadilhas medidas:
 - **`wrangler r2 bucket info` mente**, mostra `object_count: 0` com objeto
   dentro. O que vale é o log do Worker.
 - **O otimizador devolve 400 para SVG** e some com o logo.
-- **As imagens dentro do iframe da demo ficam fora do otimizador** e já foram
-  1 MB escondido na home.
 - A home já pesou 9,22 MB de imagem e hoje pesa cerca de 1,20 MB.
+- **A demo interativa saiu em 07/10/2026.** Era uma maquete do painel inteiro
+  num iframe (6,3 MB em `public/demo`, com imagens fora do otimizador) e quase
+  ninguém mexia. No lugar ficou a foto do painel, uma por idioma
+  (`public/home/painel-plugin-*.png`, cerca de 30 KB servida). A seção manteve
+  o nome `demo-interativa` por causa da medição, e `/demo` redireciona para a
+  home. As 7 imagens dos guias que moravam dentro dela foram para
+  `public/treinamento/ui/`.
 
 ---
 
@@ -413,7 +419,6 @@ aqui**: são do servidor, no Secret Manager do GCP.
 - **A galeria antes/depois precisa de número par de cards**, e a IA reenquadra a
   imagem, então todo par tem que ser alinhado antes de entrar.
 - **Os depoimentos da home não são de clientes reais.**
-- **O iframe da demo é mock estático**: o download do bloco ali é encenação.
 
 ---
 
@@ -428,8 +433,13 @@ aqui**: são do servidor, no Secret Manager do GCP.
 
 ---
 
-## 16. Estado em 2026-09-30
+## 16. Estado em 2026-10-07
 
+- **Demo interativa trocada pela foto do painel em 07/10**, versão
+  `d70995e3`. Rollback é a `784db217-b4ed-4030-9ac5-5b62b6fb1b06` (05/10).
+  Conferido em produção: as 17 rotas da lista abaixo iguais a antes, `/demo`
+  indo para a home, a foto nos 3 idiomas (30 KB, `HIT` na segunda visita) e
+  as 7 imagens dos guias no endereço novo. Detalhe na seção 9.
 - Site no ar na Cloudflare, versão `b62d58fa` de 30/09: Next.js 16.3.7,
   OpenNext 1.20.7, wrangler 4.145 e `npm audit` em zero. Rollback é a
   `64609844-2098-47f0-97ee-2dc14bb3ea86`, do mesmo dia, que tem a correção da

@@ -14,7 +14,7 @@ export type { TreinoBlock, ArticleMeta, CategoryId } from "./types";
 // Ordem define a navegação (anterior/próximo) e a listagem dentro de cada categoria.
 export const ARTICLES: ArticleMeta[] = [
   // Comece aqui
-  { slug: "primeiros-passos", category: "start", cover: "/demo/render.webp", minutes: 9 },
+  { slug: "primeiros-passos", category: "start", cover: "/treinamento/ui/capa-primeiros-passos.webp", minutes: 9 },
   // Aulas em vídeo com texto completo (não aparecem como grade: a página de
   // Treinamento mostra o player, e é de lá que se chega nestas páginas).
   { slug: "primeiro-render", category: "aulas", cover: "/treinamento/capas/primeiro-render.jpg", minutes: 12, aula: "primeiro-render" },
