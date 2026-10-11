@@ -87,10 +87,9 @@ export default async function ObrigadoPage({
   return (
     <div className="obrigado-pagina">
       {/* Sem menu e sem rolagem no computador, a pedido do Ramon: a página é
-          um fim de caminho, só a confirmação e a oferta do Arcture. A trava
-          só vale com tela de pelo menos 768 x 700. No celular, ou numa janela
-          baixa, o cartão não cabe inteiro, e travar esconderia o botão do
-          Arcture; ali a rolagem continua. */}
+          um fim de caminho, só a confirmação. A trava só vale com tela de pelo
+          menos 768 x 700; no celular, ou numa janela baixa, a rolagem
+          continua. */}
       <style>{`
         .obrigado-pagina {
           position: relative;

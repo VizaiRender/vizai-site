@@ -1,7 +1,6 @@
 "use client";
 
 import { useT } from "@/lib/i18n";
-import { ArctureOffer } from "@/components/ui/arcture-offer";
 
 const PLAN_CREDITS_N: Record<string, string> = {
   starter_monthly: "250",
@@ -107,18 +106,11 @@ export function SucessoContent({ plan }: { plan: string | null | undefined }) {
     </div>
   );
 
-  // Duas colunas no computador, uma embaixo da outra no celular (Vizai em
-  // cima). A confirmação é bem mais curta que o cartão, então fica centrada
-  // na altura pra não sobrar um buraco embaixo dela.
+  // Só a confirmação, centrada. Até 11/10/2026 havia à direita um cartão do
+  // Arcture com cupom; saiu quando o Arcture foi encerrado.
   return (
-    <div
-      className="grid grid-cols-1 md:grid-cols-2 items-center gap-10 md:gap-14"
-      style={{ position: "relative", zIndex: 10, width: "100%", maxWidth: 1000 }}
-    >
+    <div style={{ position: "relative", zIndex: 10, width: "100%", maxWidth: 560 }}>
       {confirmacao}
-      <div style={{ width: "100%", maxWidth: 460, justifySelf: "center" }}>
-        <ArctureOffer />
-      </div>
     </div>
   );
 }
