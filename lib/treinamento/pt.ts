@@ -144,18 +144,16 @@ export const ptArticles: Record<string, ArticleContent> = {
   "video-com-ia": {
     title: "Vídeo com IA: anime seus renders com câmera cinematográfica",
     excerpt:
-      "Transforme um render em vídeo de 4 a 15 segundos com movimento de câmera profissional e som ambiente gerado por IA, direto do plugin.",
+      "Transforme um render em vídeo de 4 a 15 segundos, em 1080p, com movimento de câmera e som ambiente gerado por IA, direto do plugin.",
     blocks: [
-      {
-        type: "p",
-        text: "A aba **Vídeo** transforma qualquer render em um clipe cinematográfico usando o **Kling 3.0 Pro**, um dos motores de vídeo mais avançados do mundo. O resultado sai em **1080p**, com movimento de câmera suave e, se quiser, som ambiente gerado por IA.",
-      },
+      { type: "p", text: "Com a aba **Vídeo** do Vizai, um render pronto vira um clipe de **4 a 15 segundos em 1080p**, com movimento de câmera e, se você quiser, som ambiente gerado por IA. É o jeito mais rápido de levar o projeto para Reels, Stories ou para a apresentação ao cliente, sem montar animação no SketchUp e sem renderizar quadro a quadro." },
       {
         type: "video",
         src: "/tools/tool-03.mp4",
         caption: "Vídeo gerado a partir de um render do plugin.",
       },
-      { type: "h2", text: "Montando o vídeo" },
+      { type: "p", text: "Quem anima a imagem é o **Kling 3.0 Pro**, um modelo de vídeo por IA. Ele parte do seu render e cria o movimento a partir dele: o que aparece no vídeo é o projeto da imagem, e não o modelo 3D andando em tempo real. Por isso o resultado depende tanto do render de partida." },
+      { type: "h2", text: "Do render ao vídeo, passo a passo" },
       {
         type: "img",
         src: "/treinamento/ui/video-{lang}.webp",
@@ -167,49 +165,59 @@ export const ptArticles: Record<string, ArticleContent> = {
         type: "steps",
         items: [
           {
-            title: "Frame inicial",
-            text: "O ponto de partida do vídeo: use o último render, escolha do histórico ou faça upload do PC.",
+            title: "Escolha o frame inicial",
+            text: "É a imagem de onde o vídeo parte. Por padrão é o último render; você também pode pegar uma imagem do Histórico ou subir uma do computador. A IA não conserta o que está errado na imagem, então comece por um render que você já aprovaria.",
           },
           {
-            title: "Frame final (opcional)",
-            text: "Defina também a imagem de chegada e a IA cria a transição entre as duas, ótimo para “tour” entre dois ângulos do ambiente.",
+            title: "Defina o frame final, se quiser",
+            text: "Opcional. Com uma segunda imagem, a IA cria a transição entre as duas. Funciona melhor com dois renders do mesmo ambiente, com a mesma luz e ângulos próximos.",
           },
           {
-            title: "Proporção",
-            text: "16:9 paisagem, 1:1 quadrado ou 9:16 vertical para Reels e Stories.",
+            title: "Escolha a proporção",
+            text: "Paisagem (16:9) para apresentação e YouTube, quadrado (1:1) para o feed e retrato (9:16) para Reels e Stories. Use a mesma proporção do render: se o vídeo vai ser vertical, gere o render já em 9:16.",
           },
           {
-            title: "Câmera e áudio",
-            text: "Escolha o movimento e o som no modal de configuração (detalhes abaixo).",
+            title: "Configure câmera e áudio",
+            text: "No botão **Configurar Câmera e Áudio**, escolha um dos 8 movimentos e se o vídeo terá som.",
           },
           {
-            title: "Duração",
-            text: "4, 6, 8, 10 ou 15 segundos: o custo aparece no botão antes de gerar.",
+            title: "Escreva observações, se quiser",
+            text: "No campo **Observações**, peça atenção a um elemento (“focar na cadeira de madeira”) ou descreva o movimento com suas palavras (“câmera avança devagar e revela a varanda”). O texto é somado ao movimento escolhido.",
+          },
+          {
+            title: "Escolha a duração e gere",
+            text: "4, 6, 8, 10 ou 15 segundos. O custo aparece no botão antes de gerar, e o vídeo fica pronto em 2 a 5 minutos.",
           },
         ],
       },
-      { type: "h2", text: "Movimentos de câmera" },
+      { type: "h2", text: "Os 8 movimentos de câmera" },
       {
         type: "img",
         src: "/treinamento/ui/modal-camera-{lang}.webp",
         alt: "Modal de câmera e áudio do vídeo",
-        caption: "8 movimentos prontos + descrição livre do movimento.",
+        caption: "Os 8 movimentos prontos e as opções de som.",
         ui: true,
       },
       {
         type: "ul",
         items: [
-          "**Automático**: movimento natural escolhido pela IA (recomendado).",
-          "**Zoom In / Zoom Out**: aproximação ou afastamento suave.",
-          "**Panorâmica esquerda / direita**: deslizamento lateral.",
-          "**Tilt Up / Tilt Down**: inclinação para cima ou para baixo.",
-          "**Órbita (Drone)**: giro suave ao redor do projeto.",
+          "**Automático (Recomendado)**: a IA escolhe um movimento natural para a cena. É o melhor ponto de partida.",
+          "**Zoom In Suave**: a câmera avança para dentro da cena. Destaca um ambiente ou um detalhe de marcenaria.",
+          "**Zoom Out Suave**: a câmera recua e revela o espaço inteiro. Bom para fechar o vídeo mostrando o todo.",
+          "**Panorâmica para Direita ou para Esquerda**: a câmera desliza de lado. Funciona em salas largas, cozinhas lineares e fachadas compridas.",
+          "**Tilt Up e Tilt Down**: a câmera inclina para cima ou para baixo. Mostra pé-direito alto, escadas e fachadas de prédio.",
+          "**Órbita (Drone)**: a câmera gira em volta do projeto, como um drone. É o movimento mais vistoso para fachadas e casas, e o que mais exige da IA.",
         ],
       },
+      { type: "h2", text: "Som do vídeo" },
       {
-        type: "p",
-        text: "Prefere dirigir a cena? Descreva o movimento livremente (“câmera avança devagar pela sala revelando a varanda”) e use as **Observações** para pedir foco em algum elemento. No áudio, escolha **Som Ambiente por IA** (vento, passos, sons urbanos, grátis) ou vídeo mudo para editar depois.",
+        type: "ul",
+        items: [
+          "**Som Ambiente (Gerado por IA)**: vento, passos e ruído da cidade, criados para combinar com a cena. Não muda o preço.",
+          "**Sem Som**: vídeo mudo, para você colocar música ou narração na edição.",
+        ],
       },
+      { type: "h2", text: "Quanto custa" },
       {
         type: "table",
         head: ["Duração", "Custo"],
@@ -221,28 +229,51 @@ export const ptArticles: Record<string, ArticleContent> = {
           ["15 segundos", "83 créditos"],
         ],
       },
+      { type: "h2", text: "Para o vídeo sair bom" },
       {
-        type: "tip",
-        text: "Vídeos de 4–6 segundos com movimento Automático ou Zoom In são os que mais convertem em redes sociais, e os mais baratos. Comece por eles.",
+        type: "ul",
+        items: [
+          "**Comece curto.** Vídeos de 4 a 6 segundos com movimento Automático ou Zoom In são os mais estáveis e os mais baratos. Deixe 10 ou 15 segundos para quando o movimento precisar de tempo, como uma órbita.",
+          "**Render limpo, vídeo limpo.** Corrija o render antes, com a edição por máscara, e só depois anime. A IA leva para o vídeo tudo o que estiver na imagem.",
+          "**Proporção certa desde o render.** Para Reels, gere o render em 9:16 em vez de usar um render horizontal.",
+        ],
       },
+      { type: "h2", text: "Se o resultado não sair como esperado" },
+      {
+        type: "ul",
+        items: [
+          "**Esquadria, marcenaria ou fachada deformando**: quanto mais a câmera se desloca, mais a IA precisa inventar o que não aparece no render. Troque para um movimento mais curto (Zoom In ou Automático), reduza a duração ou use um frame final para segurar o ponto de chegada.",
+          "**Movimento diferente do pedido**: descreva o movimento nas Observações com uma frase simples e direta, e mantenha o movimento pronto coerente com ela.",
+        ],
+      },
+      { type: "warn", text: "Se a geração falhar ou o vídeo não chegar ao plugin, os créditos voltam para a sua conta automaticamente." },
+      { type: "h2", text: "Perguntas rápidas" },
+      {
+        type: "ul",
+        items: [
+          "**Quanto tempo leva?** De 2 a 5 minutos, conforme a duração.",
+          "**Qual a resolução?** 1080p, na proporção escolhida.",
+          "**Dá para fazer um tour pela casa inteira?** Não num vídeo só: cada vídeo parte de um render e dura até 15 segundos. Para um tour, gere um vídeo por ambiente e junte na edição.",
+          "**Posso animar uma imagem que não veio do Vizai?** Sim. No frame inicial, use Upload do PC.",
+        ],
+      },
+      { type: "cost", text: "22 a 83 créditos por vídeo, conforme a duração" },
     ],
   },
   "panorama-360": {
     title: "Panorama 360°: apresentações imersivas que o cliente explora",
     excerpt:
-      "Marque a parede e onde você fica de pé: o SketchUp captura o ambiente inteiro e a IA devolve um panorama esférico que o cliente explora pelo link, sem instalar nada.",
+      "Marque a parede e onde você fica de pé: o SketchUp captura o ambiente inteiro e a IA devolve, em cerca de 30 segundos, um panorama esférico que o cliente explora pelo link, sem instalar nada.",
     blocks: [
-      {
-        type: "p",
-        text: "A aba **360** transforma o seu ambiente em um **panorama esférico interativo** direto do modelo, sem renderizar nada antes. Você marca onde a câmera fica e o plugin cuida do resto. O cliente recebe um link, abre no navegador (computador ou celular) e explora o espaço girando a imagem.",
-      },
+      { type: "p", text: "A aba **360** transforma um ambiente do seu modelo em um **panorama esférico realista**, que o cliente abre por um link no computador ou no celular e explora girando a imagem. Não é preciso renderizar nada antes: você marca a parede e o ponto onde está, e o panorama fica pronto em cerca de 30 segundos, por 5 créditos." },
       {
         type: "img",
         src: "/treinamento/ui/pano-360-resultado.webp",
         alt: "Panorama 360 gerado pelo Vizai Render",
         caption: "O panorama gerado: pronto para o visualizador interativo.",
       },
-      { type: "h2", text: "Como gerar" },
+      { type: "p", text: "São duas etapas. Primeiro o próprio SketchUp captura o ambiente em todas as direções a partir do ponto marcado e monta uma prévia esférica, sem custo. Depois a IA transforma essa prévia em fotografia: mantém a arquitetura, os móveis e as proporções, troca os materiais do modelo por acabamentos reais e apaga as linhas de contorno do SketchUp." },
+      { type: "h2", text: "Passo a passo" },
       {
         type: "img",
         src: "/treinamento/ui/pano-{lang}.webp",
@@ -251,35 +282,71 @@ export const ptArticles: Record<string, ArticleContent> = {
         ui: true,
       },
       {
-        type: "p",
-        text: "Você não precisa renderizar nada antes. **Clique na parede** que vai ficar no centro do panorama e depois **onde você fica de pé**. O SketchUp captura o ambiente inteiro sozinho, em todas as direções, e monta a imagem esférica. A IA transforma essa captura em uma foto realista.",
-      },
-      {
         type: "steps",
         items: [
           {
             title: "Escolha a parede de frente",
-            text: "Ela fica no centro do panorama. A emenda cai na parede oposta, então deixe a mais bonita à frente.",
+            text: "Clique na parede que vai ficar no centro do panorama. A emenda da imagem cai na parede oposta, então deixe a mais bonita à frente. Se você clicar no piso ou no teto, o plugin usa a direção da câmera atual.",
           },
           {
             title: "Marque onde você fica de pé",
-            text: "Clique no chão, no ponto de onde o cliente vai olhar. A altura do olho já vem em 1,60 m e você pode mudar.",
+            text: "Clique no chão, no ponto de onde o cliente vai olhar. A altura do olho já vem em 1,60 m, e você pode mudar.",
           },
           {
             title: "Confira a prévia",
-            text: "O plugin mostra o ambiente capturado antes de gastar crédito. Se o observador caiu dentro de um móvel, é só refazer. A prévia é grátis.",
+            text: "O plugin captura as 6 vistas e costura o 360 antes de gastar crédito. Se o observador caiu dentro de um móvel ou de uma parede, é só refazer. A prévia é grátis.",
           },
           {
-            title: "Gere e compartilhe",
-            text: "5 créditos. Depois: visualize no plugin, baixe a imagem, copie o link ou envie direto pelo WhatsApp.",
+            title: "Gere",
+            text: "Clique em **Gerar 360**. São 5 créditos, e o panorama fica pronto em cerca de 30 segundos.",
+          },
+          {
+            title: "Compartilhe",
+            text: "Visualize maior no plugin, baixe a imagem, copie o link ou envie direto pelo WhatsApp. O cliente abre no navegador e pode girar, dar zoom e ver em tela cheia.",
           },
         ],
       },
+      { type: "h2", text: "Como o panorama sai" },
       {
-        type: "tip",
-        text: "Escolha uma parede sem móveis colados e um ponto de vista com espaço em volta. Observador espremido num canto achata o ambiente; do meio do cômodo, o panorama respira.",
+        type: "ul",
+        items: [
+          "**Feito para interiores.** O 360 trata a cena como um ambiente interno fotografado para revista.",
+          "**Luz natural do dia.** As luzes artificiais saem apagadas: fitas de LED, spots e luminárias não acendem no panorama. Para mostrar a iluminação noturna, use o render, com o estilo de luz que quiser.",
+          "**Arquitetura e móveis travados.** A IA não acrescenta nem remove objetos e não muda layout nem proporções. O que muda são os acabamentos, que passam de material de modelo para material real.",
+          "**Vista pela janela.** Do lado de fora do vidro, a IA cria um entorno urbano residencial, para a janela não ficar branca nem vazia. A janela em si não muda.",
+        ],
       },
-      { type: "cost", text: "5 créditos por panorama · link de compartilhamento grátis" },
+      { type: "h2", text: "Para o panorama sair bom" },
+      {
+        type: "ul",
+        items: [
+          "**Do meio do cômodo.** Observador espremido num canto achata o ambiente; do meio, o panorama respira.",
+          "**Parede limpa à frente.** Escolha para o centro do panorama uma parede sem móveis colados.",
+          "**Ambiente fechado e com materiais.** Paredes, piso e teto modelados e com materiais aplicados dão à IA o que interpretar. Onde falta parede ou teto, a IA precisa adivinhar o que tem ali.",
+        ],
+      },
+      { type: "h2", text: "Se o resultado não sair como esperado" },
+      {
+        type: "ul",
+        items: [
+          "**Observador dentro de um móvel ou de uma parede**: aparece na prévia, antes de gastar crédito. Marque o ponto de novo, um pouco mais afastado.",
+          "**Emenda aparente**: ela sempre cai na parede oposta à que você escolheu como frente. Escolha como frente a parede mais importante, e a emenda vai para a de trás.",
+          "**Panorama virado para o lado errado**: você clicou no piso ou no teto em vez de uma parede, e o plugin usou a direção da câmera. Clique numa parede para escolher a frente.",
+        ],
+      },
+      { type: "tip", text: "O link serve para mostrar ao cliente. Para guardar o panorama junto com o projeto, baixe a imagem também." },
+      { type: "h2", text: "Perguntas rápidas" },
+      {
+        type: "ul",
+        items: [
+          "**Quanto tempo leva?** Cerca de 30 segundos depois da prévia.",
+          "**Qual o tamanho da imagem?** 2048 × 1024 pixels, no formato esférico (equiretangular) que os visualizadores 360 usam.",
+          "**Preciso renderizar antes?** Não. O 360 sai direto do modelo.",
+          "**O cliente precisa instalar algo?** Não. O link abre no navegador do computador ou do celular.",
+          "**Funciona em área externa?** O 360 foi feito para ambientes internos, e é neles que funciona melhor.",
+        ],
+      },
+      { type: "cost", text: "5 créditos por panorama · prévia e link de compartilhamento grátis" },
     ],
   },
   "blocos-3d": {
@@ -774,12 +841,9 @@ export const ptArticles: Record<string, ArticleContent> = {
   "decorar-ambiente": {
     title: "Decorar Ambiente: mobília e decoração com IA em ambientes vazios",
     excerpt:
-      "O virtual staging do Vizai: carregue um ambiente vazio, escolha o tipo de espaço e os estilos de decoração, e a IA cria um layout completo.",
+      "O virtual staging do Vizai: carregue a foto ou o render de um ambiente vazio, escolha o tipo de espaço, o estilo e o horário, e a IA mobilia e decora mantendo a arquitetura.",
     blocks: [
-      {
-        type: "p",
-        text: "**Decorar Ambiente** é a ferramenta de virtual staging da IA Criativa: ela mobília e decora um ambiente a partir de uma imagem base. Perfeita para mostrar potencial de espaços vazios: imóveis na planta, reformas, home staging para venda.",
-      },
+      { type: "p", text: "**Decorar Ambiente** mobília e decora um ambiente vazio a partir de uma foto ou de um render, em menos de um minuto, por 3 créditos. A arquitetura, os acabamentos, as janelas e o enquadramento ficam como estão: a IA só acrescenta móveis e decoração do tipo de ambiente e do estilo que você escolher. Serve para mostrar o potencial de imóveis vazios, apartamentos na planta, reformas e anúncios de venda ou aluguel." },
       {
         type: "compare",
         before: { src: "/tools/tool-07-empty.avif", label: "Ambiente vazio" },
@@ -795,15 +859,15 @@ export const ptArticles: Record<string, ArticleContent> = {
           },
           {
             title: "Carregue a imagem base",
-            text: "Arraste uma foto ou render do ambiente (JPG/PNG até 5MB), ou capture direto da viewport.",
+            text: "Arraste uma foto ou um render do ambiente vazio (JPG ou PNG, até 5 MB) ou capture a cena atual do SketchUp. O resultado sai na mesma proporção da imagem.",
           },
           {
-            title: "Configure o estilo",
-            text: "Escolha o tipo de ambiente, os estilos de decoração e o horário (dia ou noite).",
+            title: "Escolha o ambiente, o estilo e o horário",
+            text: "Um dos 13 tipos de ambiente, um ou mais estilos de decoração, e dia ou noite.",
           },
           {
             title: "Gere",
-            text: "3 créditos por imagem. O resultado chega com Antes/Depois para comparar com a base.",
+            text: "3 créditos por imagem. O resultado chega com Antes e Depois para comparar com a base.",
           },
         ],
       },
@@ -814,19 +878,48 @@ export const ptArticles: Record<string, ArticleContent> = {
         caption: "13 tipos de ambiente e 8 estilos de decoração combináveis.",
         ui: true,
       },
-      { type: "h2", text: "Tipos de ambiente e estilos" },
+      { type: "h2", text: "Tipos de ambiente" },
+      { type: "p", text: "Sala, Quarto, Cozinha, Banheiro, Escritório, Varanda, Garagem, Hall, Piscina, Adega, Despensa, Sala de Jantar e Espaço Gourmet. Cada tipo tem um programa próprio, que define o que entra. Na Sala de Jantar, a IA monta uma mesa para 6 a 8 pessoas; no Escritório, mesa de trabalho, cadeira ergonômica e estante. Na Cozinha, ela arruma a bancada e coloca banquetas e pendentes sem mexer em armários, bancada e eletrodomésticos. No Banheiro, acrescenta toalhas, acessórios e plantas sem mexer nas louças." },
+      { type: "h2", text: "Estilos de decoração" },
+      { type: "p", text: "Moderno, Minimalista, Clássico, Industrial, Escandinavo, Rústico, Contemporâneo e Tropical. Marque mais de um para misturar, como Moderno com Escandinavo. Se nenhum estiver marcado, o Vizai usa o Moderno." },
+      { type: "h2", text: "Dia ou noite" },
       {
-        type: "p",
-        text: "São **13 tipos de ambiente** (Sala, Quarto, Cozinha, Banheiro, Escritório, Varanda, Garagem, Hall, Piscina, Adega, Despensa, Sala de Jantar e Espaço Gourmet) e **8 estilos de decoração** que você pode combinar: Moderno, Minimalista, Clássico, Industrial, Escandinavo, Rústico, Contemporâneo e Tropical. Ative mais de um estilo para um mix (ex.: Moderno + Escandinavo), ou nenhum para deixar a IA livre.",
+        type: "ul",
+        items: [
+          "**Dia**: luz natural suave entrando pelas janelas, com sombras leves.",
+          "**Noite**: céu azul-escuro do lado de fora e o ambiente iluminado por luminárias quentes, como pendentes, arandelas e abajures.",
+        ],
       },
+      { type: "h2", text: "Para o resultado sair bom" },
       {
-        type: "tip",
-        text: "Para o melhor resultado, use uma imagem do ambiente **sem mobiliário**: com paredes, piso e estrutura bem visíveis, a IA posiciona os móveis com muito mais precisão.",
+        type: "ul",
+        items: [
+          "**Ambiente realmente vazio.** Com paredes, piso e estrutura bem visíveis, a IA posiciona os móveis com muito mais precisão.",
+          "**Imagem bem enquadrada.** A IA mantém o enquadramento da imagem, então corrija a inclinação e o corte antes de carregar.",
+          "**Tipo de ambiente igual ao uso real.** É o tipo que define os móveis que entram.",
+        ],
+      },
+      { type: "h2", text: "Se o resultado não sair como esperado" },
+      {
+        type: "ul",
+        items: [
+          "**Móvel fora de escala ou em lugar estranho**: gere de novo, porque cada geração sai diferente, ou corrija só aquele trecho com a edição por máscara.",
+          "**Algo da arquitetura mudou**: a IA tem ordem de manter paredes, piso, janelas e acabamentos. Se mudar, gere de novo.",
+        ],
+      },
+      { type: "h2", text: "Perguntas rápidas" },
+      {
+        type: "ul",
+        items: [
+          "**Funciona com foto real ou só com render?** Com os dois. Foi pensado para foto de ambiente vazio e funciona também com render do SketchUp.",
+          "**Posso usar em anúncio de imóvel?** Sim, a imagem é sua. É boa prática avisar no anúncio que a decoração é virtual.",
+          "**Quanto tempo leva?** Menos de um minuto.",
+          "**Quantos créditos?** 3 por imagem, como os outros modos da IA Criativa.",
+        ],
       },
       { type: "cost", text: "3 créditos por geração" },
     ],
   },
-
   "planta-humanizada": {
     title: "Planta Humanizada: do desenho técnico à apresentação",
     excerpt:

@@ -144,18 +144,16 @@ export const enArticles: Record<string, ArticleContent> = {
   "video-com-ia": {
     title: "AI Video: animate your renders with cinematic camera work",
     excerpt:
-      "Turn a render into a 4-to-15-second video with professional camera movement and AI-generated ambient sound. Right from the plugin.",
+      "Turn a render into a 4 to 15 second video in 1080p, with camera movement and AI-generated ambient sound, right from the plugin.",
     blocks: [
-      {
-        type: "p",
-        text: "The **Video** tab turns any render into a cinematic clip using **Kling 3.0 Pro**, one of the most advanced video engines in the world. Output is **1080p**, with smooth camera movement and, if you want, AI-generated ambient sound.",
-      },
+      { type: "p", text: "With the **Video** tab in Vizai, a finished render becomes a **4 to 15 second clip in 1080p**, with camera movement and, if you want, AI-generated ambient sound. It's the fastest way to take a project to Reels, Stories or a client presentation, without building an animation in SketchUp or rendering frame by frame." },
       {
         type: "video",
         src: "/tools/tool-03.mp4",
         caption: "Video generated from a plugin render.",
       },
-      { type: "h2", text: "Building the video" },
+      { type: "p", text: "The image is animated by **Kling 3.0 Pro**, an AI video model. It starts from your render and creates the movement from it: what you see in the video is the project in the image, not the 3D model moving in real time. That's why the result depends so much on the starting render." },
+      { type: "h2", text: "From render to video, step by step" },
       {
         type: "img",
         src: "/treinamento/ui/video-{lang}.webp",
@@ -167,49 +165,59 @@ export const enArticles: Record<string, ArticleContent> = {
         type: "steps",
         items: [
           {
-            title: "Start frame",
-            text: "The video's starting point: use your latest render, pick from history or upload from your PC.",
+            title: "Pick the start frame",
+            text: "The image the video starts from. By default it's your latest render; you can also pick an image from History or upload one from your computer. The AI won't fix what's wrong in the image, so start from a render you'd already approve.",
           },
           {
-            title: "End frame (optional)",
-            text: "Set an arrival image too and the AI creates the transition between them. Great for a “tour” between two angles of the room.",
+            title: "Set an end frame, if you want",
+            text: "Optional. With a second image, the AI creates the transition between the two. It works best with two renders of the same room, with the same light and close angles.",
           },
           {
-            title: "Aspect ratio",
-            text: "16:9 landscape, 1:1 square or 9:16 vertical for Reels and Stories.",
+            title: "Choose the aspect ratio",
+            text: "Landscape (16:9) for presentations and YouTube, square (1:1) for the feed and portrait (9:16) for Reels and Stories. Use the same ratio as the render: if the video will be vertical, generate the render in 9:16 from the start.",
           },
           {
-            title: "Camera and audio",
-            text: "Choose the movement and the sound in the configuration modal (details below).",
+            title: "Set camera and audio",
+            text: "In **Configure Camera & Audio**, pick one of the 8 movements and whether the video has sound.",
           },
           {
-            title: "Duration",
-            text: "4, 6, 8, 10 or 15 seconds: the cost shows on the button before you generate.",
+            title: "Write observations, if you want",
+            text: "In the **Observations** field, ask the AI to pay attention to an element (“focus on the wooden chair”) or describe the movement in your own words (“camera slowly moves forward and reveals the balcony”). The text is added to the chosen movement.",
+          },
+          {
+            title: "Pick the duration and generate",
+            text: "4, 6, 8, 10 or 15 seconds. The cost shows on the button before you generate, and the video is ready in 2 to 5 minutes.",
           },
         ],
       },
-      { type: "h2", text: "Camera movements" },
+      { type: "h2", text: "The 8 camera movements" },
       {
         type: "img",
         src: "/treinamento/ui/modal-camera-{lang}.webp",
         alt: "Video camera and audio modal",
-        caption: "8 preset movements + free-text movement description.",
+        caption: "The 8 preset movements and the sound options.",
         ui: true,
       },
       {
         type: "ul",
         items: [
-          "**Automatic**: natural movement chosen by the AI (recommended).",
-          "**Zoom In / Zoom Out**: smooth approach or pull-back.",
-          "**Pan left / right**: lateral glide.",
-          "**Tilt Up / Tilt Down**: upward or downward tilt.",
-          "**Orbit (Drone)**: smooth sweep around the project.",
+          "**Automatic (Recommended)**: the AI picks a natural movement for the scene. The best starting point.",
+          "**Smooth Zoom In**: the camera moves into the scene. Highlights a room or a joinery detail.",
+          "**Smooth Zoom Out**: the camera pulls back and reveals the whole space. Good for ending the video on the full view.",
+          "**Pan Right or Pan Left**: the camera slides sideways. Works in wide living rooms, galley kitchens and long facades.",
+          "**Tilt Up and Tilt Down**: the camera tilts up or down. Shows high ceilings, stairs and building facades.",
+          "**Orbit (Drone)**: the camera circles the project like a drone. The most striking movement for facades and houses, and the most demanding for the AI.",
         ],
       },
+      { type: "h2", text: "Video sound" },
       {
-        type: "p",
-        text: "Prefer to direct the scene? Describe the movement freely (“camera slowly moves through the living room revealing the balcony”) and use **Notes** to ask for focus on an element. For audio, choose **AI Ambient Sound** (wind, footsteps, urban sounds, free) or a silent video for later editing.",
+        type: "ul",
+        items: [
+          "**Ambient Sound (AI Generated)**: wind, footsteps and city noise, created to match the scene. It doesn't change the price.",
+          "**No Sound**: a silent video, so you can add music or narration when editing.",
+        ],
       },
+      { type: "h2", text: "How much it costs" },
       {
         type: "table",
         head: ["Duration", "Cost"],
@@ -221,28 +229,51 @@ export const enArticles: Record<string, ArticleContent> = {
           ["15 seconds", "83 credits"],
         ],
       },
+      { type: "h2", text: "Getting a good video" },
       {
-        type: "tip",
-        text: "4–6 second videos with Automatic or Zoom In movement convert best on social media, and they're the cheapest. Start there.",
+        type: "ul",
+        items: [
+          "**Start short.** 4 to 6 second videos with Automatic or Zoom In are the most stable and the cheapest. Save 10 or 15 seconds for movements that need time, like an orbit.",
+          "**Clean render, clean video.** Fix the render first with a masked edit, and only then animate it. The AI carries everything in the image into the video.",
+          "**Right aspect ratio from the render.** For Reels, generate the render in 9:16 instead of using a horizontal one.",
+        ],
       },
+      { type: "h2", text: "If the result isn't what you expected" },
+      {
+        type: "ul",
+        items: [
+          "**Window frames, joinery or facade warping**: the more the camera travels, the more the AI has to invent what isn't in the render. Switch to a shorter movement (Zoom In or Automatic), reduce the duration or use an end frame to hold the arrival point.",
+          "**Movement different from what you asked**: describe the movement in Observations in one simple, direct sentence, and keep the preset movement consistent with it.",
+        ],
+      },
+      { type: "warn", text: "If the generation fails or the video doesn't reach the plugin, the credits go back to your account automatically." },
+      { type: "h2", text: "Quick questions" },
+      {
+        type: "ul",
+        items: [
+          "**How long does it take?** 2 to 5 minutes, depending on the length.",
+          "**What resolution?** 1080p, in the aspect ratio you choose.",
+          "**Can I make a tour of the whole house?** Not in a single video: each video starts from one render and lasts up to 15 seconds. For a tour, generate one video per room and join them when editing.",
+          "**Can I animate an image that didn't come from Vizai?** Yes. In the start frame, use Upload from PC.",
+        ],
+      },
+      { type: "cost", text: "22 to 83 credits per video, depending on the length" },
     ],
   },
   "panorama-360": {
     title: "360° Panorama: immersive presentations your client can explore",
     excerpt:
-      "Mark the wall and where you stand: SketchUp captures the whole room and the AI returns a spherical panorama your client explores through a link, with nothing to install.",
+      "Mark the wall and where you stand: SketchUp captures the whole room and the AI returns, in about 30 seconds, a spherical panorama your client explores through a link, with nothing to install.",
     blocks: [
-      {
-        type: "p",
-        text: "The **360** tab turns your space into an **interactive spherical panorama** straight from the model, with nothing rendered beforehand. You mark where the camera goes and the plugin handles the rest. Your client gets a link, opens it in the browser (desktop or phone) and explores the space by dragging the image.",
-      },
+      { type: "p", text: "The **360** tab turns a room in your model into a **photorealistic spherical panorama** that your client opens through a link on a computer or phone and explores by rotating the image. You don't need to render anything first: you mark the wall and where you stand, and the panorama is ready in about 30 seconds, for 5 credits." },
       {
         type: "img",
         src: "/treinamento/ui/pano-360-resultado.webp",
         alt: "360 panorama generated by Vizai Render",
         caption: "The generated panorama: ready for the interactive viewer.",
       },
-      { type: "h2", text: "How to generate" },
+      { type: "p", text: "It happens in two stages. First, SketchUp itself captures the room in every direction from the point you marked and builds a spherical preview, at no cost. Then the AI turns that preview into a photograph: it keeps the architecture, furniture and proportions, replaces the model's materials with real finishes and removes SketchUp's outline edges." },
+      { type: "h2", text: "Step by step" },
       {
         type: "img",
         src: "/treinamento/ui/pano-{lang}.webp",
@@ -251,35 +282,71 @@ export const enArticles: Record<string, ArticleContent> = {
         ui: true,
       },
       {
-        type: "p",
-        text: "You don't need to render anything first. **Click the wall** that will sit at the center of the panorama, then **click where you stand**. SketchUp captures the whole room on its own, in every direction, and assembles the spherical image. The AI turns that capture into a realistic photo.",
-      },
-      {
         type: "steps",
         items: [
           {
             title: "Pick the wall in front",
-            text: "It sits at the center of the panorama. The seam falls on the opposite wall, so keep your best wall in front.",
+            text: "Click the wall that will sit at the center of the panorama. The image seam falls on the opposite wall, so put your best wall in front. If you click the floor or ceiling, the plugin uses the current camera direction.",
           },
           {
             title: "Mark where you stand",
-            text: "Click the floor, at the spot your client will look from. Eye height comes preset at 1.60 m and you can change it.",
+            text: "Click the floor at the point your client will look from. Eye height defaults to 1.60 m, and you can change it.",
           },
           {
             title: "Check the preview",
-            text: "The plugin shows the captured room before spending any credit. If the viewer landed inside a cabinet, just redo it. The preview is free.",
+            text: "The plugin captures the 6 views and stitches the 360 before spending any credit. If the viewer landed inside furniture or a wall, just redo it. The preview is free.",
           },
           {
-            title: "Generate and share",
-            text: "5 credits. Then: view it in the plugin, download the image, copy the link or send it straight via WhatsApp.",
+            title: "Generate",
+            text: "Click **Generate 360**. It costs 5 credits, and the panorama is ready in about 30 seconds.",
+          },
+          {
+            title: "Share",
+            text: "View it larger in the plugin, download the image, copy the link or send it straight through WhatsApp. Your client opens it in the browser and can rotate, zoom and go full screen.",
           },
         ],
       },
+      { type: "h2", text: "What the panorama looks like" },
       {
-        type: "tip",
-        text: "Pick a wall with no furniture pressed against it, and a viewpoint with some room around it. A viewer squeezed into a corner flattens the space; from the middle of the room, the panorama breathes.",
+        type: "ul",
+        items: [
+          "**Made for interiors.** The 360 treats the scene as an interior photographed for a magazine.",
+          "**Natural daylight.** Artificial lights come out switched off: LED strips, spots and fixtures don't light up in the panorama. To show night lighting, use a render with the lighting style you want.",
+          "**Architecture and furniture locked.** The AI doesn't add or remove objects and doesn't change the layout or proportions. What changes are the finishes, which go from model materials to real materials.",
+          "**View through the window.** Beyond the glass, the AI creates a believable residential urban setting, so the window isn't left white or empty. The window itself doesn't change.",
+        ],
       },
-      { type: "cost", text: "5 credits per panorama · sharing link is free" },
+      { type: "h2", text: "Getting a good panorama" },
+      {
+        type: "ul",
+        items: [
+          "**From the middle of the room.** A viewer squeezed into a corner flattens the space; from the middle, the panorama breathes.",
+          "**A clear wall in front.** For the center of the panorama, pick a wall without furniture pushed against it.",
+          "**A closed room with materials.** Modeled walls, floor and ceiling with materials applied give the AI something to interpret. Where a wall or ceiling is missing, the AI has to guess what's there.",
+        ],
+      },
+      { type: "h2", text: "If the result isn't what you expected" },
+      {
+        type: "ul",
+        items: [
+          "**Viewer inside furniture or a wall**: it shows in the preview, before any credit is spent. Mark the point again, a little further away.",
+          "**Visible seam**: it always falls on the wall opposite the one you picked as the front. Make the most important wall the front, and the seam goes to the back.",
+          "**Panorama facing the wrong way**: you clicked the floor or ceiling instead of a wall, so the plugin used the camera direction. Click a wall to choose the front.",
+        ],
+      },
+      { type: "tip", text: "The link is for showing your client. To keep the panorama with the project, download the image too." },
+      { type: "h2", text: "Quick questions" },
+      {
+        type: "ul",
+        items: [
+          "**How long does it take?** About 30 seconds after the preview.",
+          "**How big is the image?** 2048 × 1024 pixels, in the spherical (equirectangular) format 360 viewers use.",
+          "**Do I need to render first?** No. The 360 comes straight from the model.",
+          "**Does my client need to install anything?** No. The link opens in the browser on a computer or phone.",
+          "**Does it work outdoors?** The 360 was made for interiors, and that's where it works best.",
+        ],
+      },
+      { type: "cost", text: "5 credits per panorama · free preview and share link" },
     ],
   },
   "blocos-3d": {
@@ -774,12 +841,9 @@ export const enArticles: Record<string, ArticleContent> = {
   "decorar-ambiente": {
     title: "Stage Room: AI furniture and decor for empty spaces",
     excerpt:
-      "Vizai's virtual staging: upload an empty room, pick the space type and decor styles, and the AI creates a complete layout.",
+      "Vizai's virtual staging: upload a photo or render of an empty room, pick the space type, style and time of day, and the AI furnishes and decorates it while keeping the architecture.",
     blocks: [
-      {
-        type: "p",
-        text: "**Stage Room** is Creative AI's virtual staging tool: it furnishes and decorates a space from a base image. Perfect for showing the potential of empty spaces. Off-plan properties, renovations, home staging for sale.",
-      },
+      { type: "p", text: "**Decorate Space** furnishes and decorates an empty room from a photo or a render, in under a minute, for 3 credits. The architecture, finishes, windows and framing stay as they are: the AI only adds furniture and decor for the room type and style you choose. Use it to show the potential of empty properties, off-plan apartments, renovations and sale or rental listings." },
       {
         type: "compare",
         before: { src: "/tools/tool-07-empty.avif", label: "Empty room" },
@@ -791,19 +855,19 @@ export const enArticles: Record<string, ArticleContent> = {
         items: [
           {
             title: "Switch to Creative AI",
-            text: "In the Studio tab, toggle from Render to Creative AI and choose Stage Room.",
+            text: "In the Studio tab, switch from Render to Creative AI and choose Decorate Space.",
           },
           {
             title: "Upload the base image",
-            text: "Drag a photo or render of the space (JPG/PNG up to 5MB), or capture straight from the viewport.",
+            text: "Drag in a photo or render of the empty room (JPG or PNG, up to 5 MB) or capture the current SketchUp scene. The result keeps the image's aspect ratio.",
           },
           {
-            title: "Configure the style",
-            text: "Choose the room type, the decor styles and the time of day (day or night).",
+            title: "Pick the room, style and time of day",
+            text: "One of the 13 room types, one or more decor styles, and day or night.",
           },
           {
             title: "Generate",
-            text: "3 credits per image. The result arrives with Before/After to compare against the base.",
+            text: "3 credits per image. The result comes with a Before and After view to compare with the base.",
           },
         ],
       },
@@ -814,19 +878,48 @@ export const enArticles: Record<string, ArticleContent> = {
         caption: "13 room types and 8 combinable decor styles.",
         ui: true,
       },
-      { type: "h2", text: "Room types and styles" },
+      { type: "h2", text: "Room types" },
+      { type: "p", text: "Living Room, Bedroom, Kitchen, Bathroom, Office, Balcony, Garage, Hall, Pool, Wine Cellar, Pantry, Dining Room and Gourmet Space. Each type has its own program that defines what goes in. In the Dining Room, the AI sets a table for 6 to 8 people; in the Office, a work desk, an ergonomic chair and a bookshelf. In the Kitchen, it dresses the counter and adds stools and pendants without touching cabinets, countertop or appliances. In the Bathroom, it adds towels, accessories and plants without touching the fixtures." },
+      { type: "h2", text: "Decor styles" },
+      { type: "p", text: "Modern, Minimalist, Classic, Industrial, Scandinavian, Rustic, Contemporary and Tropical. Select more than one to mix them, such as Modern with Scandinavian. If none is selected, Vizai uses Modern." },
+      { type: "h2", text: "Day or night" },
       {
-        type: "p",
-        text: "There are **13 room types** (Living Room, Bedroom, Kitchen, Bathroom, Office, Balcony, Garage, Hall, Pool, Wine Cellar, Pantry, Dining Room and Gourmet Area) and **8 decor styles** you can combine: Modern, Minimalist, Classic, Industrial, Scandinavian, Rustic, Contemporary and Tropical. Enable more than one for a mix (e.g. Modern + Scandinavian), or none to let the AI roam free.",
+        type: "ul",
+        items: [
+          "**Day**: soft natural light coming through the windows, with gentle shadows.",
+          "**Night**: a deep blue sky outside and the room lit by warm fixtures such as pendants, wall sconces and table lamps.",
+        ],
       },
+      { type: "h2", text: "Getting a good result" },
       {
-        type: "tip",
-        text: "For the best result, use an image of the room **without furniture**: with walls, floor and structure clearly visible, the AI places furniture far more accurately.",
+        type: "ul",
+        items: [
+          "**A truly empty room.** With walls, floor and structure clearly visible, the AI places furniture much more accurately.",
+          "**A well-framed image.** The AI keeps the image's framing, so fix tilt and cropping before uploading.",
+          "**The room type that matches the real use.** The type is what defines the furniture that goes in.",
+        ],
+      },
+      { type: "h2", text: "If the result isn't what you expected" },
+      {
+        type: "ul",
+        items: [
+          "**Furniture out of scale or in an odd spot**: generate again, since every generation comes out different, or fix just that area with a masked edit.",
+          "**Something in the architecture changed**: the AI is instructed to keep walls, floor, windows and finishes. If something changes, generate again.",
+        ],
+      },
+      { type: "h2", text: "Quick questions" },
+      {
+        type: "ul",
+        items: [
+          "**Does it work with real photos or only renders?** Both. It was designed for photos of empty rooms and also works with SketchUp renders.",
+          "**Can I use it in a property listing?** Yes, the image is yours. It's good practice to say in the listing that the furnishing is virtual.",
+          "**How long does it take?** Under a minute.",
+          "**How many credits?** 3 per image, like the other Creative AI modes.",
+        ],
       },
       { type: "cost", text: "3 credits per generation" },
     ],
   },
-
   "planta-humanizada": {
     title: "Rendered Floor Plan: from technical drawing to presentation",
     excerpt:
