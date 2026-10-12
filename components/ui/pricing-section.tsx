@@ -6,55 +6,16 @@ import { useLang } from "@/app/components/LanguageProvider";
 import { useT } from "@/lib/i18n";
 import { useTheme } from "next-themes";
 import { AnimatedGridBg } from "./animated-grid-bg";
+import {
+  type Currency,
+  langToCurrency,
+  packData,
+  parsePriceToNumber,
+  planData,
+} from "@/lib/prices";
 
-type Currency = "BRL" | "USD" | "EUR";
 type Tab = "assinatura" | "avulso";
 type Billing = "mensal" | "anual";
-
-const langToCurrency: Record<string, Currency> = { pt: "BRL", en: "USD", es: "EUR" };
-
-// Dados numéricos/estruturais — textos vêm do dicionário (t.pricing) por índice
-const planData = [
-  {
-    id: "free",
-    monthly: { BRL: "R$ 0", USD: "$ 0", EUR: "€ 0" },
-    annual: { BRL: "R$ 0", USD: "$ 0", EUR: "€ 0" },
-    annualTotal: { BRL: "", USD: "", EUR: "" },
-    highlighted: false,
-    href: "/signup",
-  },
-  {
-    id: "starter",
-    monthly: { BRL: "R$ 97", USD: "$ 29", EUR: "€ 29" },
-    annual: { BRL: "R$ 89", USD: "$ 25", EUR: "€ 25" },
-    annualTotal: { BRL: "R$ 1.068", USD: "$ 295", EUR: "€ 295" },
-    highlighted: false,
-    href: "/signup",
-  },
-  {
-    id: "pro",
-    monthly: { BRL: "R$ 197", USD: "$ 59", EUR: "€ 59" },
-    annual: { BRL: "R$ 179", USD: "$ 50", EUR: "€ 50" },
-    annualTotal: { BRL: "R$ 2.148", USD: "$ 601", EUR: "€ 601" },
-    highlighted: true,
-    href: "/signup",
-  },
-  {
-    id: "business",
-    monthly: { BRL: "R$ 519", USD: "$ 129", EUR: "€ 129" },
-    annual: { BRL: "R$ 479", USD: "$ 110", EUR: "€ 110" },
-    annualTotal: { BRL: "R$ 5.748", USD: "$ 1.319", EUR: "€ 1.319" },
-    highlighted: false,
-    href: "/signup",
-  },
-];
-
-const packData = [
-  { id: "mini", monthly: { BRL: "R$ 49", USD: "$ 11,90", EUR: "€ 11,90" }, highlighted: false },
-  { id: "basico", monthly: { BRL: "R$ 100", USD: "$ 25", EUR: "€ 25" }, highlighted: false },
-  { id: "pro-pack", monthly: { BRL: "R$ 250", USD: "$ 75", EUR: "€ 75" }, highlighted: true },
-  { id: "empresa", monthly: { BRL: "R$ 550", USD: "$ 149", EUR: "€ 149" }, highlighted: false },
-];
 
 function CheckIcon({ highlighted, dark }: { highlighted: boolean; dark: boolean }) {
   return (
@@ -127,13 +88,6 @@ function buildCheckoutUrl(
     if (!key) return null;
     return `/checkout?plan=${key}&currency=${curr}`;
   }
-}
-
-// Converte preço exibido ("R$ 2.004", "$ 11,90") em número.
-// Convenção do site: ponto = milhar, vírgula = decimal.
-function parsePriceToNumber(s: string): number {
-  const n = Number(s.replace(/[^\d.,]/g, "").replace(/\./g, "").replace(",", "."));
-  return Number.isFinite(n) ? n : 0;
 }
 
 // SHA-256 em hexadecimal do email, na normalização que o Meta exige (sem

@@ -1,4 +1,5 @@
 import { DownloadPage } from "@/components/pages/download-page";
+import { SoftwareJsonLd } from "@/components/pages/software-json-ld";
 import { buildMetadata } from "@/lib/seo";
 import { PREFIXED_LANGS } from "@/lib/routes";
 import { langParam } from "@/lib/lang-param";
@@ -19,6 +20,16 @@ export async function generateMetadata({
   return buildMetadata(lang, "download", "/download");
 }
 
-export default function Page() {
-  return <DownloadPage />;
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const lang = await langParam(params);
+  return (
+    <>
+      <SoftwareJsonLd lang={lang} />
+      <DownloadPage />
+    </>
+  );
 }

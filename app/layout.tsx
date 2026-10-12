@@ -67,6 +67,9 @@ export const metadata: Metadata = {
   // aqui faria todas as rotas apontarem pra home e matar a indexação delas.
 };
 
+// Só a Organization mora aqui: ela não tem idioma nem moeda. O produto
+// (SoftwareApplication, com preços) é declarado por página, no idioma e na moeda
+// dela. Ver lib/structured-data.ts.
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -91,69 +94,6 @@ const jsonLd = {
         email: "contato@vizairender.com",
         contactType: "customer support",
         availableLanguage: ["Portuguese", "English", "Spanish"],
-      },
-    },
-    {
-      "@type": "SoftwareApplication",
-      "@id": "https://vizairender.com/#software",
-      name: "Vizai Render",
-      url: "https://vizairender.com",
-      description:
-        "Plugin de renders fotorrealistas com inteligência artificial para SketchUp. Gere imagens profissionais em segundos diretamente do seu modelo 3D.",
-      applicationCategory: "DesignApplication",
-      operatingSystem: ["Windows", "macOS"],
-      offers: [
-        {
-          "@type": "Offer",
-          price: "0",
-          priceCurrency: "BRL",
-          name: "Plano Gratuito",
-        },
-        {
-          "@type": "Offer",
-          price: "97",
-          priceCurrency: "BRL",
-          name: "Plano Starter",
-          priceSpecification: {
-            "@type": "UnitPriceSpecification",
-            price: "97",
-            priceCurrency: "BRL",
-            billingDuration: 1,
-            billingIncrement: 1,
-            unitCode: "MON",
-          },
-        },
-        {
-          "@type": "Offer",
-          price: "197",
-          priceCurrency: "BRL",
-          name: "Plano PRO",
-          priceSpecification: {
-            "@type": "UnitPriceSpecification",
-            price: "197",
-            priceCurrency: "BRL",
-            billingDuration: 1,
-            billingIncrement: 1,
-            unitCode: "MON",
-          },
-        },
-        {
-          "@type": "Offer",
-          price: "519",
-          priceCurrency: "BRL",
-          name: "Plano Business",
-          priceSpecification: {
-            "@type": "UnitPriceSpecification",
-            price: "519",
-            priceCurrency: "BRL",
-            billingDuration: 1,
-            billingIncrement: 1,
-            unitCode: "MON",
-          },
-        },
-      ],
-      publisher: {
-        "@id": "https://vizairender.com/#organization",
       },
     },
   ],

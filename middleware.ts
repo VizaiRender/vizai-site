@@ -92,7 +92,10 @@ export const config = {
      * - _next/image (otimização de imagem)
      * - favicon.ico
      * - Arquivos estáticos comuns (svg, png, jpg, etc)
+     * - Texto para robôs (robots.txt, llms.txt, sitemap.xml): passando por
+     *   aqui, um robô que pedisse text/html com idioma alemão seria mandado
+     *   para /en/llms.txt, que não existe.
      */
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)",
+    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|txt|xml)$).*)",
   ],
 };
