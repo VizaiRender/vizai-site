@@ -13,7 +13,7 @@ import { HREFLANG, LANGS, absoluteUrl } from '@/lib/routes'
 const UPDATED = {
   home: '2026-08-19',
   download: '2026-06-11',
-  treinamento: '2026-08-20',
+  treinamento: '2026-10-12',
   legal: '2026-09-29',
   faq: '2026-10-12',
 } as const
