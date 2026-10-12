@@ -92,10 +92,7 @@ export const enArticles: Record<string, ArticleContent> = {
     excerpt:
       "Create tileable floor textures from any image: porcelain, wood with variations, configurable grout and direct application to faces.",
     blocks: [
-      {
-        type: "p",
-        text: "The second tool in the **Tools** window builds **seamless floor textures** from standalone images. That porcelain photo from the supplier's website becomes a tiled floor, with grout and the tile's real dimensions. Also local and free.",
-      },
+      { type: "p", text: "**Seamless Floors**, in the **Tools** window, turns a photo of a single tile or plank (porcelain, wood, ceramic) into a laid-out floor, with grout and at real size, applied straight to the model's faces. It runs on your computer and uses no credits." },
       {
         type: "img",
         src: "/treinamento/ui/tools-pisos-{lang}.webp",
@@ -103,40 +100,63 @@ export const enArticles: Record<string, ArticleContent> = {
         caption: "Live tiling preview, with grout and real dimensions.",
         ui: true,
       },
+      { type: "p", text: "The plugin builds a texture with a 6 × 6 block of pieces already laid out with grout, at the real scale you enter, and creates a SketchUp material from it. With variations, it mixes the images inside that block, so the repetition is much less visible." },
       { type: "h2", text: "Building the floor" },
       {
         type: "steps",
         items: [
           {
-            title: "Base texture",
-            text: "Upload the tile image (a photo of the porcelain, wood or tile).",
+            title: "Base Texture",
+            text: "Load the image of one piece: the photo of the porcelain tile, wood plank or ceramic tile. Use a straight, front-on image, with no perspective and only the piece.",
           },
           {
             title: "Variations (optional)",
-            text: "Add up to 3 alternative images from the same line. The plugin alternates the pieces and kills the repetition effect, essential for wood.",
+            text: "Add up to 3 images from the same line. The plugin alternates the pieces and breaks up the repetition, which is essential for wood and veined porcelain.",
           },
           {
             title: "Layout and rotation",
-            text: "Straight Grid (aligned), 50% Offset or 1/3 Offset, and rotate the tile if needed (vertical planks, for example).",
+            text: "Straight Grid (aligned), Offset 50% or Offset 1/3. Use Rotate to set the planks in the right direction.",
           },
           {
             title: "Real dimensions",
-            text: "Tile width and height in centimeters (90×90, 20×120…). The texture lands in SketchUp already at the correct scale.",
+            text: "Width and height of the piece in centimeters (it starts at 90 × 90; for planks, something like 20 × 120). The texture comes into SketchUp already at the right scale.",
           },
           {
             title: "Grout",
-            text: "Thickness in millimeters and color: gray, beige, black or matching the tile.",
+            text: "Thickness in millimeters (it starts at 2 mm) and color (it starts at dark gray). Grout matching the piece makes the floor look more continuous.",
           },
         ],
       },
       { type: "h2", text: "Applying to the model" },
+      { type: "p", text: "The preview shows the layout in real time. To apply it, **select the floor faces** in SketchUp before clicking Apply Texture. The material is created and mapped right onto them. With nothing selected, the plugin activates the Paint Bucket so you can click wherever you want." },
+      { type: "h2", text: "Getting a good floor" },
       {
-        type: "p",
-        text: "The preview shows the tiling in real time. To apply: **select the floor faces** in SketchUp before clicking Apply Texture. The material is created and mapped straight onto them. With nothing selected, the plugin activates the paint bucket so you click wherever you want.",
+        type: "ul",
+        items: [
+          "**A photo of the piece, not the room.** Crop just the piece, with no borders, strong reflections or perspective.",
+          "**Variations for wood.** A single repeated plank gives the floor away; 3 variations solve it.",
+          "**The right piece size.** It's what sets the scale. Check the supplier's spec sheet.",
+          "**Build the floor before rendering.** The AI follows the layout and grout it sees in the scene, and the render looks more real.",
+        ],
       },
+      { type: "h2", text: "If the result isn't what you expected" },
       {
-        type: "tip",
-        text: "Floors with correct tiling and grout raise the render's realism: the AI respects the floor pattern it sees in the scene. Build the floor here before rendering in the Studio.",
+        type: "ul",
+        items: [
+          "**Visible repetition**: add variations from the same line, or use Offset to break the alignment.",
+          "**Pieces too big or too small**: check the width and height in centimeters and apply again.",
+          "**Planks in the wrong direction**: use Rotate and apply to the faces again.",
+          "**Texture on the wrong face**: select the floor faces before clicking Apply Texture.",
+        ],
+      },
+      { type: "h2", text: "Quick questions" },
+      {
+        type: "ul",
+        items: [
+          "**Does it use credits?** No. It's processed on your computer.",
+          "**Can I use it for wall cladding?** Yes. The tool applies to whatever faces you select, floor or wall.",
+          "**Does it work with a catalog photo?** Yes, as long as the piece is front-on with no perspective.",
+        ],
       },
       { type: "cost", text: "Free: processed locally, no credits" },
     ],
@@ -352,24 +372,22 @@ export const enArticles: Record<string, ArticleContent> = {
   "blocos-3d": {
     title: "3D Blocks: turn any photo into a SketchUp model",
     excerpt:
-      "Found the perfect chair in a reference image? The Blocks tab converts the photo into a textured 3D model and imports it straight into your scene.",
+      "Found the perfect chair in a reference image? The Blocks tab turns the photo into a textured 3D model and imports it straight into your scene.",
     blocks: [
-      {
-        type: "p",
-        text: "The **Blocks** tab solves a classic: the client wants a specific furniture piece that doesn't exist in the 3D Warehouse. Send a reference photo and the AI rebuilds the object in 3D, textured, ready to import into the scene at the right scale.",
-      },
+      { type: "p", text: "The **Blocks** tab turns a photo of a piece of furniture or an object into a **textured 3D model** that goes into SketchUp as a component. It solves a classic problem: the client wants a specific piece that isn't in 3D Warehouse. Each block costs 28 credits and is ready in a few minutes." },
       {
         type: "img",
         src: "/tools/tool-05.webp",
         alt: "3D block generated from a photo",
         caption: "From reference photo to a 3D block in the scene.",
       },
+      { type: "p", text: "The object is rebuilt by **Meshy**, an AI model that creates 3D from an image. It infers the parts the photo doesn't show, such as the back, and delivers a light mesh of about 10,000 polygons, made so it doesn't weigh SketchUp down." },
       { type: "h2", text: "How to generate" },
       {
         type: "img",
         src: "/treinamento/ui/blocos-{lang}.webp",
         alt: "Vizai Render Blocks tab",
-        caption: "The Blocks tab: photo, mesh density and texture.",
+        caption: "The Blocks tab: reference photo, name and generation.",
         ui: true,
       },
       {
@@ -377,29 +395,51 @@ export const enArticles: Record<string, ArticleContent> = {
         items: [
           {
             title: "Add the reference photo",
-            text: "Drag or click to upload. Works best with the whole object visible, well lit and on a clean background.",
+            text: "Drag it in or click to upload. It works best with the whole object visible, well lit and on a clean background.",
           },
           {
             title: "Name the block",
-            text: "The name keeps the component organized in your model (e.g. “Wooden Chair”).",
+            text: "The name organizes the component in your model (for example, “Wooden Chair”).",
           },
           {
-            title: "Choose the polygon density",
-            text: "Light, Recommended, Heavy or Ultra. For SketchUp, Light or Recommended keep the file snappy.",
-          },
-          {
-            title: "Texture",
-            text: "With PBR texture (the photo's colors and materials) or geometry only, to apply your own materials.",
+            title: "Generate",
+            text: "It costs 28 credits. Most of the time it's ready in 3 to 5 minutes; at busy times it can go past 10.",
           },
           {
             title: "Import or download",
-            text: "Import into scene drops the block straight into the model; or download the .GLB to use in any software.",
+            text: "Import into scene places the block right in the model; or download the .GLB file to use in another program.",
           },
         ],
       },
+      { type: "h2", text: "Adjust the size after importing" },
+      { type: "p", text: "The block doesn't arrive at the piece's real size. After importing, check its size and use SketchUp's **Scale** tool to give the furniture the right dimensions." },
+      { type: "h2", text: "Getting a good block" },
       {
-        type: "warn",
-        text: "Heavy/Ultra density blocks can slow down large files. If you overdo it, the Tools window (Component Impact) shows which blocks are weighing things down, and the Optimize File guide fixes it.",
+        type: "ul",
+        items: [
+          "**The whole object, alone in the photo.** Well lit, on a clean background, with no other furniture touching it.",
+          "**A three-quarter photo.** A photo taken slightly from the side shows the front and a side, and the AI gets the hidden parts wrong less often.",
+          "**Pieces with a clear shape come out better.** Chairs, armchairs, tables, lamps and vases usually work well. Very open pieces or fine details, like cane weave and wire, tend to lose definition.",
+        ],
+      },
+      { type: "warn", text: "Many blocks in a large model add up. The Tools window (Component Impact) shows which blocks are heavy, and the Optimize File lesson shows how to fix it." },
+      { type: "h2", text: "If the result isn't what you expected" },
+      {
+        type: "ul",
+        items: [
+          "**Odd-looking back**: the AI infers what the photo doesn't show. Use a three-quarter photo, which shows more of the object.",
+          "**Wrong size**: adjust it with the Scale tool after importing.",
+          "**The block didn't arrive**: if the generation fails or the block doesn't reach the plugin, the credits go back to your account automatically.",
+        ],
+      },
+      { type: "h2", text: "Quick questions" },
+      {
+        type: "ul",
+        items: [
+          "**How long does it take?** 3 to 5 minutes, most of the time.",
+          "**How many polygons does a block have?** About 10,000: light enough to use several times in the same model.",
+          "**What file do I get?** The plugin imports the block straight into the scene; the downloadable file is GLB, which most 3D programs open.",
+        ],
       },
       { type: "cost", text: "28 credits per generated block" },
     ],
@@ -923,19 +963,17 @@ export const enArticles: Record<string, ArticleContent> = {
   "planta-humanizada": {
     title: "Rendered Floor Plan: from technical drawing to presentation",
     excerpt:
-      "Turn your model's floor plan (or a drawing from your PC) into a rendered, presentation-ready floor plan for your client.",
+      "Turn your model's floor plan (or a drawing from your computer) into a rendered, presentation-ready floor plan for your client.",
     blocks: [
-      {
-        type: "p",
-        text: "**Rendered Floor Plan** converts a technical drawing (your model's top view or a plan you already have as an image) into a rendered plan with floors, furniture, vegetation and shadows, in the style of real-estate launch presentations.",
-      },
+      { type: "p", text: "**Rendered Floor Plan** (Humanized Floor Plan in the plugin) turns a technical drawing (your model's top view or a plan you already have as an image) into a rendered plan seen from above, with floors, furniture, vegetation and soft shadows, in the style of real-estate launch presentations. It's ready in under a minute, for 3 credits." },
       {
         type: "compare",
         aspect: "4 / 5",
         before: { src: "/tools/tool-08-before.webp", label: "Technical plan" },
         after: { src: "/tools/tool-08.jpg", label: "Rendered plan" },
       },
-      { type: "h2", text: "Capturing the plan from the viewport" },
+      { type: "p", text: "The AI reads the plan before drawing: it identifies the rooms, doors and windows, the furniture and the materials already shown in the drawing, and keeps everything in place. Cut walls come out in a solid dark gray, like a technical plan, and the light is soft studio light, with no direct sun or hard shadows." },
+      { type: "h2", text: "Capturing the plan from SketchUp" },
       {
         type: "steps",
         items: [
@@ -949,27 +987,48 @@ export const enArticles: Record<string, ArticleContent> = {
           },
           {
             title: "Frame and capture",
-            text: "Zoom so the plan fills the viewport and click Capture Current Scene in the plugin.",
+            text: "Zoom so the plan fills the screen and click **Capture Current Scene** in the plugin.",
+          },
+          {
+            title: "Write notes and generate",
+            text: "Describe the style and materials (see below) and generate. It costs 3 credits.",
           },
         ],
       },
-      {
-        type: "p",
-        text: "You can also skip the capture and **upload an image from your PC**. It works with plans exported from AutoCAD, Revit or even a photo of a drawing, as long as the walls are legible.",
-      },
+      { type: "p", text: "You can also skip the capture and **upload an image from your computer** (JPG or PNG, up to 5 MB). It works with plans exported from AutoCAD, Revit or even a photo of a drawing, as long as the walls are legible." },
       { type: "h2", text: "Notes that make a difference" },
+      { type: "p", text: "In the notes field, describe style, materials and palette: “light porcelain floor, linen sofa, natural wood joinery, decorative plants”. The AI adds what you ask for without moving the walls. If the drawing already has materials (captured from a textured model, for example), they stay in place, and your notes fill in the rest. With no notes, the plan comes out in a neutral contemporary style." },
+      { type: "h2", text: "Getting a good plan" },
       {
-        type: "p",
-        text: "In the notes field, describe materials and palette: “light porcelain floor, linen sofa, natural wood joinery, decorative plants”. The AI keeps the wall layout and applies the finishes you describe.",
+        type: "ul",
+        items: [
+          "**Always Parallel Projection.** With perspective, the walls come out crooked and the AI misreads the drawing.",
+          "**Plan filling the screen.** The bigger the plan in the image, the more detail the AI can draw.",
+          "**Labels and dimensions, your call.** Turn off room names and dimensions for a clean plan, or keep them if the presentation needs an annotated plan.",
+          "**A legible drawing.** For scanned or photographed plans, sharp, high-contrast walls give a much better result.",
+        ],
       },
+      { type: "h2", text: "If the result isn't what you expected" },
       {
-        type: "tip",
-        text: "Capture with room labels and dimensions turned off for a clean plan, or keep the text if the presentation calls for an annotated plan.",
+        type: "ul",
+        items: [
+          "**Furniture or material different from what you asked**: be more specific in the notes, naming the room (“in the bedroom, a bed with a wooden headboard”), and generate again.",
+          "**A detail wrong in one spot of the plan**: fix just that area with a masked edit, without redoing everything.",
+          "**Distorted walls**: check that the capture was taken from the Top view and in Parallel Projection.",
+        ],
+      },
+      { type: "h2", text: "Quick questions" },
+      {
+        type: "ul",
+        items: [
+          "**Does it work with plans from AutoCAD or Revit?** Yes. Export the plan as an image (JPG or PNG, up to 5 MB) and upload it to the plugin.",
+          "**How long does it take?** Under a minute.",
+          "**Can I use the plan in sales material?** Yes, the image is yours.",
+        ],
       },
       { type: "cost", text: "3 credits per generation" },
     ],
   },
-
   diagrama: {
     title: "Diagram: isometric and axonometric views in 5 styles",
     excerpt:

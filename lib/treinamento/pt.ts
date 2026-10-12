@@ -92,10 +92,7 @@ export const ptArticles: Record<string, ArticleContent> = {
     excerpt:
       "Crie texturas de piso pagináveis a partir de qualquer imagem: porcelanato, madeira com variações, rejunte configurável e aplicação direta nas faces.",
     blocks: [
-      {
-        type: "p",
-        text: "A segunda ferramenta da janela **Tools** monta **texturas de piso seamless** a partir de imagens soltas. Aquela foto de porcelanato do site do fornecedor vira um piso paginado, com rejunte e na dimensão real da peça. Também é local e gratuita.",
-      },
+      { type: "p", text: "**Pisos Seamless**, na janela **Tools**, transforma a foto de uma peça (porcelanato, madeira, ladrilho) em um piso paginado, com rejunte e na dimensão real, aplicado direto nas faces do modelo. Roda no seu computador e não gasta créditos." },
       {
         type: "img",
         src: "/treinamento/ui/tools-pisos-{lang}.webp",
@@ -103,40 +100,63 @@ export const ptArticles: Record<string, ArticleContent> = {
         caption: "Preview ao vivo da paginação, com rejunte e dimensões reais.",
         ui: true,
       },
+      { type: "p", text: "O plugin monta uma textura com um bloco de 6 × 6 peças já paginadas e com rejunte, na escala real que você informar, e cria um material no SketchUp com ela. Com variações, ele intercala as imagens dentro desse bloco, e a repetição fica bem menos visível." },
       { type: "h2", text: "Montando o piso" },
       {
         type: "steps",
         items: [
           {
             title: "Textura base",
-            text: "Carregue a imagem da peça (foto do porcelanato, da madeira, do ladrilho).",
+            text: "Carregue a imagem de uma peça: a foto do porcelanato, da régua de madeira ou do ladrilho. Use uma imagem reta, de frente, sem perspectiva e só com a peça.",
           },
           {
             title: "Variações (opcional)",
-            text: "Adicione até 3 imagens alternativas da mesma linha. O plugin intercala as peças e elimina o efeito de repetição, essencial em madeiras.",
+            text: "Adicione até 3 imagens da mesma linha. O plugin intercala as peças e quebra o efeito de repetição, essencial em madeira e em porcelanato com veio.",
           },
           {
             title: "Paginação e rotação",
-            text: "Grid Reto (alinhado), Transpassado 50% ou Transpassado 1/3. Gire a peça se precisar (réguas na vertical, por exemplo).",
+            text: "Grid Reto (alinhado), Transpassado 50% ou Transpassado 1/3. Use Girar para deixar as réguas no sentido certo.",
           },
           {
             title: "Dimensões reais",
-            text: "Largura e altura da peça em centímetros (90×90, 20×120…). A textura entra no SketchUp já na escala correta.",
+            text: "Largura e altura da peça em centímetros (começa em 90 × 90; para réguas, algo como 20 × 120). A textura entra no SketchUp já na escala correta.",
           },
           {
             title: "Rejunte",
-            text: "Espessura em milímetros e cor: rejunte cinza, bege, preto ou combinando com a peça.",
+            text: "Espessura em milímetros (começa em 2 mm) e cor (começa em cinza-escuro). Rejunte da cor da peça deixa o piso mais contínuo.",
           },
         ],
       },
       { type: "h2", text: "Aplicando no modelo" },
+      { type: "p", text: "O preview mostra a paginação em tempo real. Para aplicar: **selecione as faces do piso** no SketchUp antes de clicar em Aplicar Textura. O material é criado e mapeado direto nelas. Sem seleção, o plugin ativa o balde de tinta para você clicar onde quiser." },
+      { type: "h2", text: "Para o piso ficar bom" },
       {
-        type: "p",
-        text: "O preview mostra a paginação em tempo real. Para aplicar: **selecione as faces do piso** no SketchUp antes de clicar em Aplicar Textura. O material é criado e mapeado direto nelas. Sem seleção, o plugin ativa o balde de tinta para você clicar onde quiser.",
+        type: "ul",
+        items: [
+          "**Foto da peça, não do ambiente.** Recorte só a peça, sem bordas, reflexo forte ou perspectiva.",
+          "**Variações em madeira.** Uma única régua repetida denuncia o piso; 3 variações já resolvem.",
+          "**Medida certa da peça.** É ela que define a escala. Confira na ficha do fornecedor.",
+          "**Monte o piso antes do render.** A IA respeita a paginação e o rejunte que vê na cena, e o realismo do render sobe.",
+        ],
       },
+      { type: "h2", text: "Se o resultado não sair como esperado" },
       {
-        type: "tip",
-        text: "Pisos com paginação e rejunte corretos elevam o realismo do render: a IA respeita o desenho do piso que enxerga na cena. Monte o piso aqui antes de renderizar no Estúdio.",
+        type: "ul",
+        items: [
+          "**Repetição aparente**: adicione variações da mesma linha, ou use Transpassado para quebrar o alinhamento.",
+          "**Peça grande ou pequena demais**: confira largura e altura em centímetros e aplique de novo.",
+          "**Réguas no sentido errado**: use Girar e aplique de novo nas faces.",
+          "**Textura na face errada**: selecione as faces do piso antes de clicar em Aplicar Textura.",
+        ],
+      },
+      { type: "h2", text: "Perguntas rápidas" },
+      {
+        type: "ul",
+        items: [
+          "**Gasta créditos?** Não. É processado no seu computador.",
+          "**Posso usar em revestimento de parede?** Sim. A ferramenta aplica nas faces que você selecionar, seja piso ou parede.",
+          "**Funciona com foto de catálogo?** Sim, desde que a peça esteja de frente e sem perspectiva.",
+        ],
       },
       { type: "cost", text: "Grátis: processado localmente, sem créditos" },
     ],
@@ -352,24 +372,22 @@ export const ptArticles: Record<string, ArticleContent> = {
   "blocos-3d": {
     title: "Blocos 3D: transforme qualquer foto em modelo para o SketchUp",
     excerpt:
-      "Viu uma cadeira perfeita numa referência? A aba Blocos converte a foto em um modelo 3D texturizado e importa direto na sua cena.",
+      "Viu uma cadeira perfeita numa referência? A aba Blocos converte a foto em um modelo 3D com textura e importa direto na sua cena.",
     blocks: [
-      {
-        type: "p",
-        text: "A aba **Blocos** resolve aquele clássico: o cliente quer um móvel específico que não existe no 3D Warehouse. Envie uma foto de referência e a IA reconstrói o objeto em 3D, com textura, pronto para importar na cena na escala certa.",
-      },
+      { type: "p", text: "A aba **Blocos** transforma a foto de um móvel ou objeto em um **modelo 3D com textura**, que entra no SketchUp como componente. Resolve aquele clássico: o cliente quer uma peça específica que não existe no 3D Warehouse. Cada bloco custa 28 créditos e fica pronto em poucos minutos." },
       {
         type: "img",
         src: "/tools/tool-05.webp",
         alt: "Bloco 3D gerado a partir de foto",
         caption: "Da foto de referência ao bloco 3D na cena.",
       },
+      { type: "p", text: "Quem reconstrói o objeto é o **Meshy**, um modelo de IA que gera 3D a partir de uma imagem. Ele deduz as partes que não aparecem na foto, como o lado de trás, e entrega uma malha leve, com cerca de 10 mil polígonos, pensada para não pesar o SketchUp." },
       { type: "h2", text: "Como gerar" },
       {
         type: "img",
         src: "/treinamento/ui/blocos-{lang}.webp",
         alt: "Aba Blocos do Vizai Render",
-        caption: "A aba Blocos: foto, densidade de malha e textura.",
+        caption: "A aba Blocos: foto de referência, nome e geração.",
         ui: true,
       },
       {
@@ -381,25 +399,47 @@ export const ptArticles: Record<string, ArticleContent> = {
           },
           {
             title: "Nomeie o bloco",
-            text: "O nome organiza o componente no seu modelo (ex.: “Cadeira de Madeira”).",
+            text: "O nome organiza o componente no seu modelo (por exemplo, “Cadeira de Madeira”).",
           },
           {
-            title: "Escolha a densidade de polígonos",
-            text: "Leve, Recomendado, Pesado ou Ultra. Para SketchUp, Leve ou Recomendado mantêm o arquivo ágil.",
-          },
-          {
-            title: "Textura",
-            text: "Com textura PBR (cores e materiais da foto) ou só geometria, para aplicar seus próprios materiais.",
+            title: "Gere",
+            text: "São 28 créditos. Na maioria das vezes fica pronto em 3 a 5 minutos; em horário de fila, pode passar de 10.",
           },
           {
             title: "Importe ou baixe",
-            text: "Importar na cena coloca o bloco direto no modelo; ou baixe o .GLB para usar em qualquer software.",
+            text: "Importar na cena coloca o bloco direto no modelo; ou baixe o arquivo .GLB para usar em outro programa.",
           },
         ],
       },
+      { type: "h2", text: "Ajuste o tamanho depois de importar" },
+      { type: "p", text: "O bloco não chega na medida real da peça. Depois de importar, confira o tamanho e use a ferramenta **Escala** do SketchUp para deixar o móvel com as medidas certas." },
+      { type: "h2", text: "Para o bloco sair bom" },
       {
-        type: "warn",
-        text: "Blocos com densidade Pesado/Ultra podem deixar o arquivo lento em modelos grandes. Se exagerar, a janela Tools (Impacto dos Componentes) mostra quais blocos estão pesando, e o guia de Otimizar Arquivo resolve.",
+        type: "ul",
+        items: [
+          "**Objeto inteiro e sozinho na foto.** Bem iluminado, com fundo limpo e sem outros móveis encostados.",
+          "**Foto em três quartos.** Uma foto levemente de lado mostra frente e lateral, e a IA erra menos as partes escondidas.",
+          "**Peças de forma clara saem melhores.** Cadeiras, poltronas, mesas, luminárias e vasos costumam funcionar bem. Peças muito vazadas ou com detalhes finos, como palhinha e arame, tendem a perder definição.",
+        ],
+      },
+      { type: "warn", text: "Muitos blocos num modelo grande somam peso. A janela Tools (Impacto dos Componentes) mostra quais blocos estão pesando, e a aula Otimizar Arquivo ensina a resolver." },
+      { type: "h2", text: "Se o resultado não sair como esperado" },
+      {
+        type: "ul",
+        items: [
+          "**Lado de trás estranho**: a IA deduz o que não aparece na foto. Use uma foto em três quartos, que mostra mais do objeto.",
+          "**Tamanho errado**: ajuste com a ferramenta Escala depois de importar.",
+          "**O bloco não chegou**: se a geração falhar ou o bloco não chegar ao plugin, os créditos voltam para a sua conta automaticamente.",
+        ],
+      },
+      { type: "h2", text: "Perguntas rápidas" },
+      {
+        type: "ul",
+        items: [
+          "**Quanto tempo leva?** De 3 a 5 minutos, na maioria das vezes.",
+          "**Quantos polígonos tem o bloco?** Cerca de 10 mil: leve o bastante para usar várias vezes no mesmo modelo.",
+          "**Que arquivo sai?** O plugin importa o bloco direto na cena; o arquivo para baixar é GLB, que a maioria dos programas 3D abre.",
+        ],
       },
       { type: "cost", text: "28 créditos por bloco gerado" },
     ],
@@ -923,19 +963,17 @@ export const ptArticles: Record<string, ArticleContent> = {
   "planta-humanizada": {
     title: "Planta Humanizada: do desenho técnico à apresentação",
     excerpt:
-      "Transforme a planta baixa do seu modelo (ou um desenho do PC) em uma planta humanizada renderizada, pronta para apresentar ao cliente.",
+      "Transforme a planta baixa do seu modelo (ou um desenho do computador) em uma planta humanizada renderizada, pronta para apresentar ao cliente.",
     blocks: [
-      {
-        type: "p",
-        text: "A **Planta Humanizada** converte um desenho técnico (a vista de topo do seu modelo ou uma planta que você já tem em imagem) em uma planta renderizada com pisos, móveis, vegetação e sombras, no padrão das apresentações de lançamentos imobiliários.",
-      },
+      { type: "p", text: "A **Planta Humanizada** transforma um desenho técnico (a vista de topo do seu modelo ou uma planta que você já tem em imagem) em uma planta renderizada vista de cima, com pisos, móveis, vegetação e sombras suaves, no padrão das apresentações de lançamentos imobiliários. Fica pronta em menos de um minuto, por 3 créditos." },
       {
         type: "compare",
         aspect: "4 / 5",
         before: { src: "/tools/tool-08-before.webp", label: "Planta técnica" },
         after: { src: "/tools/tool-08.jpg", label: "Planta humanizada" },
       },
-      { type: "h2", text: "Capturando a planta da viewport" },
+      { type: "p", text: "A IA lê a planta antes de desenhar: identifica os cômodos, as portas e janelas, os móveis e os materiais que já aparecem no desenho, e mantém tudo no mesmo lugar. As paredes cortadas saem num cinza-escuro sólido, como na planta técnica, e a luz é difusa, de estúdio, sem sol direto nem sombra dura." },
+      { type: "h2", text: "Capturando a planta do SketchUp" },
       {
         type: "steps",
         items: [
@@ -949,27 +987,48 @@ export const ptArticles: Record<string, ArticleContent> = {
           },
           {
             title: "Enquadre e capture",
-            text: "Ajuste o zoom para a planta preencher a viewport e clique em Capturar Cena Atual no plugin.",
+            text: "Ajuste o zoom para a planta preencher a tela e clique em **Capturar Cena Atual** no plugin.",
+          },
+          {
+            title: "Escreva observações e gere",
+            text: "Descreva o estilo e os materiais (veja abaixo) e gere. São 3 créditos.",
           },
         ],
       },
-      {
-        type: "p",
-        text: "Também dá para pular a captura e **carregar uma imagem do PC**. Funciona com plantas exportadas do AutoCAD, Revit ou até foto de um desenho, desde que as paredes estejam legíveis.",
-      },
+      { type: "p", text: "Também dá para pular a captura e **carregar uma imagem do computador** (JPG ou PNG, até 5 MB). Funciona com plantas exportadas do AutoCAD, do Revit ou até foto de um desenho, desde que as paredes estejam legíveis." },
       { type: "h2", text: "Observações que fazem diferença" },
+      { type: "p", text: "No campo de observações, descreva estilo, materiais e paleta: “piso de porcelanato claro, sofá de linho, marcenaria em madeira natural, plantas decorativas”. A IA acrescenta o que você pedir sem mexer nas paredes. Se o desenho já tem materiais (capturado do modelo com texturas, por exemplo), eles ficam no mesmo lugar, e as observações completam o resto. Sem observações, a planta sai num estilo contemporâneo e neutro." },
+      { type: "h2", text: "Para a planta sair boa" },
       {
-        type: "p",
-        text: "No campo de observações, descreva materiais e paleta: “piso de porcelanato claro, sofá de linho, marcenaria em madeira natural, plantas decorativas”. A IA mantém o desenho das paredes e aplica o acabamento descrito.",
+        type: "ul",
+        items: [
+          "**Projeção Paralela sempre.** Com perspectiva, as paredes saem tortas e a IA lê o desenho errado.",
+          "**Planta preenchendo a tela.** Quanto maior a planta na imagem, mais detalhe a IA consegue desenhar.",
+          "**Textos e cotas, você escolhe.** Desligue nomes de ambientes e cotas para uma planta limpa, ou mantenha se a apresentação pedir a planta anotada.",
+          "**Desenho legível.** Em planta escaneada ou fotografada, paredes nítidas e com contraste dão um resultado muito melhor.",
+        ],
       },
+      { type: "h2", text: "Se o resultado não sair como esperado" },
       {
-        type: "tip",
-        text: "Capture com os nomes de ambientes e cotas desligados se quiser uma planta limpa, ou mantenha os textos se a apresentação pedir a planta anotada.",
+        type: "ul",
+        items: [
+          "**Móvel ou material diferente do pedido**: seja mais específico nas observações, citando o cômodo (“no quarto, cama com cabeceira de madeira”), e gere de novo.",
+          "**Detalhe errado num ponto da planta**: corrija só aquele trecho com a edição por máscara, sem refazer tudo.",
+          "**Paredes deformadas**: confira se a captura foi feita na Vista de Topo e em Projeção Paralela.",
+        ],
+      },
+      { type: "h2", text: "Perguntas rápidas" },
+      {
+        type: "ul",
+        items: [
+          "**Funciona com planta do AutoCAD ou do Revit?** Sim. Exporte como imagem (JPG ou PNG, até 5 MB) e carregue no plugin.",
+          "**Quanto tempo leva?** Menos de um minuto.",
+          "**Posso usar a planta em material de venda?** Sim, a imagem é sua.",
+        ],
       },
       { type: "cost", text: "3 créditos por geração" },
     ],
   },
-
   diagrama: {
     title: "Diagrama: vistas isométricas e axonométricas com 5 estilos",
     excerpt:
