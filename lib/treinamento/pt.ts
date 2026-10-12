@@ -51,10 +51,7 @@ export const ptArticles: Record<string, ArticleContent> = {
     excerpt:
       "Purge inteligente, materiais duplicados, redução de texturas e relatório de impacto dos componentes. A faxina completa do arquivo, 100% local e gratuita.",
     blocks: [
-      {
-        type: "p",
-        text: "Arquivo travando, órbita engasgada, .skp com centenas de MB? A janela **Tools** (aba lateral verde do painel) inclui o **Otimizar Arquivo**: um conjunto de limpezas que roda 100% no seu computador, **sem custar créditos**. O tamanho do arquivo aparece no topo, antes e depois. Você vê o resultado na hora.",
-      },
+      { type: "p", text: "Arquivo travando, órbita engasgada, .skp com centenas de MB? O **Otimizar Arquivo**, na janela **Tools**, faz a faxina completa do modelo: tira o que não é usado, junta materiais repetidos, reduz texturas exageradas e mostra quais componentes mais pesam. Roda no seu computador e não gasta créditos." },
       {
         type: "img",
         src: "/treinamento/ui/tools-otimizar-{lang}.webp",
@@ -62,27 +59,72 @@ export const ptArticles: Record<string, ArticleContent> = {
         caption: "Otimizar Arquivo: Limpeza, Texturas e Impacto.",
         ui: true,
       },
+      { type: "h2", text: "Passo a passo" },
+      {
+        type: "steps",
+        items: [
+          {
+            title: "Salve o arquivo antes",
+            text: "O tamanho que aparece no topo é o do arquivo salvo. Salve antes de começar para ter o ponto de partida.",
+          },
+          {
+            title: "Limpeza",
+            text: "Marque o que quer limpar e clique em **Executar Limpeza**.",
+          },
+          {
+            title: "Texturas",
+            text: "Selecione as imagens exageradas, escolha a resolução e clique em **Otimizar Imagens**.",
+          },
+          {
+            title: "Impacto",
+            text: "Clique em **Analisar Impacto** e use Ver para encontrar os componentes mais pesados no modelo.",
+          },
+          {
+            title: "Salve de novo",
+            text: "O plugin pergunta se você quer salvar. Salvando, o tamanho novo aparece no topo, com quanto você economizou.",
+          },
+        ],
+      },
       { type: "h2", text: "Limpeza" },
       {
         type: "ul",
         items: [
-          "**Purge**: elimina materiais, componentes e estilos que não estão sendo usados em nada no projeto. É a limpeza que mais reduz arquivos que passaram por muitas versões.",
-          "**Materiais Duplicados**: une materiais que usam a mesma textura com nomes diferentes (Madeira, Madeira1, Madeira-copy…), comum em modelos montados com blocos de origens variadas.",
+          "**Purge**: elimina componentes, materiais, tags e estilos que não estão sendo usados em nada no projeto. É a limpeza que mais reduz arquivos que passaram por muitas versões.",
+          "**Materiais Duplicados**: une materiais que usam a mesma imagem de textura, do mesmo tamanho, com nomes diferentes (Madeira, Madeira1, Madeira-copy...), comum em modelos montados com blocos de origens variadas.",
         ],
       },
       { type: "h2", text: "Texturas" },
-      {
-        type: "p",
-        text: "O **Gerenciador de Texturas** lista todas as imagens do modelo com suas dimensões. Texturas de 4K em um puxador de gaveta são peso morto: selecione as exageradas e reduza para a resolução alvo em um clique. O visual na viewport praticamente não muda. O tamanho do arquivo, sim.",
-      },
+      { type: "p", text: "O **Gerenciador de Texturas** lista todas as imagens do modelo com suas dimensões. Texturas de 4K em um puxador de gaveta são peso morto: selecione as exageradas e reduza para 512, 720, 1024 ou 2048 px em um clique. O visual na tela praticamente não muda. O tamanho do arquivo, sim." },
       { type: "h2", text: "Impacto" },
+      { type: "p", text: "O relatório de **Impacto dos Componentes** mostra quais blocos têm mais geometria (faces) e quantas instâncias existem de cada um. É como descobrir que uma árvore baixada do Warehouse tem 800 mil faces, e que ela está repetida 12 vezes. O botão Ver localiza o componente no modelo para você decidir o que fazer." },
+      { type: "tip", text: "Cada limpeza entra como uma ação só no SketchUp. Se não gostar do resultado, Ctrl+Z (Cmd+Z no Mac) desfaz tudo de uma vez." },
+      { type: "h2", text: "Para a faxina render mais" },
       {
-        type: "p",
-        text: "O relatório de **Impacto dos Componentes** mostra quais blocos têm mais geometria (faces) e quantas instâncias existem de cada um. É como descobrir que uma árvore baixada do Warehouse tem 800 mil faces, e que ela está repetida 12 vezes. O botão Ver localiza o componente no modelo para você decidir o que fazer.",
+        type: "ul",
+        items: [
+          "**Comece pelas texturas** em modelos com muitos blocos baixados: é onde costuma estar o maior peso.",
+          "**720 px resolve a maioria.** Objeto pequeno não precisa de mais; deixe 1024 ou 2048 px para pisos e paredes grandes.",
+          "**Antes de renderizar projetos grandes.** Modelo leve é tela fluida e captura mais rápida.",
+          "**Backup na primeira vez.** Faça uma cópia antes de rodar limpezas pesadas num arquivo importante.",
+        ],
       },
+      { type: "h2", text: "Se algo sair errado" },
       {
-        type: "tip",
-        text: "Rode o Otimizar Arquivo antes de renderizar projetos grandes: modelo leve = viewport fluida = captura mais rápida. E faça backup na primeira vez que rodar limpezas pesadas num arquivo importante.",
+        type: "ul",
+        items: [
+          "**Sumiu algo que você queria**: Ctrl+Z (Cmd+Z no Mac) desfaz a limpeza inteira.",
+          "**O tamanho não mudou**: o número no topo é do arquivo salvo. Salve para ver o tamanho novo.",
+          "**Textura ficou borrada**: desfaça e reduza para uma resolução maior.",
+        ],
+      },
+      { type: "h2", text: "Perguntas rápidas" },
+      {
+        type: "ul",
+        items: [
+          "**Gasta créditos?** Não, é tudo feito no seu computador.",
+          "**Dá para desfazer?** Sim, com Ctrl+Z (Cmd+Z no Mac).",
+          "**Funciona em arquivo não salvo?** Funciona, mas o tamanho só aparece depois que o arquivo é salvo.",
+        ],
       },
       { type: "cost", text: "Grátis: processado localmente, sem créditos" },
     ],
@@ -1034,10 +1076,7 @@ export const ptArticles: Record<string, ArticleContent> = {
     excerpt:
       "Gere diagramas conceituais do seu projeto (do isométrico técnico em P&B à maquete física em madeira balsa) a partir de uma captura da viewport.",
     blocks: [
-      {
-        type: "p",
-        text: "A ferramenta **Diagrama** transforma uma vista isométrica do seu modelo em pranchas conceituais com linguagem de escritório de arquitetura, ótimas para concursos, pranchas de apresentação e redes sociais.",
-      },
+      { type: "p", text: "A ferramenta **Diagrama** transforma uma vista isométrica do seu modelo, ou um render pronto, em diagramas conceituais com linguagem de escritório de arquitetura: linha técnica, projeto em destaque, aquarela ou foto de maquete física. Ótima para concursos, pranchas de apresentação e redes sociais. Cada diagrama custa 3 créditos e fica pronto em menos de um minuto." },
       {
         type: "img",
         src: "/tools/tool-09.webp",
@@ -1058,15 +1097,16 @@ export const ptArticles: Record<string, ArticleContent> = {
           },
           {
             title: "Capture ou carregue",
-            text: "Use Capturar Cena Atual, ou carregue uma imagem do PC.",
+            text: "Use **Capturar Cena Atual**, ou carregue uma imagem do computador. Um render de fachada pronto também serve.",
+          },
+          {
+            title: "Escolha o contexto e o estilo, e gere",
+            text: "Veja os estilos abaixo. São 3 créditos.",
           },
         ],
       },
       { type: "h2", text: "Os 5 estilos" },
-      {
-        type: "p",
-        text: "Primeiro escolha o contexto: **Exterior** (com entorno) ou **Interiores** (ambientes isolados). Depois o estilo:",
-      },
+      { type: "p", text: "Primeiro escolha o contexto. Em **Exterior**, com entorno, são quatro estilos: Isométrico Técnico, Diagrama com Destaque, Colorido com Contexto e Maquete Física. Em **Interiores**, com o ambiente isolado, o estilo é o Axonométrico." },
       {
         type: "imgrow",
         images: [
@@ -1102,9 +1142,31 @@ export const ptArticles: Record<string, ArticleContent> = {
           },
         ],
       },
+      { type: "h2", text: "Para o diagrama sair bom" },
       {
-        type: "tip",
-        text: "O estilo Com Destaque é o queridinho para concursos e posts: o olho vai direto pro projeto, e o entorno em cinza dá contexto sem competir.",
+        type: "ul",
+        items: [
+          "**Projeção Paralela.** É o que dá o efeito axonométrico correto, sem pontos de fuga.",
+          "**Tela limpa.** Esconda eixos, cotas e objetos de referência antes de capturar: o que estiver na tela entra no diagrama.",
+          "**Com Destaque para concursos e posts.** O olho vai direto para o projeto, e o entorno em cinza dá contexto sem competir.",
+        ],
+      },
+      { type: "h2", text: "Se o resultado não sair como esperado" },
+      {
+        type: "ul",
+        items: [
+          "**Volumetria diferente do modelo**: confira se a captura foi feita em Projeção Paralela e com o projeto inteiro visível, e gere de novo.",
+          "**Não gostou do resultado**: gere de novo, porque cada geração sai diferente, ou experimente outro estilo.",
+        ],
+      },
+      { type: "h2", text: "Perguntas rápidas" },
+      {
+        type: "ul",
+        items: [
+          "**Posso usar um render como base?** Sim, a captura do SketchUp ou um render pronto.",
+          "**Dá para escrever o que eu quero?** Não. O Diagrama não tem campo de texto: o resultado vem do contexto e do estilo escolhidos.",
+          "**Quanto tempo leva?** Menos de um minuto.",
+        ],
       },
       { type: "cost", text: "3 créditos por geração" },
     ],
@@ -1115,31 +1177,48 @@ export const ptArticles: Record<string, ArticleContent> = {
     excerpt:
       "Crie moodboards profissionais a partir de uma imagem de referência: 7 composições de cena e 5 proporções, do flat lay ao painel de apresentação.",
     blocks: [
-      {
-        type: "p",
-        text: "O **Moodboard** gera painéis de referência visual (amostras de materiais, paleta e objetos) a partir de uma imagem base do seu projeto ou de referências. É a ferramenta para o início da conversa com o cliente: apresenta o conceito antes mesmo do primeiro render.",
-      },
+      { type: "p", text: "O **Moodboard** cria um painel de referência visual (amostras de materiais, paleta de cores e objetos) a partir de um render do seu projeto ou de uma imagem de referência. É a ferramenta para o começo da conversa com o cliente: apresenta o conceito e os acabamentos antes mesmo do render final. Fica pronto em menos de um minuto, por 3 créditos." },
       {
         type: "img",
         src: "/tools/tool-06.jpg",
         alt: "Moodboard gerado pelo Vizai Render",
         caption: "Moodboard gerado com amostras de materiais do projeto.",
       },
-      { type: "h2", text: "Composições disponíveis" },
+      { type: "p", text: "A IA analisa a imagem que você envia e tira dela a paleta principal (de 3 a 5 cores), os materiais que aparecem (madeiras, pedras, tecidos, metais) e o clima da cena. Depois monta uma foto de amostras desses materiais, na composição que você escolher. O projeto em si não aparece no painel: só os materiais e objetos que contam a história dele." },
+      { type: "h2", text: "Passo a passo" },
       {
-        type: "p",
-        text: "São **7 estilos de composição**, a “cena” onde as amostras são fotografadas:",
+        type: "steps",
+        items: [
+          {
+            title: "Escolha Moodboard na IA Criativa",
+            text: "Na aba Estúdio, alterne de Render para IA Criativa e escolha Moodboard.",
+          },
+          {
+            title: "Carregue a imagem base",
+            text: "Um render seu ou uma colagem de referências (JPG ou PNG, até 5 MB).",
+          },
+          {
+            title: "Escolha a composição e a proporção",
+            text: "Na Configuração do Moodboard, escolha uma das 7 composições e uma das 5 proporções.",
+          },
+          {
+            title: "Gere",
+            text: "3 créditos por imagem.",
+          },
+        ],
       },
+      { type: "h2", text: "Composições disponíveis" },
+      { type: "p", text: "São **7 estilos de composição**, a “cena” onde as amostras são fotografadas:" },
       {
         type: "ul",
         items: [
           "**Bancada Studio**: superfície premium com fundo em gradiente suave.",
-          "**Mesa de Projeto**: sobre mesa de trabalho, fundo semi-desfocado.",
+          "**Mesa de Projeto**: sobre mesa de jantar ou de escritório, com fundo semi-desfocado.",
           "**Vista do Topo**: flat lay direto de cima, sem perspectiva.",
           "**Painel de Apresentação**: amostras fixadas em board vertical.",
           "**Chão Iluminado**: flat lay em piso de madeira com luz lateral.",
           "**Linha de Materiais**: amostras alinhadas em fileira horizontal.",
-          "**Tapete Decorado**: composição 3/4 sobre tapete com objetos.",
+          "**Tapete Decorado**: composição em três quartos sobre tapete, com objetos.",
         ],
       },
       {
@@ -1150,13 +1229,32 @@ export const ptArticles: Record<string, ArticleContent> = {
         ui: true,
       },
       { type: "h2", text: "Proporções" },
+      { type: "p", text: "O moodboard sai no formato certo para o destino: **1:1** (Instagram clássico), **4:3** (apresentações), **16:9** (telas e portfólio), **4:5** (feed vertical) e **9:16** (Stories e Reels)." },
+      { type: "h2", text: "Para o moodboard sair bom" },
       {
-        type: "p",
-        text: "O moodboard sai no formato certo pro destino: **1:1** (Instagram clássico), **4:3** (apresentações), **16:9** (telas e portfólio), **4:5** (feed vertical) e **9:16** (Stories e Reels).",
+        type: "ul",
+        items: [
+          "**Imagem com os materiais do projeto.** Um render seu ou uma colagem de referências: a IA tira a paleta e os materiais dela.",
+          "**Uma direção por vez.** Uma imagem de estilo claro (madeira clara e linho, por exemplo) gera um painel mais coeso do que referências que não conversam entre si.",
+          "**Composição pelo destino.** Vista do Topo e Linha de Materiais funcionam bem em prancha; Painel de Apresentação lembra a reunião com amostras físicas; Tapete Decorado e Mesa de Projeto dão clima para redes sociais.",
+        ],
       },
+      { type: "h2", text: "Se o resultado não sair como esperado" },
       {
-        type: "tip",
-        text: "Use como base uma imagem que já contenha os materiais do projeto (um render seu, ou colagem de referências). A IA extrai a paleta e os materiais dela.",
+        type: "ul",
+        items: [
+          "**Material que não estava no projeto**: use uma imagem base em que os materiais apareçam com clareza e boa luz, e gere de novo.",
+          "**Cores diferentes das do projeto**: imagens muito escuras ou com luz colorida confundem a paleta. Prefira um render de dia, com luz neutra.",
+        ],
+      },
+      { type: "h2", text: "Perguntas rápidas" },
+      {
+        type: "ul",
+        items: [
+          "**O meu projeto aparece no moodboard?** Não. O painel mostra só amostras e objetos com a paleta e os materiais do projeto.",
+          "**Funciona sem render?** Sim. Uma colagem de referências também serve de base.",
+          "**Quanto tempo leva?** Menos de um minuto.",
+        ],
       },
       { type: "cost", text: "3 créditos por geração" },
     ],

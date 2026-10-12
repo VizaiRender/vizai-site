@@ -51,10 +51,7 @@ export const enArticles: Record<string, ArticleContent> = {
     excerpt:
       "Smart purge, duplicate materials, texture downscaling and a component impact report. The full file cleanup, 100% local and free.",
     blocks: [
-      {
-        type: "p",
-        text: "File lagging, choppy orbit, .skp in the hundreds of MB? The **Tools** window (green side tab on the panel) includes **Optimize File**: a set of cleanups that runs 100% on your computer, **at no credit cost**. The file size shows at the top, before and after. You see the result instantly.",
-      },
+      { type: "p", text: "File freezing, choppy orbit, a .skp of hundreds of MB? **Optimize File**, in the **Tools** window, gives your model a full cleanup: it removes what isn't used, merges repeated materials, downscales oversized textures and shows which components weigh the most. It runs on your computer and uses no credits." },
       {
         type: "img",
         src: "/treinamento/ui/tools-otimizar-{lang}.webp",
@@ -62,27 +59,72 @@ export const enArticles: Record<string, ArticleContent> = {
         caption: "Optimize File: Cleanup, Textures and Impact tabs.",
         ui: true,
       },
+      { type: "h2", text: "Step by step" },
+      {
+        type: "steps",
+        items: [
+          {
+            title: "Save the file first",
+            text: "The size shown at the top is the size of the saved file. Save before you start so you have a starting point.",
+          },
+          {
+            title: "Cleanup",
+            text: "Check what you want to clean and click **Run Cleanup**.",
+          },
+          {
+            title: "Textures",
+            text: "Select the oversized images, pick the resolution and click **Optimize Images**.",
+          },
+          {
+            title: "Impact",
+            text: "Click **Analyze Impact** and use View to find the heaviest components in the model.",
+          },
+          {
+            title: "Save again",
+            text: "The plugin asks if you want to save. Once saved, the new size shows at the top, with how much you saved.",
+          },
+        ],
+      },
       { type: "h2", text: "Cleanup" },
       {
         type: "ul",
         items: [
-          "**Purge**: removes materials, components and styles that aren't used anywhere in the project. It's the cleanup that shrinks files that have been through many revisions the most.",
-          "**Duplicate Materials**: merges materials that use the same texture under different names (Wood, Wood1, Wood-copy…), common in models assembled from blocks of mixed origins.",
+          "**Purge**: removes components, materials, tags and styles that aren't used anywhere in the project. It's the cleanup that shrinks files that have been through many versions the most.",
+          "**Duplicate Materials**: merges materials that use the same texture image, at the same size, under different names (Wood, Wood1, Wood-copy...), common in models assembled from blocks of many sources.",
         ],
       },
       { type: "h2", text: "Textures" },
-      {
-        type: "p",
-        text: "The **Texture Manager** lists every image in the model with its dimensions. 4K textures on a drawer handle are dead weight: select the oversized ones and downscale them to a target resolution in one click. The viewport look barely changes. The file size does.",
-      },
+      { type: "p", text: "The **Texture Manager** lists every image in the model with its dimensions. 4K textures on a drawer handle are dead weight: select the oversized ones and downscale them to 512, 720, 1024 or 2048 px in one click. The look on screen barely changes. The file size does." },
       { type: "h2", text: "Impact" },
+      { type: "p", text: "The **Component Impact** report shows which blocks have the most geometry (faces) and how many instances each one has. It's like finding out that a tree downloaded from 3D Warehouse has 800,000 faces and is repeated 12 times. The View button locates the component in the model so you can decide what to do." },
+      { type: "tip", text: "Each cleanup is a single action in SketchUp. If you don't like the result, Ctrl+Z (Cmd+Z on Mac) undoes it all at once." },
+      { type: "h2", text: "Getting the most out of the cleanup" },
       {
-        type: "p",
-        text: "The **Component Impact** report shows which blocks carry the most geometry (faces) and how many instances exist of each. It's how you find out that a tree downloaded from the Warehouse has 800k faces, and that it's repeated 12 times. The View button locates the component in the model so you can decide what to do.",
+        type: "ul",
+        items: [
+          "**Start with textures** in models with many downloaded blocks: that's usually where most of the weight is.",
+          "**720 px covers most cases.** Small objects don't need more; keep 1024 or 2048 px for large floors and walls.",
+          "**Before rendering large projects.** A light model means a smooth screen and faster captures.",
+          "**Back up the first time.** Make a copy before running heavy cleanups on an important file.",
+        ],
       },
+      { type: "h2", text: "If something goes wrong" },
       {
-        type: "tip",
-        text: "Run Optimize File before rendering big projects: a light model means a fluid viewport and faster captures. And back up the first time you run heavy cleanups on an important file.",
+        type: "ul",
+        items: [
+          "**Something you wanted disappeared**: Ctrl+Z (Cmd+Z on Mac) undoes the whole cleanup.",
+          "**The size didn't change**: the number at the top is the saved file's size. Save to see the new size.",
+          "**A texture got blurry**: undo and downscale to a higher resolution.",
+        ],
+      },
+      { type: "h2", text: "Quick questions" },
+      {
+        type: "ul",
+        items: [
+          "**Does it use credits?** No, everything happens on your computer.",
+          "**Can I undo it?** Yes, with Ctrl+Z (Cmd+Z on Mac).",
+          "**Does it work on an unsaved file?** It does, but the size only shows after the file is saved.",
+        ],
       },
       { type: "cost", text: "Free: processed locally, no credits" },
     ],
@@ -1034,10 +1076,7 @@ export const enArticles: Record<string, ArticleContent> = {
     excerpt:
       "Generate conceptual diagrams of your project (from technical B&W isometrics to a balsa-wood physical model look) from a viewport capture.",
     blocks: [
-      {
-        type: "p",
-        text: "The **Diagram** tool turns an isometric view of your model into conceptual boards with an architecture-office visual language. Great for competitions, presentation boards and social media.",
-      },
+      { type: "p", text: "The **Diagram** tool turns an isometric view of your model, or a finished render, into conceptual diagrams in the visual language of architecture studios: technical linework, highlighted project, watercolor or a photo of a physical model. Great for competitions, presentation sheets and social media. Each diagram costs 3 credits and is ready in under a minute." },
       {
         type: "img",
         src: "/tools/tool-09.webp",
@@ -1050,23 +1089,24 @@ export const enArticles: Record<string, ArticleContent> = {
         items: [
           {
             title: "Isometric view",
-            text: "Set the camera to an isometric angle (Camera → Standard Views → Iso, or adjust manually).",
+            text: "Set the camera to an isometric angle (Camera → Standard Views → Iso, or adjust it manually).",
           },
           {
             title: "Parallel Projection",
-            text: "Enable Camera → Parallel Projection for the correct axonometric effect, with no vanishing points.",
+            text: "Enable Camera → Parallel Projection for a proper axonometric look, with no vanishing points.",
           },
           {
             title: "Capture or upload",
-            text: "Use Capture Current Scene, or upload an image from your PC.",
+            text: "Use **Capture Current Scene**, or upload an image from your computer. A finished facade render also works.",
+          },
+          {
+            title: "Pick the context and style, and generate",
+            text: "See the styles below. It costs 3 credits.",
           },
         ],
       },
       { type: "h2", text: "The 5 styles" },
-      {
-        type: "p",
-        text: "First pick the context: **Exterior** (with surroundings) or **Interiors** (isolated rooms). Then the style:",
-      },
+      { type: "p", text: "First pick the context. In **Exterior**, with surroundings, there are four styles: Technical Isometric, Highlighted Diagram, Colored with Context and Physical Mockup. In **Interiors**, with the room isolated, the style is Axonometric." },
       {
         type: "imgrow",
         images: [
@@ -1077,8 +1117,8 @@ export const enArticles: Record<string, ArticleContent> = {
           },
           {
             src: "/treinamento/ui/diagrama-destaque.webp",
-            alt: "Highlight diagram",
-            caption: "Highlight: project in color, surroundings in gray.",
+            alt: "Highlighted diagram",
+            caption: "Highlighted: project in color, surroundings in gray.",
           },
           {
             src: "/treinamento/ui/diagrama-colorido.webp",
@@ -1092,8 +1132,8 @@ export const enArticles: Record<string, ArticleContent> = {
         images: [
           {
             src: "/treinamento/ui/diagrama-maquete.webp",
-            alt: "Physical model style diagram",
-            caption: "Physical Model: balsa-wood model style.",
+            alt: "Physical mockup style diagram",
+            caption: "Physical Mockup: balsa-wood model style.",
           },
           {
             src: "/treinamento/ui/diagrama-int-axo.webp",
@@ -1102,9 +1142,31 @@ export const enArticles: Record<string, ArticleContent> = {
           },
         ],
       },
+      { type: "h2", text: "Getting a good diagram" },
       {
-        type: "tip",
-        text: "The Highlight style is the favorite for competitions and posts: the eye goes straight to the project, and the gray surroundings provide context without competing.",
+        type: "ul",
+        items: [
+          "**Parallel Projection.** It's what gives the proper axonometric look, with no vanishing points.",
+          "**A clean screen.** Hide axes, dimensions and reference objects before capturing: whatever is on screen goes into the diagram.",
+          "**Highlighted for competitions and posts.** The eye goes straight to the project, and the gray surroundings give context without competing.",
+        ],
+      },
+      { type: "h2", text: "If the result isn't what you expected" },
+      {
+        type: "ul",
+        items: [
+          "**Massing different from the model**: check that the capture was taken in Parallel Projection with the whole project visible, and generate again.",
+          "**You didn't like the result**: generate again, since every generation comes out different, or try another style.",
+        ],
+      },
+      { type: "h2", text: "Quick questions" },
+      {
+        type: "ul",
+        items: [
+          "**Can I use a render as the base?** Yes, either the SketchUp capture or a finished render.",
+          "**Can I write what I want?** No. Diagram has no text field: the result comes from the context and style you choose.",
+          "**How long does it take?** Under a minute.",
+        ],
       },
       { type: "cost", text: "3 credits per generation" },
     ],
@@ -1115,31 +1177,48 @@ export const enArticles: Record<string, ArticleContent> = {
     excerpt:
       "Create professional moodboards from a reference image: 7 scene compositions and 5 aspect ratios, from flat lays to presentation boards.",
     blocks: [
-      {
-        type: "p",
-        text: "**Moodboard** generates visual reference boards (material samples, palette and objects) from a base image of your project or your references. It's the tool for the start of the client conversation: it presents the concept before the first render even exists.",
-      },
+      { type: "p", text: "**Moodboard** creates a visual reference board (material samples, color palette and objects) from a render of your project or a reference image. It's the tool for the start of the conversation with your client: it presents the concept and finishes before the final render. It's ready in under a minute, for 3 credits." },
       {
         type: "img",
         src: "/tools/tool-06.jpg",
         alt: "Moodboard generated by Vizai Render",
         caption: "Moodboard generated with the project's material samples.",
       },
-      { type: "h2", text: "Available compositions" },
+      { type: "p", text: "The AI analyzes the image you send and pulls out the main palette (3 to 5 colors), the materials that appear (woods, stones, fabrics, metals) and the mood of the scene. Then it builds a photo of samples of those materials, in the composition you choose. The project itself doesn't appear on the board: only the materials and objects that tell its story." },
+      { type: "h2", text: "Step by step" },
       {
-        type: "p",
-        text: "There are **7 composition styles**: the “scene” where the samples are photographed:",
+        type: "steps",
+        items: [
+          {
+            title: "Choose Moodboard in Creative AI",
+            text: "In the Studio tab, switch from Render to Creative AI and choose Moodboard.",
+          },
+          {
+            title: "Upload the base image",
+            text: "One of your renders or a collage of references (JPG or PNG, up to 5 MB).",
+          },
+          {
+            title: "Pick the composition and aspect ratio",
+            text: "In the Moodboard settings, choose one of the 7 compositions and one of the 5 aspect ratios.",
+          },
+          {
+            title: "Generate",
+            text: "3 credits per image.",
+          },
+        ],
       },
+      { type: "h2", text: "Available compositions" },
+      { type: "p", text: "There are **7 composition styles**, the “scene” where the samples are photographed:" },
       {
         type: "ul",
         items: [
           "**Studio Bench**: premium surface with a soft gradient background.",
-          "**Project Table**: on a work table, semi-blurred background.",
+          "**Project Table**: on a dining table or office desk, with a semi-blurred background.",
           "**Top View**: flat lay straight from above, no perspective.",
           "**Presentation Board**: samples pinned to a vertical board.",
           "**Lit Floor**: flat lay on a wooden floor with side light.",
-          "**Material Line**: samples aligned in a horizontal row.",
-          "**Decorated Rug**: 3/4 composition over a rug with objects.",
+          "**Material Lineup**: samples aligned in a horizontal row.",
+          "**Decorated Rug**: three-quarter composition on a rug, with objects.",
         ],
       },
       {
@@ -1150,13 +1229,32 @@ export const enArticles: Record<string, ArticleContent> = {
         ui: true,
       },
       { type: "h2", text: "Aspect ratios" },
+      { type: "p", text: "The moodboard comes out in the right format for where it's going: **1:1** (classic Instagram), **4:3** (presentations), **16:9** (screens and portfolio), **4:5** (vertical feed) and **9:16** (Stories and Reels)." },
+      { type: "h2", text: "Getting a good moodboard" },
       {
-        type: "p",
-        text: "The moodboard comes out in the right format for its destination: **1:1** (classic Instagram), **4:3** (presentations), **16:9** (screens and portfolio), **4:5** (vertical feed) and **9:16** (Stories and Reels).",
+        type: "ul",
+        items: [
+          "**An image with the project's materials.** One of your renders or a collage of references: the AI pulls the palette and materials from it.",
+          "**One direction at a time.** An image with a clear style (light wood and linen, for example) makes a more cohesive board than references that don't go together.",
+          "**Composition by destination.** Top View and Material Lineup work well on presentation sheets; Presentation Board recalls a meeting with physical samples; Decorated Rug and Project Table set the mood for social media.",
+        ],
       },
+      { type: "h2", text: "If the result isn't what you expected" },
       {
-        type: "tip",
-        text: "Use a base image that already contains the project's materials (one of your renders, or a reference collage). The AI extracts the palette and materials from it.",
+        type: "ul",
+        items: [
+          "**A material that wasn't in the project**: use a base image where the materials show clearly and in good light, and generate again.",
+          "**Colors different from the project's**: very dark images or colored light confuse the palette. Prefer a daytime render with neutral light.",
+        ],
+      },
+      { type: "h2", text: "Quick questions" },
+      {
+        type: "ul",
+        items: [
+          "**Does my project appear on the moodboard?** No. The board shows only samples and objects with the project's palette and materials.",
+          "**Does it work without a render?** Yes. A collage of references also works as a base.",
+          "**How long does it take?** Under a minute.",
+        ],
       },
       { type: "cost", text: "3 credits per generation" },
     ],
