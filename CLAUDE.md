@@ -89,6 +89,7 @@ lib/
   seo.ts                     títulos, descrições e metadata por idioma
   prices.ts                  preços e créditos que o site mostra, nas 3 moedas (fonte única)
   structured-data.ts         SoftwareApplication por idioma, com os preços de prices.ts
+  faq.ts                     as 32 perguntas do /faq nos 3 idiomas, com números de prices.ts
   treinamento/               conteúdo dos guias em pt, en e es
   legal.ts  lang-param.ts  utils.ts
 middleware.ts                idioma, sessão e clique de anúncio
@@ -380,10 +381,25 @@ preço em BRL na página que mostra dólar.
 **`/llms.txt`** é o resumo do site para assistentes de IA, em inglês: o que é,
 requisitos, planos, pacotes, custo por operação e as aulas. É gerado no build a
 partir de `lib/prices.ts` e da lista de aulas, como o sitemap. Os custos por
-operação repetem o FAQ e o `CREDIT_COST` do servidor: mudou lá, muda aqui.
+operação vêm de `OPERATION_CREDITS`, que espelha o `CREDIT_COST` do servidor e o
+FAQ da home: mudou lá, muda em `lib/prices.ts`.
 
 **Reprecificar ou mudar crédito de plano mexe em `lib/prices.ts`**, além dos
-lugares listados na seção 7 do `CLAUDE.md` do plugin.
+lugares listados na seção 7 do `CLAUDE.md` do plugin. O custo de cada operação
+(render, 4K, vídeo...) também mora lá, em `OPERATION_CREDITS` e `VIDEO_CREDITS`.
+
+**`/faq` é uma página escondida de propósito.** São 32 perguntas (preço,
+créditos, requisitos, privacidade e comparação com V-Ray, Enscape, Lumion,
+SketchUp AI Render, Veras e D5 Lite) escritas para os assistentes de IA citarem.
+O Ramon não quer distrair quem visita, então ela **não tem link no menu, na home
+nem no rodapé**: o caminho até ela é o sitemap e o `/llms.txt`. Não acrescentar
+link sem falar com ele. O conteúdo é o mesmo para pessoas e robôs; mostrar uma
+versão diferente aos robôs é cloaking, e o Google pune o site inteiro.
+As respostas usam `<details>` nativo, e não o Accordion do Radix da home: o Radix
+só põe a resposta no HTML depois do clique, e o robô leria só as perguntas.
+Preço, renders por plano e custo por render saem de `lib/prices.ts`. Os fatos dos
+concorrentes foram conferidos nas páginas oficiais em 12/10/2026, sem citar preço
+deles, que muda sem aviso.
 
 As páginas de aula declaram **VideoObject** com duração, capa e `contentUrl` do
 CDN, o que as torna elegíveis a aparecer com miniatura no resultado e na aba de
@@ -462,6 +478,11 @@ aqui**: são do servidor, no Secret Manager do GCP.
 
 ## 16. Estado em 2026-10-12
 
+- **`/faq` no ar desde 12/10, sem link de nenhuma página**, versão `a9ca16e4`.
+  Rollback é a `6c30c01a` (mesmo dia, sem o FAQ). Conferido em produção nos 3
+  idiomas: 32 perguntas no HTML e no FAQPage, `<html lang>` certo, canonical e
+  hreflang, links internos no idioma da página, sitemap e `llms.txt` com o
+  endereço, e nenhuma página do site apontando para ele. Detalhe na seção 11.
 - **Dados do produto por idioma, `/llms.txt` e `<html lang>` certo em /en e
   /es desde 12/10**, versão `6c30c01a`. Rollback é a `f92d8172` (mesmo dia,
   sem a troca do `<html lang>`), e antes dela a `3ad5d8d2` (11/10). Conferido
