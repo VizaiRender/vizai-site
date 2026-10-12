@@ -91,6 +91,9 @@ const jsonLd = {
         // Canal com as aulas em vídeo. Gemini e Perplexity citam muito o YouTube,
         // e é este link que diz a eles que o canal é do mesmo Vizai do site.
         "https://www.youtube.com/@vizairender",
+        // Perfis em diretórios de software (aprovados em 12/10/2026). Ajudam as
+        // IAs a confirmar que o Vizai é uma empresa real, citada fora do site.
+        "https://www.g2.com/products/vizai-render/reviews",
       ],
       contactPoint: {
         "@type": "ContactPoint",

@@ -105,6 +105,7 @@ ${lessons.join("\n")}
 - Instagram: https://instagram.com/vizairender
 - TikTok: https://tiktok.com/@vizairender
 - LinkedIn: https://www.linkedin.com/company/vizairender/
+- G2 (reviews): https://www.g2.com/products/vizai-render/reviews
 `;
 }
 
