@@ -94,6 +94,7 @@ const jsonLd = {
         // Perfis em diretórios de software (aprovados em 12/10/2026). Ajudam as
         // IAs a confirmar que o Vizai é uma empresa real, citada fora do site.
         "https://www.g2.com/products/vizai-render/reviews",
+        "https://www.crunchbase.com/organization/vizai-render",
       ],
       contactPoint: {
         "@type": "ContactPoint",
