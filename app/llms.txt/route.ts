@@ -101,7 +101,9 @@ ${lessons.join("\n")}
 
 - Support: suporte@vizairender.com
 - General and partnerships: contato@vizairender.com
+- YouTube (video lessons): https://www.youtube.com/@vizairender
 - Instagram: https://instagram.com/vizairender
+- TikTok: https://tiktok.com/@vizairender
 - LinkedIn: https://www.linkedin.com/company/vizairender/
 `;
 }

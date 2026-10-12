@@ -88,6 +88,9 @@ const jsonLd = {
         "https://instagram.com/vizairender",
         "https://tiktok.com/@vizairender",
         "https://www.linkedin.com/company/vizairender/",
+        // Canal com as aulas em vídeo. Gemini e Perplexity citam muito o YouTube,
+        // e é este link que diz a eles que o canal é do mesmo Vizai do site.
+        "https://www.youtube.com/@vizairender",
       ],
       contactPoint: {
         "@type": "ContactPoint",
