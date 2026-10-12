@@ -50,6 +50,31 @@ const LanguageContext = createContext<LanguageContextType>({
   fromRoute: false,
 });
 
+/**
+ * Idioma da última página pública vista NESTA aba.
+ *
+ * Login, cadastro, painel e checkout não têm versão por idioma. Até 12/10/2026
+ * eles usavam só a preferência salva ou o idioma do navegador, então quem
+ * estava lendo a home em português e clicava em "Entrar" num Mac em inglês
+ * caía no login em inglês. Quem chega vindo de uma página tem o idioma dela
+ * como sinal mais forte de qual língua está lendo.
+ *
+ * Chave separada de STORAGE_KEY de propósito: aquela é a escolha explícita, e
+ * a faixa de sugestão de idioma depende dela. Gravar ali a cada página vista
+ * faria a faixa sumir para todo estrangeiro que passasse pela home. E fica em
+ * sessionStorage, não em localStorage: vale para a aba (sobrevive à ida ao
+ * Google no login e à Stripe no checkout) e some numa visita nova.
+ */
+const PAGE_LANG_KEY = "vizai-lang-page";
+
+function readPageLang(): Lang | null {
+  try {
+    const page = sessionStorage.getItem(PAGE_LANG_KEY);
+    if (page && SUPPORTED.includes(page as Lang)) return page as Lang;
+  } catch {}
+  return null;
+}
+
 export function readStoredLang(): Lang | null {
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
@@ -78,8 +103,9 @@ export function detectLang(): Lang {
  * então todo visitante estrangeiro (e toda prévia de link no WhatsApp) via
  * português.
  *
- * Nas rotas de login, painel e checkout (noindex, sem versão por idioma) segue
- * valendo o comportamento antigo: preferência salva, senão idioma do navegador.
+ * Nas rotas de login, painel e checkout (noindex, sem versão por idioma) vale,
+ * nesta ordem: o idioma da última página pública vista na aba, a preferência
+ * salva e o idioma do navegador.
  */
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -93,10 +119,17 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [detected, setDetected] = useState<Lang>(DEFAULT_LANG);
 
   useEffect(() => {
-    if (routeDriven) return;
-    const initial = readStoredLang() ?? detectLang();
-    if (initial !== DEFAULT_LANG) setDetected(initial);
-  }, [routeDriven]);
+    if (routeDriven) {
+      try {
+        sessionStorage.setItem(PAGE_LANG_KEY, routeLang);
+      } catch {}
+      return;
+    }
+    // Sem o "if (initial !== pt)" de antes: o provedor sobrevive à navegação
+    // dentro do site, e quem fosse /en → login → home em português → login de
+    // novo ficaria preso no inglês da primeira visita.
+    setDetected(readPageLang() ?? readStoredLang() ?? detectLang());
+  }, [routeDriven, routeLang]);
 
   const lang = routeDriven ? routeLang : detected;
 
