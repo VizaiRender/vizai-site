@@ -95,6 +95,7 @@ const jsonLd = {
         // IAs a confirmar que o Vizai é uma empresa real, citada fora do site.
         "https://www.g2.com/products/vizai-render/reviews",
         "https://www.crunchbase.com/organization/vizai-render",
+        "https://sourceforge.net/software/product/Vizai-Render/",
       ],
       contactPoint: {
         "@type": "ContactPoint",
