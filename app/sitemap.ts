@@ -15,6 +15,7 @@ const UPDATED = {
   download: '2026-06-11',
   treinamento: '2026-08-20',
   legal: '2026-09-29',
+  faq: '2026-10-12',
 } as const
 
 type Entry = {
@@ -36,6 +37,9 @@ const PAGES: Entry[] = [
     changeFrequency: 'monthly' as const,
     priority: 0.6,
   })),
+  // Sem link no menu, na home ou no rodapé, de propósito (ver lib/faq.ts): o
+  // sitemap e o /llms.txt são o caminho dos robôs até ela.
+  { path: '/faq', lastModified: UPDATED.faq, changeFrequency: 'monthly', priority: 0.5 },
   // Indexáveis e linkadas no rodapé; estavam fora do sitemap sem motivo.
   { path: '/privacy', lastModified: UPDATED.legal, changeFrequency: 'yearly', priority: 0.3 },
   { path: '/terms', lastModified: UPDATED.legal, changeFrequency: 'yearly', priority: 0.3 },

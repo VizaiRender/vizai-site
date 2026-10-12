@@ -87,7 +87,7 @@ const COPY: Record<Lang, Copy> = {
       "Amueblado de espacios vacíos, plantas renderizadas, moodboards y diagramas",
       "Video con IA y panorama 360°",
       "Componente 3D a partir de una imagen de referencia",
-      "Herramientas locales gratuitas, sin gastar créditos: reflejo de espejo, luz falsa, optimizar archivo y suelos seamless",
+      "Herramientas locales gratuitas, sin gastar créditos: reflejo de espejo, luz falsa, optimizar archivo y pisos seamless",
     ],
     free: `Gratis: ${WELCOME_CREDITS} créditos para probar, sin tarjeta`,
     perMonth: (c) => `${fmt(c, "es")} créditos al mes`,

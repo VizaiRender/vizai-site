@@ -9,17 +9,18 @@
 // Gerado no build a partir das mesmas fontes da página (lib/prices.ts e a lista
 // de aulas), pelo mesmo motivo do sitemap.ts: um arquivo escrito à mão em
 // public/ desencontraria do site no primeiro reajuste de preço ou aula nova.
-// Os custos por operação repetem o FAQ do site (lib/i18n.tsx, faq.items) e o
-// CREDIT_COST do servidor: mudou lá, muda aqui.
+// Os custos por operação vêm de OPERATION_CREDITS e VIDEO_CREDITS (lib/prices.ts).
 
 import { ARTICLES, getArticleContent } from "@/lib/treinamento";
 import { absoluteUrl } from "@/lib/routes";
 import {
+  OPERATION_CREDITS as C,
   PACK_CREDITS,
   packData,
   parsePriceToNumber,
   PLAN_CREDITS,
   planData,
+  VIDEO_CREDITS,
   WELCOME_CREDITS,
 } from "@/lib/prices";
 
@@ -57,7 +58,7 @@ function body(): string {
 - Product type: SketchUp extension (plugin). Rendering runs in the cloud: only the image of the current view is sent, and the .skp file stays on the user's computer.
 - Requirements: SketchUp 2023 or newer, Windows or macOS, internet connection.
 - Free trial: ${WELCOME_CREDITS} free credits on the first sign-in inside the plugin, no credit card.
-- Credit costs: a 2K render or an AI edit with a mask costs 4 credits, Creative AI modes cost 3, 4K upscale costs 5, a 360° panorama costs 5, a 3D block costs 28 and an AI video costs 22 to 83 depending on its length.
+- Credit costs: a 2K render or an AI edit with a mask costs ${C.render} credits, Creative AI modes cost ${C.creative}, 4K upscale costs ${C.upscale}, a 360° panorama costs ${C.panorama}, a 3D block costs ${C.block} and an AI video costs ${VIDEO_CREDITS[0].credits} to ${VIDEO_CREDITS[VIDEO_CREDITS.length - 1].credits} depending on its length.
 - Plan credits renew every billing cycle. Credit packs never expire. Plans can be cancelled at any time from the plugin.
 - Prices below are in US dollars. The Portuguese page shows prices in Brazilian reais and the Spanish page in euros.
 
@@ -85,6 +86,7 @@ ${packs.join("\n")}
 - [Pricing](${absoluteUrl("en", "/#pricing")}): plans and credit packs
 - [Download and installation](${absoluteUrl("en", "/download")}): how to install the plugin in SketchUp
 - [Training](${absoluteUrl("en", "/treinamento")}): video lessons and guides
+- [FAQ](${absoluteUrl("en", "/faq")}): pricing, credits, requirements, privacy and how Vizai compares with V-Ray, Enscape, Lumion, SketchUp AI Render, Veras and D5 Lite
 
 ## Lessons and guides
 

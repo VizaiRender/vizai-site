@@ -23,7 +23,7 @@ export interface PageSeo {
   description: string;
 }
 
-type PageId = "home" | "download" | "treinamento" | "privacy" | "terms";
+type PageId = "home" | "download" | "treinamento" | "privacy" | "terms" | "faq";
 
 export const SEO: Record<Lang, Record<PageId, PageSeo>> = {
   pt: {
@@ -50,6 +50,11 @@ export const SEO: Record<Lang, Record<PageId, PageSeo>> = {
       title: "Termos de Serviço",
       description: "Termos de Serviço do Vizai Render.",
     },
+    faq: {
+      title: "Perguntas frequentes: preço, créditos e requisitos",
+      description:
+        "Quanto custa o Vizai Render, como funcionam os créditos, requisitos do SketchUp e a comparação com V-Ray, Enscape, Lumion e outras ferramentas de render com IA.",
+    },
   },
   en: {
     home: {
@@ -75,6 +80,11 @@ export const SEO: Record<Lang, Record<PageId, PageSeo>> = {
       title: "Terms of Service",
       description: "Vizai Render's Terms of Service.",
     },
+    faq: {
+      title: "FAQ: pricing, credits and requirements",
+      description:
+        "How much Vizai Render costs, how credits work, SketchUp requirements and how it compares with V-Ray, Enscape, Lumion and other AI rendering tools.",
+    },
   },
   es: {
     home: {
@@ -99,6 +109,11 @@ export const SEO: Record<Lang, Record<PageId, PageSeo>> = {
     terms: {
       title: "Términos de Servicio",
       description: "Términos de Servicio de Vizai Render.",
+    },
+    faq: {
+      title: "Preguntas frecuentes: precio, créditos y requisitos",
+      description:
+        "Cuánto cuesta Vizai Render, cómo funcionan los créditos, requisitos de SketchUp y la comparación con V-Ray, Enscape, Lumion y otras herramientas de render con IA.",
     },
   },
 };

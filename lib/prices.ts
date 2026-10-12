@@ -80,6 +80,26 @@ export const PACK_CREDITS: Record<string, number> = {
   empresa: 1750,
 };
 
+// O plano anual credita 10 meses de crédito de uma vez (LOOKUP_KEY_MAP do servidor:
+// starter_annual 2500, pro_annual 6000, business_annual 16000).
+export const ANNUAL_CREDIT_MONTHS = 10;
+
+// Quanto cada operação gasta. Espelha o CREDIT_COST do servidor e o FAQ da home
+// (lib/i18n.tsx): mudou lá, muda aqui. Usado pelo /faq e pelo /llms.txt.
+export const OPERATION_CREDITS = {
+  render: 4,
+  creative: 3,
+  edit: 4,
+  upscale: 5,
+  panorama: 5,
+  block: 28,
+} as const;
+
+// Vídeo cobra round(segundos × 5,5) no servidor. As durações são as do plugin.
+export const VIDEO_CREDITS: { seconds: number; credits: number }[] = [4, 6, 8, 10, 15].map(
+  (seconds) => ({ seconds, credits: Math.round(seconds * 5.5) }),
+);
+
 /** "R$ 1.068" -> 1068, "$ 11,90" -> 11.9. Todas as moedas seguem o formato pt-BR. */
 export function parsePriceToNumber(s: string): number {
   const n = Number(s.replace(/[^\d.,]/g, "").replace(/\./g, "").replace(",", "."));
