@@ -1,5 +1,6 @@
-// Entrada do Worker: repassa tudo ao Worker gerado pelo OpenNext e põe um cache
-// de borda na frente do otimizador de imagem (/_next/image).
+// Entrada do Worker: repassa tudo ao Worker gerado pelo OpenNext, põe um cache
+// de borda na frente do otimizador de imagem (/_next/image) e corrige o idioma
+// do <html> nas páginas /en e /es (ver "Segunda tarefa", mais abaixo).
 //
 // Por que existe: o OpenNext converte a imagem de novo a CADA pedido que chega ao
 // Worker. O navegador guarda o resultado por anos, mas a borda da Cloudflare não
@@ -34,6 +35,24 @@
 // O cabeçalho `x-vizai-img-cache` (HIT ou MISS) existe pra conferir pelo curl, em
 // produção, que o cache está de fato guardando.
 //
+// Segunda tarefa: o `<html lang>` das páginas em inglês e espanhol.
+//
+// O layout raiz do Next é um só para os três idiomas e escreve `lang="pt-BR"`
+// fixo. No navegador o LanguageProvider troca para "en" ou "es" depois que a
+// página carrega, mas o HTML que sai do servidor dizia português em /en e /es.
+// Robô que não roda JavaScript (vários de IA) lia uma página em inglês marcada
+// como português. Achado em 12/10/2026.
+//
+// Por que aqui e não no Next: o layout raiz não recebe o idioma da rota. Ler o
+// idioma de um cabeçalho no layout tornaria todas as páginas dinâmicas (fim do
+// cache de páginas prontas, e mais CPU por visita), e dar um layout raiz por
+// idioma exige reorganizar todas as pastas (tentativa já descartada em 21/08).
+// O HTMLRewriter da Cloudflare troca o atributo enquanto o HTML passa, sem
+// guardar a página inteira na memória, a custo de cerca de 1 ms.
+//
+// O React não briga com a troca: o <html> tem suppressHydrationWarning, e o
+// LanguageProvider grava o mesmo valor ("en", "es") ao hidratar.
+//
 // É .mjs de propósito: o tsconfig inclui todo .ts, e um .ts importando o Worker
 // gerado faria o TypeScript do `next build` ler o bundle inteiro do servidor.
 
@@ -60,6 +79,31 @@ function chaveDaImagem(url, accept, versao) {
   return new Request(chave.toString());
 }
 
+// Mesmo esquema de lib/routes.ts: português na raiz, inglês e espanhol com
+// prefixo. Os valores são os do HREFLANG de lá, que o LanguageProvider também usa.
+const IDIOMA_DO_PREFIXO = { en: "en", es: "es" };
+
+function comIdiomaCerto(request, url, response) {
+  if (request.method !== "GET") return response;
+  const idioma = IDIOMA_DO_PREFIXO[url.pathname.split("/")[1]];
+  if (!idioma) return response;
+  // Só HTML: a navegação interna do Next pede a mesma URL e recebe text/x-component.
+  if (!(response.headers.get("Content-Type") ?? "").includes("text/html")) return response;
+  try {
+    return new HTMLRewriter()
+      .on("html", {
+        element(el) {
+          el.setAttribute("lang", idioma);
+        },
+      })
+      .transform(response);
+  } catch (erro) {
+    // Página com o idioma errado é melhor que página fora do ar.
+    console.error("idioma do <html>: troca falhou, seguindo com o original", erro);
+    return response;
+  }
+}
+
 function marcar(response, estado) {
   const copia = new Response(response.body, response);
   copia.headers.set(MARCADOR, estado);
@@ -70,7 +114,8 @@ const worker = {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     if (request.method !== "GET" || url.pathname !== ROTA_IMAGEM) {
-      return openNextWorker.fetch(request, env, ctx);
+      const response = await openNextWorker.fetch(request, env, ctx);
+      return comIdiomaCerto(request, url, response);
     }
 
     // Sem o id da versão não dá pra garantir que nada sobreviva a um deploy, então
