@@ -4,7 +4,7 @@
 
 Contexto completo do site, para qualquer agente de IA que trabalhe aqui.
 Última verificação contra o código: **2026-09-08**. Estado da seção 16
-atualizado em **2026-10-07**.
+atualizado em **2026-10-12**.
 
 O produto inteiro (plugin de SketchUp, servidor de API, créditos, planos,
 Supabase, Stripe) está descrito no `CLAUDE.md` do repositório
@@ -74,6 +74,7 @@ app/
   checkout/                  ponte para o Checkout hospedado da Stripe
   login/  signup/  obrigado/
   sitemap.ts  robots.ts
+  llms.txt/route.ts          resumo do site para assistentes de IA, gerado no build
 components/
   pages/home-page.tsx        a home inteira
   ui/                        seções e blocos reutilizáveis
@@ -86,11 +87,14 @@ lib/
   analytics.ts               GA4 e Clarity, comportamento no site
   fbc.ts                     captura e persistência do clique de anúncio
   seo.ts                     títulos, descrições e metadata por idioma
+  prices.ts                  preços e créditos que o site mostra, nas 3 moedas (fonte única)
+  structured-data.ts         SoftwareApplication por idioma, com os preços de prices.ts
   treinamento/               conteúdo dos guias em pt, en e es
   legal.ts  lang-param.ts  utils.ts
 middleware.ts                idioma, sessão e clique de anúncio
 next.config.ts               redirects, headers, imagens
 open-next.config.ts          cache das páginas no R2
+cloudflare-worker.mjs        entrada do Worker: cache de imagem e idioma do <html> em /en e /es
 public/_headers              cache dos estáticos
 ```
 
@@ -117,6 +121,14 @@ idioma, não faz nada: esse é o caso do Googlebot, e empurrar o buscador para
 **Moeda é escolhida pelo idioma, não pelo país.** Quem fala português vê preço
 em real, more onde morar. É regra escolhida, com contrapartida conhecida, não
 bug.
+
+**O `<html lang>` é corrigido no Worker, não no Next.** O layout raiz é um só
+para os três idiomas e escreve `pt-BR` fixo; o LanguageProvider troca no
+navegador. Até 12/10/2026 o HTML de /en e /es saía marcado como português para
+quem não roda JavaScript (vários robôs de IA). O `cloudflare-worker.mjs` troca o
+atributo com HTMLRewriter, só em HTML e só com prefixo /en ou /es. Ler o idioma
+de cabeçalho no layout deixaria todas as páginas dinâmicas, e um layout raiz por
+idioma exige reorganizar as pastas: as duas saídas foram descartadas.
 
 ---
 
@@ -358,6 +370,21 @@ que o robô custa a achar. Três regras aprendidas ao montá-lo:
 `sameAs` na Organization (em `app/layout.tsx`) é o que liga os perfis sociais à
 marca. Os links do rodapé sozinhos não fazem isso.
 
+**Dados do produto por idioma e moeda.** A Organization fica no layout raiz,
+porque não tem idioma nem moeda. O SoftwareApplication, com planos e pacotes, é
+declarado na home e no download de cada idioma (`lib/structured-data.ts`), com
+os preços de `lib/prices.ts`, os mesmos da tabela. Até 12/10/2026 ele morava no
+layout raiz, em português e real, repetido em /en e /es: o Google e as IAs liam
+preço em BRL na página que mostra dólar.
+
+**`/llms.txt`** é o resumo do site para assistentes de IA, em inglês: o que é,
+requisitos, planos, pacotes, custo por operação e as aulas. É gerado no build a
+partir de `lib/prices.ts` e da lista de aulas, como o sitemap. Os custos por
+operação repetem o FAQ e o `CREDIT_COST` do servidor: mudou lá, muda aqui.
+
+**Reprecificar ou mudar crédito de plano mexe em `lib/prices.ts`**, além dos
+lugares listados na seção 7 do `CLAUDE.md` do plugin.
+
 As páginas de aula declaram **VideoObject** com duração, capa e `contentUrl` do
 CDN, o que as torna elegíveis a aparecer com miniatura no resultado e na aba de
 vídeos.
@@ -433,8 +460,15 @@ aqui**: são do servidor, no Secret Manager do GCP.
 
 ---
 
-## 16. Estado em 2026-10-07
+## 16. Estado em 2026-10-12
 
+- **Dados do produto por idioma, `/llms.txt` e `<html lang>` certo em /en e
+  /es desde 12/10**, versão `6c30c01a`. Rollback é a `f92d8172` (mesmo dia,
+  sem a troca do `<html lang>`), e antes dela a `3ad5d8d2` (11/10). Conferido
+  em produção: preços na tela iguais aos de antes na home e no download dos 3
+  idiomas, cada idioma com a própria moeda nos dados estruturados, idioma do
+  `<html>` certo em todas as páginas, 404, redirects, `/_next/image`, sitemap e
+  `llms.txt`. Detalhe nas seções 4 e 11.
 - **Demo interativa trocada pela foto do painel em 07/10**, versão
   `d70995e3`. Rollback é a `784db217-b4ed-4030-9ac5-5b62b6fb1b06` (05/10).
   Conferido em produção: as 17 rotas da lista abaixo iguais a antes, `/demo`
