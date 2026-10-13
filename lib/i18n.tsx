@@ -40,10 +40,6 @@ const pt = {
     demoTitleLine2: "renders à altura",
     demoP1:
       "Conheça o painel do Vizai Render: todas as ferramentas num lugar só, num fluxo de renderização rápido, intuitivo e integrado ao seu programa favorito.",
-    demoP2:
-      "Ao lado, o painel como ele aparece no SketchUp: ajuste a iluminação, escolha o formato e a distância focal, e o render fica pronto em segundos.",
-    demoP2Mobile:
-      "Abaixo, o painel como ele aparece no SketchUp: ajuste a iluminação, escolha o formato e a distância focal, e o render fica pronto em segundos.",
     demoAlt: "Painel do Vizai Render aberto no SketchUp, na aba Cenas",
     compareTitle1: "Máxima fidelidade na renderização",
     compareTitle2: "do seu projeto",
@@ -469,10 +465,6 @@ const en: Dict = {
     demoTitleLine2: "renders that match",
     demoP1:
       "Meet the Vizai Render panel: every tool in one place, in a fast, intuitive rendering workflow integrated into your favorite software.",
-    demoP2:
-      "Here is the panel as it appears in SketchUp: adjust the lighting, choose the format and focal length, and your render is ready in seconds.",
-    demoP2Mobile:
-      "Below is the panel as it appears in SketchUp: adjust the lighting, choose the format and focal length, and your render is ready in seconds.",
     demoAlt: "Vizai Render panel open in SketchUp, on the Scenes tab",
     compareTitle1: "Maximum fidelity in the rendering",
     compareTitle2: "of your project",
@@ -889,10 +881,6 @@ const es: Dict = {
     demoTitleLine2: "renders a la altura",
     demoP1:
       "Conoce el panel de Vizai Render: todas las herramientas en un solo lugar, en un flujo de renderizado rápido, intuitivo e integrado en tu programa favorito.",
-    demoP2:
-      "Al lado, el panel tal como aparece en SketchUp: ajusta la iluminación, elige el formato y la distancia focal, y el render está listo en segundos.",
-    demoP2Mobile:
-      "Abajo, el panel tal como aparece en SketchUp: ajusta la iluminación, elige el formato y la distancia focal, y el render está listo en segundos.",
     demoAlt: "Panel de Vizai Render abierto en SketchUp, en la pestaña Escenas",
     compareTitle1: "Máxima fidelidad en el renderizado",
     compareTitle2: "de tu proyecto",

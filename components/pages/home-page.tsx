@@ -293,13 +293,6 @@ export function HomePage() {
             <p style={{ fontSize: "0.95rem", color: "var(--foreground-muted)", margin: 0, lineHeight: 1.6 }}>
               {t.home.demoP1}
             </p>
-            <hr style={{ border: "none", borderTop: "1px solid rgba(127,127,127,0.2)", margin: "20px 0" }} />
-            <p className="hidden md:block" style={{ fontSize: "0.95rem", color: "var(--foreground-muted)", margin: 0, lineHeight: 1.6 }}>
-              {t.home.demoP2}
-            </p>
-            <p className="md:hidden" style={{ fontSize: "0.95rem", color: "var(--foreground-muted)", margin: 0, lineHeight: 1.6 }}>
-              {t.home.demoP2Mobile}
-            </p>
           </div>
 
           <div style={{ flexShrink: 0 }}>
