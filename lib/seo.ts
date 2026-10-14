@@ -10,7 +10,7 @@ import { alternatesFor, localePath, OG_LOCALE, LANGS, SITE_URL } from "./routes"
 
 // PNG estático de propósito: a geração em runtime (next/og) dava 500 no
 // Cloudflare e o preview do link ficava sem imagem no WhatsApp/Messenger.
-const OG_IMAGE = {
+export const OG_IMAGE = {
   url: `${SITE_URL}/og.png`,
   width: 1200,
   height: 630,

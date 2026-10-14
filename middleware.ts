@@ -76,6 +76,22 @@ export async function middleware(request: NextRequest) {
     return redirect;
   }
 
+  // Convite do "Indique e ganhe" (plugin 1.0.38): /convite/<código>, e o mesmo
+  // com /en e /es. Todo código serve a MESMA página pronta (/convite,
+  // /en/convite), e o código sai do endereço no navegador. Uma página por
+  // código obrigaria o Worker a montar a página a cada pedido (dynamicParams),
+  // num plano com teto de 10 ms de CPU. O endereço que a pessoa vê continua
+  // com o código. Vem depois da sugestão de idioma de propósito: o alemão que
+  // abre /convite/X vai para /en/convite/X e cai aqui de novo.
+  const convite = pathname.match(/^(\/(?:en|es))?\/convite\/[^/]+\/?$/);
+  if (convite) {
+    const url = request.nextUrl.clone();
+    url.pathname = `${convite[1] || ""}/convite`;
+    const rewrite = NextResponse.rewrite(url);
+    captureClickId(request, rewrite);
+    return rewrite;
+  }
+
   const response = await updateSession(request);
   // Grava o clique no anúncio na resposta que já existe — inclusive quando ela
   // é um redirect (login/next), senão o clique se perderia justo em quem chega

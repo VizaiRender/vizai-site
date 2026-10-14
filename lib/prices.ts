@@ -67,6 +67,16 @@ export const packData = [
 // Aqui ficam só os números, para quem roda no servidor.
 export const WELCOME_CREDITS = 8;
 
+// Indique e ganhe (14/10/2026). Espelha o REFERRAL do servidor (server/index.js
+// do repo do plugin), que é quem paga: mudou lá, muda aqui. Usado pela página
+// /convite e pelos Termos. O Pacote Mini não conta para a indicação.
+export const REFERRAL = {
+  reward: 50,
+  bonus: 25,
+  milestoneEvery: 10,
+  milestoneBonus: 200,
+} as const;
+
 export const PLAN_CREDITS: Record<string, number> = {
   starter: 250,
   pro: 600,

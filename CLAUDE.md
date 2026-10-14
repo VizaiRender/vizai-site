@@ -4,7 +4,7 @@
 
 Contexto completo do site, para qualquer agente de IA que trabalhe aqui.
 Última verificação contra o código: **2026-09-08**. Estado da seção 16
-atualizado em **2026-10-12**.
+atualizado em **2026-10-14**.
 
 O produto inteiro (plugin de SketchUp, servidor de API, créditos, planos,
 Supabase, Stripe) está descrito no `CLAUDE.md` do repositório
@@ -63,6 +63,7 @@ app/
     download/                página de download do plugin
     treinamento/[slug]/      os 18 guias
     privacy/  terms/
+    convite/                 pouso do convite do Indique e ganhe (noindex, ver seção 11)
     [lang]/                  as mesmas páginas em /en e /es
   app/                       área logada
     page.tsx                 dashboard: saldo, plano, atalhos
@@ -90,6 +91,7 @@ lib/
   prices.ts                  preços e créditos que o site mostra, nas 3 moedas (fonte única)
   structured-data.ts         SoftwareApplication por idioma, com os preços de prices.ts
   faq.ts                     as 32 perguntas do /faq nos 3 idiomas, com números de prices.ts
+  convite.ts                 textos da página do convite e leitura do código no endereço
   treinamento/               conteúdo dos guias em pt, en e es
   legal.ts  lang-param.ts  utils.ts
 middleware.ts                idioma, sessão e clique de anúncio
@@ -401,6 +403,25 @@ Preço, renders por plano e custo por render saem de `lib/prices.ts`. Os fatos d
 concorrentes foram conferidos nas páginas oficiais em 12/10/2026, sem citar preço
 deles, que muda sem aviso.
 
+**`/convite/<código>` é a página de pouso do Indique e ganhe (14/10/2026).** O
+link sai do plugin (via `/api/referral` do servidor) e chega pelo WhatsApp. Três
+decisões para não desfazer:
+
+- **Uma página pronta para todos os códigos.** O `middleware.ts` reescreve
+  `/convite/<código>` (e `/en`, `/es`) para `/convite`, e o código sai do
+  endereço no navegador (`codigoDoCaminho`, só letras e números). Página por
+  código exigiria `dynamicParams`, ou seja montar no Worker a cada pedido, no
+  plano de 10 ms de CPU.
+- **Não confere o código.** Para isso a API precisaria de rota pública, e varrer
+  códigos viraria lista de nomes. Quem confere é o plugin, quando a pessoa digita.
+- **noindex e fora do sitemap.** Cada código é um endereço com o mesmo
+  conteúdo. O que importa é a prévia do link (título, descrição e `og.png`).
+
+Os números (25 do indicado, 8 de boas-vindas) vêm de `REFERRAL` e
+`WELCOME_CREDITS` em `lib/prices.ts`, que espelham o servidor. As regras do
+programa estão na seção 6 dos Termos (`lib/legal.ts`), e a Privacidade diz que
+quem usa o código vê o primeiro nome de quem indicou.
+
 As páginas de aula declaram **VideoObject** com duração, capa e `contentUrl` do
 CDN, o que as torna elegíveis a aparecer com miniatura no resultado e na aba de
 vídeos.
@@ -476,7 +497,11 @@ aqui**: são do servidor, no Secret Manager do GCP.
 
 ---
 
-## 16. Estado em 2026-10-12
+## 16. Estado em 2026-10-14
+
+- **Página do convite (`/convite/<código>`) e Programa de Indicação nos Termos
+  prontos em 14/10**, para o plugin 1.0.38. Build de produção conferido: as três
+  páginas nascem prontas e ficam fora do sitemap. Detalhe na seção 11.
 
 - **`/faq` no ar desde 12/10, sem link de nenhuma página**, versão `a9ca16e4`.
   Rollback é a `6c30c01a` (mesmo dia, sem o FAQ). Conferido em produção nos 3

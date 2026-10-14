@@ -1,4 +1,5 @@
 import type { Lang } from "@/app/components/LanguageProvider";
+import { REFERRAL } from "./prices";
 
 export type LegalBlock =
   | { type: "p"; lead?: string; text: string }
@@ -21,7 +22,7 @@ export const SUPPORT_EMAIL = "suporte@vizairender.com";
 
 const privacyPt: LegalDoc = {
   title: "Política de Privacidade",
-  lastUpdated: "Última atualização: 5 de outubro de 2026",
+  lastUpdated: "Última atualização: 14 de outubro de 2026",
   sections: [
     {
       heading: "1. Introdução",
@@ -79,6 +80,7 @@ const privacyPt: LegalDoc = {
             { lead: "Provedores de IA:", text: "Google Cloud (Vertex AI / Gemini) para análise de cena e geração e edição de imagens, e Fal.ai para vídeo (modelo Kling), blocos 3D (modelo Meshy), upscale 4K (modelo Clarity) e imagem 360° (modelo GPT Image, da OpenAI). Suas imagens são enviadas a esses provedores somente para executar a renderização solicitada, conforme suas respectivas políticas de privacidade." },
             { lead: "Infraestrutura:", text: "Google Cloud Run (hospedagem do servidor), Supabase (banco de dados e autenticação) e Stripe (pagamentos), todos obrigados por contrato a proteger seus dados." },
             { lead: "Medição e Publicidade:", text: "Meta Platforms (Pixel e Conversions API) e Google (Google Analytics 4 e Google Tag Manager). Compartilhamos com essas empresas dados de navegação e identificadores. Nunca compartilhamos o conteúdo das suas cenas 3D ou das imagens geradas. A seção 5 explica em detalhe o que é enviado e como recusar." },
+            { lead: "Programa de indicação:", text: "Quando alguém usa o seu código de convite, essa pessoa vê o seu primeiro nome. Nenhum outro dado seu é mostrado a ela." },
             { lead: "Obrigação Legal:", text: "Se exigido por lei, regulação ou em resposta a processos legais válidos." },
           ],
         },
@@ -140,7 +142,7 @@ const privacyPt: LegalDoc = {
 
 const privacyEn: LegalDoc = {
   title: "Privacy Policy",
-  lastUpdated: "Last updated: October 5, 2026",
+  lastUpdated: "Last updated: October 14, 2026",
   sections: [
     {
       heading: "1. Introduction",
@@ -198,6 +200,7 @@ const privacyEn: LegalDoc = {
             { lead: "AI Providers:", text: "Google Cloud (Vertex AI / Gemini) for scene analysis and image generation and editing, and Fal.ai for video (Kling model), 3D blocks (Meshy model), 4K upscale (Clarity model) and 360° images (GPT Image model, by OpenAI). Your images are sent to these providers only to perform the requested rendering, in accordance with their respective privacy policies." },
             { lead: "Infrastructure:", text: "Google Cloud Run (server hosting), Supabase (database and authentication) and Stripe (payments), all contractually obligated to protect your data." },
             { lead: "Measurement and Advertising:", text: "Meta Platforms (Pixel and Conversions API) and Google (Google Analytics 4 and Google Tag Manager). We share browsing data and identifiers with these companies. We never share the content of your 3D scenes or generated images. Section 5 explains in detail what is sent and how to opt out." },
+            { lead: "Referral program:", text: "When someone uses your invite code, that person sees your first name. No other data of yours is shown to them." },
             { lead: "Legal Obligation:", text: "If required by law, regulation or in response to valid legal proceedings." },
           ],
         },
@@ -259,7 +262,7 @@ const privacyEn: LegalDoc = {
 
 const privacyEs: LegalDoc = {
   title: "Política de Privacidad",
-  lastUpdated: "Última actualización: 5 de octubre de 2026",
+  lastUpdated: "Última actualización: 14 de octubre de 2026",
   sections: [
     {
       heading: "1. Introducción",
@@ -317,6 +320,7 @@ const privacyEs: LegalDoc = {
             { lead: "Proveedores de IA:", text: "Google Cloud (Vertex AI / Gemini) para análisis de escena y generación y edición de imágenes, y Fal.ai para video (modelo Kling), bloques 3D (modelo Meshy), upscale 4K (modelo Clarity) e imagen 360° (modelo GPT Image, de OpenAI). Tus imágenes se envían a estos proveedores únicamente para ejecutar el renderizado solicitado, conforme a sus respectivas políticas de privacidad." },
             { lead: "Infraestructura:", text: "Google Cloud Run (alojamiento del servidor), Supabase (base de datos y autenticación) y Stripe (pagos), todos obligados por contrato a proteger tus datos." },
             { lead: "Medición y Publicidad:", text: "Meta Platforms (Pixel y Conversions API) y Google (Google Analytics 4 y Google Tag Manager). Compartimos con estas empresas datos de navegación e identificadores. Nunca compartimos el contenido de tus escenas 3D ni de las imágenes generadas. La sección 5 explica en detalle qué se envía y cómo rechazarlo." },
+            { lead: "Programa de recomendación:", text: "Cuando alguien usa tu código de invitación, esa persona ve tu nombre de pila. Ningún otro dato tuyo se le muestra." },
             { lead: "Obligación Legal:", text: "Si lo exige la ley, una regulación o en respuesta a procesos legales válidos." },
           ],
         },
@@ -382,7 +386,7 @@ const privacyEs: LegalDoc = {
 
 const termsPt: LegalDoc = {
   title: "Termos de Serviço",
-  lastUpdated: "Última atualização: 28 de maio de 2026",
+  lastUpdated: "Última atualização: 14 de outubro de 2026",
   sections: [
     {
       heading: "1. Aceitação dos Termos",
@@ -475,7 +479,26 @@ const termsPt: LegalDoc = {
       ],
     },
     {
-      heading: "6. Limitação de Responsabilidade",
+      heading: "6. Programa de Indicação (Indique e Ganhe)",
+      blocks: [
+        { type: "p", text: "Cada conta tem um código de convite pessoal, que fica no plugin, no menu da conta. Quem recebe o código o digita no plugin, também no menu da conta, antes da primeira compra." },
+        {
+          type: "ul",
+          items: [
+            { lead: "Recompensa:", text: `quando a pessoa indicada assina um plano ou compra um pacote a partir do Pacote Básico, quem indicou recebe ${REFERRAL.reward} créditos e a pessoa indicada recebe ${REFERRAL.bonus} créditos extras. Ao chegar a ${REFERRAL.milestoneEvery} indicações que compraram, quem indicou recebe uma gratificação única de ${REFERRAL.milestoneBonus} créditos.` },
+            { lead: "Pacote Mini:", text: "não gera recompensa. Se a pessoa indicada comprar o Pacote Mini primeiro, a recompensa sai na próxima compra que conte." },
+            { lead: "Quem pode usar um código:", text: "somente contas que ainda não fizeram nenhuma compra e que estão usando o Vizai pela primeira vez no computador. Cada conta usa um único código, que não pode ser trocado depois de aplicado. Não vale usar o próprio código nem o código de outra conta usada no mesmo computador." },
+            { lead: "Natureza dos créditos:", text: "os créditos de indicação são créditos avulsos: não expiram, não têm valor em dinheiro, não são reembolsáveis e não podem ser transferidos para outra conta." },
+            { lead: "Reembolso e contestação:", text: "se a compra que gerou a recompensa for reembolsada ou contestada, os créditos de indicação são retirados das duas contas, até o saldo disponível. A gratificação já concedida é mantida." },
+            { lead: "Nome visível:", text: "ao usar um código, a pessoa indicada vê o primeiro nome de quem indicou." },
+            { lead: "Uso indevido:", text: "criar contas para se indicar, publicar códigos em sites de cupom ou burlar estas regras de outra forma pode levar à retirada dos créditos de indicação e ao cancelamento das contas envolvidas." },
+            { lead: "Alterações:", text: "o Vizai pode alterar ou encerrar o programa a qualquer momento. Recompensas de compras já confirmadas são mantidas." },
+          ],
+        },
+      ],
+    },
+    {
+      heading: "7. Limitação de Responsabilidade",
       blocks: [
         {
           type: "p",
@@ -488,7 +511,7 @@ const termsPt: LegalDoc = {
       ],
     },
     {
-      heading: "7. Disponibilidade do Serviço",
+      heading: "8. Disponibilidade do Serviço",
       blocks: [
         {
           type: "p",
@@ -497,7 +520,7 @@ const termsPt: LegalDoc = {
       ],
     },
     {
-      heading: "8. Modificações nos Termos",
+      heading: "9. Modificações nos Termos",
       blocks: [
         {
           type: "p",
@@ -506,7 +529,7 @@ const termsPt: LegalDoc = {
       ],
     },
     {
-      heading: "9. Contato",
+      heading: "10. Contato",
       blocks: [
         {
           type: "p",
@@ -519,7 +542,7 @@ const termsPt: LegalDoc = {
 
 const termsEn: LegalDoc = {
   title: "Terms of Service",
-  lastUpdated: "Last updated: May 28, 2026",
+  lastUpdated: "Last updated: October 14, 2026",
   sections: [
     {
       heading: "1. Acceptance of Terms",
@@ -612,7 +635,26 @@ const termsEn: LegalDoc = {
       ],
     },
     {
-      heading: "6. Limitation of Liability",
+      heading: "6. Referral Program (Refer and Earn)",
+      blocks: [
+        { type: "p", text: "Each account has a personal invite code, found in the plugin, in the account menu. Whoever receives the code enters it in the plugin, also in the account menu, before their first purchase." },
+        {
+          type: "ul",
+          items: [
+            { lead: "Reward:", text: `when the referred person subscribes to a plan or buys the Basic Pack or larger, the referrer receives ${REFERRAL.reward} credits and the referred person receives ${REFERRAL.bonus} extra credits. When the referrer reaches ${REFERRAL.milestoneEvery} referrals who bought, they receive a one-time bonus of ${REFERRAL.milestoneBonus} credits.` },
+            { lead: "Mini Pack:", text: "does not earn a reward. If the referred person buys the Mini Pack first, the reward is granted on the next purchase that counts." },
+            { lead: "Who can use a code:", text: "only accounts that have not made any purchase yet and that are using Vizai for the first time on that computer. Each account uses a single code, which cannot be changed once applied. You cannot use your own code or the code of another account used on the same computer." },
+            { lead: "Nature of the credits:", text: "referral credits are one-time credits: they do not expire, have no cash value, are non-refundable and cannot be transferred to another account." },
+            { lead: "Refunds and disputes:", text: "if the purchase that generated the reward is refunded or disputed, the referral credits are removed from both accounts, up to the available balance. A bonus already granted is kept." },
+            { lead: "Visible name:", text: "when using a code, the referred person sees the first name of the referrer." },
+            { lead: "Misuse:", text: "creating accounts to refer yourself, publishing codes on coupon sites or otherwise circumventing these rules may lead to removal of referral credits and cancellation of the accounts involved." },
+            { lead: "Changes:", text: "Vizai may change or end the program at any time. Rewards for purchases already confirmed are kept." },
+          ],
+        },
+      ],
+    },
+    {
+      heading: "7. Limitation of Liability",
       blocks: [
         {
           type: "p",
@@ -625,7 +667,7 @@ const termsEn: LegalDoc = {
       ],
     },
     {
-      heading: "7. Service Availability",
+      heading: "8. Service Availability",
       blocks: [
         {
           type: "p",
@@ -634,7 +676,7 @@ const termsEn: LegalDoc = {
       ],
     },
     {
-      heading: "8. Changes to the Terms",
+      heading: "9. Changes to the Terms",
       blocks: [
         {
           type: "p",
@@ -643,7 +685,7 @@ const termsEn: LegalDoc = {
       ],
     },
     {
-      heading: "9. Contact",
+      heading: "10. Contact",
       blocks: [
         {
           type: "p",
@@ -656,7 +698,7 @@ const termsEn: LegalDoc = {
 
 const termsEs: LegalDoc = {
   title: "Términos de Servicio",
-  lastUpdated: "Última actualización: 28 de mayo de 2026",
+  lastUpdated: "Última actualización: 14 de octubre de 2026",
   sections: [
     {
       heading: "1. Aceptación de los Términos",
@@ -749,7 +791,26 @@ const termsEs: LegalDoc = {
       ],
     },
     {
-      heading: "6. Limitación de Responsabilidad",
+      heading: "6. Programa de Recomendación (Recomienda y Gana)",
+      blocks: [
+        { type: "p", text: "Cada cuenta tiene un código de invitación personal, que está en el plugin, en el menú de la cuenta. Quien recibe el código lo escribe en el plugin, también en el menú de la cuenta, antes de su primera compra." },
+        {
+          type: "ul",
+          items: [
+            { lead: "Recompensa:", text: `cuando la persona recomendada se suscribe a un plan o compra a partir del Paquete Básico, quien recomendó recibe ${REFERRAL.reward} créditos y la persona recomendada recibe ${REFERRAL.bonus} créditos extra. Al llegar a ${REFERRAL.milestoneEvery} recomendaciones que compraron, quien recomendó recibe un bono único de ${REFERRAL.milestoneBonus} créditos.` },
+            { lead: "Paquete Mini:", text: "no genera recompensa. Si la persona recomendada compra primero el Paquete Mini, la recompensa se otorga en la siguiente compra que cuente." },
+            { lead: "Quién puede usar un código:", text: "solo cuentas que aún no hicieron ninguna compra y que usan Vizai por primera vez en ese ordenador. Cada cuenta usa un único código, que no se puede cambiar una vez aplicado. No vale usar el propio código ni el de otra cuenta usada en el mismo ordenador." },
+            { lead: "Naturaleza de los créditos:", text: "los créditos de recomendación son créditos sueltos: no caducan, no tienen valor en dinero, no son reembolsables y no se pueden transferir a otra cuenta." },
+            { lead: "Reembolsos y disputas:", text: "si la compra que generó la recompensa se reembolsa o se disputa, los créditos de recomendación se retiran de las dos cuentas, hasta el saldo disponible. El bono ya otorgado se mantiene." },
+            { lead: "Nombre visible:", text: "al usar un código, la persona recomendada ve el nombre de pila de quien recomendó." },
+            { lead: "Uso indebido:", text: "crear cuentas para recomendarse a sí mismo, publicar códigos en sitios de cupones o eludir estas reglas de otra forma puede llevar a la retirada de los créditos de recomendación y a la cancelación de las cuentas involucradas." },
+            { lead: "Cambios:", text: "Vizai puede cambiar o terminar el programa en cualquier momento. Las recompensas de compras ya confirmadas se mantienen." },
+          ],
+        },
+      ],
+    },
+    {
+      heading: "7. Limitación de Responsabilidad",
       blocks: [
         {
           type: "p",
@@ -762,7 +823,7 @@ const termsEs: LegalDoc = {
       ],
     },
     {
-      heading: "7. Disponibilidad del Servicio",
+      heading: "8. Disponibilidad del Servicio",
       blocks: [
         {
           type: "p",
@@ -771,7 +832,7 @@ const termsEs: LegalDoc = {
       ],
     },
     {
-      heading: "8. Modificaciones de los Términos",
+      heading: "9. Modificaciones de los Términos",
       blocks: [
         {
           type: "p",
@@ -780,7 +841,7 @@ const termsEs: LegalDoc = {
       ],
     },
     {
-      heading: "9. Contacto",
+      heading: "10. Contacto",
       blocks: [
         {
           type: "p",
