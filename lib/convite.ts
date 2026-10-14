@@ -51,7 +51,7 @@ const raw: Record<Lang, ConviteTexts> = {
     steps: [
       "Baixe e instale o plugin no SketchUp.",
       "Abra o Vizai e entre com sua conta Google. Você já ganha {welcome} créditos grátis.",
-      "Clique no seu nome, no canto de cima do painel, e em \"Tenho um código de convite\". Digite o código.",
+      "Clique no botão com seu nome e seus créditos, no topo do painel, e em \"Tenho um código de convite\". Digite o código.",
       "Ao assinar um plano ou comprar a partir do Pacote Básico, você ganha {bonus} créditos extras.",
     ],
     downloadCta: "Baixar o Vizai",
@@ -76,7 +76,7 @@ const raw: Record<Lang, ConviteTexts> = {
     steps: [
       "Download and install the plugin in SketchUp.",
       "Open Vizai and sign in with your Google account. You get {welcome} free credits right away.",
-      "Click your name at the top of the panel, then \"I have an invite code\". Enter the code.",
+      "Click the button with your name and credits at the top of the panel, then \"I have an invite code\". Enter the code.",
       "When you subscribe to a plan or buy the Basic Pack or larger, you get {bonus} extra credits.",
     ],
     downloadCta: "Download Vizai",
@@ -101,7 +101,7 @@ const raw: Record<Lang, ConviteTexts> = {
     steps: [
       "Descarga e instala el plugin en SketchUp.",
       "Abre Vizai y entra con tu cuenta de Google. Ya ganas {welcome} créditos gratis.",
-      "Haz clic en tu nombre, arriba en el panel, y en \"Tengo un código de invitación\". Escribe el código.",
+      "Haz clic en el botón con tu nombre y tus créditos, arriba en el panel, y en \"Tengo un código de invitación\". Escribe el código.",
       "Al suscribirte a un plan o comprar a partir del Paquete Básico, ganas {bonus} créditos extra.",
     ],
     downloadCta: "Descargar Vizai",

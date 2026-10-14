@@ -500,8 +500,9 @@ aqui**: são do servidor, no Secret Manager do GCP.
 ## 16. Estado em 2026-10-14
 
 - **Página do convite (`/convite/<código>`) e Programa de Indicação nos Termos
-  no ar desde 14/10**, versão `35630846`, para o plugin 1.0.38. Rollback é a
-  `ea4a18de` (13/10). Conferido em produção: as 16 rotas de sempre iguais a
+  no ar desde 14/10**, versão `577b4877` (passo 3 diz "botão com seu nome e seus
+  créditos"), para o plugin 1.0.38. Rollback é a `35630846` (mesmo dia, frase
+  antiga) e antes dela a `ea4a18de` (13/10, sem o convite). Conferido em produção: as 16 rotas de sempre iguais a
   antes, convite 200 nos 3 idiomas com o código na tela, `noindex`, fora do
   sitemap, Termos com a seção 6, e navegador em alemão indo para
   `/en/convite/<código>`. Detalhe na seção 11.
