@@ -272,6 +272,39 @@ antiga** para a página da aula em vez de criar uma nova: ela já tem histórico
 (preparar a cena, editor e luz fake) seguem de 301. A aula do Histórico é a
 única com texto escrito do zero, porque não existia guia do assunto.
 
+### 8.1 Blog (desde 15/10/2026)
+
+`/blog` nos três idiomas, com quatro artigos: duas comparações (renderizador
+tradicional contra IA; ChatGPT, AI Render, Veras e Vizai), os renders reais de
+usuários e as novidades de cada versão do plugin. Conteúdo em `lib/blog/`
+(`index.ts` com a lista e as datas, `pt.ts`, `en.ts`, `es.ts`), desenhado pelo
+mesmo `ArticleBlock` dos guias do Treinamento, então bloco novo serve aos dois.
+
+O que não é óbvio:
+
+- **Escrito para busca e para IA, de propósito.** Título com a pergunta que a
+  pessoa faz, resposta direta na primeira frase de cada seção, parágrafos que se
+  entendem citados sozinhos, perguntas no fim (`faq`, que sai na página E no
+  FAQPage do JSON-LD, iguais). Post novo segue o mesmo molde.
+- **Créditos vêm de `lib/prices.ts`**, interpolados no texto. Fatos sobre
+  concorrentes são os do `/faq`, sem preço de concorrente.
+- **Post sem tradução não existe naquele idioma**: não gera página, não entra no
+  sitemap nem no hreflang (`postLangs`). Dá para publicar só em português.
+- **Datas reais** (`published` e `updated`, com hora e fuso): vão para o
+  BlogPosting, para a página ("Atualizado em") e para o `lastmod` do sitemap.
+  Mexeu no conteúdo de verdade, atualize o `updated` e o `UPDATED.blog` do
+  `app/sitemap.ts`. Nunca `new Date()`.
+- **"Novidades do Vizai" precisa ser atualizado a cada versão do plugin**, nos
+  três idiomas. Está no roteiro de release do `CLAUDE.md` do plugin.
+- **Os renders reais são imagens de terceiros** (os 9 que o @vizairender já
+  repostou no Instagram), com o perfil de cada autor. Pedido de remoção é tirar
+  o bloco e o arquivo de `public/blog/renders-reais/`.
+- **Pares de imagem usam `aspect` no bloco `imgrow`** (recorte pelo centro). O
+  formato se escolhe pela foto mais larga do par: imagem quadrada num par 4:5
+  perde as laterais (aconteceu com uma fachada).
+- `richText` aceita `[rótulo](endereço)`: com http abre em outra aba; link
+  interno já vem com o prefixo do idioma no texto (`/en/download`).
+
 ---
 
 ## 9. Cache e performance
@@ -356,7 +389,8 @@ completa.
 
 O total sai de uma conta simples: 5 páginas fixas mais os guias e as páginas de
 aula, vezes 3 idiomas. Depois da reforma de set/2026 são **54 URLs**: 5 páginas
-fixas, 5 guias e 8 páginas de aula, em três idiomas. Auditado em produção com hreflang correto entre as três
+fixas, 5 guias e 8 páginas de aula, em três idiomas. Com o `/faq` (12/10) e o blog
+(15/10: a página do blog e 4 artigos), são **72 URLs** desde 15/10/2026. Auditado em produção com hreflang correto entre as três
 línguas. O tráfego é predominantemente de marca.
 
 **O rodapé é parte do SEO, não decoração.** Ele leva a todas as páginas
@@ -497,7 +531,21 @@ aqui**: são do servidor, no Secret Manager do GCP.
 
 ---
 
-## 16. Estado em 2026-10-14
+## 16. Estado em 2026-10-15
+
+- **Blog no ar desde 15/10**, versão `de0094e2`, commit `9f94af1`. Rollback é a
+  `43fd9052` (mesmo dia, caminho do instalador corrigido, sem o blog). Conferido
+  em produção: os 4 artigos nos 3 idiomas, imagens com `immutable`, 72 URLs no
+  sitemap, blog no `/llms.txt`, link no menu e no rodapé, e o menu do celular
+  com o prefixo do idioma (antes mandava /en e /es para o português). O
+  primeiro pedido a `/blog` logo depois do deploy deu 404 uma vez e se acertou
+  sozinho em seguida: se acontecer de novo, repetir antes de investigar.
+  Detalhe na seção 8.1.
+- **Caminho do instalador corrigido em 15/10**, versão `43fd9052`: a página de
+  download e o FAQ mandavam ir em Janela, Extension Manager (SketchUp antigo).
+  Agora é Extensões, Gerenciador de extensões, Instalar extensão, conferido no
+  SketchUp 2026 em pt e en.
+
 
 - **Página do convite (`/convite/<código>`) e Programa de Indicação nos Termos
   no ar desde 14/10**, versão `577b4877` (passo 3 diz "botão com seu nome e seus
