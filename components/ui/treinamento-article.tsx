@@ -22,18 +22,37 @@ import {
   type TreinoBlock,
 } from "@/lib/treinamento";
 
-// Renderiza **negrito** dentro dos textos do conteúdo.
+// Renderiza **negrito** e [rótulo](endereço) dentro dos textos do conteúdo.
+// Endereço com http abre em outra aba (crédito no Instagram, por exemplo); o
+// resto é página do próprio site e já vem com o prefixo do idioma no texto.
 function richText(text: string) {
-  const parts = text.split(/\*\*(.+?)\*\*/g);
-  return parts.map((part, i) =>
-    i % 2 === 1 ? (
-      <strong key={i} className="font-semibold" style={{ color: "var(--foreground)" }}>
-        {part}
-      </strong>
-    ) : (
-      part
-    ),
-  );
+  const parts = text.split(/(\*\*.+?\*\*|\[[^\]]+\]\([^)\s]+\))/g);
+  return parts.map((part, i) => {
+    const bold = part.match(/^\*\*(.+)\*\*$/);
+    if (bold) {
+      return (
+        <strong key={i} className="font-semibold" style={{ color: "var(--foreground)" }}>
+          {bold[1]}
+        </strong>
+      );
+    }
+    const link = part.match(/^\[([^\]]+)\]\(([^)\s]+)\)$/);
+    if (link) {
+      const [, label, url] = link;
+      const className = "font-medium underline underline-offset-2 hover:opacity-80";
+      const style = { color: "#0940D2" };
+      return /^https?:\/\//.test(url) ? (
+        <a key={i} href={url} target="_blank" rel="noopener noreferrer" className={className} style={style}>
+          {label}
+        </a>
+      ) : (
+        <Link key={i} href={url} className={className} style={style}>
+          {label}
+        </Link>
+      );
+    }
+    return part;
+  });
 }
 
 function Figure({
@@ -68,14 +87,15 @@ function Figure({
           className="text-center text-xs mt-3"
           style={{ color: "var(--foreground-muted)" }}
         >
-          {caption}
+          {richText(caption)}
         </figcaption>
       )}
     </figure>
   );
 }
 
-function Block({ block, lang }: { block: TreinoBlock; lang: Lang }) {
+/** Um bloco de conteúdo. Usado pelos guias do Treinamento e pelos posts do blog. */
+export function ArticleBlock({ block, lang }: { block: TreinoBlock; lang: Lang }) {
   switch (block.type) {
     case "p":
       return (
@@ -95,6 +115,16 @@ function Block({ block, lang }: { block: TreinoBlock; lang: Lang }) {
         >
           {block.text}
         </h2>
+      );
+
+    case "h3":
+      return (
+        <h3
+          className="text-lg md:text-xl font-semibold tracking-tight mt-8 mb-3"
+          style={{ color: "var(--foreground)" }}
+        >
+          {block.text}
+        </h3>
       );
 
     case "ul":
@@ -219,14 +249,14 @@ function Block({ block, lang }: { block: TreinoBlock; lang: Lang }) {
             <figure key={i}>
               <div
                 className="rounded-2xl overflow-hidden"
-                style={{ border: "1px solid var(--border)" }}
+                style={{ border: "1px solid var(--border)", aspectRatio: block.aspect }}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={resolveSrc(img.src, lang)}
                   alt={img.alt}
                   loading="lazy"
-                  className="w-full h-auto block"
+                  className={block.aspect ? "w-full h-full object-cover block" : "w-full h-auto block"}
                 />
               </div>
               {img.caption && (
@@ -234,7 +264,7 @@ function Block({ block, lang }: { block: TreinoBlock; lang: Lang }) {
                   className="text-center text-xs mt-3"
                   style={{ color: "var(--foreground-muted)" }}
                 >
-                  {img.caption}
+                  {richText(img.caption)}
                 </figcaption>
               )}
             </figure>
@@ -299,7 +329,8 @@ function Block({ block, lang }: { block: TreinoBlock; lang: Lang }) {
         </div>
       );
 
-    case "table":
+    case "table": {
+      const left = block.align === "left";
       return (
         <div
           className="my-8 rounded-2xl overflow-hidden overflow-x-auto"
@@ -311,7 +342,7 @@ function Block({ block, lang }: { block: TreinoBlock; lang: Lang }) {
                 {block.head.map((h, i) => (
                   <th
                     key={i}
-                    className={`px-5 py-3 font-semibold ${i === 0 ? "text-left" : "text-right"}`}
+                    className={`px-5 py-3 font-semibold align-top ${i === 0 || left ? "text-left" : "text-right"}`}
                     style={{ color: "var(--foreground)" }}
                   >
                     {h}
@@ -325,12 +356,14 @@ function Block({ block, lang }: { block: TreinoBlock; lang: Lang }) {
                   {row.map((cell, j) => (
                     <td
                       key={j}
-                      className={`px-5 py-3 ${j === 0 ? "text-left" : "text-right font-semibold"}`}
+                      className={`px-5 py-3 align-top ${
+                        j === 0 ? "text-left" : left ? "text-left" : "text-right font-semibold"
+                      } ${left && j === 0 ? "font-semibold" : ""}`}
                       style={{
-                        color: j === 0 ? "var(--foreground-muted)" : "var(--foreground)",
+                        color: j === 0 && !left ? "var(--foreground-muted)" : "var(--foreground)",
                       }}
                     >
-                      {cell}
+                      {richText(cell)}
                     </td>
                   ))}
                 </tr>
@@ -339,6 +372,7 @@ function Block({ block, lang }: { block: TreinoBlock; lang: Lang }) {
           </table>
         </div>
       );
+    }
 
     default:
       return null;
@@ -453,7 +487,7 @@ export function TreinamentoArticle({ slug }: { slug: string }) {
 
       {/* Conteúdo */}
       {content.blocks.map((block, i) => (
-        <Block key={i} block={block} lang={lang} />
+        <ArticleBlock key={i} block={block} lang={lang} />
       ))}
 
       {/* Navegação anterior/próximo */}

@@ -8,6 +8,7 @@ const pt = {
   nav: {
     plans: "Planos",
     training: "Treinamento",
+    blog: "Blog",
     // Não repetir "Baixar plugin" aqui: esse é o texto do botão que REALMENTE
     // baixa o arquivo, na página de download. Com os dois nomes iguais, as
     // gravações do Clarity mostraram gente clicando neste, do menu, achando que
@@ -250,6 +251,7 @@ const pt = {
     download: "Como instalar",
     training: "Treinamento",
     gallery: "Galeria",
+    blog: "Blog",
     privacy: "Privacidade",
     terms: "Termos de Serviço",
     support: "Contato Suporte",
@@ -438,6 +440,7 @@ const en: Dict = {
   nav: {
     plans: "Plans",
     training: "Training",
+    blog: "Blog",
     download: "How to install",
     login: "Log in",
     start: "Get started",
@@ -670,6 +673,7 @@ const en: Dict = {
     download: "How to install",
     training: "Training",
     gallery: "Gallery",
+    blog: "Blog",
     privacy: "Privacy",
     terms: "Terms of Service",
     support: "Support contact",
@@ -854,6 +858,7 @@ const es: Dict = {
   nav: {
     plans: "Planes",
     training: "Capacitación",
+    blog: "Blog",
     download: "Cómo instalar",
     login: "Entrar",
     start: "Empezar",
@@ -1086,6 +1091,7 @@ const es: Dict = {
     download: "Cómo instalar",
     training: "Entrenamiento",
     gallery: "Galería",
+    blog: "Blog",
     privacy: "Privacidad",
     terms: "Términos de Servicio",
     support: "Contacto de soporte",

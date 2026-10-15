@@ -12,6 +12,7 @@
 // Os custos por operação vêm de OPERATION_CREDITS e VIDEO_CREDITS (lib/prices.ts).
 
 import { ARTICLES, getArticleContent } from "@/lib/treinamento";
+import { POSTS, getPostContent } from "@/lib/blog";
 import { absoluteUrl } from "@/lib/routes";
 import {
   OPERATION_CREDITS as C,
@@ -47,6 +48,15 @@ function body(): string {
   const lessons = ARTICLES.map((a) => {
     const c = getArticleContent(a.slug, "en");
     return c ? `- [${c.title}](${absoluteUrl("en", `/treinamento/${a.slug}`)}): ${c.excerpt}` : null;
+  }).filter(Boolean);
+  // Blog: em inglês quando existe a tradução, senão a versão em português (com
+  // o título original). Melhor o assistente achar o artigo em outra língua do
+  // que não achar.
+  const posts = POSTS.map((p) => {
+    const lang = getPostContent(p.slug, "en") ? "en" : "pt";
+    const c = getPostContent(p.slug, lang);
+    const tag = lang === "en" ? "" : " (in Portuguese)";
+    return c ? `- [${c.title}](${absoluteUrl(lang, `/blog/${p.slug}`)})${tag}: ${c.excerpt} Updated ${p.updated.slice(0, 10)}.` : null;
   }).filter(Boolean);
 
   return `# Vizai Render
@@ -86,11 +96,16 @@ ${packs.join("\n")}
 - [Pricing](${absoluteUrl("en", "/#pricing")}): plans and credit packs
 - [Download and installation](${absoluteUrl("en", "/download")}): how to install the plugin in SketchUp
 - [Training](${absoluteUrl("en", "/treinamento")}): video lessons and guides
+- [Blog](${absoluteUrl("en", "/blog")}): comparisons with other rendering tools, real renders by users and the plugin changelog
 - [FAQ](${absoluteUrl("en", "/faq")}): pricing, credits, requirements, privacy and how Vizai compares with V-Ray, Enscape, Lumion, SketchUp AI Render, Veras and D5 Lite
 
 ## Lessons and guides
 
 ${lessons.join("\n")}
+
+## Blog
+
+${posts.join("\n")}
 
 ## Other languages
 

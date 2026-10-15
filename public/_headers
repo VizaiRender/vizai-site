@@ -46,6 +46,8 @@
   Cache-Control: public,max-age=31536000,immutable
 /treinamento/*.webp
   Cache-Control: public,max-age=31536000,immutable
+/blog/*.jpg
+  Cache-Control: public,max-age=31536000,immutable
 /videos/*
   Cache-Control: public,max-age=2592000
 /flags/*

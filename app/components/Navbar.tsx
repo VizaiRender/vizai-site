@@ -163,6 +163,8 @@ export default function Navbar({ forceDark = false }: { forceDark?: boolean }) {
    * página atual mataria justamente o item que está certo.
    */
   const naPaginaDeTreinamento = /\/treinamento\/?$/.test(pathname);
+  // Mesma regra para o índice do blog: nos posts o item fica, é a volta à lista.
+  const naPaginaDoBlog = /\/blog\/?$/.test(pathname);
 
   useEffect(() => {
     setMounted(true);
@@ -370,6 +372,11 @@ export default function Navbar({ forceDark = false }: { forceDark?: boolean }) {
                     {t.nav.training}
                   </Link>
                 )}
+                {!naPaginaDoBlog && (
+                  <Link href={href("/blog")} className={`text-sm transition-colors ${d ? "text-white/70 hover:text-white" : "text-black/60 hover:text-black"}`}>
+                    {t.nav.blog}
+                  </Link>
+                )}
                 {!naPaginaDeDownload && (
                   <Link
                     href={href("/download")}
@@ -491,20 +498,23 @@ export default function Navbar({ forceDark = false }: { forceDark?: boolean }) {
                 ...(naPaginaDeTreinamento
                   ? []
                   : [{ href: "/treinamento", label: t.nav.training }]),
+                ...(naPaginaDoBlog ? [] : [{ href: "/blog", label: t.nav.blog }]),
                 // Mesmo motivo do menu de desktop: na página de download este
                 // item não leva a lugar nenhum.
                 ...(naPaginaDeDownload
                   ? []
                   : [{ href: "/download", label: t.nav.download }]),
-              ].map(({ href, label }, i) => (
+              ].map(({ href: path, label }, i) => (
                 <motion.div
-                  key={href}
+                  key={path}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.05 + i * 0.06, duration: 0.25, ease: "easeOut" }}
                 >
+                  {/* Com o prefixo do idioma, como no menu de desktop. Sem ele,
+                      quem estava em /en ou /es caía na página em português. */}
                   <Link
-                    href={href}
+                    href={href(path)}
                     onClick={() => setMenuOpen(false)}
                     className={`block py-2.5 text-lg font-normal tracking-tight transition-opacity active:opacity-50 ${menuFg}`}
                   >

@@ -83,6 +83,7 @@ export function Footer() {
         { href: href("/#pricing"), label: t.footer.plans },
         { href: href("/download"), label: t.footer.download },
         { href: href("/#gallery"), label: t.footer.gallery },
+        { href: href("/blog"), label: t.footer.blog },
       ],
     },
     {

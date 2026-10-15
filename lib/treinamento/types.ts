@@ -4,6 +4,7 @@
 export type TreinoBlock =
   | { type: "p"; text: string }
   | { type: "h2"; text: string }
+  | { type: "h3"; text: string }
   | { type: "ul"; items: string[] }
   | { type: "steps"; items: { title: string; text?: string }[] }
   | { type: "tip"; text: string }
@@ -14,6 +15,9 @@ export type TreinoBlock =
       type: "imgrow";
       images: { src: string; alt: string; caption?: string }[];
       ui?: boolean;
+      /** Mesmo formato para todas as imagens da linha (ex.: "4 / 5"), com
+       *  recorte pelo centro. Sem ele, cada imagem fica com a altura dela. */
+      aspect?: string;
     }
   | { type: "video"; src: string; caption?: string }
   | {
@@ -22,7 +26,9 @@ export type TreinoBlock =
       after: { src: string; label: string };
       aspect?: string;
     }
-  | { type: "table"; head: string[]; rows: string[][] };
+  /** `align: "left"` para tabela de texto (comparação); sem ele, a partir da
+   *  2ª coluna o valor sai à direita e em negrito, como numa tabela de preços. */
+  | { type: "table"; head: string[]; rows: string[][]; align?: "left" };
 
 export type ArticleContent = {
   title: string;

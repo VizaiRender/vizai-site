@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { ARTICLES } from '@/lib/treinamento'
-import { HREFLANG, LANGS, absoluteUrl } from '@/lib/routes'
+import { POSTS, postLangs } from '@/lib/blog'
+import { HREFLANG, LANGS, absoluteUrl, type Lang } from '@/lib/routes'
 
 // Datas reais da última alteração de cada seção, escritas à mão de propósito.
 // Isto aqui era `new Date()`: o lastmod saía como o instante da requisição, ou
@@ -16,6 +17,8 @@ const UPDATED = {
   treinamento: '2026-10-12',
   legal: '2026-09-29',
   faq: '2026-10-12',
+  // A página do blog muda quando entra post novo: acompanhe o post mais recente.
+  blog: '2026-10-15',
 } as const
 
 type Entry = {
@@ -31,6 +34,7 @@ const PAGES: Entry[] = [
   { path: '/', lastModified: UPDATED.home, changeFrequency: 'weekly', priority: 1 },
   { path: '/download', lastModified: UPDATED.download, changeFrequency: 'monthly', priority: 0.8 },
   { path: '/treinamento', lastModified: UPDATED.treinamento, changeFrequency: 'weekly', priority: 0.8 },
+  { path: '/blog', lastModified: UPDATED.blog, changeFrequency: 'weekly', priority: 0.7 },
   ...ARTICLES.map((a) => ({
     path: `/treinamento/${a.slug}`,
     lastModified: UPDATED.treinamento,
@@ -48,15 +52,15 @@ const PAGES: Entry[] = [
 // O bloco de alternates repete, em cada entrada, o endereço das três versões.
 // É o que faz o Google entender que /en/download e /download são a MESMA
 // página em idiomas diferentes, em vez de conteúdo duplicado.
-function languagesFor(path: string) {
+function languagesFor(path: string, langs: Lang[] = LANGS) {
   const languages: Record<string, string> = {}
-  for (const l of LANGS) languages[HREFLANG[l]] = absoluteUrl(l, path)
-  languages['x-default'] = absoluteUrl('pt', path)
+  for (const l of langs) languages[HREFLANG[l]] = absoluteUrl(l, path)
+  languages['x-default'] = absoluteUrl(langs.includes('pt') ? 'pt' : langs[0], path)
   return languages
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return PAGES.flatMap((page) =>
+  const pages = PAGES.flatMap((page) =>
     LANGS.map((lang) => ({
       url: absoluteUrl(lang, page.path),
       lastModified: page.lastModified,
@@ -67,4 +71,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: { languages: languagesFor(page.path) },
     })),
   )
+
+  // Posts do blog: cada um só nos idiomas em que foi escrito, com a data real
+  // da última atualização dele (lib/blog/index.ts), não a da seção inteira.
+  const posts = POSTS.flatMap((post) => {
+    const langs = postLangs(post.slug)
+    const path = `/blog/${post.slug}`
+    return langs.map((lang) => ({
+      url: absoluteUrl(lang, path),
+      lastModified: post.updated.slice(0, 10),
+      changeFrequency: 'monthly' as const,
+      priority: lang === 'pt' ? 0.6 : 0.5,
+      alternates: { languages: languagesFor(path, langs) },
+    }))
+  })
+
+  return [...pages, ...posts]
 }
