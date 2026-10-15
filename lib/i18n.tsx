@@ -329,7 +329,7 @@ const pt = {
       howToInstall: "Como instalar no SketchUp",
       steps: [
         { title: "Baixe o arquivo .rbz", body: "Clique no botão acima e salve o arquivo no seu computador." },
-        { title: "Abra o Extension Manager", body: "No SketchUp, vá em Janela → Extension Manager → Instalar Extensão." },
+        { title: "Abra o Gerenciador de extensões", body: "No SketchUp, vá em Extensões → Gerenciador de extensões → Instalar extensão." },
         { title: "Selecione o .rbz", body: "Escolha o arquivo que você acabou de baixar e confirme a instalação." },
         { title: "Reinicie o SketchUp", body: 'Feche e abra o SketchUp. O menu "Vizai" aparece na barra superior.' },
         { title: "Entre com Google", body: "Clique em Vizai → Entrar com Google. Pronto, você já pode renderizar." },
@@ -749,7 +749,7 @@ const en: Dict = {
       howToInstall: "How to install in SketchUp",
       steps: [
         { title: "Download the .rbz file", body: "Click the button above and save the file to your computer." },
-        { title: "Open the Extension Manager", body: "In SketchUp, go to Window → Extension Manager → Install Extension." },
+        { title: "Open the Extension Manager", body: "In SketchUp, go to Extensions → Extension Manager → Install Extension." },
         { title: "Select the .rbz", body: "Choose the file you just downloaded and confirm the installation." },
         { title: "Restart SketchUp", body: 'Close and reopen SketchUp. The "Vizai" menu appears in the top bar.' },
         { title: "Sign in with Google", body: "Click Vizai → Sign in with Google. Done, you're ready to render." },
@@ -1165,7 +1165,7 @@ const es: Dict = {
       howToInstall: "Cómo instalar en SketchUp",
       steps: [
         { title: "Descarga el archivo .rbz", body: "Haz clic en el botón de arriba y guarda el archivo en tu computadora." },
-        { title: "Abre el Extension Manager", body: "En SketchUp, ve a Ventana → Extension Manager → Instalar Extensión." },
+        { title: "Abre el Administrador de extensiones", body: "En SketchUp, ve a Extensiones → Administrador de extensiones → Instalar extensión." },
         { title: "Selecciona el .rbz", body: "Elige el archivo que acabas de descargar y confirma la instalación." },
         { title: "Reinicia SketchUp", body: 'Cierra y abre SketchUp. El menú "Vizai" aparece en la barra superior.' },
         { title: "Entra con Google", body: "Haz clic en Vizai → Entrar con Google. Listo, ya puedes renderizar." },
