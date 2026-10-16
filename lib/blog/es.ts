@@ -357,7 +357,7 @@ export const esPosts: Record<string, PostContent> = {
     blocks: [
       {
         type: "p",
-        text: "Esta página reúne todo lo que cambió en Vizai desde el lanzamiento, en mayo de 2026, de la versión más nueva a la más antigua. La versión actual es la **1.0.38**, del 14 de octubre de 2026. Cuando sale una versión nueva, el panel de Vizai muestra un aviso arriba con el botón para descargarla.",
+        text: "Esta página reúne todo lo que cambió en Vizai desde el lanzamiento, en mayo de 2026, de la versión más nueva a la más antigua. La versión actual es la **1.0.39**, del 16 de octubre de 2026. Cuando sale una versión nueva, el panel de Vizai muestra un aviso arriba con el botón para descargarla.",
       },
       { type: "h2", text: "Qué hace Vizai hoy" },
       {
@@ -374,6 +374,7 @@ export const esPosts: Record<string, PostContent> = {
       {
         type: "ul",
         items: [
+          "**1.0.39 (16/10):** opción Cámara Fija en el video, para timelapse de día a noche, y el formato Cuadrado ahora genera video cuadrado, sin recortar la parte de arriba y de abajo de la imagen.",
           `**1.0.38 (14/10): Recomienda y gana.** Cada cuenta tiene un código para enviar a los colegas. Quien recomienda gana ${REFERRAL.reward} créditos por cada amigo que compre, y el amigo gana ${REFERRAL.bonus} créditos extra.`,
           "**1.0.37 (13/10):** en Windows en portugués, los avisos de error de red vuelven a aparecer, en lugar de dejar el panel cargando.",
           "**1.0.36 (13/10):** aviso de versión nueva arriba del panel; el video puede tardar hasta 20 minutos sin que el plugin se rinda; la opción Sin sonido del video empieza a funcionar; el panorama 360 queda en el Historial aunque el enlace original caduque; y una conexión fallida avisa que no se descontó ningún crédito.",
@@ -434,7 +435,7 @@ export const esPosts: Record<string, PostContent> = {
     faq: [
       {
         q: "¿Cuál es la versión más reciente de Vizai?",
-        a: "La versión 1.0.38, del 14 de octubre de 2026, que trajo Recomienda y gana. Esta página se actualiza con cada versión nueva.",
+        a: "La versión 1.0.39, del 16 de octubre de 2026, que trajo la opción Cámara Fija en el video y el video cuadrado sin recortes. Esta página se actualiza con cada versión nueva.",
       },
       {
         q: "¿Cómo actualizo Vizai?",

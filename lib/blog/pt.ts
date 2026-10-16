@@ -362,7 +362,7 @@ export const ptPosts: Record<string, PostContent> = {
     blocks: [
       {
         type: "p",
-        text: "Esta página reúne tudo o que mudou no Vizai desde o lançamento, em maio de 2026, da versão mais nova para a mais antiga. A versão atual é a **1.0.38**, de 14 de outubro de 2026. Quando sai uma versão nova, o painel do Vizai mostra um aviso no topo com o botão para baixar.",
+        text: "Esta página reúne tudo o que mudou no Vizai desde o lançamento, em maio de 2026, da versão mais nova para a mais antiga. A versão atual é a **1.0.39**, de 16 de outubro de 2026. Quando sai uma versão nova, o painel do Vizai mostra um aviso no topo com o botão para baixar.",
       },
       { type: "h2", text: "O que o Vizai faz hoje" },
       {
@@ -379,6 +379,7 @@ export const ptPosts: Record<string, PostContent> = {
       {
         type: "ul",
         items: [
+          "**1.0.39 (16/10):** opção Câmera Parada no vídeo, para timelapse de dia para noite, e o formato Quadrado passa a gerar vídeo quadrado, sem cortar o topo e o pé da imagem.",
           `**1.0.38 (14/10): Indique e ganhe.** Cada conta tem um código para mandar aos colegas. Quem indica ganha ${REFERRAL.reward} créditos por amigo que comprar, e o amigo ganha ${REFERRAL.bonus} créditos extras.`,
           "**1.0.37 (13/10):** no Windows em português, avisos de erro de rede voltam a aparecer, em vez de deixar o painel carregando.",
           "**1.0.36 (13/10):** aviso de versão nova no topo do painel; vídeo pode levar até 20 minutos sem o plugin desistir; a opção Sem som do vídeo passa a valer; o panorama 360 fica salvo no Histórico mesmo depois que o link original expira; e falha de conexão avisa que nenhum crédito foi descontado.",
@@ -439,7 +440,7 @@ export const ptPosts: Record<string, PostContent> = {
     faq: [
       {
         q: "Qual é a versão mais recente do Vizai?",
-        a: "A versão 1.0.38, de 14 de outubro de 2026, que trouxe o Indique e ganhe. Esta página é atualizada a cada versão nova.",
+        a: "A versão 1.0.39, de 16 de outubro de 2026, que trouxe a opção Câmera Parada no vídeo e o vídeo quadrado sem cortes. Esta página é atualizada a cada versão nova.",
       },
       {
         q: "Como atualizo o Vizai?",

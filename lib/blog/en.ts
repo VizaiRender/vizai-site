@@ -356,7 +356,7 @@ export const enPosts: Record<string, PostContent> = {
     blocks: [
       {
         type: "p",
-        text: "This page lists everything that changed in Vizai since launch in May 2026, from the newest version to the oldest. The current version is **1.0.38**, released on October 14, 2026. When a new version is out, the Vizai panel shows a notice at the top with a download button.",
+        text: "This page lists everything that changed in Vizai since launch in May 2026, from the newest version to the oldest. The current version is **1.0.39**, released on October 16, 2026. When a new version is out, the Vizai panel shows a notice at the top with a download button.",
       },
       { type: "h2", text: "What Vizai does today" },
       {
@@ -373,6 +373,7 @@ export const enPosts: Record<string, PostContent> = {
       {
         type: "ul",
         items: [
+          "**1.0.39 (Oct 16):** Static Camera option for video, for day to night timelapses, and the Square format now makes a square video, without cropping the top and bottom of the image.",
           `**1.0.38 (Oct 14): Refer and earn.** Every account has a code to send to colleagues. You get ${REFERRAL.reward} credits for each friend who buys, and your friend gets ${REFERRAL.bonus} extra credits.`,
           "**1.0.37 (Oct 13):** on Windows set to Portuguese, network error messages show up again instead of leaving the panel loading.",
           "**1.0.36 (Oct 13):** new-version notice at the top of the panel; videos can take up to 20 minutes without the plugin giving up; the video No sound option now works; 360° panoramas stay in the History even after the original link expires; and a failed connection says that no credit was charged.",
@@ -433,7 +434,7 @@ export const enPosts: Record<string, PostContent> = {
     faq: [
       {
         q: "What is the latest version of Vizai?",
-        a: "Version 1.0.38, released on October 14, 2026, which added Refer and earn. This page is updated with every new version.",
+        a: "Version 1.0.39, released on October 16, 2026, which added the Static Camera option for video and uncropped square videos. This page is updated with every new version.",
       },
       {
         q: "How do I update Vizai?",

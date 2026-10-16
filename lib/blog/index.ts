@@ -38,7 +38,7 @@ export const POSTS: PostMeta[] = [
     category: "novidades",
     cover: "/treinamento/capas/primeiro-render.jpg",
     published: "2026-10-15T12:00:00-03:00",
-    updated: "2026-10-15T12:00:00-03:00",
+    updated: "2026-10-16T19:00:00-03:00",
     minutes: 5,
   },
 ];
